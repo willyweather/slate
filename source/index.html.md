@@ -616,7 +616,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 lat | double | | latitude | true
 lng | double | | longitude | true
-units | csv | See <a href="/#units">Units</a>. Only distance can be specified | the unit for distance in the response | true
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
 
 ### Response
 
@@ -691,7 +691,7 @@ Get a list of closest locations surrounding another location, filtered by weathe
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 id | string | | location id | true
-units | csv | distance: {km, miles} | the unit for distance in the response | true
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
 weatherTypes | csv | general, tides, swell | | false
 limit | int | 1-50 | limit the number of locations in response (default 25) | false
 
@@ -1030,6 +1030,7 @@ forecastGraphs | csv |  |  | false
 observationalGraphs | csv |  |  | false
 observational | csv |  |  | false
 regionPrecis | csv |  |  | false
+units | string | See <a href="/#units">Units</a>. |  | false
 
 <aside class="notice">
     <code>days = 7</code> by default.
@@ -4029,7 +4030,7 @@ https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 		},
 		"observational": {
 		    "observations": {
-			    "temperature": 17.5,
+			    "temperature": 17.5
             },
 			"units": {
 				"temperature": "c"
