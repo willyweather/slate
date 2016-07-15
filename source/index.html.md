@@ -3981,7 +3981,7 @@ Attribute | Type | Options | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precis | string | | long text weather description
 
-## Weather Summaries
+## Summaries
 
 > Example Request
 
