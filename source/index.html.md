@@ -11,6 +11,9 @@ search: true
 ---
 
 # Authentication
+The API authentication is done over HTTPS. Each request is authenticated using a private key contained within the URL. A request will be rejected if it is not requested over HTTPS or the private key is invalid.
+
+The private key can be viewed at <a href="https://www.willyweather.com.au/account/api.html">API Admin</a>.
 
 # Info
 
@@ -40,15 +43,79 @@ Parameter | Type | Options | Required
 --------- | ---- | ------- | --------
 platform | string | web, mobile | true
 
+## Info By Location Id
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?platform=iphone&weatherTypes=weather&mapTypes=radar-rainfall&graphTypes=wind
+```
+
+> Example Response
+
+```json
+{
+    "weatherTypes": {
+        "weather": "<div class=\"weather-info\">Info content goes here</div>"
+    },
+    "mapTypes": {
+            "radar-rainfall": "<div class=\"radar-info\">Info content goes here</div>"
+    },
+    "graphTypes": {
+        "wind": "<div>Info content goes here</div>"
+    }
+}
+```
+
+Returns WillyWeather's help and info.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json`
+
+Parameter | Type | Options | Required
+--------- | ---- | ------- | --------
+platform | string | iphone, android | true
+weatherTypes | csv | weather, wind, moonphases, rainfall, swell, tides, sunrisesunset, uv | option
+mapTypes | csv | radar-rainfall, satellite, synoptic | option
+graphTypes | csv | tides, wind, swell-height, swell-period, sunrisesunset | option
+units | csv | <a href="/#units">Units</a> | false
+
+<aside class="notice">
+Either <code>weatherTypes</code>, <code>mapTypes</code> or <code>graphTypes</code> is required.
+</aside>
+
 # Locations
 
 ## Get Location
 
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/{location id}.json
+```
+
+> Example Response
+
+```json
+{
+    "id": 2212,
+    "name": "Collaroy Beach",
+    "region": "Sydney",
+    "state": "NSW",
+    "postcode": "2097",
+    "timeZone": "Australia/Sydney",
+    "lat": -33.73212,
+    "lng": 151.30123,
+    "typeId": 2
+}
+```
+
 Returns the details of a single location.
 
-### Request By Location Id
+### Request
 
-`GET /api/v2/location/{location id}.json`
+`GET /api/v2/locations/{location id}.json`
 
 Parameter | Type | Options | Required
 --------- | ---- | ------- | --------
@@ -58,6 +125,37 @@ id | int |  | true
 Note - get a Location <code>id</code> using the <a href="/#search">search</a> endpoint.
 </aside>
 
+### Response
+
+Response is a Location.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+id | int | |
+name | string | |
+region | string | | the name of the region that the location belongs to
+state | string | | the name of the state that the location belongs to
+postcode | string | |
+timeZone | string | <a href="http://php.net/manual/en/timezones.php">php timezone</a> | (e.g. Sydney/Australia)
+lat | double | | the exact coordinates of a location (note, this may differ from popular map services)
+lng | double | | the exact coordinates of a location (note, this may differ from popular map services)
+typeId | int | **(see below)** | **(see below)**
+
+### Location Type Ids
+
+Location `typeId` is used to determine what weather data is applicable to a location. All that needs to be considered is whether a location has tides forecasts, swell forecast or both.
+
+Weather Type | Type Ids
+------------ | --------
+weather | all
+wind | all
+rainfall | all
+sunrisesunset | all
+moonphases | all
+uv | all
+tides | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19
+swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
+
 # Maps
 
 ## Get Map Providers
@@ -65,7 +163,7 @@ Note - get a Location <code>id</code> using the <a href="/#search">search</a> en
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=1&lat=-25.97&lng=133.91&verbose=true&offset=-6&limit=1
+https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=1&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30
 ```
 
 > Example Response
@@ -107,19 +205,22 @@ Returns all map providers that can be filtered by `mapType`. `verbose=true` is u
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | 1, 2, 3, 4, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600 | **see below for list** | true 
+mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **see below for conversion of parameter to typeId** | true
 lat | double | | latitude | false
 lng | double | | longitude | false
 verbose | boolean | | include overlay images with response | false
-offset | int | | minutes in the past that overlay images should begin from | true
-limit | int | 3-50 | limit number of images returned for each provider | false
+offset | int | | minutes that overlay images should start from | true
+limit | int | | minutes that overlay images should end at | false
 
 <aside class="notice">
 <code>offset</code> is required if <code>verbose</code> is <code>true</code>, which is the default if not included in the request.
 </aside>
 
-* primary local rain radar : 1
-* secondary local rain radar : 2
+<aside class="notice">
+When <code>lat</code> and <code>lng</code> are provided the returned Map Providers will be the closest ones to these coordinates, that also support the specified <code>mapTypes</code>.
+</aside>
+
+* regional rain radar : 1
 * national rain radar : 3
 * satellite : 4
 * synoptic : 100
@@ -145,7 +246,7 @@ Response is an array of Map Providers.
 
 ### Map Provider
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 id | int | | 
 name | string | |
@@ -185,7 +286,7 @@ name | string | path of image, to be appended to overlayPath in main response
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-15&limit=3
+https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30
 ```
 
 > Example Response
@@ -227,25 +328,26 @@ https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-15&limit=3
 
 Get a map provider with overlay data.
 
-### Requst By Provider Id
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/maps/{provider id}.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-offset | int | | Minutes in the past that overlay images should begin from | true
-limit | int | 3-50 | Limit number of images returned for each provider | false
+mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
+offset | int | | minutes that overlay images should start from | true
+limit | int | | minutes that overlay images should end at | false
 
 ### Response
 
-See <a href="/#get-map-providers">Get Map Providers</a> for description of Map Provider response.
+Response is a Map Provider. See <a href="/#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
 
 ## Map Data By Location Id
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=1&offset=-15&limit=3
+https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=1&offset=-60&limit=30
 ```
 
 > Example Response
@@ -290,39 +392,137 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=1
 
 Get map providers linked to a location.
 
-### Request By Location Id
+### Request
 
 `GET api.willyweather.com.au/v2/locations/{location id}/maps.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | 1, 2, 3, 4, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600 | see <a href="/#get-map-providers">Get Map Providers</a> for a list | true 
-offset | int | | Minutes in the past that overlay images should begin from | true
-limit | int | 3-50 | Limit number of images returned for each provider | false
+mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
+offset | int | | minutes that overlay images should start from | true
+limit | int | | minutes that overlay images should end at | false
 
 ### Response
 
-See <a href="/#get-map-providers">Get Map Providers</a> for description of Map Provider response.
+Response is an array of Map Providers. See <a href="/#get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
 
 # Regions
 
 ## Get Region
 
-Get Region(s).
+> Example Request
 
-### HTTP Request
+```shell
+https://api.willyweather.com.au/v2/{api key}/regions/{region id}.json
+```
 
-Get a Region by Region id.
+> Example Response
 
+```json
+{
+    "id": 52,
+    "name": "Adelaide",
+    "state": "SA",
+    "timeZone": "Australia/Adelaide",
+    "typeId": 1
+}
+```
+
+Returns the details of a single Region.
+
+### Request
 `GET /api/v2/regions/{region id}.json`
 
-Get all Regions within a State.
+### Response
+Response is a Region.
 
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+id | int | |
+name | string | |
+state | string | | the name of the state that the region belongs to
+timeZone | string | <a href="http://php.net/manual/en/timezones.php">php timezone</a> | (e.g. Sydney/Australia)
+typeId | int | **(see below)** | **(see below)**
+
+### Region Type Ids
+
+Region `typeId` is used to determine what weather data is applicable to a region. All that needs to be considered is whether a region has tides forecasts, swell forecast or both.
+
+Weather Type | Type Ids
+------------ | --------
+weather | all
+wind | all
+rainfall | all
+sunrisesunset | all
+moonphases | all
+uv | all
+tides | 1, 3
+swell | 1
+
+
+## Get Regions
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/regions.json
+```
+
+> Example Response
+
+```json
+[
+    {
+        "id": 52,
+        "name": "Adelaide",
+        "state": "SA",
+        "timeZone": "Australia/Adelaide",
+        "typeId": 1
+    }
+]
+```
+
+Returns the details of all Regions.
+
+### Request
+`GET /api/v2/regions.json`
+
+### Response
+Response is an array of Regions. See <a href="/#get-region">Get Region</a> for a description of a Region response.
+
+## Get Regions by State
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/states/{state id}/regions.json
+```
+
+> Example Response
+
+```json
+[
+    {
+        "id": 52,
+        "name": "Adelaide",
+        "state": "SA",
+        "timeZone": "Australia/Adelaide",
+        "typeId": 1
+    }
+]
+```
+
+Returns all Regions within a State.
+
+### Request
 `GET /api/v2/states/{state id}/regions.json`
+
+### Response
+Response is an array of Regions. See <a href="/#get-region">Get Region</a> for a description of a Region response.
 
 # Search
 
-## Simple Search
+## Location Search By Query
 
 > Example Request
 
@@ -359,63 +559,75 @@ https://api.willyweather.com.au/v2/{api key}/search.json?query=beach&limit=2
 ]
 ```
 
-Returns a list of Locations.
+Get a list of Locations that have a name or post code matching the query.
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/search.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-query | string | | location name or postcode | option 
-lat | double | | latitude | option
-lng | double | | longitude | option
+query | string | | location name or postcode | true
 limit | int | 1-50 | limit the number of locations in response (default 25) | false
-d | string | km, miles | the unit for distance in response | conditional
-
-<aside class="notice">
-Either <code>query</code> or <code>lat</code> & <code>lng</code> is required.
-</aside>
-
-<aside class="success">
-When using <code>lat</code> & <code>lng</code>, <code>d</code> is required.
-</aside>
 
 ### Response
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
-id | int | |
-name | string | |
-region | string | | the name of the region that the location belongs to
-state | string | | the name of the state that the location belongs to
-postcode | string | | 
-timeZone | string | <a href="http://php.net/manual/en/timezones.php">php timezone</a> | (e.g. Sydney/Australia)
-lat | double | | the exact coordinates of a location (note, this may differ from popular map services)
-lng | double | | the exact coordinates of a location (note, this may differ from popular map services)
-typeId | int | **(see below)** | **(see below)**
+Response is an array of Locations. See <a href="/#locations">Locations</a> for description of a Location response.
 
-### Location Type Ids
+## Location Search By Coordinates
 
-Location `typeId` is used to determine what weather data is applicable to a location. All that needs to be considered is whether a location has tides forecasts, swell forecast or both.
+> Example Request
 
-Weather Type | Type Ids
------------- | --------
-weather | all
-wind | all
-rainfall | all
-sunrisesunset | all
-moonphases | all
-uv | all
-tides | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19
-swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
+```shell
+https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
+```
+
+> Example Response
+
+```json
+{
+	"location":
+		{
+			"id": 19169,
+			"name": "Mackenzies Bay",
+			"region": "Sydney",
+			"state": "NSW",
+			"postcode": "0",
+			"timeZone": "Australia/Sydney",
+			"lat": -33.8996141,
+			"lng": 151.272962,
+			"typeId": 12,
+			"distance": 1
+		}
+	,
+	"units": {
+		"distance": "km"
+	}
+}
+```
+
+Get the closest Location to a set of coordinates.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/search.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+lat | double | | latitude | true
+lng | double | | longitude | true
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | the unit for distance in the response | true
+
+### Response
+
+A single Location and units. See <a href="/#locations">Location</a> for a description of a Location response. See <a href="/#units">Units</a> for a description of a Units response.
 
 ## Closest Locations
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&d=km
+https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&units=distance:km
 ```
 
 > Example Response
@@ -472,36 +684,100 @@ https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weather
 
 Get a list of closest locations surrounding another location, filtered by weatherType
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/search/closest.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 id | string | | location id | true
-d | string | km, miles | the unit for distance in response | true
+units | csv | distance: {km, miles} | the unit for distance in the response | true
 weatherTypes | csv | general, tides, swell | | false
 limit | int | 1-50 | limit the number of locations in response (default 25) | false
 
 ### Response
 
-A list of arrays of location objects, broken up into their weather types. See <a href="/#simple-search">Simple Search</a> for a description of locations.
+An array of location objects, broken up into their weather types. See <a href="/#locations">Locations</a> for a description of a Location response.
 
 # States
 
 ## Get State
 
-Get State(s).
+> Example Request
 
-### HTTP Request
+```shell
+https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
+```
 
-Get a State by State id.
+> Example Response
 
-`GET /api/v2/states/{state id}.json`
+```json
+{
+    "id": 4,
+    "name": "Australian Capital Territory",
+    "abbreviation": "ACT",
+    "typeId": 1
+}
+```
 
-Get all State.
+Returns the details of a single State.
 
+### Request
+`GET /api/v2/state/{state id}.json`
+
+### Response
+Response is a State.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+id | int | |
+name | string | |
+abbreviation | string | |
+typeId | int | **(see below)** | **(see below)**
+
+### State Type Ids
+
+State `typeId` is used to determine what weather data is applicable to a state. All that needs to be considered is whether a region has tides forecasts, swell forecast or both.
+
+Weather Type | Type Ids
+------------ | --------
+weather | all
+wind | all
+rainfall | all
+sunrisesunset | all
+moonphases | all
+uv | all
+tides | 1, 3
+swell | 1
+
+## Get States
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/states.json
+```
+
+> Example Response
+
+```json
+[
+    {
+        "id": 4,
+        "name": "Australian Capital Territory",
+        "abbreviation": "ACT",
+        "typeId": 1
+    }
+]
+```
+
+Returns the details of all States.
+
+### Request
 `GET /api/v2/states.json`
+
+### Response
+Response is an array of States. See <a href="/#get-state">Get State</a> for description of a State response.
 
 # Warnings
 
@@ -510,7 +786,7 @@ Get all State.
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/warnings.json?warningClassifications=storm
+https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 ```
 
 > Example Response
@@ -554,13 +830,13 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?warningClassification
 
 Returns all warnings, filtered by warning classification.
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/warnings.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-warningClassifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
+classifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
 verbose | boolean |  | include overlay images with response | false
 
 <aside class="notice">
@@ -569,7 +845,7 @@ verbose | boolean |  | include overlay images with response | false
 
 ### Response
 
-An array of Warning objects, see <a href="/#warning">Warning</a> for a description of Warnings objects.
+An array of Warning objects, see <a href="/#warning">Warning</a> for a description of a Warning response.
 
 ## Warning
 
@@ -612,7 +888,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 
 Get a Warning object by `code`.
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/warnings/{warning code}.json`
 
@@ -631,7 +907,7 @@ content | object | **(see below)**
 
 Warning Type codes can differ (and change) depending on the provider and some are quite similar to one another, so we created a list of classifications that we group warnings into.
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 id | int | | 
 code | string | | warning type name
@@ -652,7 +928,7 @@ html | string |
 > Example Request 
 
 ```
-https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?warningClassifications=storm,flood&verbose=false
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&verbose=false
 ```
 
 > Example Response
@@ -692,12 +968,12 @@ There are three ways to request Warnings by area.
 * **State id**
 
 <aside class="notice">
-Get <a href="/#search">Locations</a>, <a href="/#states">States</a> and <a href="/#regions">Regions</a>
+Get <a href="/#locations">Locations</a>, <a href="/#states">States</a> and <a href="/#regions">Regions</a>
 </aside>
 
 These will all return an array of Warnings, filtered by classification.
 
-### HTTP Requests
+### Requests
 
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
 
@@ -707,12 +983,12 @@ These will all return an array of Warnings, filtered by classification.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-warningClassifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
+classifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
 verbose | boolean |  | include actual warning content with response | false
 
 ### Response
 
-An array of Warning objects, see <a href="/#warning">Warning</a> for a description of Warnings objects.
+An array of Warning objects, see <a href="/#warning">Warning</a> for a description of a Warning response.
 
 # Weather
 
@@ -736,24 +1012,28 @@ An array of Warning objects, see <a href="/#warning">Warning</a> for a descripti
 }
 ```
 
-Weather data consists of many parts that can all be requested similtaneously, but must be requested by `location id`. We've broken them up into separate sections so it is easier to read.
+Weather data consists of many parts that can all be requested simultaneously, but must be requested by `location id`. We've broken them up into separate sections so it is easier to read.
 
 <aside class="notice">
 Any weather request will be returned with a location object as the first element in the response (see example). These have been omitted from the example responses below for the sake of reducing clutter
 </aside>
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/weather.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-days | int |  | max forecast days returned | true
+days | int |  | max forecast days returned | false
 forecasts | csv |  |  | false
 forecastGraphs | csv |  |  | false
 observationalGraphs | csv |  |  | false
 observational | csv |  |  | false
 regionPrecis | csv |  |  | false
+
+<aside class="notice">
+    <code>days = 7</code> by default.
+</aside>
 
 ### Forecast Response
 
@@ -765,7 +1045,7 @@ A forecast response consists of an object for each `weatherType` requested. Each
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather,wind&forecastGraphs=temperature,precis&observationalGraphs=pressure,temperature&observational=true&regionPrecis=true&days=1
 ```
 
-> Example Reponse (without content)
+> Example Response (without content)
 
 ```json
 {
@@ -804,7 +1084,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"moonphases": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"setDateTime": "2014-03-27 02:52:00",
@@ -858,8 +1138,6 @@ A Moon Phases forecast will always consist of an array of forecast days, accompa
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -874,13 +1152,25 @@ The Moon does not necessarily have both a rise and a set time for each day (i.e.
 </aside>
 
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 setDateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
 riseDateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
 phase | string | Waning Gibbous, Waning Crescent, Waxing Gibbous, Waxing Crescent, New, First Quarter, Full, Last Quarter | the full name of the current phase
 phaseCode | string | wang, wanc, waxg, waxc, new, full, first, last | a shortcode for phase
 percentageFull | int | 
+hemisphere | string | s,n | hemisphere affects how the moon appears to the eye
+
+### Quarters
+
+Contains next four quarters. Each quarter contains phase information (name, fill % and hemisphere).
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
+phase | string | Waning Gibbous, Waning Crescent, Waxing Gibbous, Waxing Crescent, New, First Quarter, Full, Last Quarter | the full name of the current phase
+phaseCode | string | wang, wanc, waxg, waxc, new, full, first, last | a shortcode for phase
+percentageFull | int |
 hemisphere | string | s,n | hemisphere affects how the moon appears to the eye
 
 ## Forecasts - Precis
@@ -900,7 +1190,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"precis": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"dateTime": "2014-03-27 00:00:00",
@@ -923,8 +1213,6 @@ A Precis forecast will always consist of an array of forecast `days` and an `iss
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -932,10 +1220,10 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-precisCode | array | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust | 
+precisCode | string | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust |
 precis | string | | formal, formatted name for precisCode (e.g. "Partly Cloudy")
 precisOverlayCode | string | wind, frost, fog, hail | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
 night | boolean | | 
@@ -957,10 +1245,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"rainfall": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
-							"dateTime": "2014-03-26 23:00:00",
+							"dateTime": "2014-03-27 00:00:00",
 							"startRange": 15,
 							"endRange": 25,
 							"rangeDivide": "-",
@@ -987,8 +1275,6 @@ Some areas will provide a forecast 'amount' of rainfall, which we display as a r
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -996,17 +1282,28 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-startRange | int | | can be `null`
-endRange | int | | can be `null`
-rangeDivide | string | `>`, `<`, `-`, `null` | used to link the startRange and endRange (e.g. 15-25). The `>` and `<` will be included when there is only a startRange OR endRange (e.g. >50)
+startRange | int |  `1`, `5`, `10`, `15`, `25`, `50`, `null` | can be null when the rangeCode has reached is maximum possible value `100`
+endRange | int | `5`,  `10`, `15`, `25`, `50`, `100` |
+rangeDivide | string | `>`, `-` | used to link the startRange and endRange (e.g. 15-25). The `>` will be included when there is only a startRange OR endRange (e.g. >50)
+rangeCode | string |  `0`, `1-5`, `5-10`, `10-15`, `15-25`, `25-50`, `50-100`, `100` | |
 probability | int | 0-100 | chance rainfall will occur on that day
 
 <aside class="notice">
 The daily probabilty for rainfall will not align with the probabilty included in <a href="/#forecasts-rainfall-probability">Rainfall Probability</a>
 </aside>
+
+  $record['amount'] = 150;
+            if ($record['amount'] >= 100) $range = array('start' => '', 'end' => 100, 'divide' => '>');
+            else if ($record['amount'] >= 50) $range = array('start' => 50, 'end' => 100, 'divide' => '-');
+            else if ($record['amount'] >= 25) $range = array('start' => 25, 'end' => 50, 'divide' => '-');
+            else if ($record['amount'] >= 15) $range = array('start' => 15, 'end' => 25, 'divide' => '-');
+            else if ($record['amount'] >= 10) $range = array('start' => 10, 'end' => 15, 'divide' => '-');
+            else if ($record['amount'] >= 5) $range = array('start' => 5, 'end' => 10, 'divide' => '-', );
+            else if ($record['amount'] >= 1) $range = array('start' => 1, 'end' => 5, 'divide' => '-', );
+
 
 ## Forecasts - Rainfall Probability
 
@@ -1023,7 +1320,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"rainfallprobability": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"dateTime": "2014-03-27 02:00:00",
@@ -1040,6 +1337,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 					]
 				}
 			],
+			"units": {
+                "percentage": "%"
+            },
 			"issueDateTime": "2014-03-27 08:55:30"
 		}
 	}
@@ -1052,8 +1352,6 @@ A Rainfall Probability forecast contains periodic probability forecasts througho
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -1061,7 +1359,7 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 probability | int | 0-100 | chance rainfall will occur during that period
@@ -1080,7 +1378,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"sunrisesunset": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"firstLightDateTime": "2014-03-27 06:42:53",
@@ -1104,8 +1402,6 @@ This is known formally as <a href="https://en.wikipedia.org/wiki/Twilight#Civil_
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -1113,7 +1409,7 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 firstLightDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 riseDateTime | string | | `YYYY-MM-DD HH:MM:SS`
@@ -1133,7 +1429,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 		"swell": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"dateTime": "2014-03-27 02:00:00",
@@ -1156,25 +1452,12 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 							"height": 1.5,
 							"period": 6.81
 						}
-					],
-					"low": {
-						"dateTime": "2014-03-27 23:00:00",
-						"direction": 72.52,
-						"directionText": "ENE",
-						"height": 1.3,
-						"period": 7.06
-					},
-					"max": {
-						"dateTime": "2014-03-27 14:00:00",
-						"direction": 73.75,
-						"directionText": "ENE",
-						"height": 1.6,
-						"period": 6.89
-					}
+					]
 				}
 			],
 			"units": {
-				"height": "m"
+				"height": "m",
+				"period": "sec"
 			},
 			"issueDateTime": "2014-03-26 16:23:30"
 		}
@@ -1184,11 +1467,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 The swell forecast includes both height and period. WillyWeather uses <a href="http://polar.ncep.noaa.gov/waves/index2.shtml">WaveWatch III from NOAA</a>, which provides offshore swell data for the entire globe.
 
+**For Locations that do not have swell data, <code>null</code> will be returned**.
+
 ### Days
 
 An array of forecast days
-
-### Forecast Days
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -1197,7 +1480,7 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the swell originates from
@@ -1222,7 +1505,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"temperature": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"dateTime": "2014-03-27 00:00:00",
@@ -1254,8 +1537,6 @@ A Temperature forecast contains periodic temperature forecasts throughout a day,
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -1285,22 +1566,22 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 		"tides": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
 							"dateTime": "2014-03-27 06:02:00",
 							"height": 5.61,
-							"type": "High"
+							"type": "high"
 						},
 						{
 							"dateTime": "2014-03-27 12:38:00",
 							"height": 1.08,
-							"type": "Low"
+							"type": "low"
 						},
 						{
 							"dateTime": "2014-03-27 18:47:00",
 							"height": 4.89,
-							"type": "High"
+							"type": "high"
 						}
 					]
 				}
@@ -1316,6 +1597,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 A tide forecast contains all tide events (high or low) for each day. The number of tide events per day differs.
 
+**For Locations that do not have tide data, <code>null</code> will be returned**.
+
 <aside class="notice">
 The number of tide events per day may differ.
 </aside>
@@ -1324,8 +1607,6 @@ The number of tide events per day may differ.
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -1333,11 +1614,11 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 height | double | | 
-type | string | `High`, `Low` | 
+type | string | `high`, `low` |
 
 ## Forecasts - UV
 
@@ -1356,33 +1637,34 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"uv": {
 			"days": [
 				{
-					"date": "2014-03-27",
+					"dateTime": "2014-03-27 00:00:00",
 					"entries": [
 						{
-							"dateTime": "2014-03-27 06:00:00",
+							"dateTime": "2014-03-27 11:00:00",
 							"index": 0,
 							"scale": "low"
 						},
 						{
-							"dateTime": "2014-03-27 07:00:00",
+							"dateTime": "2014-03-27 12:00:00",
 							"index": 0,
 							"scale": "low"
 						},
 						{
-							"dateTime": "2014-03-27 08:00:00",
-							"index": 0.37,
-							"scale": "low"
+							"dateTime": "2014-03-27 13:00:00",
+							"index": 6,
+							"scale": "high"
 						},
 						{
-							"dateTime": "2014-03-27 09:00:00",
-							"index": 0.36,
-							"scale": "low"
+							"dateTime": "2014-03-27 14:00:00",
+							"index": 7,
+							"scale": "high"
 						}
 					],
-					"max": {
-						"dateTime": "2014-03-27 11:00:00",
-						"index": 1.37,
-						"scale": "low"
+					"alert": {
+					    "maxIndex": 7,
+					    "scale": "high",
+					    "startDateTime": "2014-03-27 13:00:00",
+					    "endDateTime":"2014-03-27 14:00:00"
 					}
 				}
 			],
@@ -1392,13 +1674,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A UV forecast contains periodic UV forecasts throughout a day along with a max entry.
+A UV forecast contains periodic UV forecasts throughout a day along with an alert. The alert will only be provided if the forecast day has an index greater than 3.
 
 ### Days
 
 An array of forecast days
-
-### Forecast Days
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -1407,11 +1687,21 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 index | double | 0-20 | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
 scale | string | low, moderate, high, very-high, extreme | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
+
+### Alert
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+maxIndex | double | 3-20 | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
+scale | string | low, moderate, high, very-high, extreme | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
+startDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+endDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+
 
 ## Forecasts - Weather
 
@@ -1433,7 +1723,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 					"date": "2014-03-27",
 					"entries": [
 						{
-							"dateTime": "2014-03-27 11:00:00",
+							"dateTime": "2014-03-27 00:00:00",
 							"precisCode": "showers-rain",
 							"precis": "Rain at times",
 							"precisOverlayCode": null,
@@ -1445,8 +1735,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 				}
 			],
 			"units": {
-				"min": "c",
-				"max": "c"
+				"temperature": "c"
 			},
 			"issueDateTime": "2014-03-27 08:14:44"
 		}
@@ -1460,8 +1749,6 @@ A Weather forecast contains all the information required to provide a brief summ
 
 An array of forecast days
 
-### Forecast Days
-
 Attribute | Type | Description
 --------- | ---- | -----------
 dateTime | string | `YYYY-MM-DD HH:MM:SS`
@@ -1469,7 +1756,7 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precisCode | array | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust | 
@@ -1543,10 +1830,10 @@ entries | array | **(see below)**
 
 ### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-speed | double |
+speed | double | | |
 direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
 directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
 
@@ -1710,7 +1997,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
 			},
-			"unit": "%",
+			"units": {
+			    "percentage": "%"
+            },
 			"issueDateTime": "2014-03-27 08:55:30",
 			"nextIssueDateTime": "2014-03-27 22:55:30"
 		}
@@ -1970,7 +2259,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
 			},
-			"unit": "m",
+			"units": {
+                "height": "m"
+            },
 			"issueDateTime": "2014-03-26 16:23:30",
 			"nextIssueDateTime": "2014-03-27 16:23:30"
 		}
@@ -2035,7 +2326,7 @@ pointStyle | object | | **(see below)**
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2110,7 +2401,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
 			},
-			"unit": "sec",
+			"units": {
+                "period": "sec"
+            },
 			"issueDateTime": "2014-03-26 16:23:30",
 			"nextIssueDateTime": "2014-03-27 16:23:30"
 		}
@@ -2170,7 +2463,7 @@ y | double | | period in seconds
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2240,7 +2533,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
 			},
-			"unit": "c",
+			"units": {
+                "temperature": "c"
+            },
 			"issueDateTime": "2014-03-27 08:35:13",
 			"nextIssueDateTime": "2014-03-27 09:35:13"
 		}
@@ -2296,7 +2591,7 @@ y | double | | temperature
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2401,7 +2696,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"size": 9,
 				"start": 3
 			},
-			"unit": "ft",
+			"units": {
+                "height": "ft"
+            },
 			"issueDateTime": "2014-03-27 00:53:19",
 			"nextIssueDateTime": "2014-03-28 00:53:19"
 		}
@@ -2459,7 +2756,7 @@ interpolated | boolean | | `true` when not a low or high tide (data is generated
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2469,6 +2766,13 @@ stroke | string | | hexadecimal colour code
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Description
+--------- | ---- | -----------
+size | int | The total number of available days of data
+start | int | The index of the start of the current forecast
 
 ## Forecast Graphs - UV
 
@@ -2589,7 +2893,7 @@ description | string | low, moderate, high, very-high, extreme | a name given to
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2699,7 +3003,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
 			},
-			"unit": "km/h",
+			"units": {
+			    "speed": "km/h"
+			},
 			"issueDateTime": "2014-03-27 10:02:44",
 			"nextIssueDateTime": "2014-03-27 22:02:44"
 		}
@@ -2760,7 +3066,7 @@ pointStyle | object | | **(see below)**
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -2771,12 +3077,12 @@ stroke | string | | hexadecimal colour code
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
-## Observational Graphs - Dewpoint
+## Observational Graphs - Dew Point
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dewpoint&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&days=1
 ```
 
 > Example Response
@@ -2785,11 +3091,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 {
 	"location": {},
 	"observationalGraphs": {
-		"dewpoint": {
+		"dew-point": {
 			"dataConfig": {
 				"series": {
 					"config": {
-						"id": "dewpoint",
+						"id": "dew-point",
 						"color": "#003355",
 						"lineWidth": 2,
 						"lineFill": false,
@@ -2825,7 +3131,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1396051199
 			},
-			"unit": "c",
+			"units": {
+                "temperature": "c"
+            },
 			"provider": {
 				"id": 349,
 				"name": "Sydney (Observatory Hill)",
@@ -2880,7 +3188,7 @@ controlPoints | object | **(see below)**
 
 Attribute | Type | Value | Description
 --------- | ---- | ----- | -----------
-id | string | dewpoint |
+id | string | dew-point |
 color | string | hexadecimal |
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
@@ -2960,7 +3268,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1396051199
 			},
-			"unit": "hpa",
+			"units": {
+                "pressure": "hPa"
+            },
 			"provider": {
 				"id": 349,
 				"name": "Sydney (Observatory Hill)",
@@ -3093,7 +3403,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1396051199
 			},
-			"unit": "mm",
+			"units": {
+                "amount": "mm"
+            },
 			"provider": {
 				"id": 349,
 				"name": "Sydney (Observatory Hill)",
@@ -3226,7 +3538,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1396051199
 			},
-			"unit": "c",
+			"units": {
+                "temperature": "c"
+            },
 			"provider": {
 				"id": 733,
 				"name": "Wedding Cake West",
@@ -3458,12 +3772,12 @@ x | int | | time value
 y | double | | speed
 direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
 directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
-description | string | calm, light, gentle, moderate, fresh, strong, near-gale, gale, strong-gale, storm, violent, cyclone | 
+description | string | calm, light, gentle, moderate, fresh, strong, near-gale, gale, strong-gale, storm, violent, cyclone
 pointStyle | object | | **(see below)**
 
 ### Point Style
 
-Colour decriptions
+Colour descriptions
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -3476,7 +3790,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 
 ## Observational
 
-Stuff about observational (note `days` is compulsory because this can be bundled in with a forecast request)
+Observational provides real time data from one or more weather stations.
 
 > Example Request
 
@@ -3489,74 +3803,121 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 ```json
 {
 	"location": {},
-	"observational": {
-		"temperature": 21,
-		"apparentTemperature": 22.3,
-		"temperatureTrend": 0,
-		"humidity": 79,
-		"dewPoint": 18.6,
-		"dewPointTrend": 0,
-		"pressure": 1022.8,
-		"pressureTrend": 0,
-		"windSpeed": 9.3,
-		"windSpeedTrend": 0,
-		"windDirection": 360,
-		"windDirectionText": "N",
-		"windGusts": 11.1,
-		"dataWindSpeed": 2.573955,
-		"rainLastHour": 2.6,
-		"rainSince9AM": 2.6,
-		"rainToday": 2.6,
-		"stations": {
-			"uniqueStations": 2,
-			"temperature": {
-				"name": "Wedding Cake West",
-				"distance": 3.6
-			},
-			"pressure": {
-				"name": "Sydney (Observatory Hill)",
-				"distance": 4.3
-			},
-			"wind": {
-				"name": "Wedding Cake West",
-				"distance": 3.6
-			},
-			"rainfall": {
-				"name": "Sydney (Observatory Hill)",
-				"distance": 4.3
-			},
-			"issueDateTime": "2014-03-27 10:00:00"
-		}
-	}
+    "observational": {
+        "observations": {
+            "temperature": {
+                "temperature": 19.3,
+                "apparentTemperature": 12.3,
+                "trend": 1
+            },
+            "humidity": {
+                "percentage": 26
+            },
+            "dewPoint": {
+                "temperature": -0.6,
+                "trend": -1
+            },
+            "pressure": {
+                "pressure": 1007.2,
+                "trend": 1
+            },
+            "wind": {
+                "speed": 27.8,
+                "gustSpeed": 42.6,
+                "trend": 1,
+                "direction": 292.5,
+                "directionText": "WNW"
+            },
+            "rainfall": {
+                "lastHourAmount": 0,
+                "todayAmount": 0,
+                "since9AMAmount": 0
+            }
+        }
+    },
+    "stations": {
+        "uniqueStations": 2,
+        "temperature": {
+            "name": "Wedding Cake West",
+            "distance": 5.8
+        },
+        "pressure": {
+            "name": "Sydney (Observatory Hill)",
+            "distance": 6.9
+        },
+        "wind": {
+            "name": "Wedding Cake West",
+            "distance": 5.8
+        },
+        "rainfall": {
+            "name": "Sydney (Observatory Hill)",
+            "distance": 6.9
+        },
+        "issueDateTime": "2016-07-12 14:10:00"
+
+    },
+    "units": {
+        "temperature": "c",
+        "amount": "mm",
+        "speed": "km/h",
+        "distance": "km",
+        "pressure": "hPa"
+    }
 }
 ```
 
-### Observational
-
-Attribute | Type | Options | Description
+### Observations
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
-temperature | double | |
-apparentTemperature | double | |
-temperatureTrend | int | 1, 0, -1 | TODO
-humidity | double | | %
-dewPoint | double | | 
-dewPointTrend | int | 1, 0, -1 | TODO
-pressure | double | | 
-pressureTrend | int | 1, 0, -1 | TODO
-windSpeed | double | | 
-windSpeedTrend | int | 1, 0, -1 | TODO
-windDirection | int | 0-360 | TODO
-windDirectionText | string | TODO | TODO
-windGusts | double | | TODO
-dataWindSpeed | double | | TODO
-rainLastHour | double | | TODO
-rainSince9AM | double | | 
-rainToday | double | | 
-stations | object | | **(see below)**
+temperature | object | |
+humidity | object | |
+dewPoint | object | |
+wind | object | |
+rainfall | object | |
+
+### Temperature
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+temperature | int | |
+apparentTemperature | int |
+trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+
+### Humidity
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+percentage | int | |
+
+### Dew Point
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+temperature | int | |
+trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+
+### Pressure
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+pressure | int | |
+trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+
+### Wind
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+speed | int | |
+gustSpeed | int | |
+trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
+directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
+
+### Rainfall
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+lastHourAmount | int | |
+todayAmount | int | |
+since9AMAmount | int | |
 
 ### Stations
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 uniqueStations | int | | the number of different stations used to compile the observational data
 temperature | object | | **(see below)**
@@ -3564,6 +3925,13 @@ pressure | object | | **(see below)**
 wind | object | | **(see below)**
 rainfall | object | | **(see below)**
 issueDateTime | string | | `YYYY-MM-DD HH:MM:SS` - the last time this station updated
+
+### Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+name | int | |
+distance | string | | the distance from the Station to the Location
 
 ## Region Precis
 
@@ -3581,10 +3949,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 	"regionPrecis": {
 		"days": [
 			{
-				"date": "2014-03-27",
+				"dateTime": "2014-03-27 00:00:00",
 				"entries": [
 					{
-						"dateTime": "2014-03-27 11:00:00",
+						"dateTime": "2014-03-27 00:00:00",
 						"precis": "Cloudy. Areas of rain. Winds northeasterly 15 to 25 km/h."
 					}
 				]
@@ -3599,8 +3967,6 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 ### Days
 
 An array of forecast days
-
-### Forecast Days
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -3642,10 +4008,10 @@ https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 			"weather": {
 				"days": [
 					{
-						"date": "2016-03-27",
+						"dateTime": "2016-03-27 00:00:00",
 						"entries": [
 							{
-								"dateTime": "2016-06-27 11:00:00",
+								"dateTime": "2016-06-27 00:00:00",
 								"precisCode": "chance-shower-fine",
 								"precis": "Rain easing",
 								"precisOverlayCode": null,
@@ -3657,13 +4023,14 @@ https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 					}
 				],
 				"units": {
-					"min": "c",
-					"max": "c"
+					"temperature": "c"
 				}
 			}
 		},
 		"observational": {
-			"temperature": 17.5,
+		    "observations": {
+			    "temperature": 17.5,
+            },
 			"units": {
 				"temperature": "c"
 			}
@@ -3674,7 +4041,7 @@ https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 
 Returns an array of brief summaries, each being for a location provided in request.
 
-### HTTP Request
+### Request
 
 `GET api.willyweather.com.au/v2/{api key}/weather/summaries.json`
 
@@ -3682,9 +4049,12 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 ids | csv |  | list of location ids | true
 
+
+### Response
+
 ### Summary
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 location | object | | 
 forecasts | object | | 
@@ -3692,31 +4062,31 @@ observational | object | |
 
 ### Location
 
-See location
+See <a href="/#locations">Locations</a> for description a of Location response.
 
 ### Forecasts
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 weather | object | |
 
 ### Weather
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 days | array | | 
-units | object | | See units
+units | object | |
 
-### Day
+### Days
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 entries | array | | 
 
-### Entry
+### Entries
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precisCode | string | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust | 
@@ -3726,8 +4096,41 @@ night | boolean | |
 min | int | | daily temperature
 max | int | | daily temperature
 
+# Units
 
+> Example Request
 
+```shell
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m
+```
 
+> Example Response
 
+```json
+{
+    "units": {
+        "amount": "mm",
+        "distance": "km",
+        "speed": "knots",
+        "swellHeight": "ft",
+        "temperature": "c",
+        "tideHeight": "ft"
+    }
+}
+```
 
+The Units parameter allows the data to be converted to a specific unit. The format of the preferred units will form part of the query string.
+
+### Request
+
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m`
+
+### Response
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+amount | string | mm, pts, in | millimetres, points, inches
+distance | string | km, miles | kilometers, miles
+speed | string | km/h, mph, m/s, knots | kilometers per hour, miles per hour, meters per second, knots
+swellHeight | string | m, ft | meters, feet
+temperature | string | c, f | celsius, fahrenheit
+tideHeight | string | m, ft | meters, feet

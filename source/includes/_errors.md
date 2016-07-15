@@ -2,7 +2,6 @@
 
 Error Code | Meaning
 ---------- | -------
-307 | Temporary Redirect -- Service temporarily unavailable, redirected to closest available service.
 400 | Bad Request
 401 | Unauthorized -- Your API key is wrong or not enabled, check your billing preferences.
 403 | Forbidden -- You have submitted unauthorised request parameters, change in admin section.
