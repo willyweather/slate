@@ -3837,7 +3837,6 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
         }
     },
     "stations": {
-        "uniqueStations": 2,
         "temperature": {
             "name": "Wedding Cake West",
             "distance": 5.8
@@ -3854,9 +3853,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
             "name": "Sydney (Observatory Hill)",
             "distance": 6.9
         },
-        "issueDateTime": "2016-07-12 14:10:00"
-
     },
+    "issueDateTime": "2016-07-12 14:10:00",
     "units": {
         "temperature": "c",
         "amount": "mm",
