@@ -3834,33 +3834,33 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "todayAmount": 0,
                 "since9AMAmount": 0
             }
+        },
+        "stations": {
+            "temperature": {
+                "name": "Wedding Cake West",
+                "distance": 5.8
+            },
+            "pressure": {
+                "name": "Sydney (Observatory Hill)",
+                "distance": 6.9
+            },
+            "wind": {
+                "name": "Wedding Cake West",
+                "distance": 5.8
+            },
+            "rainfall": {
+                "name": "Sydney (Observatory Hill)",
+                "distance": 6.9
+            }
+        },
+        "issueDateTime": "2016-07-12 14:10:00",
+        "units": {
+            "temperature": "c",
+            "amount": "mm",
+            "speed": "km/h",
+            "distance": "km",
+            "pressure": "hPa"
         }
-    },
-    "stations": {
-        "temperature": {
-            "name": "Wedding Cake West",
-            "distance": 5.8
-        },
-        "pressure": {
-            "name": "Sydney (Observatory Hill)",
-            "distance": 6.9
-        },
-        "wind": {
-            "name": "Wedding Cake West",
-            "distance": 5.8
-        },
-        "rainfall": {
-            "name": "Sydney (Observatory Hill)",
-            "distance": 6.9
-        },
-    },
-    "issueDateTime": "2016-07-12 14:10:00",
-    "units": {
-        "temperature": "c",
-        "amount": "mm",
-        "speed": "km/h",
-        "distance": "km",
-        "pressure": "hPa"
     }
 }
 ```
