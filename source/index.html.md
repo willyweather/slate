@@ -1208,7 +1208,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 	}
 }
 ```
-A Precis forecast will always consist of an array of forecast `days` and an `issueDateTime`. Unlike <a href="/#forecasts-weather">Weather</a>, Precis can provide multiple values throughout a day (e.g. every 3 hours).
+Unlike <a href="/#forecasts-weather">Weather</a>, a Precis forecast can provide multiple values throughout a day (e.g. every 3 hours).
 
 ### Days
 
@@ -3083,7 +3083,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point
 ```
 
 > Example Response
@@ -3220,7 +3220,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure
 ```
 
 > Example Response
@@ -3355,7 +3355,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall
 ```
 
 > Example Response
@@ -3490,7 +3490,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature
 ```
 
 > Example Response
@@ -3625,7 +3625,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind
 ```
 
 > Example Response
@@ -3796,7 +3796,7 @@ Observational provides real time data from one or more weather stations.
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true
 ```
 
 > Example Response
@@ -3918,12 +3918,10 @@ since9AMAmount | int | |
 
 Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
-uniqueStations | int | | the number of different stations used to compile the observational data
 temperature | object | | **(see below)**
 pressure | object | | **(see below)**
 wind | object | | **(see below)**
 rainfall | object | | **(see below)**
-issueDateTime | string | | `YYYY-MM-DD HH:MM:SS` - the last time this station updated
 
 ### Station
 
@@ -3965,7 +3963,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 
 ### Days
 
-An array of forecast days
+An array of forecast days.
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -3973,6 +3971,9 @@ dateTime | string | `YYYY-MM-DD HH:MM:SS`
 entries | array | **(see below)**
 
 ### Entries
+
+Each day can contain a maximum of two entries.
+A single entry signifies the forecast is for the whole day. Multiple entries signifies a forecast for the morning and a forecast for the eventing.
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
