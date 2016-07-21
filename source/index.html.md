@@ -13,7 +13,7 @@ search: true
 # Authentication
 The API authentication is done over HTTPS. Each request is authenticated using a private key contained within the URL. A request will be rejected if it is not requested over HTTPS or the private key is invalid.
 
-The private key can be viewed at <a href="https://www.willyweather.com.au/account/api.html">API Admin</a>.
+The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 
 # Info
 
@@ -79,7 +79,7 @@ platform | string | iphone, android | true
 weatherTypes | csv | weather, wind, moonphases, rainfall, swell, tides, sunrisesunset, uv | option
 mapTypes | csv | radar-rainfall, satellite, synoptic | option
 graphTypes | csv | tides, wind, swell-height, swell-period, sunrisesunset | option
-units | csv | <a href="/#units">Units</a> | false
+units | csv | <a href="#units">Units</a> | false
 
 <aside class="notice">
 Either <code>weatherTypes</code>, <code>mapTypes</code> or <code>graphTypes</code> is required.
@@ -122,7 +122,7 @@ Parameter | Type | Options | Required
 id | int |  | true 
 
 <aside class="notice">
-Note - get a Location <code>id</code> using the <a href="/#search">search</a> endpoint.
+Note - get a Location <code>id</code> using the <a href="#search">Search</a> endpoint.
 </aside>
 
 ### Response
@@ -340,7 +340,7 @@ limit | int | | minutes that overlay images should end at | false
 
 ### Response
 
-Response is a Map Provider. See <a href="/#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
+Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
 
 ## Map Data By Location Id
 
@@ -404,7 +404,7 @@ limit | int | | minutes that overlay images should end at | false
 
 ### Response
 
-Response is an array of Map Providers. See <a href="/#get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
+Response is an array of Map Providers. See <a href="#get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
 
 # Regions
 
@@ -488,7 +488,7 @@ Returns the details of all Regions.
 `GET /api/v2/regions.json`
 
 ### Response
-Response is an array of Regions. See <a href="/#get-region">Get Region</a> for a description of a Region response.
+Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
 
 ## Get Regions by State
 
@@ -518,7 +518,7 @@ Returns all Regions within a State.
 `GET /api/v2/states/{state id}/regions.json`
 
 ### Response
-Response is an array of Regions. See <a href="/#get-region">Get Region</a> for a description of a Region response.
+Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
 
 # Search
 
@@ -572,7 +572,7 @@ limit | int | 1-50 | limit the number of locations in response (default 25) | fa
 
 ### Response
 
-Response is an array of Locations. See <a href="/#locations">Locations</a> for description of a Location response.
+Response is an array of Locations. See <a href="#locations">Locations</a> for description of a Location response.
 
 ## Location Search By Coordinates
 
@@ -620,7 +620,7 @@ units | csv | See <a href="/#units">Units</a>. Only distance can be specified | 
 
 ### Response
 
-A single Location and units. See <a href="/#locations">Location</a> for a description of a Location response. See <a href="/#units">Units</a> for a description of a Units response.
+A single Location and units. See <a href="#locations">Location</a> for a description of a Location response. See <a href="#units">Units</a> for a description of a Units response.
 
 ## Closest Locations
 
@@ -691,13 +691,13 @@ Get a list of closest locations surrounding another location, filtered by weathe
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 id | string | | location id | true
-units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
+units | csv | See <a href="#units">Units</a>. Only distance can be specified | | true
 weatherTypes | csv | general, tides, swell | | false
 limit | int | 1-50 | limit the number of locations in response (default 25) | false
 
 ### Response
 
-An array of location objects, broken up into their weather types. See <a href="/#locations">Locations</a> for a description of a Location response.
+An array of location objects, broken up into their weather types. See <a href="#locations">Locations</a> for a description of a Location response.
 
 # States
 
@@ -777,7 +777,7 @@ Returns the details of all States.
 `GET /api/v2/states.json`
 
 ### Response
-Response is an array of States. See <a href="/#get-state">Get State</a> for description of a State response.
+Response is an array of States. See <a href="#get-state">Get State</a> for description of a State response.
 
 # Warnings
 
@@ -845,7 +845,7 @@ verbose | boolean |  | include overlay images with response | false
 
 ### Response
 
-An array of Warning objects, see <a href="/#warning">Warning</a> for a description of a Warning response.
+An array of Warning objects, see <a href="#warning">Warning</a> for a description of a Warning response.
 
 ## Warning
 
@@ -968,7 +968,7 @@ There are three ways to request Warnings by area.
 * **State id**
 
 <aside class="notice">
-Get <a href="/#locations">Locations</a>, <a href="/#states">States</a> and <a href="/#regions">Regions</a>
+Get <a href="#locations">Locations</a>, <a href="#states">States</a> and <a href="#regions">Regions</a>
 </aside>
 
 These will all return an array of Warnings, filtered by classification.
@@ -988,7 +988,7 @@ verbose | boolean |  | include actual warning content with response | false
 
 ### Response
 
-An array of Warning objects, see <a href="/#warning">Warning</a> for a description of a Warning response.
+An array of Warning objects, see <a href="#warning">Warning</a> for a description of a Warning response.
 
 # Weather
 
@@ -1030,7 +1030,7 @@ forecastGraphs | csv |  |  | false
 observationalGraphs | csv |  |  | false
 observational | csv |  |  | false
 regionPrecis | csv |  |  | false
-units | string | See <a href="/#units">Units</a>. |  | false
+units | string | See <a href="#units">Units</a>. |  | false
 
 <aside class="notice">
     <code>days = 7</code> by default.
@@ -1208,7 +1208,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 	}
 }
 ```
-Unlike <a href="/#forecasts-weather">Weather</a>, a Precis forecast can provide multiple values throughout a day (e.g. every 3 hours).
+Unlike <a href="#forecasts-weather">Weather</a>, a Precis forecast can provide multiple values throughout a day (e.g. every 3 hours).
 
 ### Days
 
@@ -1268,7 +1268,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Rainfall forecast contains a daily summary of rain, in contrast to a <a href="/#forecasts-rainfall-probability">Rainfall Probability</a> forecast which will give periodic probability values throughout each day.
+A Rainfall forecast contains a daily summary of rain, in contrast to a <a href="#forecasts-rainfall-probability">Rainfall Probability</a> forecast which will give periodic probability values throughout each day.
 
 Some areas will provide a forecast 'amount' of rainfall, which we display as a range.
 
@@ -1293,7 +1293,7 @@ rangeCode | string |  `0`, `1-5`, `5-10`, `10-15`, `15-25`, `25-50`, `50-100`, `
 probability | int | 0-100 | chance rainfall will occur on that day
 
 <aside class="notice">
-The daily probabilty for rainfall will not align with the probabilty included in <a href="/#forecasts-rainfall-probability">Rainfall Probability</a>
+The daily probabilty for rainfall will not align with the probability included in <a href="#forecasts-rainfall-probability">Rainfall Probability</a>
 </aside>
 
   $record['amount'] = 150;
@@ -1347,7 +1347,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Rainfall Probability forecast contains periodic probability forecasts throughout a day, in contrast to a <a href="/#forecasts-rainfall">Rainfall</a> forecast which returns a summary for an entire day.
+A Rainfall Probability forecast contains periodic probability forecasts throughout a day, in contrast to a <a href="#forecasts-rainfall">Rainfall</a> forecast which returns a summary for an entire day.
 
 ### Days
 
@@ -1532,7 +1532,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Temperature forecast contains periodic temperature forecasts throughout a day, in contrast to <a href="/#forecasts-weather">Weather</a> which provides a daily summary with min/max values.
+A Temperature forecast contains periodic temperature forecasts throughout a day, in contrast to <a href="#forecasts-weather">Weather</a> which provides a daily summary with min/max values.
 
 ### Days
 
@@ -2270,7 +2270,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 }
 ```
 
-Swell Height forecast graph series, can be plotted on the same graph as a <a href="/#forecast-graphs-swell-period">Swell Period</a> graph.
+Swell Height forecast graph series, can be plotted on the same graph as a <a href="#forecast-graphs-swell-period">Swell Period</a> graph.
 
 ### Data Config
 
@@ -2412,7 +2412,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 }
 ```
 
-Swell Period forecast graph series, can be plotted on the same graph as a <a href="/#forecast-graphs-swell-height">Swell Height</a> graph.
+Swell Period forecast graph series, can be plotted on the same graph as a <a href="#forecast-graphs-swell-height">Swell Height</a> graph.
 
 ### Data Config
 
@@ -4062,7 +4062,7 @@ observational | object | |
 
 ### Location
 
-See <a href="/#locations">Locations</a> for description a of Location response.
+See <a href="#locations">Locations</a> for description a of Location response.
 
 ### Forecasts
 
