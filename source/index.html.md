@@ -3973,7 +3973,7 @@ entries | array | **(see below)**
 ### Entries
 
 Each day can contain a maximum of two entries.
-A single entry signifies the forecast is for the whole day. Multiple entries signifies a forecast for the morning and a forecast for the eventing.
+A single entry signifies the forecast is for the whole day. Multiple entries signify a forecast for the morning and a forecast for the eventing.
 
 Attribute | Type | Options | Description
 --------- | ---- | ------- | -----------
