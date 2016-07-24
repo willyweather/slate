@@ -41,7 +41,7 @@ Returns WillyWeather's terms and conditions.
 
 Parameter | Type | Options | Required
 --------- | ---- | ------- | --------
-platform | string | web, mobile | true
+platform | string | `web`, `mobile` | true
 
 ## Info By Location Id
 
@@ -75,10 +75,10 @@ Returns WillyWeather's help and info.
 
 Parameter | Type | Options | Required
 --------- | ---- | ------- | --------
-platform | string | iphone, android | true
-weatherTypes | csv | weather, wind, moonphases, rainfall, swell, tides, sunrisesunset, uv | option
-mapTypes | csv | radar-rainfall, satellite, synoptic | option
-graphTypes | csv | tides, wind, swell-height, swell-period, sunrisesunset | option
+platform | string | `iphone`, `android` | true
+weatherTypes | csv | `weather`, `wind`, `moonphases`, `rainfall`, `swell`, `tides`, `sunrisesunset`,` uv` | option
+mapTypes | csv | `radar-rainfall`, `satellite`, `synoptic` | option
+graphTypes | csv | `tides`, `wind`, `swell-height`, `swell-period`, `sunrisesunset` | option
 units | csv | <a href="#units">Units</a> | false
 
 <aside class="notice">
@@ -130,7 +130,7 @@ Note - get a Location <code>id</code> using the <a href="#search">Search</a> end
 Response is a Location.
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 id | int | |
 name | string | |
 region | string | | the name of the region that the location belongs to
@@ -205,7 +205,7 @@ Returns all map providers that can be filtered by `mapType`. `verbose=true` is u
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **see below for conversion of parameter to typeId** | true
+mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see below for conversion of parameter to typeId** | true
 lat | double | | latitude | false
 lng | double | | longitude | false
 verbose | boolean | | include overlay images with response | false
@@ -247,7 +247,7 @@ Response is an array of Map Providers.
 ### Map Provider
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 id | int | | 
 name | string | |
 lat | double | | the coordinates of the center of the map (in the case of a physical station, this is the exact location)
@@ -265,21 +265,21 @@ classification | string | | the type of map provider (e.g. radar, satellite, syn
 
 The bounding box coordinates for the overlay images, `min` being the bottom left corner, `max` being the top right corner.
 
-Attribute | Type | Description
---------- | ---- | -----------
-minLat | double |
-minLng | double |
-maxLat | double | 
-maxLng | double | 
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+minLat | double | |
+minLng | double | |
+maxLat | double | |
+maxLng | double | |
 
 ### Overlay
 
 The path of the map image on our servers.
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-name | string | path of image, to be appended to overlayPath in main response
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+name | string | | path of image, to be appended to overlayPath in main response
 
 ## Map Data By Provider
 
@@ -334,7 +334,7 @@ Get a map provider with overlay data.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
+mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 
@@ -398,7 +398,7 @@ Get map providers linked to a location.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | regional-radar, radar, satellite, synoptic, temperature, wind, rainfall, swell, uv, apparent-temperature, dew-point, relative-humidity, cloud-cover, thunderstorms, lightning, fog, frost, mixing-height, drought-factor, cyclone | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
+mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a> for a list** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 
@@ -431,13 +431,13 @@ https://api.willyweather.com.au/v2/{api key}/regions/{region id}.json
 Returns the details of a single Region.
 
 ### Request
-`GET /api/v2/regions/{region id}.json`
+`GET api.willyweather.com.au/api/v2/regions/{region id}.json`
 
 ### Response
 Response is a Region.
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 id | int | |
 name | string | |
 state | string | | the name of the state that the region belongs to
@@ -485,7 +485,7 @@ https://api.willyweather.com.au/v2/{api key}/regions.json
 Returns the details of all Regions.
 
 ### Request
-`GET /api/v2/regions.json`
+`GET api.willyweather.com.au/api/v2/regions.json`
 
 ### Response
 Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
@@ -515,7 +515,7 @@ https://api.willyweather.com.au/v2/{api key}/states/{state id}/regions.json
 Returns all Regions within a State.
 
 ### Request
-`GET /api/v2/states/{state id}/regions.json`
+`GET api.willyweather.com.au/api/v2/states/{state id}/regions.json`
 
 ### Response
 Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
@@ -568,7 +568,7 @@ Get a list of Locations that have a name or post code matching the query.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 query | string | | location name or postcode | true
-limit | int | 1-50 | limit the number of locations in response (default 25) | false
+limit | int | `1` - `50` | limit the number of locations in response (default 25) | false
 
 ### Response
 
@@ -693,7 +693,7 @@ Parameter | Type | Options | Description | Required
 id | string | | location id | true
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | true
 weatherTypes | csv | general, tides, swell | | false
-limit | int | 1-50 | limit the number of locations in response (default 25) | false
+limit | int | `1` - `50` | limit the number of locations in response (default 25) | false
 
 ### Response
 
@@ -723,13 +723,13 @@ https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
 Returns the details of a single State.
 
 ### Request
-`GET /api/v2/state/{state id}.json`
+`GET api.willyweather.com.au/api/v2/state/{state id}.json`
 
 ### Response
 Response is a State.
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 id | int | |
 name | string | |
 abbreviation | string | |
@@ -774,7 +774,7 @@ https://api.willyweather.com.au/v2/{api key}/states.json
 Returns the details of all States.
 
 ### Request
-`GET /api/v2/states.json`
+`GET api.willyweather.com.au/api/v2/states.json`
 
 ### Response
 Response is an array of States. See <a href="#get-state">Get State</a> for description of a State response.
@@ -836,7 +836,7 @@ Returns all warnings, filtered by warning classification.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-classifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
+classifications | csv | `strong-wind`, `hurricane`, `tornado`, `storm`, `tsunami`, `flood`, `frost`, `fire`, `snow`, `blizzard`, `heat`, `cold`, `wind-chill`, `typhoon`, `cold-rain`, `fog`, `dust-smoke-pollution`, `avalanche`, `earthquake`, `volcano`, `surf`, `marine`, `general`, `hazmat`, `road`, `farming`, `hiking`, `sheep`, `fruit-disease`, `leaf-disease`, `closed-water` |  | false
 verbose | boolean |  | include overlay images with response | false
 
 <aside class="notice">
@@ -894,34 +894,38 @@ Get a Warning object by `code`.
 
 ### Response - Warning Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-code | string | a unique identifier, provided by the local weather authority
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | a unique identifier, provided by the local weather authority
 name | string | 
-issueDateTime | string | `YYYY-MM-DD HH:MM:SS`
-expireDateTime | string | `YYYY-MM-DD HH:MM:SS` - a warning should be available to a user until it has expired
-warningType | object | **(see below)**
-content | object | **(see below)**
+issueDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+expireDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+warningType | object | **(see below)** |
+content | object | **(see below)** |
+
+<aside class="notice">
+	<code>issueDateTime</code> and <code>expireDateTime</code> are in <strong>UTC time</strong>.
+</aside>
 
 ### Warning Types
 
 Warning Type codes can differ (and change) depending on the provider and some are quite similar to one another, so we created a list of classifications that we group warnings into.
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 id | int | | 
-code | string | | warning type name
+code | string | | a unique identifier
 name | string | | warning name formatted for display
-classification | string | strong-wind , hurricane , tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water | this is all you should need, the classifications are set in stone and we make sure all new warnings fit an existing classification
+classification | string | `strong-wind`, `hurricane`, `tornado`, `storm`, `tsunami`, `flood`, `frost`, `fire`, `snow`, `blizzard`, `heat`, `cold`, `wind-chill`, `typhoon`, `cold-rain`, `fog`, `dust-smoke-pollution`, `avalanche`, `earthquake`, `volcano`, `surf`, `marine`, `general`, `hazmat`, `road`, `farming`, `hiking`, `sheep`, `fruit-disease`, `leaf-disease`, `closed-water` | the classifications are a fixed list and all new warnings fit an existing classification
 
 ### Content
 
 Warnings will occasionally come pre-formatted in html, as well as in plain text
 
-Attribute | Type | Description
---------- | ---- | -----------
-text | string | 
-html | string | 
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+text | string | |
+html | string | |
 
 ## Warnings By Area
 
@@ -983,7 +987,7 @@ These will all return an array of Warnings, filtered by classification.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-classifications | csv | strong-wind, hurricane, tornado, storm, tsunami, flood, frost, fire, snow, blizzard, heat, cold, wind-chill, typhoon, cold-rain, fog, dust-smoke-pollution, avalanche, earthquake, volcano, surf, marine, general, hazmat, road, farming, hiking, sheep, fruit-disease, leaf-disease, closed-water |  | false
+classifications | csv | `strong-wind`, `hurricane`, `tornado`, `storm`, `tsunami`, `flood`, `frost`, `fire`, `snow`, `blizzard`, `heat`, `cold`, `wind-chill`, `typhoon`, `cold-rain`, `fog`, `dust-smoke-pollution`, `avalanche`, `earthquake`, `volcano`, `surf`, `marine`, `general`, `hazmat`, `road`, `farming`, `hiking`, `sheep`, `fruit-disease`, `leaf-disease`, `closed-water` |  | false
 verbose | boolean |  | include actual warning content with response | false
 
 ### Response
@@ -1015,7 +1019,14 @@ An array of Warning objects, see <a href="#warning">Warning</a> for a descriptio
 Weather data consists of many parts that can all be requested simultaneously, but must be requested by `location id`. We've broken them up into separate sections so it is easier to read.
 
 <aside class="notice">
-Any weather request will be returned with a location object as the first element in the response (see example). These have been omitted from the example responses below for the sake of reducing clutter
+    Any weather request will be returned with a location object as the first element in the response (see example). These have been omitted from the example responses below for the sake of reducing clutter
+</aside>
+
+<aside class="notice">
+	All Forecast <code>dateTime</code> values are in <strong>local time</strong> and are formatted as <strong>YYYY-MM-DD HH:MM:SS</strong>.
+</aside>
+<aside class="notice">
+	All Graph <code>dateTime</code> values are in <strong>local time</strong> and are formatted as a <strong>Unix time stamp</strong>.
 </aside>
 
 ### Request
@@ -1139,10 +1150,10 @@ A Moon Phases forecast will always consist of an array of forecast days, accompa
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
@@ -1154,25 +1165,25 @@ The Moon does not necessarily have both a rise and a set time for each day (i.e.
 
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 setDateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
 riseDateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
-phase | string | Waning Gibbous, Waning Crescent, Waxing Gibbous, Waxing Crescent, New, First Quarter, Full, Last Quarter | the full name of the current phase
-phaseCode | string | wang, wanc, waxg, waxc, new, full, first, last | a shortcode for phase
+phase | string | `Waning Gibbous`, `Waning Crescent`, `Waxing Gibbous`, `Waxing Crescent`, `New`, `First Quarter`, `Full`, `Last Quarter` | the full name of the current phase
+phaseCode | string | `wang`, `wanc`, `waxg`, `waxc`, `new`, `full`, `first`, `last` | a short code for phase
 percentageFull | int | 
-hemisphere | string | s,n | hemisphere affects how the moon appears to the eye
+hemisphere | string | `s`, `n` | hemisphere affects how the moon appears to the eye
 
 ### Quarters
 
 Contains next four quarters. Each quarter contains phase information (name, fill % and hemisphere).
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS` - can be null
-phase | string | Waning Gibbous, Waning Crescent, Waxing Gibbous, Waxing Crescent, New, First Quarter, Full, Last Quarter | the full name of the current phase
-phaseCode | string | wang, wanc, waxg, waxc, new, full, first, last | a shortcode for phase
+phase | string | `Waning Gibbous`, `Waning Crescent`, `Waxing Gibbous`, `Waxing Crescent`, `New`, `First Quarter`, `Full`, `Last Quarter` | the full name of the current phase
+phaseCode | string | `wang`, `wanc`, `waxg`, `waxc`, `new`, `full`, `first`, `last` | a short code for phase
 percentageFull | int |
-hemisphere | string | s,n | hemisphere affects how the moon appears to the eye
+hemisphere | string | `s`, `n` | hemisphere affects how the moon appears to the eye
 
 ## Forecasts - Precis
 
@@ -1214,19 +1225,19 @@ Unlike <a href="#forecasts-weather">Weather</a>, a Precis forecast can provide m
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-precisCode | string | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust |
+precisCode | string | `fine`, `mostly-fine`, `high-cloud`, `partly-cloudy`, `mostly-cloudy`, `cloudy`, `overcast`, `shower-or-two`, `chance-shower-fine`, `chance-shower-cloud`, `drizzle`, `few-showers`, `showers-rain`, `heavy-showers-rain`, `chance-thunderstorm-fine`, `chance-thunderstorm-cloud`, `chance-thunderstorm-showers`, `thunderstorm`, `chance-snow-fine`, `chance-snow-cloud`, `snow-and-rain`, `light-snow`, `snow`, `heavy-snow`, `wind`, `frost`, `fog`, `hail`, `dust` |
 precis | string | | formal, formatted name for precisCode (e.g. "Partly Cloudy")
-precisOverlayCode | string | wind, frost, fog, hail | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
+precisOverlayCode | string | `wind`, `frost`, `fog`, `hail` | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
 night | boolean | | 
 
 ## Forecasts - Rainfall
@@ -1276,35 +1287,25 @@ Some areas will provide a forecast 'amount' of rainfall, which we display as a r
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 startRange | int |  `1`, `5`, `10`, `15`, `25`, `50`, `null` | can be null when the rangeCode has reached is maximum possible value `100`
 endRange | int | `5`,  `10`, `15`, `25`, `50`, `100` |
 rangeDivide | string | `>`, `-` | used to link the startRange and endRange (e.g. 15-25). The `>` will be included when there is only a startRange OR endRange (e.g. >50)
 rangeCode | string |  `0`, `1-5`, `5-10`, `10-15`, `15-25`, `25-50`, `50-100`, `100` | |
-probability | int | 0-100 | chance rainfall will occur on that day
+probability | int | `0` - `100` | chance rainfall will occur on that day
 
 <aside class="notice">
 The daily probabilty for rainfall will not align with the probability included in <a href="#forecasts-rainfall-probability">Rainfall Probability</a>
 </aside>
-
-  $record['amount'] = 150;
-            if ($record['amount'] >= 100) $range = array('start' => '', 'end' => 100, 'divide' => '>');
-            else if ($record['amount'] >= 50) $range = array('start' => 50, 'end' => 100, 'divide' => '-');
-            else if ($record['amount'] >= 25) $range = array('start' => 25, 'end' => 50, 'divide' => '-');
-            else if ($record['amount'] >= 15) $range = array('start' => 15, 'end' => 25, 'divide' => '-');
-            else if ($record['amount'] >= 10) $range = array('start' => 10, 'end' => 15, 'divide' => '-');
-            else if ($record['amount'] >= 5) $range = array('start' => 5, 'end' => 10, 'divide' => '-', );
-            else if ($record['amount'] >= 1) $range = array('start' => 1, 'end' => 5, 'divide' => '-', );
-
 
 ## Forecasts - Rainfall Probability
 
@@ -1353,17 +1354,17 @@ A Rainfall Probability forecast contains periodic probability forecasts througho
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-probability | int | 0-100 | chance rainfall will occur during that period
+probability | int | `0` - `100` | chance rainfall will occur during that period
 
 
 ## Forecasts - Sunrise/Sunset
@@ -1403,15 +1404,15 @@ This is known formally as <a href="https://en.wikipedia.org/wiki/Twilight#Civil_
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 firstLightDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 riseDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 setDateTime | string | | `YYYY-MM-DD HH:MM:SS`
@@ -1474,18 +1475,18 @@ The swell forecast includes both height and period. WillyWeather uses <a href="h
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the swell originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
 height | double | | offshore swell height
 period | double | | time in seconds for two consecutive wave crests to pass a stationary point
 	
@@ -1538,17 +1539,17 @@ A Temperature forecast contains periodic temperature forecasts throughout a day,
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-temperature | double | 
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+temperature | double | |
 
 ## Forecasts - Tides
 
@@ -1608,15 +1609,15 @@ The number of tide events per day may differ.
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 height | double | | 
 type | string | `high`, `low` |
@@ -1681,25 +1682,25 @@ A UV forecast contains periodic UV forecasts throughout a day along with an aler
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-index | double | 0-20 | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
-scale | string | low, moderate, high, very-high, extreme | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
+index | double | `0` - `20` | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
+scale | string | `low`, `moderate`, `high`, `very-high`, `extreme` | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
 
 ### Alert
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
-maxIndex | double | 3-20 | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
-scale | string | low, moderate, high, very-high, extreme | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
+--------- | ---- | ------ | -----------
+maxIndex | double | `3` - `20` | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a>
+scale | string | `low`, `moderate`, `high`, `very-high`, `extreme` | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#How_to_use_the_index">uv index</a> ranges
 startDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 endDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 
@@ -1712,7 +1713,7 @@ endDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1
 ```
 
-> Example Reseponse
+> Example Response
 
 ```json
 {
@@ -1750,19 +1751,19 @@ A Weather forecast contains all the information required to provide a brief summ
 
 An array of forecast days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-precisCode | array | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust | 
+precisCode | array | `fine`, `mostly-fine`, `high-cloud`, `partly-cloudy`, `mostly-cloudy`, `cloudy`, `overcast`, `shower-or-two`, `chance-shower-fine`, `chance-shower-cloud`, `drizzle`, `few-showers`, `showers-rain`, `heavy-showers-rain`, `chance-thunderstorm-fine`, `chance-thunderstorm-cloud`, `chance-thunderstorm-showers`, `thunderstorm`, `chance-snow-fine`, `chance-snow-cloud`, `snow-and-rain`, `light-snow`, `snow`, `heavy-snow`, `wind`, `frost`, `fog`, `hail`, `dust` |
 precis | string | | formal, formatted name for precisCode (e.g. "Partly Cloudy")
-precisOverlayCode | string | wind, frost, fog, hail | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
+precisOverlayCode | string | `wind`, `frost`, `fog`, `hail` | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
 night | boolean | |
 min | int | | minimum daily temperature
 max | int | | maximum daily temperature  
@@ -1775,7 +1776,7 @@ max | int | | maximum daily temperature
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1
 ```
 
-> Example Reseponse
+> Example Response
 
 ```json
 {
@@ -1824,19 +1825,19 @@ An array of forecast days
 
 ### Forecast Days
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 speed | double | | |
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the wind originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
 
 ## Forecast Graphs - Precis
 
@@ -1899,44 +1900,44 @@ Precis forecast graphs do not have a y axis, they are just icons used to summari
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int | | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-groups | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | |  **(see below)**
+groups | object | | **(see below)**
 
 ### Config
 
 The config is used to assist in styling the series. Each series will have different values, this is specific to `precis`.	
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | precis | 
-lineFill | boolean | false | whether the area under the graph should have a fill or not
-showPoints | boolean | true | whether to show data points or just display a line 
-pointRenderer | string | PrecisSummaryPointRenderer | 
-pointFormatter | string | PrecisSummaryPointFormatter |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `precis` |
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+showPoints | boolean | `true` | whether to show data points or just display a line
+pointRenderer | string | `PrecisSummaryPointRenderer` |
+pointFormatter | string | `PrecisSummaryPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-groups | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+groups | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
-precisCode | string | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust
+precisCode | string | `fine`, `mostly-fine`, `high-cloud`, `partly-cloudy`, `mostly-cloudy`, `cloudy`, `overcast`, `shower-or-two`, `chance-shower-fine`, `chance-shower-cloud`, `drizzle`, `few-showers`, `showers-rain`, `heavy-showers-rain`, `chance-thunderstorm-fine`, `chance-thunderstorm-cloud`, `chance-thunderstorm-showers`, `thunderstorm`, `chance-snow-fine`, `chance-snow-cloud`, `snow-and-rain`, `light-snow`, `snow`, `heavy-snow`, `wind`, `frost`, `fog`, `hail`, `dust`
 night | boolean | | used to show a moon instead of a sun in icons
 
 ## Forecast Graphs - Rainfall Probability
@@ -2012,51 +2013,51 @@ Rainfall probabilty graphs display periodic values giving a chance of rain.
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | |  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int | | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
 The config is used to assist in styling the series. Each series will have different values, this is specific to `rainfallprobability`.
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | rainfallprobability |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `rainfallprobability` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | BarLineRenderer |
+lineRenderer | string | `BarLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | RainfallProbabilityPointFormatter | 
+pointFormatter | string | `RainfallProbabilityPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
-y | int | 0-100 | rainfall probability
+y | int | `0` - `100` | rainfall probability
 
 ### Control Points
 
@@ -2118,46 +2119,46 @@ Sunrise / Sunset forecast graph, we use this as a background to our normal graph
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-xAxisMin | int | the smallest x value with graph padding
-xAxisMax | int | the largest x value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+xAxisMin | int | | the smallest x value with graph padding
+xAxisMax | int | | the largest x value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
 The config is used to assist in styling the series. Each series will have different values, this is specific to `sunrisesunset`.
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | sunrisesunset |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `sunrisesunset` |
+color | string | | hexadecimal colour code
 lineFill | boolean | `true` | whether the area under the graph should have a fill or not
-lineRenderer | string | SunLineRenderer |
+lineRenderer | string | `SunLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | SunriseSunsetPointFormatter | 
+pointFormatter | string | `SunriseSunsetPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 description | string | `First Light`, `Sunrise`, `Sunset`, `Last Light` | 
 
@@ -2274,63 +2275,63 @@ Swell Height forecast graph series, can be plotted on the same graph as a <a hre
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
 The config is used to assist in styling the series. Each series will have different values, this is specific to `swell-height`.
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | swell-height |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `swell-height` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `true` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `true` | whether to show data points or just display a line
-pointRenderer | string | ArrowPointRenderer |
-pointFormatter | string | DirectionPointFormatter | 
+pointRenderer | string | `ArrowPointRenderer` |
+pointFormatter | string | `DirectionPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | swell height
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the swell originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
-description | string | glassy, smooth, slight, moderate, rough, very-rough, high, very-high, phenomenal | 
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `glassy`, `smooth`, `slight`, `moderate`, `rough`, `very-rough`, `high`, `very-high`, `phenomenal` |
 pointStyle | object | | **(see below)**
 
 ### Point Style
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -2416,49 +2417,49 @@ Swell Period forecast graph series, can be plotted on the same graph as a <a hre
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | |  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | swell-period |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `swell-period` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `true` | whether to show data points or just display a line
-pointRenderer | string | CirclePointRenderer |
-pointFormatter | string | SwellPeriodPointFormatter | 
+pointRenderer | string | `CirclePointRenderer` |
+pointFormatter | string | `SwellPeriodPointFormatter` |
 pointStyle | object | | **(see below)**
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | period in seconds
 
@@ -2466,8 +2467,8 @@ y | double | | period in seconds
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -2546,47 +2547,47 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | temperature |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `temperature` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | TemperaturePointFormatter | 
+pointFormatter | string | `TemperaturePointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | temperature
 
@@ -2594,8 +2595,8 @@ y | double | | temperature
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -2709,58 +2710,58 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | tides |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `tides` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `true` | whether the area under the graph should have a fill or not
-lineRenderer | string | CurvedLineRenderer |
+lineRenderer | string | `CurvedLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | TidePointFormatter | 
+pointFormatter | string | `TidePointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | tide height
-description | string | Low, High | empty string when not a low or high tide
+description | string | `low`, `high` | empty string when not a low or high tide
 interpolated | boolean | | `true` when not a low or high tide (data is generated parabolically from low and high points)
 
 ### Point Style
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -2770,10 +2771,10 @@ Control points sit before and after the graph to allow you to plot the lines rig
 
 ### Carousel
 
-Attribute | Type | Description
---------- | ---- | -----------
-size | int | The total number of available days of data
-start | int | The index of the start of the current forecast
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - UV
 
@@ -2847,57 +2848,57 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | uv |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `uv` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | UVPointFormatter | 
+pointFormatter | string | `UVPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | <a href="https://en.wikipedia.org/wiki/Ultraviolet_index">uv index</a>
-description | string | low, moderate, high, very-high, extreme | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index">uv index</a> ranges
+description | string | `low`, `moderate`, `high`, `very-high`, `extreme` | a name given to <a href="https://en.wikipedia.org/wiki/Ultraviolet_index">uv index</a> ranges
 
 ### Point Style
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -3015,62 +3016,61 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 ```
 
 ### Data Config
-
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | wind |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` | |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `true` | whether to show data points or just display a line
-pointRenderer | string | ArrowPointRenderer |
-pointFormatter | string | DirectionPointFormatter | 
+pointRenderer | string | `ArrowPointRenderer` |
+pointFormatter | string | `DirectionPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 x | int | | time value
 y | double | | wind speed
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
-description | string | calm, light, gentle, moderate, fresh, strong, near-gale, gale, strong-gale, storm, violent, cyclone | 
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the wind originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `calm`, `light`, `gentle`, `moderate`, `fresh`, `strong`, `near-gale`, `gale`, `strong-gale`, `storm`, `violent`, `cyclone` |
 pointStyle | object | | **(see below)**
 
 ### Point Style
 
 Colour descriptions
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
 
@@ -3154,60 +3154,60 @@ The temperature at which dew will form.
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Provider
 
 The station used to gather this data
 
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | 
-name | string | 
-lat | double | 
-lng | double | 
-distance | double | distance of provider from location
-units | object | includes unit of measurement for distance
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | dew-point |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `dew-point` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | DewPointPointFormatter | 
+pointFormatter | string |` DewPointPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | dew point
 
@@ -3289,59 +3289,59 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Provider
 
 The station used to gather this data
 
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | 
-name | string | 
-lat | double | 
-lng | double | 
-distance | double | distance of provider from location
-units | object | includes unit of measurement for distance
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | pressure |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `pressure` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | PressurePointFormatter | 
+pointFormatter | string | `PressurePointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 x | int | | time value
 y | double | | pressure
@@ -3424,59 +3424,59 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Provider
 
 The station used to gather this data
 
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | 
-name | string | 
-lat | double | 
-lng | double | 
-distance | double | distance of provider from location
-units | object | includes unit of measurement for distance
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | rainfall |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `rainfall` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | BarLineRenderer |
+lineRenderer | string | `BarLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | RainfallPointFormatter | 
+pointFormatter | string | `RainfallPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 x | int | | time value
 y | double | | amount
@@ -3559,59 +3559,59 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Provider
 
 The station used to gather this data
 
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | 
-name | string | 
-lat | double | 
-lng | double | 
-distance | double | distance of provider from location
-units | object | includes unit of measurement for distance
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | rainfall |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `temperature` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `false` | whether to show data points or just display a line
-pointFormatter | string | TemperaturePointFormatter | 
+pointFormatter | string | `TemperaturePointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 x | int | | time value
 y | double | | temperature
@@ -3714,73 +3714,73 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ### Data Config
 
-Attribute | Type | Description
---------- | ---- | -----------
-series | object | **(see below)**
-xAxisMin | int | start time of the graph period
-xAxisMax | int| end time of the graph period
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
 
 ### Provider
 
 The station used to gather this data
 
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | 
-name | string | 
-lat | double | 
-lng | double | 
-distance | double | distance of provider from location
-units | object | includes unit of measurement for distance
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
 
 ### Series
 
-Attribute | Type | Description
---------- | ---- | -----------
-config | object | **(see below)**
-yAxisDataMin | int | the smallest y value
-yAxisDataMax | int | the largest y value
-yAxisMin | int | the smallest y value with graph padding
-yAxisMax | int | the largest y value with graph padding
-groups | object | **(see below)**
-controlPoints | object | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
 
 ### Config
 
-Attribute | Type | Value | Description
---------- | ---- | ----- | -----------
-id | string | wind |
-color | string | hexadecimal |
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
-lineRenderer | string | StraightLineRenderer |
+lineRenderer | string | `StraightLineRenderer` |
 showPoints | boolean | `true` | whether to show data points or just display a line
-pointRenderer | string | ArrowPointRenderer |
-pointFormatter | string | DirectionPointFormatter | 
+pointRenderer | string | `ArrowPointRenderer` |
+pointFormatter | string | `DirectionPointFormatter` |
 
 ### Groups
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-points | array | array of `point` objects **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
 
 ### Point
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | speed
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
-description | string | calm, light, gentle, moderate, fresh, strong, near-gale, gale, strong-gale, storm, violent, cyclone
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the wind originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `calm`, `light`, `gentle`, `moderate`, `fresh`, `strong`, `near-gale`, `gale`, `strong-gale`, `storm`, `violent`, `cyclone`
 pointStyle | object | | **(see below)**
 
 ### Point Style
 
 Colour descriptions
 
-Attribute | Type | Options | Description
+Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
 fill | string | | hexadecimal colour code
 stroke | string | | hexadecimal colour code
@@ -3867,7 +3867,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ### Observations
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 temperature | object | |
 humidity | object | |
 dewPoint | object | |
@@ -3876,40 +3876,40 @@ rainfall | object | |
 
 ### Temperature
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 temperature | int | |
 apparentTemperature | int |
-trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
 
 ### Humidity
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 percentage | int | |
 
 ### Dew Point
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 temperature | int | |
-trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
 
 ### Pressure
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 pressure | int | |
-trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
+trend | int | ``-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
 
 ### Wind
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 speed | int | |
 gustSpeed | int | |
-trend | int | -1, 0, 1 | -1 is falling. 0 is steady. 1 is rising
-direction | double | 0-360 | degrees, clockwise from North (0). describes the direction the wind originates from
-directionText | string | N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW | cardinal direction text
+trend | int | ``-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the wind originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
 
 ### Rainfall
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 lastHourAmount | int | |
 todayAmount | int | |
 since9AMAmount | int | |
@@ -3917,7 +3917,7 @@ since9AMAmount | int | |
 ### Stations
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 temperature | object | | **(see below)**
 pressure | object | | **(see below)**
 wind | object | | **(see below)**
@@ -3926,7 +3926,7 @@ rainfall | object | | **(see below)**
 ### Station
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 name | int | |
 distance | string | | the distance from the Station to the Location
 
@@ -3965,18 +3965,18 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 
 An array of forecast days.
 
-Attribute | Type | Description
---------- | ---- | -----------
-dateTime | string | `YYYY-MM-DD HH:MM:SS`
-entries | array | **(see below)**
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+entries | array | | **(see below)**
 
 ### Entries
 
 Each day can contain a maximum of two entries.
 A single entry signifies the forecast is for the whole day. Multiple entries signify a forecast for the morning and a forecast for the eventing.
 
-Attribute | Type | Options | Description
---------- | ---- | ------- | -----------
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precis | string | | long text weather description
 
@@ -4055,7 +4055,7 @@ ids | csv |  | list of location ids | true
 ### Summary
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 location | object | | 
 forecasts | object | | 
 observational | object | |
@@ -4067,31 +4067,31 @@ See <a href="#locations">Locations</a> for description a of Location response.
 ### Forecasts
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 weather | object | |
 
 ### Weather
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 days | array | | 
 units | object | |
 
 ### Days
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 entries | array | | 
 
 ### Entries
 
 Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
+--------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-precisCode | string | fine, mostly-fine, high-cloud, partly-cloudy, mostly-cloudy, cloudy, overcast, shower-or-two, chance-shower-fine, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, chance-thunderstorm-fine, chance-thunderstorm-cloud, chance-thunderstorm-showers, thunderstorm, chance-snow-fine, chance-snow-cloud, snow-and-rain, light-snow, snow, heavy-snow, wind, frost, fog, hail, dust | 
+precisCode | string | `fine`, `mostly-fine`, `high-cloud`, `partly-cloudy`, `mostly-cloudy`, `cloudy`, `overcast`, `shower-or-two`, `chance-shower-fine`, `chance-shower-cloud`, `drizzle`, `few-showers`, `showers-rain`, `heavy-showers-rain`, `chance-thunderstorm-fine`, `chance-thunderstorm-cloud`, `chance-thunderstorm-showers`, `thunderstorm`, `chance-snow-fine`, `chance-snow-cloud`, `snow-and-rain`, `light-snow`, `snow`, `heavy-snow`, `wind`, `frost`, `fog`, `hail`, `dust` |
 precis | string | | formal, formatted name for precisCode (e.g. "Partly Cloudy")
-precisOverlayCode | string | wind, frost, fog, hail | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
+precisOverlayCode | string | `wind`, `frost`, `fog`, `hail` | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
 night | boolean | | 
 min | int | | daily temperature
 max | int | | daily temperature
@@ -4128,9 +4128,9 @@ The Units parameter allows the data to be converted to a specific unit. The form
 ### Response
 Attribute | Type | Values | Description
 --------- | ---- | ------- | -----------
-amount | string | mm, pts, in | millimetres, points, inches
-distance | string | km, miles | kilometers, miles
-speed | string | km/h, mph, m/s, knots | kilometers per hour, miles per hour, meters per second, knots
-swellHeight | string | m, ft | meters, feet
-temperature | string | c, f | celsius, fahrenheit
-tideHeight | string | m, ft | meters, feet
+amount | string | `mm`, `pts`, `in` | millimetres, points, inches
+distance | string | `km`, `miles` | kilometers, miles
+speed | string | `km/h`, `mph`, `m/s`, `knots` | kilometers per hour, miles per hour, meters per second, knots
+swellHeight | string | `m`, `ft` | meters, feet
+temperature | string | `c`, `f` | celsius, fahrenheit
+tideHeight | string | `m`, `ft` | meters, feet
