@@ -4292,6 +4292,979 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 temperature | double | |
 
+# Weather Stations
+
+## Overview
+
+Weather Station's weather data consists of many parts that can all be requested simultaneously, but must be requested by `weather station id`. We've broken them up into separate sections so it is easier to read.
+
+<aside class="notice">
+	All Graph <code>dateTime</code> values are in <strong>local time</strong> and are formatted as a <strong>Unix time stamp</strong>.
+</aside>
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+## Observational Graphs - Dew Point
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=dew-point
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"dew-point": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "dew-point",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "DewPointPointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.7
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			}
+		}
+	}
+}
+```
+
+The temperature at which dew will form.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `dew-point` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` DewPointPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+## Observational Graphs - Pressure
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=pressure
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"dew-point": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "pressure",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "PressurePointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.7
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `pressure` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` PressurePointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+## Observational Graphs - Rainfall
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=rainfall
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"dew-point": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "rainfall",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "BarLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "RainfallPointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.7
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `rainfall` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `BarLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` RainfallPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+## Observational Graphs - Temperature
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=temperature
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"dew-point": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "temperature",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "TemperaturePointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.7
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `temperature` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` TemperaturePointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+## Observational Graphs - Wind
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=wind
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"dew-point": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": true,
+						"pointRenderer": "ArrowPointRenderer",
+						"pointFormatter": "DirectionPointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.7
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointRenderer | string |` ArrowPointRenderer` |
+pointFormatter | string |` DirectionPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+## Weather Stations List
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json?units=distance:miles
+```
+
+> Example Response
+
+```json
+{
+	"pressure": [
+		{
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+           }
+		}
+	],
+	"rainfall": [
+		{
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+	],
+    "temperature": [
+    	{
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+            	"distance": "miles"
+			}
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+            	"distance": "miles"
+            }
+        }
+    ],
+    "wind": [
+    	{
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+            	"distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+            	"distance": "miles"
+            }
+        }
+    ],
+    "humidity": [
+    	{
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+            	"distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+            	"distance": "miles"
+            }
+        }
+    ],
+    "dewpoint": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+    ]
+}
+```
+
+Returns the list of Weather Stations that are linked to the given location and are currently reporting data. For each data parameter, a location is linked up to 4 weather stations.
+
+### Request
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+distance | string | `km`, `miles `| unit of measurement | false
+
+### Response
+
+An array of climate with its provider's data. 
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+entries | array | `pressure`, `rainfall`, `temperature`, `wind`, `humidity`, `dewpoint` | key for the list of Provider
+
+### Provider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int |  | 
+name | string |  | 
+lat | double |  | 
+lng | double |  | 
+distance | double |  | distance of provider from location 
+units | object |  | includes unit of measurement for distance 
+
 # Units
 
 > Example Request
