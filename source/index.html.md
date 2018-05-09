@@ -1132,7 +1132,7 @@ https://api.willyweather.com.au/v2/{api key}/warning-types.json
 ]
 ```
 
-Returns all warnings, filtered by warning classification.
+Returns all warnings types.
 
 ### Request
 
