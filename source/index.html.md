@@ -961,6 +961,187 @@ verbose | boolean |  | include the content attribute with the response | false
 
 An array of Warning objects, see <a href="#warning">Warning</a> for a description of a Warning response.
 
+## All Warning Types
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/warning-types.json
+```
+
+> Example Response
+
+```json
+[
+	{
+		"id": 1,
+		"code": "severe-weather",
+		"name": "Severe Weather",
+		"classification": "storm"
+	},
+	{
+		"id": 2,
+		"code": "strong-winds",
+		"name": "Strong Wind",
+		"classification": "strong-wind"
+	},
+	{
+		"id": 3,
+		"code": "thunderstorms",
+		"name": "Thunderstorm",
+		"classification": "storm"
+	},
+	{
+		"id": 4,
+		"code": "floods",
+		"name": "Flood",
+		"classification": "flood"
+	},
+	{
+		"id": 5,
+		"code": "roads",
+		"name": "Road",
+		"classification": "road"
+	},
+	{
+		"id": 6,
+		"code": "fire",
+		"name": "Fire",
+		"classification": "fire"
+	},
+	{
+		"id": 7,
+		"code": "heat",
+		"name": "Heat",
+		"classification": "heat"
+	},
+	{
+		"id": 8,
+		"code": "frosts",
+		"name": "Frost",
+		"classification": "frost"
+	},
+	{
+		"id": 9,
+		"code": "cyclones",
+		"name": "Cyclone",
+		"classification": "hurricane"
+	},
+	{
+		"id": 10,
+		"code": "tsunamis",
+		"name": "Tsunami",
+		"classification": "tsunami"
+	},
+	{
+		"id": 11,
+		"code": "storm-tide",
+		"name": "Storm tide",
+		"classification": "tsunami"
+	},
+	{
+		"id": 12,
+		"code": "earthquakes",
+		"name": "Earthquake",
+		"classification": "earthquake"
+	},
+	{
+		"id": 13,
+		"code": "bushwalking",
+		"name": "Bushwalking",
+		"classification": "hiking"
+	},
+	{
+		"id": 14,
+		"code": "haze",
+		"name": "Haze",
+		"classification": "dust-smoke-pollution"
+	},
+	{
+		"id": 15,
+		"code": "sheep-grazier",
+		"name": "Sheep Grazier",
+		"classification": "sheep"
+	}, 
+	{
+		"id": 16,
+		"code": "brown-rot",
+		"name": "Brown Rot",
+		"classification": "fruit-disease"
+	},
+	{
+		"id": 17,
+		"code": "downy-mildew",
+		"name": "Downy Mildew",
+		"classification": "leaf-disease"
+	},
+	{
+		"id": 18,
+		"code": "farmers-graziers",
+		"name": "Farmer\/Grazier",
+		"classification": "farming"
+	},
+	{
+		"id": 19,
+		"code": "announcements",
+		"name": "Important Announcement",
+		"classification": "general"
+	},
+	{
+		"id": 20,
+		"code": "small-boat",
+		"name": "Small Boat",
+		"classification": "marine"
+	},
+	{
+		"id": 21,
+		"code": "closed-waters",
+		"name": "Closed Water",
+		"classification": "closed-water"
+	},
+	{
+		"id": 22,
+		"code": "flood-summary",
+		"name": "Flood Summary (state wide)",
+		"classification": "flood"
+	},
+	{
+		"id": 23,
+		"code": "rain",
+		"name": "Rain",
+		"classification": "cold-rain"
+	},
+	{
+		"id": 24,
+		"code": "snow",
+		"name": "Snow",
+		"classification": "snow"
+	},
+	{
+		"id": 25,
+		"code": "fog",
+		"name": "Fog",
+		"classification": "fog"
+	},
+	{
+		"id": 26,
+		"code": "ice",
+		"name": "Ice",
+		"classification": "frost"
+	}
+]
+```
+
+Returns all warnings types.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/warnings.json`
+
+### Response
+
+An array of Warning Type objects, see <a href="#warning-types">Warning Types</a> for a description of a Warning Type response.
+
 ## Warning
 
 > Example Request
