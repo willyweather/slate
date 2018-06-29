@@ -3689,7 +3689,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Pressure
 
@@ -3841,7 +3841,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Rainfall
 
@@ -3993,7 +3993,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Temperature
 
@@ -4145,7 +4145,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind
 
@@ -4340,7 +4340,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational
 
@@ -4880,7 +4880,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Pressure
 
@@ -5045,7 +5045,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Rainfall
 
@@ -5210,7 +5210,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Temperature
 
@@ -5375,7 +5375,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind
 
@@ -5542,7 +5542,7 @@ Control points sit before and after the graph to allow you to plot the lines rig
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 size | int | | The total number of available days of data
-start | int | | The index of the start of the current forecast
+start | int | | The index of the start of the current observational graph
 
 ## Weather Stations List
 
