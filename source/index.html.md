@@ -1437,10 +1437,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 					"hemisphere": "s"
 				}
 			],
-            "carousel": {
-                "size": 1,
-                "start": 1
-            }
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
