@@ -1436,7 +1436,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 					"percentageFull": 50,
 					"hemisphere": "s"
 				}
-			]
+			],
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1482,6 +1486,13 @@ phase | string | `Waning Gibbous`, `Waning Crescent`, `Waxing Gibbous`, `Waxing 
 phaseCode | string | `wang`, `wanc`, `waxg`, `waxc`, `new`, `full`, `first`, `last` | a short code for phase
 percentageFull | int |
 hemisphere | string | `s`, `n` | hemisphere affects how the moon appears to the eye
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - Precis
 
@@ -1640,7 +1651,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 			"units": {
                 "percentage": "%"
             },
-			"issueDateTime": "2014-03-27 08:55:30"
+			"issueDateTime": "2014-03-27 08:55:30",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1664,6 +1679,12 @@ Attribute | Type | Values | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 probability | int | `0` - `100` | chance rainfall will occur during that period
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - Sunrise/Sunset
 
@@ -1688,7 +1709,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 						}
 					]
 				}
-			]
+			],
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1715,6 +1740,13 @@ firstLightDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 riseDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 setDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 lastLightDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - Swell
 
@@ -1759,7 +1791,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"height": "m",
 				"period": "sec"
 			},
-			"issueDateTime": "2014-03-26 16:23:30"
+			"issueDateTime": "2014-03-26 16:23:30",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1787,7 +1823,14 @@ direction | double | `0` - `360` | degrees, clockwise from North (0). describes 
 directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
 height | double | | offshore swell height
 period | double | | time in seconds for two consecutive wave crests to pass a stationary point
-	
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
+
 ## Forecasts - Temperature
 
 > Example Request
@@ -1825,7 +1868,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 			"units": {
 				"temperature": "c"
 			},
-			"issueDateTime": "2014-03-27 08:35:13"
+			"issueDateTime": "2014-03-27 08:35:13",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1848,6 +1895,13 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 temperature | double | |
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - Tides
 
@@ -1889,7 +1943,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 			"units": {
 				"height": "ft"
 			},
-			"issueDateTime": "2014-03-27 00:53:19"
+			"issueDateTime": "2014-03-27 00:53:19",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -1919,6 +1977,13 @@ Attribute | Type | Values | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 height | double | | 
 type | string | `high`, `low` |
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - UV
 
@@ -1968,7 +2033,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 					}
 				}
 			],
-			"issueDateTime": "2014-03-27 05:02:10"
+			"issueDateTime": "2014-03-27 05:02:10",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2002,6 +2071,12 @@ scale | string | `low`, `moderate`, `high`, `very-high`, `extreme` | a name give
 startDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 endDateTime | string | | `YYYY-MM-DD HH:MM:SS`
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecasts - Weather
 
@@ -2109,7 +2184,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 			"units": {
 				"speed": "km/h"
 			},
-			"issueDateTime": "2014-03-27 10:02:44"
+			"issueDateTime": "2014-03-27 10:02:44",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2136,6 +2215,13 @@ dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 speed | double | | |
 direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the wind originates from
 directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Precis
 
@@ -2301,7 +2387,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 			    "percentage": "%"
             },
 			"issueDateTime": "2014-03-27 08:55:30",
-			"nextIssueDateTime": "2014-03-27 22:55:30"
+			"nextIssueDateTime": "2014-03-27 22:55:30",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2361,6 +2451,13 @@ y | double | `0` - `100` | rainfall probability
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
+
 ## Forecast Graphs - Sunrise/Sunset
 
 ```shell
@@ -2407,6 +2504,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				},
 				"xAxisMin": 1395878400,
 				"xAxisMax": 1395964799
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -2457,6 +2558,13 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
 description | string | `First Light`, `Sunrise`, `Sunset`, `Last Light` | 
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Swell Height
 
@@ -2561,7 +2669,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
                 "height": "m"
             },
 			"issueDateTime": "2014-03-26 16:23:30",
-			"nextIssueDateTime": "2014-03-27 16:23:30"
+			"nextIssueDateTime": "2014-03-27 16:23:30",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2635,6 +2747,13 @@ stroke | string | | hexadecimal colour code
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
+
 ## Forecast Graphs - Swell Period
 
 ```shell
@@ -2703,7 +2822,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
                 "period": "sec"
             },
 			"issueDateTime": "2014-03-26 16:23:30",
-			"nextIssueDateTime": "2014-03-27 16:23:30"
+			"nextIssueDateTime": "2014-03-27 16:23:30",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2772,6 +2895,13 @@ stroke | string | | hexadecimal colour code
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
+
 ## Forecast Graphs - Temperature
 
 ```shell
@@ -2835,7 +2965,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
                 "temperature": "c"
             },
 			"issueDateTime": "2014-03-27 08:35:13",
-			"nextIssueDateTime": "2014-03-27 09:35:13"
+			"nextIssueDateTime": "2014-03-27 09:35:13",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -2899,6 +3033,13 @@ stroke | string | | hexadecimal colour code
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Tides
 
@@ -2997,8 +3138,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 			"units": {
                 "height": "ft"
             },
-			"issueDateTime": "2014-03-27 00:53:19",
-			"nextIssueDateTime": "2014-03-28 00:53:19"
+            "issueDateTime": "2014-03-27 00:53:19",
+            "nextIssueDateTime": "2014-03-28 00:53:19"
 		}
 	}
 }
@@ -3136,7 +3277,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 				"xAxisMax": 1395964799
 			},
 			"issueDateTime": "2014-03-27 05:02:10",
-			"nextIssueDateTime": "2014-03-28 05:02:10"
+			"nextIssueDateTime": "2014-03-28 05:02:10",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -3201,6 +3346,13 @@ stroke | string | | hexadecimal colour code
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Wind
 
@@ -3305,7 +3457,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 			    "speed": "km/h"
 			},
 			"issueDateTime": "2014-03-27 10:02:44",
-			"nextIssueDateTime": "2014-03-27 22:02:44"
+			"nextIssueDateTime": "2014-03-27 22:02:44",
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
 		}
 	}
 }
@@ -3373,6 +3529,13 @@ stroke | string | | hexadecimal colour code
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
 
 ## Observational Graphs - Dew Point
 
@@ -3446,6 +3609,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"units": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -3516,6 +3683,13 @@ y | double | | dew point
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Pressure
 
@@ -3589,6 +3763,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"units": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -3657,6 +3835,13 @@ y | double | | pressure
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Rainfall
 
@@ -3730,6 +3915,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"units": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -3798,6 +3987,13 @@ y | double | | amount
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Temperature
 
@@ -3871,6 +4067,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"units": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -3939,6 +4139,13 @@ y | double | | temperature
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind
 
@@ -4041,6 +4248,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 				"units": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -4123,6 +4334,13 @@ stroke | string | | hexadecimal colour code
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Observational
 
@@ -4568,6 +4786,10 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"unit": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -4653,6 +4875,13 @@ y | double | | dew point
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Pressure
 
 > Example Request
@@ -4724,6 +4953,10 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"unit": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -4807,6 +5040,13 @@ y | double | | dew point
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Rainfall
 
 > Example Request
@@ -4878,6 +5118,10 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"unit": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -4961,6 +5205,13 @@ y | double | | dew point
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Temperature
 
 > Example Request
@@ -5032,6 +5283,10 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"unit": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -5115,6 +5370,13 @@ y | double | | dew point
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
 
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Wind
 
 > Example Request
@@ -5187,6 +5449,10 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"unit": {
 					"distance": "miles"
 				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
 			}
 		}
 	}
@@ -5270,6 +5536,13 @@ y | double | | dew point
 ### Control Points
 
 Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
 
 ## Weather Stations List
 
