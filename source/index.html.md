@@ -5059,7 +5059,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "lng": 151.21,
                 "distance": 6.9
             },
-            pressure": {
+            "pressure": {
                 "id": 349,
                 "name": "Sydney (Observatory Hill)",
                 "lat": -33.86,
