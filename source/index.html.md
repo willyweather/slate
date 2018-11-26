@@ -1340,9 +1340,13 @@ observationalGraphs | csv |  |  | false
 observational | csv |  |  | false
 regionPrecis | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 7</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Forecast Response
@@ -1352,7 +1356,7 @@ A forecast response consists of an object for each `weatherType` requested. Each
 > Example Large Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather,wind&forecastGraphs=temperature,precis&observationalGraphs=pressure,temperature&observational=true&regionPrecis=true&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather,wind&forecastGraphs=temperature,precis&observationalGraphs=pressure,temperature&observational=true&regionPrecis=true&days=1&startDate=2016-03-26
 ```
 
 > Example Response (without content)
@@ -1382,7 +1386,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -1499,7 +1503,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -1554,7 +1558,7 @@ night | boolean | |
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfall&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfall&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -1621,7 +1625,7 @@ The daily probabilty for rainfall will not align with the probability included i
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -1689,7 +1693,7 @@ start | int | | The index of the start of the current forecast
 ## Forecasts - Sunrise/Sunset
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -1751,7 +1755,7 @@ start | int | | The index of the start of the current forecast
 ## Forecasts - Swell
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -1836,7 +1840,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -1908,7 +1912,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -1990,7 +1994,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -2083,7 +2087,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -2146,7 +2150,7 @@ max | int | | maximum daily temperature
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -2228,7 +2232,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -2327,7 +2331,7 @@ night | boolean | | used to show a moon instead of a sun in icons
 ## Forecast Graphs - Rainfall Probability
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -2461,7 +2465,7 @@ start | int | | The index of the start of the current forecast
 ## Forecast Graphs - Sunrise/Sunset
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -2571,7 +2575,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -2757,7 +2761,7 @@ start | int | | The index of the start of the current forecast
 ## Forecast Graphs - Swell Period
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -2905,7 +2909,7 @@ start | int | | The index of the start of the current forecast
 ## Forecast Graphs - Temperature
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1&startDate=2014-03-27
 ```
 
 ```json
@@ -3046,7 +3050,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -3218,7 +3222,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -3359,7 +3363,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -3542,7 +3546,7 @@ start | int | | The index of the start of the current forecast
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
 > Example Response
@@ -3696,7 +3700,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
 > Example Response
@@ -3848,7 +3852,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4000,7 +4004,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4152,7 +4156,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4514,7 +4518,7 @@ distance | string | | the distance from the Station to the Location
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4710,9 +4714,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ## Observational Graphs - Dew Point
@@ -4720,7 +4728,7 @@ units | string | See <a href="#units">Units</a>. |  | false
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=dew-point
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4807,9 +4815,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Data Config
@@ -4887,7 +4899,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=pressure
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4972,9 +4984,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Data Config
@@ -5052,7 +5068,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=rainfall
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5137,9 +5153,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Data Config
@@ -5217,7 +5237,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=temperature
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5302,9 +5322,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Data Config
@@ -5382,7 +5406,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=wind
+api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5468,9 +5492,13 @@ Parameter | Type | Options | Description | Required
 days | int |  | max days returned | false
 observationalGraphs | csv |  |  | false
 units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
 <aside class="notice">
     <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
 </aside>
 
 ### Data Config
