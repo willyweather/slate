@@ -3623,7 +3623,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 }
 ```
 
-The temperature at which perceived by humans.
+The temperature equivalent perceived by humans, caused by the combined effects of air temperature, relative humidity and wind speed.
 
 ### Data Config
 
@@ -4310,7 +4310,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4462,7 +4462,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4614,7 +4614,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4809,7 +4809,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5453,7 +5453,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 }
 ```
 
-The temperature at which perceived by humans.
+The temperature equivalent perceived by humans, caused by the combined effects of air temperature, relative humidity and wind speed.
 
 ### Request
 
