@@ -7104,7 +7104,95 @@ api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.js
                 "distance": "miles"
             }
         }
-    ]
+    ],
+    "apparent-temperature": [
+	    {
+			"id": 116,
+			"name": "Borroloola",
+			"lat": -16.08,
+			"lng": 136.3,
+			"distance": 1.8,
+			"units": {
+				"distance": "miles"
+			}
+		},
+		{
+			"id": 115,
+			"name": "Mcarthur River Mine",
+			"lat": -16.44,
+			"lng": 136.08,
+			"distance": 29.7,
+			"units": {
+				"distance": "miles"
+			}
+		}
+	],
+	"cloud": [
+		{
+			"id": 116,
+			"name": "Borroloola",
+			"lat": -16.08,
+			"lng": 136.3,
+			"distance": 1.8,
+			"units": {
+				"distance": "miles"
+			}
+		},
+		{
+			"id": 115,
+			"name": "Mcarthur River Mine",
+			"lat": -16.44,
+			"lng": 136.08,
+			"distance": 29.7,
+			"units": {
+				"distance": "miles"
+			}
+		}
+	],
+	"delta-t": [
+		{
+			"id": 116,
+			"name": "Borroloola",
+			"lat": -16.08,
+			"lng": 136.3,
+			"distance": 1.8,
+			"units": {
+				"distance": "miles"
+			}
+		},
+		{
+			"id": 115,
+			"name": "Mcarthur River Mine",
+			"lat": -16.44,
+			"lng": 136.08,
+			"distance": 29.7,
+			"units": {
+				"distance": "miles"
+			}
+		}
+	],
+	"wind-gust": [
+		{
+			"id": 116,
+			"name": "Borroloola",
+			"lat": -16.08,
+			"lng": 136.3,
+			"distance": 1.8,
+			"units": {
+				"distance": "miles"
+			}
+		},
+		{
+			"id": 115,
+			"name": "Mcarthur River Mine",
+			"lat": -16.44,
+			"lng": 136.08,
+			"distance": 29.7,
+			"units": {
+				"distance": "miles"
+			}
+		}
+	]
 }
 ```
 
@@ -7123,7 +7211,7 @@ An array of climate with its provider's data.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-entries | array | `pressure`, `rainfall`, `temperature`, `wind`, `humidity`, `dewpoint` | key for the list of Provider
+entries | array | `pressure`, `rainfall`, `temperature`, `wind`, `humidity`, `dewpoint`, `apparent-temperature`, `cloud`, `delta-t`, `wind-gust` | key for the list of Provider
 
 ### Provider
 
