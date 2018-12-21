@@ -3834,7 +3834,7 @@ points | array | | array of `point` objects **(see Point below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | int | | oktas
+y | int | | cloud
 
 ### Control Points
 
@@ -7094,7 +7094,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
 > Example Response
@@ -7112,8 +7112,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 						"lineFill": false,
 						"lineRenderer": "StraightLineRenderer",
 						"showPoints": true,
-						"pointRenderer": "ArrowPointRenderer",
-						"pointFormatter": "WindGustPointFormatter"
+						"pointRenderer": "ArrowPointRenderer"
 					},
 					"yAxisDataMin": 9.3,
 					"yAxisDataMax": 22.2,
@@ -7241,7 +7240,7 @@ controlPoints | object | | **(see below)**
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | string | `wind` |
+id | string | `wind-gust` |
 color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
