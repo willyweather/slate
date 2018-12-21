@@ -3541,6 +3541,464 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
+## Observational Graphs - Apparent Temperature
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"apparent-temperature": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "apparent-temperature",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "AppareTemperaturePointFormatter"
+					},
+					"yAxisDataMin": 21,
+					"yAxisDataMax": 22.6,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 21.3
+								},
+								{
+									"x": 1395891000,
+									"y": 22.5
+								},
+								{
+									"x": 1395892800,
+									"y": 22.6
+								}
+							]
+						}
+					],
+					"controlPoints": {
+	                    "pre": {
+	                        "x": 1395878399,
+	                        "y": 21
+	                    }, 
+	                    "post": null
+	                }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The temperature equivalent perceived by humans, caused by the combined effects of air temperature, relative humidity and wind speed.
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double | | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `apparent-temperature` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string | `ApparentTemperaturePointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+x | int | | time value
+y | double | | apparent temperature
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Cloud
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=cloud&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"cloud": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "cloud",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "CloudPointFormatter"
+					},
+					"yAxisDataMin": 1,
+					"yAxisDataMax": 8,
+					"yAxisMin": 0,
+					"yAxisMax": 10,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 1
+								},
+								{
+									"x": 1395891000,
+									"y": 4
+								},
+								{
+									"x": 1395892800,
+									"y": 8
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878399,
+                            "y": 1
+                        }, 
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+			    "cloud": "oktas"
+			},
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double | | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `cloud` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string | `CloudPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | int | | oktas
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Delta T
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=delta-t&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"delta-t": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "delta-t",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "DeltaTPointFormatter"
+					},
+					"yAxisDataMin": 12.3,
+					"yAxisDataMax": 32.4,
+					"yAxisMin": 0,
+					"yAxisMax": 40,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 32.4
+								},
+								{
+									"x": 1395891000,
+									"y": 12.3
+								},
+								{
+									"x": 1395892800,
+									"y": 25.89
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878399,
+                            "y": 16.7
+                        }, 
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+			    "temperature": "c"
+			},
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double | | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `delta-t` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string | `DeltaTPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | delta t
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Dew Point
 
 > Example Request
@@ -3577,7 +4035,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 18.6
 								},
 								{
 									"x": 1395891000,
@@ -3593,7 +4051,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 					"controlPoints": {
 				        "pre": {
 				            "x": 1395878399,
-				             "y": 18.7
+				            "y": 18.7
 				        },
                         "post": null
 					}
@@ -3605,11 +4063,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "temperature": "c"
             },
 			"provider": {
-				"id": 349,
-				"name": "Sydney (Observatory Hill)",
-				"lat": -33.86,
-				"lng": 151.21,
-				"distance": 4.3,
+				"id": 733,
+				"name": "Wedding Cake West",
+				"lat": -33.84,
+				"lng": 151.26,
+				"distance": 3.6,
 				"units": {
 					"distance": "miles"
 				}
@@ -3683,6 +4141,160 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Humidity
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"humidity": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "humidity",
+						"color": "#FFF",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "HumidityPointFormatter"
+					},
+					"yAxisDataMin": 20,
+					"yAxisDataMax": 80,
+					"yAxisMin": 0,
+					"yAxisMax": 100,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 20
+								},
+								{
+									"x": 1395891000,
+									"y": 50
+								},
+								{
+									"x": 1395892800,
+									"y": 80
+								}
+							]
+						}
+					],
+					"controlPoints": {
+				        "pre": {
+				            "x": 1395878399,
+				            "y": 30
+				        },
+                        "post": null
+					}
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "percentage": "%"
+            },
+			"provider": {
+				"id": 733,
+				"name": "Wedding Cake West",
+				"lat": -33.84,
+				"lng": 151.26,
+				"distance": 3.6,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The amount of water vapor in the atmosphere or a gas.
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double| | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `humidity` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` HumidityPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | humidity
 
 ### Control Points
 
@@ -4063,11 +4675,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "temperature": "c"
             },
 			"provider": {
-				"id": 733,
-				"name": "Wedding Cake West",
-				"lat": -33.84,
-				"lng": 151.26,
-				"distance": 3.6,
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
 				"units": {
 					"distance": "miles"
 				}
@@ -4244,11 +4856,11 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 			    "speed": "km/h"
 			},
 			"provider": {
-				"id": 733,
-				"name": "Wedding Cake West",
-				"lat": -33.84,
-				"lng": 151.26,
-				"distance": 3.6,
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
 				"units": {
 					"distance": "miles"
 				}
@@ -4346,6 +4958,189 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
+## Observational Graphs - Wind Gust
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"wind-gust": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind-gust",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "WindGustPointFormatter"
+					},
+					"yAxisDataMin": 10,
+					"yAxisDataMax": 75,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 10,
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395891000,
+									"y": 40,
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395892800,
+									"y": 75,
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878399,
+                            "y": 16.7,
+                            "description": "gentle",
+                            "pointStyle": {
+                                "fill": "#a5de37",
+                                "stroke": "#638521"
+                            }
+                        }, 
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+			    "speed": "km/h"
+			},
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | | **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double | | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind-gust` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string | `WindGustPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | speed
+description | string | `calm`, `light`, `gentle`, `moderate`, `fresh`, `strong`, `near-gale`, `gale`, `strong-gale`, `storm`, `violent`, `cyclone`
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational
 
 Observational provides real time data from one or more weather stations.
@@ -4367,6 +5162,14 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "temperature": 19.3,
                 "apparentTemperature": 12.3,
                 "trend": 1
+            },
+            "delta-t": {
+                "temperature": 28,
+                "trend": 0
+            },
+            "cloud": {
+                "oktas": "3",
+                "trend": 0
             },
             "humidity": {
                 "percentage": 26
@@ -4406,35 +5209,35 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "lat": -33.86,
                 "lng": 151.21,
                 "distance": 6.9
-           },
-           "dewPoint": {
+            },
+            "dewPoint": {
                 "id": 349,
                 "name": "Sydney (Observatory Hill)",
                 "lat": -33.86,
                 "lng": 151.21,
                 "distance": 6.9
-          },
-          "pressure": {
+            },
+            "pressure": {
                 "id": 349,
                 "name": "Sydney (Observatory Hill)",
                 "lat": -33.86,
                 "lng": 151.21,
                 "distance": 6.9
-          },
-          "wind": {
+            },
+            "wind": {
                 "id": 733,
                 "name": "Wedding Cake West",
                 "lat": -33.84,
                 "lng": 151.26,
                 "distance": 5.8
-          },
-          "rainfall": {
+            },
+            "rainfall": {
                 "id": 349,
                 "name": "Sydney (Observatory Hill)",
                 "lat": -33.86,
                 "lng": 151.21,
                 "distance": 6.9
-            }        
+            }
         },
         "issueDateTime": "2016-07-12 14:10:00",
         "units": {
@@ -4723,12 +5526,521 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 
+## Observational Graphs - Apparent Temperature
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"apparent-temperature": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "apparent-temperature",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "ApparentTemperaturePointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.6
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The temperature equivalent perceived by humans, caused by the combined effects of air temperature, relative humidity and wind speed.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `apparent-temperature` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` ApparentTemperaturePointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | apparent temperature
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Cloud
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=cloud&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"cloud": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "cloud",
+						"color": "#FFF",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "CloudPointFormatter"
+					},
+					"yAxisDataMin": 1,
+					"yAxisDataMax": 8,
+					"yAxisMin": 1,
+					"yAxisMax": 10,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 1
+								},
+								{
+									"x": 1395891000,
+									"y": 4
+								},
+								{
+									"x": 1395892800,
+									"y": 8
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 1
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "cloud": "oktas"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `cloud` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` CloudPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | int | | cloud
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Delta T
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=delta-t&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"delta-t": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "delta-t",
+						"color": "#003355",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "DeltaTPointFormatter"
+					},
+					"yAxisDataMin": 18.6,
+					"yAxisDataMax": 19.4,
+					"yAxisMin": 12,
+					"yAxisMax": 32,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 18.6
+								},
+								{
+									"x": 1395891000,
+									"y": 19.4
+								},
+								{
+									"x": 1395892800,
+									"y": 19.2
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "temperature": "c"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `delta-t` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` DeltaTPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | delta t
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Dew Point
 
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=dew-point&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4758,7 +6070,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 18.6
 								},
 								{
 									"x": 1395891000,
@@ -4894,12 +6206,12 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Pressure
+## Observational Graphs - Humidity
 
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=pressure&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
 > Example Response
@@ -4907,7 +6219,178 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 ```json
 {
 	"observationalGraphs": {
-		"dew-point": {
+		"humidity": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "humidity",
+						"color": "#FFF",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "HumidityPointFormatter"
+					},
+					"yAxisDataMin": 20,
+					"yAxisDataMax": 80,
+					"yAxisMin": 0,
+					"yAxisMax": 100,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 20
+								},
+								{
+									"x": 1395891000,
+									"y": 50
+								},
+								{
+									"x": 1395892800,
+									"y": 80
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 30
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "percentage": "%"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The amount of water vapor in the atmosphere or a gas.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `humidity` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` HumidityPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | humidity
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Pressure
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=pressure&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"pressure": {
 			"dataConfig": {
 				"series": {
 					"config": {
@@ -4929,7 +6412,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 18.6
 								},
 								{
 									"x": 1395891000,
@@ -4954,7 +6437,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"xAxisMax": 1396051199
 			},
 			"units": {
-                "temperature": "c"
+                "pressure": "hpa"
             },
 			"provider": {
 				"id": 349,
@@ -5050,7 +6533,7 @@ points | array | | array of `point` objects **(see below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | double | | dew point
+y | double | | pressure
 
 ### Control Points
 
@@ -5068,7 +6551,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=rainfall&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5076,7 +6559,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 ```json
 {
 	"observationalGraphs": {
-		"dew-point": {
+		"rainfall": {
 			"dataConfig": {
 				"series": {
 					"config": {
@@ -5088,25 +6571,25 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 						"showPoints": false,
 						"pointFormatter": "RainfallPointFormatter"
 					},
-					"yAxisDataMin": 18.6,
-					"yAxisDataMax": 19.4,
-					"yAxisMin": 12,
-					"yAxisMax": 32,
+					"yAxisDataMin": 20.4,
+					"yAxisDataMax": 32.8,
+					"yAxisMin": 0,
+					"yAxisMax": 40,
 					"groups": [
 						{
 							"dateTime": 1395878400,
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 20.4
 								},
 								{
 									"x": 1395891000,
-									"y": 19.4
+									"y": 26.4
 								},
 								{
 									"x": 1395892800,
-									"y": 19.2
+									"y": 32.8
 								}
 							]
 						}
@@ -5114,7 +6597,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 					"controlPoints": {
                         "pre": {
                             "x": 1395878100,
-                            "y": 45
+                            "y": 25.2
                         },
                         "post": null
                     }
@@ -5123,7 +6606,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"xAxisMax": 1396051199
 			},
 			"units": {
-                "temperature": "c"
+                "amount": "mm"
             },
 			"provider": {
 				"id": 349,
@@ -5219,7 +6702,7 @@ points | array | | array of `point` objects **(see below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | double | | dew point
+y | double | | rainfall
 
 ### Control Points
 
@@ -5237,7 +6720,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=temperature&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5245,7 +6728,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 ```json
 {
 	"observationalGraphs": {
-		"dew-point": {
+		"temperature": {
 			"dataConfig": {
 				"series": {
 					"config": {
@@ -5267,7 +6750,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 18.6
 								},
 								{
 									"x": 1395891000,
@@ -5388,7 +6871,7 @@ points | array | | array of `point` objects **(see below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | double | | dew point
+y | double | | temperature
 
 ### Control Points
 
@@ -5406,7 +6889,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?observationalGraphs=wind&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
 > Example Response
@@ -5414,7 +6897,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 ```json
 {
 	"observationalGraphs": {
-		"dew-point": {
+		"wind": {
 			"dataConfig": {
 				"series": {
 					"config": {
@@ -5427,25 +6910,46 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 						"pointRenderer": "ArrowPointRenderer",
 						"pointFormatter": "DirectionPointFormatter"
 					},
-					"yAxisDataMin": 18.6,
-					"yAxisDataMax": 19.4,
-					"yAxisMin": 12,
-					"yAxisMax": 32,
+					"yAxisDataMin": 7.4,
+					"yAxisDataMax": 16.7,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
 					"groups": [
 						{
 							"dateTime": 1395878400,
 							"points": [
 								{
 									"x": 1395880200,
-									"y": 18.7
+									"y": 7.4,
+									"direction": 120,
+									"directionText": "ESE",
+									"description": "light",
+									"pointStyle": {
+										"fill": "#d1ef51",
+										"stroke": "#7d8f30"
+									}
 								},
 								{
 									"x": 1395891000,
-									"y": 19.4
+									"y": 13,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
 								},
 								{
 									"x": 1395892800,
-									"y": 19.2
+									"y": 16.7,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
 								}
 							]
 						}
@@ -5462,7 +6966,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json?
 				"xAxisMax": 1396051199
 			},
 			"units": {
-                "temperature": "c"
+                "speed": "km/h"
             },
 			"provider": {
 				"id": 349,
@@ -5559,7 +7063,217 @@ points | array | | array of `point` objects **(see below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | double | | dew point
+y | double | | speed
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `glassy`, `smooth`, `slight`, `moderate`, `rough`, `very-rough`, `high`, `very-high`, `phenomenal` |
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Wind Gust
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"wind-gust": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind-gust",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": true,
+						"pointRenderer": "ArrowPointRenderer",
+						"pointFormatter": "WindGustPointFormatter"
+					},
+					"yAxisDataMin": 9.3,
+					"yAxisDataMax": 22.2,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 9.3,
+									"description": "light",
+									"pointStyle": {
+										"fill": "#d1ef51",
+										"stroke": "#7d8f30"
+									}
+								},
+								{
+									"x": 1395891000,
+									"y": 16.7,
+									"description": "gentle",
+									"pointStyle": {	
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395892800,
+									"y": 22.2,
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 20.2
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "speed": "km/h"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointRenderer | string |` ArrowPointRenderer` |
+pointFormatter | string |` DirectionPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | speed
+description | string | `calm`, `light`, `gentle`, `moderate`, `fresh`, `strong`, `near-gale`, `gale`, `strong-gale`, `storm`, `violent`, `cyclone`
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
 
 ### Control Points
 
@@ -5715,6 +7429,94 @@ api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.js
                 "distance": "miles"
             }
         }
+    ],
+    "apparent-temperature": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+    ],
+    "cloud": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+    ],
+    "delta-t": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+    ],
+    "wind-gust": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
     ]
 }
 ```
@@ -5734,7 +7536,7 @@ An array of climate with its provider's data.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-entries | array | `pressure`, `rainfall`, `temperature`, `wind`, `humidity`, `dewpoint` | key for the list of Provider
+entries | array | `pressure`, `rainfall`, `temperature`, `wind`, `humidity`, `dewpoint`, `apparent-temperature`, `cloud`, `delta-t`, `wind-gust` | key for the list of Provider
 
 ### Provider
 
