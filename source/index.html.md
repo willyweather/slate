@@ -4153,6 +4153,160 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
+## Observational Graphs - Humidity
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"location": {},
+	"observationalGraphs": {
+		"humidity": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "humidity",
+						"color": "#FFF",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "HumidityPointFormatter"
+					},
+					"yAxisDataMin": 20,
+					"yAxisDataMax": 80,
+					"yAxisMin": 0,
+					"yAxisMax": 100,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 20
+								},
+								{
+									"x": 1395891000,
+									"y": 50
+								},
+								{
+									"x": 1395892800,
+									"y": 80
+								}
+							]
+						}
+					],
+					"controlPoints": {
+				        "pre": {
+				            "x": 1395878399,
+				            "y": 30
+				        },
+                        "post": null
+					}
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "percentage": "%"
+            },
+			"provider": {
+				"id": 733,
+				"name": "Wedding Cake West",
+				"lat": -33.84,
+				"lng": 151.26,
+				"distance": 3.6,
+				"units": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The amount of water vapor in the atmosphere or a gas.
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double| | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `humidity` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` HumidityPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | humidity
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Observational Graphs - Pressure
 
 > Example Request
@@ -6040,6 +6194,177 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
 y | double | | dew point
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
+## Observational Graphs - Humidity
+
+> Example Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=humidity&startDate=2014-03-27
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"humidity": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "humidity",
+						"color": "#FFF",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": false,
+						"pointFormatter": "HumidityPointFormatter"
+					},
+					"yAxisDataMin": 20,
+					"yAxisDataMax": 80,
+					"yAxisMin": 0,
+					"yAxisMax": 100,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 20
+								},
+								{
+									"x": 1395891000,
+									"y": 50
+								},
+								{
+									"x": 1395892800,
+									"y": 80
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 30
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "percentage": "%"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+The amount of water vapor in the atmosphere or a gas.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | false
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `humidity` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string |` HumidityPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | humidity
 
 ### Control Points
 
