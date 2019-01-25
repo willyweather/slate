@@ -502,11 +502,15 @@ https://api.willyweather.com.au/v2/{api key}/maps/71/radar.json?lat=-24&lng=32
     "dataPoints": [
         {
             "dateTime": "2014-03-26 22:30:00",
-            "intensity": 0
+            "intensity": 0,
+			"lat": -33.701,
+			"lng": 151.21
         },
         {
             "dateTime": "2014-03-26 22:30:00",
-            "intensity": 5
+            "intensity": 5,
+			"lat": -33.701,
+			"lng": 151.21
         },
     ]
 }
