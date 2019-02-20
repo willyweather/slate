@@ -1242,7 +1242,7 @@ Returns all warnings types.
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/warnings.json`
+`GET api.willyweather.com.au/v2/{api key}/warning-types.json`
 
 ### Response
 
