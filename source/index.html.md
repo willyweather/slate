@@ -526,7 +526,6 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 mapTypes | csv | `forecast-regional-radar` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | double | | minutes that overlay images should start from | false
-limit | double | | minutes that overlay images should end at | false
 
 ### Response
 
