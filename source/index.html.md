@@ -233,7 +233,7 @@ Returns all map providers that can be filtered by `mapType`.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see Map Types for conversion of typeId** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see Map Types for conversion of typeId** | true
 lat | double | | latitude | false
 lng | double | | longitude | false
 verbose | boolean | | include overlay images with the response | false
@@ -429,7 +429,7 @@ Get a map provider with overlay data.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 
@@ -437,12 +437,12 @@ limit | int | | minutes that overlay images should end at | false
 
 Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
 
-## Map Data By Provider With Forecast Radar Data
+## Raw Radar Map Data By Provider
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71/radar.json?lat=-24&lng=32
+https://api.willyweather.com.au/v2/{api key}/maps/71/radar.json?mapTypes=forecast-regional-radar&offset=0
 ```
 
 > Example Response
@@ -520,13 +520,11 @@ Get a map provider with overlay data and forecast radar data.
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/maps/{provider id}.json`
+`GET api.willyweather.com.au/v2/{api key}/maps/{provider id}/radar.json`
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
-lat | int | | latitude of the forecast radar data | true
-lng | int | | longitude of the forecast radar data | true
+mapTypes | csv | `forecast-regional-radar` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | double | | minutes that overlay images should start from | false
 limit | double | | minutes that overlay images should end at | false
 
@@ -619,7 +617,7 @@ Get map providers linked to a location.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 
