@@ -437,6 +437,112 @@ limit | int | | minutes that overlay images should end at | false
 
 Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
 
+## Map Data By Provider With Forecast Radar Data
+
+> Example Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/maps/71/radar.json?lat=-24&lng=32
+```
+
+> Example Response
+
+```json
+{
+	"id": 71,
+	"name": "Sydney (Terrey Hills)",
+	"lat": -33.701,
+	"lng": 151.21,
+	"bounds": {
+		"minLat": -36.051,
+		"minLng": 148.51,
+		"maxLat": -31.351,
+		"maxLng": 153.91
+	},
+	"typeId": 1,
+	"zoom": 256000,
+	"radius": 256000,
+	"interval": 6,
+	"overlayPath": "//cdn2.willyweather.com.au/radar/",
+	"overlays": [
+		{
+			"dateTime": "2014-03-26 22:30:00",
+			"name": "71-201403262230.png"
+		},
+		{
+			"dateTime": "2014-03-26 22:36:00",
+			"name": "71-201403262236.png"
+		},
+		{
+			"dateTime": "2014-03-26 22:42:00",
+			"name": "71-201403262242.png"
+		}
+	],
+	"classification": "radar",
+	"mapLegend": {
+        "keys": [
+            {
+                "colour": "#f5f5ff",
+                "range": {
+                    "min": 0.2,
+                    "max": 0.5
+                },
+                "label": "light"
+            },
+            {
+                "colour": "#b4b4ff",
+                "range": {
+                    "min": 0.5,
+                    "max": 1.5
+                },
+                "label": ""
+            }
+        ]
+    },
+    "dataPoints": [
+        {
+            "dateTime": "2014-03-26 22:30:00",
+            "intensity": 0,
+			"lat": -33.701,
+			"lng": 151.21
+        },
+        {
+            "dateTime": "2014-03-26 22:30:00",
+            "intensity": 5,
+			"lat": -33.701,
+			"lng": 151.21
+        },
+    ]
+}
+```
+
+Get a map provider with overlay data and forecast radar data.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/maps/{provider id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+lat | int | | latitude of the forecast radar data | true
+lng | int | | longitude of the forecast radar data | true
+offset | double | | minutes that overlay images should start from | false
+limit | double | | minutes that overlay images should end at | false
+
+### Response
+
+Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
+
+### Data Points
+
+Data points will only be included when it is not empty.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | YYYY-MM-DD HH:MM:SS
+intensity | int | | intensity of rainfall
+
 ## Map Data By Location Id
 
 > Example Request
@@ -1136,7 +1242,7 @@ Returns all warnings types.
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/warnings.json`
+`GET api.willyweather.com.au/v2/{api key}/warning-types.json`
 
 ### Response
 
@@ -3834,7 +3940,7 @@ points | array | | array of `point` objects **(see Point below)**
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 x | int | | time value
-y | int | | oktas
+y | int | | cloud
 
 ### Control Points
 
@@ -7094,7 +7200,7 @@ start | int | | The index of the start of the current observational graph
 > Example Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
 > Example Response
@@ -7112,8 +7218,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 						"lineFill": false,
 						"lineRenderer": "StraightLineRenderer",
 						"showPoints": true,
-						"pointRenderer": "ArrowPointRenderer",
-						"pointFormatter": "WindGustPointFormatter"
+						"pointRenderer": "ArrowPointRenderer"
 					},
 					"yAxisDataMin": 9.3,
 					"yAxisDataMax": 22.2,
@@ -7241,7 +7346,7 @@ controlPoints | object | | **(see below)**
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | string | `wind` |
+id | string | `wind-gust` |
 color | string | | hexadecimal colour code
 lineWidth | int | | recommended line width in points
 lineFill | boolean | `false` | whether the area under the graph should have a fill or not
