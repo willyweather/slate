@@ -171,7 +171,7 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30
+https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km
 ```
 
 > Example Response
@@ -220,7 +220,21 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&l
         			"label": ""
         		}
         	]
-        }
+        },
+        "dataPoints": [
+            {
+                "dateTime": "2014-03-26 22:30:00",
+                "intensity": 0,
+                "lat": -33.701,
+                "lng": 151.21
+            },
+            {
+                "dateTime": "2014-03-26 22:30:00",
+                "intensity": 5,
+                "lat": -33.701,
+                "lng": 151.21
+            }
+        ]
 	}
 ]
 ```
@@ -233,12 +247,14 @@ Returns all map providers that can be filtered by `mapType`.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see Map Types for conversion of typeId** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see Map Types for conversion of typeId** | true
 lat | double | | latitude | false
 lng | double | | longitude | false
 verbose | boolean | | include overlay images with the response | false
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
+dataPoints | boolean | | used in conjunction with the lat and lng parameters and when set to true, will include raw data values in the response for the provided map type. | false
+units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
 <code>offset</code> is required if <code>verbose</code> is <code>true</code>, which is the default if not included in the request.
@@ -246,6 +262,10 @@ limit | int | | minutes that overlay images should end at | false
 
 <aside class="notice">
 When <code>lat</code> and <code>lng</code> are provided the returned Map Providers will be the closest ones to these coordinates, that also support the specified <code>mapTypes</code>.
+</aside>
+
+<aside class="notice">
+<code>dataPoints</code> is only supported by forecast-regional-radar and when used <code>mapTypes</code> must equal <code>forecast-regional-radar</code>
 </aside>
 
 ### Response 
@@ -312,10 +332,20 @@ Attribute | Type | Values | Description
 min | float | | min value of the range
 max | float | | max value of the range
  
+### Data Points
+
+Data points will only be included when it is not empty.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | YYYY-MM-DD HH:MM:SS
+intensity | int | | intensity of rainfall
+
 
 ### Map Types
 * regional rain radar : 1
 * national rain radar : 3
+* forecast regional rain radar : 5
 * satellite : 4
 * synoptic : 100
 * temperature : 200
@@ -361,7 +391,7 @@ max | float | | max value of the range
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30
+https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30&units=distance:km
 ```
 
 > Example Response
@@ -429,126 +459,21 @@ Get a map provider with overlay data.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
+units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 ### Response
 
 Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
-
-## Map Data By Provider With Forecast Radar Data
-
-> Example Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71/radar.json?lat=-24&lng=32
-```
-
-> Example Response
-
-```json
-{
-	"id": 71,
-	"name": "Sydney (Terrey Hills)",
-	"lat": -33.701,
-	"lng": 151.21,
-	"bounds": {
-		"minLat": -36.051,
-		"minLng": 148.51,
-		"maxLat": -31.351,
-		"maxLng": 153.91
-	},
-	"typeId": 1,
-	"zoom": 256000,
-	"radius": 256000,
-	"interval": 6,
-	"overlayPath": "//cdn2.willyweather.com.au/radar/",
-	"overlays": [
-		{
-			"dateTime": "2014-03-26 22:30:00",
-			"name": "71-201403262230.png"
-		},
-		{
-			"dateTime": "2014-03-26 22:36:00",
-			"name": "71-201403262236.png"
-		},
-		{
-			"dateTime": "2014-03-26 22:42:00",
-			"name": "71-201403262242.png"
-		}
-	],
-	"classification": "radar",
-	"mapLegend": {
-        "keys": [
-            {
-                "colour": "#f5f5ff",
-                "range": {
-                    "min": 0.2,
-                    "max": 0.5
-                },
-                "label": "light"
-            },
-            {
-                "colour": "#b4b4ff",
-                "range": {
-                    "min": 0.5,
-                    "max": 1.5
-                },
-                "label": ""
-            }
-        ]
-    },
-    "dataPoints": [
-        {
-            "dateTime": "2014-03-26 22:30:00",
-            "intensity": 0,
-			"lat": -33.701,
-			"lng": 151.21
-        },
-        {
-            "dateTime": "2014-03-26 22:30:00",
-            "intensity": 5,
-			"lat": -33.701,
-			"lng": 151.21
-        },
-    ]
-}
-```
-
-Get a map provider with overlay data and forecast radar data.
-
-### Request
-
-`GET api.willyweather.com.au/v2/{api key}/maps/{provider id}.json`
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
-lat | int | | latitude of the forecast radar data | true
-lng | int | | longitude of the forecast radar data | true
-offset | double | | minutes that overlay images should start from | false
-limit | double | | minutes that overlay images should end at | false
-
-### Response
-
-Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
-
-### Data Points
-
-Data points will only be included when it is not empty.
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-dateTime | string | | YYYY-MM-DD HH:MM:SS
-intensity | int | | intensity of rainfall
 
 ## Map Data By Location Id
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=regional-radar&offset=-60&limit=30
+https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
 > Example Response
@@ -619,9 +544,10 @@ Get map providers linked to a location.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
+units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 ### Response
 
