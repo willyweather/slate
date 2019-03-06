@@ -265,7 +265,7 @@ When <code>lat</code> and <code>lng</code> are provided the returned Map Provide
 </aside>
 
 <aside class="notice">
-<code>dataPoints</code> is only supported by forecast-regional-radar and when used <code>mapTypes</code> must equal <code>forecast-regional-radar</code>
+<code>dataPoints</code> is only supported by forecast-regional-radar and when used <code>mapTypes</code> must equal <code>forecast-regional-radar</code> and requires both <code>lat</code> and <code>lng</code> parameters.
 </aside>
 
 ### Response 
