@@ -5274,11 +5274,12 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "trend": 0
             },
             "cloud": {
-                "oktas": "3",
+                "oktas": 3,
                 "trend": 0
             },
             "humidity": {
-                "percentage": 26
+                "percentage": 26,
+                "trend": -1
             },
             "dewPoint": {
                 "temperature": -0.6,
@@ -5309,6 +5310,20 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
                 "lng": 151.26,
                 "distance": 5.8
             },
+			"deltaT": {
+				"id": 377,
+				"name": "Sydney (Observatory Hill)",
+                "lat": -33.86,
+                "lng": 151.21,
+                "distance": 6.9
+			},
+			"cloud": {
+				"id": 377,
+				"name": "Sydney (Observatory Hill)",
+                "lat": -33.86,
+                "lng": 151.21,
+                "distance": 6.9
+			},
             "humidity": {
                 "id": 349,
                 "name": "Sydney (Observatory Hill)",
@@ -5361,6 +5376,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 temperature | object | |
+delta-t | object | |
+cloud | object | |
 humidity | object | |
 dewPoint | object | |
 wind | object | |
@@ -5373,10 +5390,23 @@ temperature | double | |
 apparentTemperature | double |
 trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
 
+### Delta T
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+temperature | double |
+trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
+
+### Cloud
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+oktas | int | |
+trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
+
 ### Humidity
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 percentage | double | |
+trend | int | `-1`, `0`, `1` | -1 is falling. 0 is steady. 1 is rising
 
 ### Dew Point
 Attribute | Type | Values | Description
