@@ -220,8 +220,15 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&l
         			"label": ""
         		}
         	]
+        },
+        "status": {
+            "code": "active",
+            "description": [{
+                "text": "Currently active.",
+                "meta": "text"
+            }]
         }
-	}
+    }
 ]
 ```
 
@@ -268,6 +275,8 @@ interval | int | | time in minutes between each image
 overlayPath | string | | the root directory path for overlay images
 overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
+mapLegend | object | | The legend describing the values of the data. **(see MapLegend)**
+status | object | | the status of the station **(see Map Status)**
 
 ### Bounds
 
@@ -356,12 +365,40 @@ max | float | | max value of the range
 * drought-factor
 * cyclone
 
+### Map Status
+
+The status of the map provider with code and description.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | `active`, `inactive`, `redirected` | the code of the status **(Map Status - Code)**
+description | array | | An array of texts with meta values that constructs as whole description. **(Map Status - Description)**
+
+### Map Status - Code
+
+A status code of map location based on its overlays within the last hour.
+
+Value | Description
+----- | -----------
+active | The station has at least 3 overlays within the last hour
+inactive | The station does not have at least 3 overlays within the last hour
+redirected | The station does not have at least 3 overlays within the last hour but the station returned is the backup station
+
+### Map Status - Description
+
+An array of texts and its meta value as parts of the whole description.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+text | string | | the description text
+meta | string | `name`, `text`, `date` | meta of the text
+
 ## Map Data By Provider
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30
+https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30
 ```
 
 > Example Response
@@ -417,6 +454,28 @@ https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30
                 "label": ""
             }
         ]
+    },
+    "status": {
+        "code": "inactive",
+        "description": [{
+            "text": "Newcastle",
+            "meta": "name"
+        }, {
+            "text": " has been offline for ",
+            "meta": "text"
+        }, {
+            "text": "2 days",
+            "meta": "date"
+        }, {
+            "text": " due to scheduled maintenance, it is expected to be restored in ",
+            "meta": "text"
+        }, {
+            "text": "4 hours",
+            "meta": "date"
+        }, {
+            "text": ".",
+            "meta": "text"
+        }]
     }
 }
 ```
@@ -442,7 +501,7 @@ Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=regional-radar&offset=-60&limit=30
+https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30
 ```
 
 > Example Response
@@ -500,8 +559,24 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=r
         			"label": ""
         		}
         	]
-        }		
-	}
+        },
+        "status": {
+            "code": "active",
+            "description": [{
+                "text": "Newcastle",
+                "meta": "name"
+            }, {
+                "text": " is currently offline. ",
+                "meta": "text"
+            }, {
+                "text": "Sydney (Terrey Hills)",
+                "meta": "name"
+            }, {
+                "text": " is the backup radar.",
+                "meta": "text"
+            }]
+        }
+    }
 ]
 ```
 
