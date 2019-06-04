@@ -275,8 +275,8 @@ interval | int | | time in minutes between each image
 overlayPath | string | | the root directory path for overlay images
 overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
-mapLegend | object | | The legend describing the values of the data. **(see MapLegend)**
-status | object | | the status of the station **(see Map Status)**
+mapLegend | object | | The legend describing the values of the data **(see MapLegend)**
+status | object | | the status of the map provider **(see Map Status)**
 
 ### Bounds
 
@@ -367,22 +367,22 @@ max | float | | max value of the range
 
 ### Map Status
 
-The status of the map provider with code and description.
+The map provider of the map provider with code and description.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-code | string | `active`, `inactive`, `redirected` | the code of the status **(Map Status - Code)**
-description | array | | An array of texts with meta values that constructs as whole description. **(Map Status - Description)**
+code | string | `active`, `inactive`, `redirected` | the code of the map provider **(see Map Status - Code)**
+description | array | | An array of texts with meta values that constructs as whole description. **(see Map Status - Description)**
 
 ### Map Status - Code
 
-A status code of map location based on its overlays within the last hour.
+A map provider code of map location based on its map overlays within the last hour.
 
 Value | Description
 ----- | -----------
-active | The station has at least 3 overlays within the last hour
-inactive | The station does not have at least 3 overlays within the last hour
-redirected | The station does not have at least 3 overlays within the last hour but the station returned is the backup station
+active | The map provider has at least 3 map overlays within the last hour
+inactive | The map provider has less than 3 map overlays for the last hour
+redirected | The map provider does not have more than 3 map overlays within the last hour so a backup map provider is provided
 
 ### Map Status - Description
 
