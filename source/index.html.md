@@ -85,7 +85,7 @@ platform | string | `iphone`, `android` | true
 weatherTypes | csv | `weather`, `wind`, `moonphases`, `rainfall`, `swell`, `tides`, `sunrisesunset`,` uv` | option
 mapTypes | csv | `radar-rainfall`, `satellite`, `synoptic`, `rainfall`, `temperature`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `cyclone` | option
 forecastGraphTypes | csv | `precis`, `rainfallprobability`, `sunrisesunset`, `swell-period`, `swell-height`, `swell-period`, `temperature`, `tides`, `wind`, `uv` | option
-observationalGraphTypes | csv | `temperature`, `dew-point`, `pressure`, `rainfall`, `wind` | option
+observationalGraphTypes | csv | `temperature`, `dew-point`, `pressure`, `rainfall`, `wind`, `apparent-temperature`, `cloud`, `delta-t`, `wind-gust`, `humidity` | option
 graphKeyTypes | csv | `wind`, `swell-height` | option
 units | csv | <a href="#units">Units</a> | false
 
