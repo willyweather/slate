@@ -275,8 +275,8 @@ interval | int | | time in minutes between each image
 overlayPath | string | | the root directory path for overlay images
 overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
-mapLegend | object | | The legend describing the values of the data **(see MapLegend)**
-status | object | | the status of the map provider **(see Map Status)**
+mapLegend | object | | The legend describing the values of the data **(see Map Legend)**
+status | object | | the status of the map provider **(see Status)**
 
 ### Bounds
 
@@ -298,23 +298,23 @@ Attribute | Type | Values | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 name | string | | path of image, to be appended to overlayPath in main response
 
-### MapLegend
+### Map Legend
 
 The legend describing the values of the data.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-keys | array | | an array of key objects **(see Key)**
+keys | array | | an array of key objects **(see Map Legend - Key)**
 
-### Key
+### Map Legend - Key
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 colour | string | | hexadecimal colour code
-range | object | | **(see Range)**
+range | object | | **(see Map Legend - Range)**
 label | string | | 
 
-### Range
+### Map Legend - Range
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
@@ -365,33 +365,23 @@ max | float | | max value of the range
 * drought-factor
 * cyclone
 
-### Map Status
+### Status
 
 The map provider of the map provider with code and description.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-code | string | `active`, `inactive`, `redirected` | the code of the map provider **(see Map Status - Code)**
-description | array | | An array of texts with meta values that constructs as whole description. **(see Map Status - Description)**
+code | string | `active`, `inactive`, `redirected` | indicates the current status of the map provider. <p>`active` - The map provider has at least 3 map overlays within the last hour.</p> <p>`inactive` - The map provider has less than 3 map overlays for the last hour.</p> <div>`redirected` - The map provider does not have more than 3 map overlays within the last hour so a backup map provider is provided.</div>
+description | array | | an array of description objects. **(see Status - Description)**
 
-### Map Status - Code
+### Status - Description
 
-A map provider code of map location based on its map overlays within the last hour.
-
-Value | Description
------ | -----------
-active | The map provider has at least 3 map overlays within the last hour
-inactive | The map provider has less than 3 map overlays for the last hour
-redirected | The map provider does not have more than 3 map overlays within the last hour so a backup map provider is provided
-
-### Map Status - Description
-
-An array of texts and its meta value as parts of the whole description.
+A description object forms part of the overall description of the map providers current state.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 text | string | | the description text
-meta | string | `name`, `text`, `date` | meta of the text
+meta | string | `name`, `text`, `date` | the meta value provides information which describes the data
 
 ## Map Data By Provider
 
