@@ -171,7 +171,7 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&dataPoints=true&verbose=true&offset=-60&limit=30&units=distance:km
 ```
 
 > Example Response
@@ -189,7 +189,7 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=regional-radar&l
 			"maxLat": -31.351,
 			"maxLng": 153.91
 		},
-		"typeId": 1,
+		"typeId": 5,
 		"zoom": 256000,
 		"radius": 256000,
 		"interval": 6,
