@@ -224,15 +224,17 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regiona
         "dataPoints": [
             {
                 "dateTime": "2014-03-26 22:30:00",
-                "intensity": 0,
                 "lat": -33.701,
-                "lng": 151.21
+                "lng": 151.21,
+                "amount": 1.23,
+                "intensity": 0
             },
             {
                 "dateTime": "2014-03-26 22:30:00",
-                "intensity": 5,
                 "lat": -33.701,
-                "lng": 151.21
+                "lng": 151.21,
+                "amount": 7.89,
+                "intensity": 5
             }
         ]
 	}
@@ -339,6 +341,9 @@ Data points will only be included when it is not empty.
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 dateTime | string | | YYYY-MM-DD HH:MM:SS
+lat | int | | latitude
+lng | int | | longitude
+amount | int | | value of the rainfall
 intensity | int | | intensity of rainfall
 
 
