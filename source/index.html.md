@@ -7689,7 +7689,7 @@ units | object |  | includes unit of measurement for distance
 > Example Request
 
 ```shell
-?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:mmhg
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa
 ```
 
 > Example Response
@@ -7703,7 +7703,7 @@ units | object |  | includes unit of measurement for distance
         "swellHeight": "ft",
         "temperature": "c",
         "tideHeight": "ft",
-        "pressure": "mmhg"
+        "pressure": "hpa"
     }
 }
 ```
@@ -7712,7 +7712,7 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 ### Request
 
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:mmhg`
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa`
 
 ### Response
 Attribute | Type | Values | Description
