@@ -7689,7 +7689,7 @@ units | object |  | includes unit of measurement for distance
 > Example Request
 
 ```shell
-?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:mmhg
 ```
 
 > Example Response
@@ -7702,7 +7702,8 @@ units | object |  | includes unit of measurement for distance
         "speed": "knots",
         "swellHeight": "ft",
         "temperature": "c",
-        "tideHeight": "ft"
+        "tideHeight": "ft",
+        "pressure": "mmhg"
     }
 }
 ```
@@ -7711,7 +7712,7 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 ### Request
 
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m`
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:mmhg`
 
 ### Response
 Attribute | Type | Values | Description
@@ -7722,3 +7723,4 @@ speed | string | `km/h`, `mph`, `m/s`, `knots` | kilometers per hour, miles per 
 swellHeight | string | `m`, `ft` | meters, feet
 temperature | string | `c`, `f` | celsius, fahrenheit
 tideHeight | string | `m`, `ft` | meters, feet
+pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
