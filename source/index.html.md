@@ -171,7 +171,7 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&dataPoints=true&verbose=true&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km&dataPoints=true
 ```
 
 > Example Response
@@ -236,8 +236,15 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regiona
                 "amount": 7.89,
                 "intensity": 5
             }
-        ]
-	}
+        ],
+        "status": {
+            "code": "active",
+            "description": [{
+                "text": "Currently active.",
+                "meta": "text"
+            }]
+        }
+    }
 ]
 ```
 
@@ -290,6 +297,8 @@ interval | int | | time in minutes between each image
 overlayPath | string | | the root directory path for overlay images
 overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
+mapLegend | object | | The legend describing the values of the data **(see Map Legend)**
+status | object | | the status of the map provider **(see Status)**
 
 ### Bounds
 
@@ -311,23 +320,23 @@ Attribute | Type | Values | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 name | string | | path of image, to be appended to overlayPath in main response
 
-### MapLegend
+### Map Legend
 
 The legend describing the values of the data.
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-keys | array | | an array of key objects **(see Key)**
+keys | array | | an array of key objects **(see Map Legend - Key)**
 
-### Key
+### Map Legend - Key
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 colour | string | | hexadecimal colour code
-range | object | | **(see Range)**
+range | object | | **(see Map Legend - Range)**
 label | string | | 
 
-### Range
+### Map Legend - Range
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
@@ -391,12 +400,32 @@ intensity | int | | intensity of rainfall
 * drought-factor
 * cyclone
 
+### Status
+
+The map provider of the map provider with code and description.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | `active`, `inactive`, `redirected` | indicates the current status of the map provider. <p>`active` - The map provider has at least 3 map overlays within the last hour.</p> <p>`inactive` - The map provider has less than 3 map overlays for the last hour.</p> <div>`redirected` - The map provider does not have more than 3 map overlays within the last hour so a backup map provider is provided.</div>
+description | array | | an array of description objects. **(see Status - Description)**
+
+### Status - Description
+
+A description object forms part of the overall description of the map providers current state.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+text | string | | the description text
+meta | string | `name`, `text`, `date` | the meta value provides information which describes the data
+
+
 ## Map Data By Provider
 
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
+
 ```
 
 > Example Response
@@ -452,6 +481,28 @@ https://api.willyweather.com.au/v2/{api key}/maps/71.json?offset=-60&limit=30&un
                 "label": ""
             }
         ]
+    },
+    "status": {
+        "code": "inactive",
+        "description": [{
+            "text": "Newcastle",
+            "meta": "name"
+        }, {
+            "text": " has been offline for ",
+            "meta": "text"
+        }, {
+            "text": "2 days",
+            "meta": "date"
+        }, {
+            "text": " due to scheduled maintenance, it is expected to be restored in ",
+            "meta": "text"
+        }, {
+            "text": "4 hours",
+            "meta": "date"
+        }, {
+            "text": ".",
+            "meta": "text"
+        }]
     }
 }
 ```
@@ -469,6 +520,8 @@ offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
+
+
 ### Response
 
 Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
@@ -478,7 +531,7 @@ Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
 > Example Response
@@ -536,8 +589,24 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/maps.json?mapTypes=r
         			"label": ""
         		}
         	]
-        }		
-	}
+        },
+        "status": {
+            "code": "active",
+            "description": [{
+                "text": "Newcastle",
+                "meta": "name"
+            }, {
+                "text": " is currently offline. ",
+                "meta": "text"
+            }, {
+                "text": "Sydney (Terrey Hills)",
+                "meta": "name"
+            }, {
+                "text": " is the backup radar.",
+                "meta": "text"
+            }]
+        }
+    }
 ]
 ```
 
