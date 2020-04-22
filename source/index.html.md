@@ -1336,7 +1336,7 @@ html | string | |
 > Example Request 
 
 ```
-https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&verbose=false
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
 ```
 
 > Example Response
@@ -1371,9 +1371,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
 ```
 There are three ways to request Warnings by area.
 
-* **Location id**
-* **Region id**
-* **State id**
+* **Location**
+* **Region**
+* **State**
 
 <aside class="notice">
 Get <a href="#locations">Locations</a>, <a href="#states">States</a> and <a href="#regions">Regions</a>
@@ -1385,14 +1385,15 @@ These will all return an array of Warnings, filtered by classification.
 
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
 
-`GET api.willyweather.com.au/v2/{api key}/regions/{region id}/warnings.json`
-
-`GET api.willyweather.com.au/v2/{api key}/states/{state id}/warnings.json`
-
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification | false
 verbose | boolean |  | include the content attribute with the response | false
+area | string | `location`, `region`, `state` | | false
+
+<aside class="notice">
+    <code>area = location</code> by default.
+</aside>
 
 ### Response
 
