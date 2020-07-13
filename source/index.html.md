@@ -243,7 +243,8 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regiona
                 "text": "Currently active.",
                 "meta": "text"
             }]
-        }
+        },
+        "nextIssueDateTime": "2016-03-26 22:48:00"
     }
 ]
 ```
@@ -299,6 +300,7 @@ overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
 mapLegend | object | | The legend describing the values of the data **(see Map Legend)**
 status | object | | the status of the map provider **(see Status)**
+nextIssueDateTime | string | | the date when the next data will be loaded (`YYYY-MM-DD HH:MM:SS`)
 
 ### Bounds
 
@@ -503,7 +505,8 @@ https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar
             "text": ".",
             "meta": "text"
         }]
-    }
+    },
+    "nextIssueDateTime": "2014-03-26 22:48:00"
 }
 ```
 
@@ -605,7 +608,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=r
                 "text": " is the backup radar.",
                 "meta": "text"
             }]
-        }
+        },
+        "nextIssueDateTime": "2014-03-26 22:48:00"
     }
 ]
 ```
