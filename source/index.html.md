@@ -300,7 +300,7 @@ overlays | array | | an array of overlay objects **(see Overlay)**
 classification | string | | the type of map provider (e.g. radar, satellite, synoptic)
 mapLegend | object | | The legend describing the values of the data **(see Map Legend)**
 status | object | | the status of the map provider **(see Status)**
-nextIssueDateTime | string | | the date when the next data will be loaded (`YYYY-MM-DD HH:MM:SS`)
+nextIssueDateTime | string | | the estimated time when new data will be made available (`YYYY-MM-DD HH:MM:SS`)
 
 ### Bounds
 
