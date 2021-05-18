@@ -25,6 +25,14 @@ The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 https://api.willyweather.com.au/v2/{api key}/info/legal.json?platform=web
 ```
 
+> Example Request Body
+
+```json
+{
+    "platform" : "mobile"
+}
+```
+
 > Example Response
 
 ```json
@@ -49,6 +57,19 @@ platform | string | `web`, `mobile` | true
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?platform=iphone&weatherTypes=weather&mapTypes=radar-rainfall&forecastGraphTypes=wind&observationalGraphTypes=temperature&graphKeyTypes=wind
+```
+
+> Example Request Body
+
+```json
+{
+    "platform": "ios",
+    "weatherTypes": ["weather"],
+    "mapTypes": ["radar-rainfall"],
+    "graphKeyTypes": ["wind"],
+    "forecastGraphTypes": ["wind"],
+    "observationalGraphTypes": ["temperature"]
+}
 ```
 
 > Example Response
@@ -101,6 +122,12 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}.json
+```
+
+> Example Request Body
+
+```json
+{}
 ```
 
 > Example Response
@@ -173,7 +200,27 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 ```shell
 https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km&dataPoints=true
 ```
+> Example Request Body
 
+```json
+{
+    "lat"  : 23.455,
+    "lng" : 150.67,
+    "dataPoints" : true,
+    "mapTypes" :[
+        {
+            "code" : "forecast-regional-radar"
+        }
+    ],
+    "offset" : -15 ,
+    "limit" : 15,
+    "verbose" : true,
+    "units" : {
+        "distance" : "km",
+        "speed" : "knots"
+    }
+}
+```
 > Example Response
 
 ```json
@@ -427,7 +474,27 @@ meta | string | `name`, `text`, `date` | the meta value provides information whi
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
+```
 
+> Example Request Body
+
+```json
+{
+    "mapTypes" :[
+        {
+            "code" : "regional-radar"
+        }, {
+            "code" : "synoptic"
+        }
+    ],
+    "offset" : -15 ,
+    "limit" : 15,
+    "verbose" : true,
+    "units" : {
+        "distance" : "km",
+        "speed" : "knots"
+    }
+}
 ```
 
 > Example Response
@@ -537,6 +604,27 @@ Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</
 https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
+> Example Request Body
+
+```json
+{
+    "mapTypes" :[
+        {
+            "code" : "regional-radar"
+        }, {
+            "code" : "synoptic"
+        }
+    ],
+    "offset" : -15 ,
+    "limit" : 15,
+    "verbose" : true,
+    "units" : {
+        "distance" : "km",
+        "speed" : "knots"
+    }
+}
+```
+
 > Example Response
 
 ```json
@@ -641,6 +729,12 @@ Response is an array of Map Providers. See <a href="#get-map-providers">Get Map 
 https://api.willyweather.com.au/v2/{api key}/regions/{region id}.json
 ```
 
+> Example Request Body
+
+```json
+{}
+```
+
 > Example Response
 
 ```json
@@ -693,6 +787,12 @@ swell | 1
 https://api.willyweather.com.au/v2/{api key}/regions.json
 ```
 
+> Example Request Body
+
+```json
+{}
+```
+
 > Example Response
 
 ```json
@@ -721,6 +821,12 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/states/{state id}/regions.json
+```
+
+> Example Request Body
+
+```json
+{}
 ```
 
 > Example Response
@@ -753,6 +859,15 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/search.json?query=beach&limit=2
+```
+
+> Example Request Body
+
+```json
+{
+    "query": "bateman",
+    "limit": 1
+}
 ```
 
 > Example Response
@@ -807,6 +922,18 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
 ```
 
+> Example Request Body
+
+```json
+{
+    "lat": -33.8996141,
+    "lng": 151.272962,
+    "units": {
+        "distance": "km"
+    }
+}
+```
+
 > Example Response
 
 ```json
@@ -853,6 +980,26 @@ A single Location and units. See <a href="#locations">Location</a> for a descrip
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&units=distance:km
+```
+
+> Example Request Body
+
+```json
+{
+    "location" : {
+        "id" : 1
+    },
+    "weatherTypes" : [
+        {
+            "code" : "general"
+        }, {
+            "code" : "tides"
+        }
+    ],
+    "units" : {
+        "distance" : "km"
+    }
+}
 ```
 
 > Example Response
@@ -933,6 +1080,12 @@ An array of location objects, broken up into their weather types. See <a href="#
 https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
 ```
 
+> Example Request Body
+
+```json
+{}
+```
+
 > Example Response
 
 ```json
@@ -947,7 +1100,7 @@ https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
 Returns the details of a single State.
 
 ### Request
-`GET api.willyweather.com.au/api/v2/state/{state id}.json`
+`GET api.willyweather.com.au/api/v2/states/{state id}.json`
 
 ### Response
 Response is a State.
@@ -982,6 +1135,12 @@ swell | 1
 https://api.willyweather.com.au/v2/{api key}/states.json
 ```
 
+> Example Request Body
+
+```json
+{}
+```
+
 > Example Response
 
 ```json
@@ -1011,6 +1170,15 @@ Response is an array of States. See <a href="#get-state">Get State</a> for descr
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
+```
+
+> Example Request Body
+
+```json
+{
+    "classifications": ["storm", "flood"],
+    "verbose": true
+}
 ```
 
 > Example Response
@@ -1077,6 +1245,12 @@ An array of Warning objects, see <a href="#warning">Warning</a> for a descriptio
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/warning-types.json
+```
+
+> Example Request Body
+
+```json
+{}
 ```
 
 > Example Response
@@ -1260,6 +1434,12 @@ An array of Warning Type objects, see <a href="#warning-types">Warning Types</a>
 https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 ```
 
+> Example Request Body
+
+```json
+{}
+```
+
 > Example Response
 
 ```json
@@ -1341,6 +1521,16 @@ html | string | |
 
 ```
 https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
+```
+
+> Example Request Body
+
+```json
+{
+    "classifications": ["storm", "flood"],
+    "area": "location",
+    "verbose": true
+}
 ```
 
 > Example Response
@@ -1500,6 +1690,16 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["moonphases"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -1617,6 +1817,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["precis"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -1670,6 +1880,16 @@ night | boolean | |
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfall&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecasts": ["rainfall"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -1739,6 +1959,18 @@ The daily probabilty for rainfall will not align with the probability included i
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["rainfallprobability"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
+
 ```json
 {
 	"location": {},
@@ -1807,6 +2039,18 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["sunrisesunset"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
+
 ```json
 {
 	"location": {},
@@ -1868,6 +2112,18 @@ start | int | | The index of the start of the current forecast
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1&startDate=2014-03-27
 ```
+
+> Example Request Body
+
+```json
+{
+    "forecasts": ["swell"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
 
 ```json
 {
@@ -1954,6 +2210,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["temperature"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -2024,6 +2290,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecasts": ["tides"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -2106,6 +2382,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecasts": ["uv"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -2201,6 +2487,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecasts": ["weather"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -2262,6 +2558,16 @@ max | int | | maximum daily temperature
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecasts": ["wind"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -2344,6 +2650,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["precis"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -2441,9 +2757,23 @@ night | boolean | | used to show a moon instead of a sun in icons
 
 ## Forecast Graphs - Rainfall Probability
 
+> Example Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1&startDate=2014-03-27
 ```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["rainfallprobability"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
 
 ```json
 {
@@ -2575,9 +2905,23 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Sunrise/Sunset
 
+> Example Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1&startDate=2014-03-27
 ```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["sunrisesunset"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
 
 ```json
 {
@@ -2687,6 +3031,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["swell-height"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -2871,9 +3225,23 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Swell Period
 
+> Example Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1&startDate=2014-03-27
 ```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["swell-period"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
 
 ```json
 {
@@ -3019,9 +3387,23 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Temperature
 
+> Example Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1&startDate=2014-03-27
 ```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["temperature"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
+> Example Response
 
 ```json
 {
@@ -3162,6 +3544,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["tides"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -3336,6 +3728,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["uv"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -3475,6 +3877,16 @@ start | int | | The index of the start of the current forecast
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "forecastGraphs": ["wind"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -3660,6 +4072,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["apparent-temperature"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -3814,6 +4236,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["cloud"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -3966,6 +4398,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["delta-t"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -4116,6 +4558,16 @@ start | int | | The index of the start of the current observational graph
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["dew-point"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -4272,6 +4724,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["humidity"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -4426,6 +4888,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["pressure"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -4576,6 +5048,16 @@ start | int | | The index of the start of the current observational graph
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["rainfall"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -4730,6 +5212,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["temperature"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -4880,6 +5372,16 @@ start | int | | The index of the start of the current observational graph
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["wind"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -5077,6 +5579,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["wind-gust"],
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -5259,7 +5771,17 @@ Observational provides real time data from one or more weather stations.
 > Example Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true&days=1&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observational": true,
+    "days": 1,
+    "startDate": "2014-03-27"
+}
 ```
 
 > Example Response
@@ -5465,6 +5987,16 @@ distance | string | | the distance from the Station to the Location
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "regionPrecis": true,
+    "days": 1,
+    "startDate": "2014-03-27"
+}
+```
+
 > Example Response
 
 ```json
@@ -5513,6 +6045,23 @@ precis | string | | long text weather description
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
+```
+
+> Example Request Body
+
+```json
+{
+    "locations" : [
+        {
+            "id" : 1
+        }, {
+            "id" : 2
+        }
+    ],
+    "units" : {
+        "temperature" : "c"
+    }
+}
 ```
 
 > Example Response
@@ -5656,7 +6205,7 @@ Weather Station's weather data consists of many parts that can all be requested 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -5673,6 +6222,15 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["apparent-temperature"],
+    "startDate": "2010-10-10"
+}
 ```
 
 > Example Response
@@ -5757,7 +6315,7 @@ The temperature equivalent perceived by humans, caused by the combined effects o
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -5846,6 +6404,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["cloud"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -5926,7 +6493,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6015,6 +6582,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["delta-t"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6095,7 +6671,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6184,6 +6760,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["dew-point"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6266,7 +6851,7 @@ The temperature at which dew will form.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6355,6 +6940,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["humidity"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6437,7 +7031,7 @@ The amount of water vapor in the atmosphere or a gas.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6526,6 +7120,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["pressure"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6606,7 +7209,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6695,6 +7298,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["rainfall"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6775,7 +7387,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -6864,6 +7476,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["temperature"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -6944,7 +7565,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -7031,6 +7652,15 @@ start | int | | The index of the start of the current observational graph
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+```
+
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["wind"],
+    "startDate": "2010-10-10"
+}
 ```
 
 > Example Response
@@ -7135,7 +7765,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -7238,6 +7868,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
+> Example Request Body
+
+```json
+{
+    "observationalGraphs": ["wind-gust"],
+    "startDate": "2010-10-10"
+}
+```
+
 > Example Response
 
 ```json
@@ -7333,7 +7972,7 @@ api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGrap
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 days | int |  | max days returned | false
-observationalGraphs | csv |  |  | false
+observationalGraphs | csv |  |  | true
 units | string | See <a href="#units">Units</a>. |  | false
 startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
 
@@ -7432,6 +8071,16 @@ start | int | | The index of the start of the current observational graph
 
 ```shell
 api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json?units=distance:miles
+```
+
+> Example Request Body
+
+```json
+{
+    "units" :  {
+        "distance": "km"
+    }
+}
 ```
 
 > Example Response
@@ -7695,6 +8344,22 @@ units | object |  | includes unit of measurement for distance
 
 ```shell
 ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa
+```
+
+> Example Request Body
+
+```json
+{
+    "units": {
+        "amount": "mm",
+        "distance": "km",
+        "speed": "knots",
+        "swellHeight": "ft",
+        "temperature": "c",
+        "tideHeight": "ft",
+        "pressure": "hpa"
+    }
+}
 ```
 
 > Example Response
