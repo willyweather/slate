@@ -63,12 +63,20 @@ https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?p
 
 ```json
 {
-    "platform": "ios",
-    "weatherTypes": ["weather"],
-    "mapTypes": ["radar-rainfall"],
+    "platform": "iphone",
+    "weatherTypes": [
+        {
+            "code": "weather"
+        }
+    ],
+    "mapTypes": [
+        {
+            "code": "radar-rainfall"
+        }
+    ],
     "graphKeyTypes": ["wind"],
-    "forecastGraphTypes": ["wind"],
-    "observationalGraphTypes": ["temperature"]
+    "forecastGraphTypes": ["precis"],
+    "observationalGraphTypes": ["dew-point"]
 }
 ```
 
