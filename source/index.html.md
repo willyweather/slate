@@ -19,13 +19,13 @@ The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 
 ## Legal
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/info/legal.json?platform=web
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -53,13 +53,13 @@ platform | string | `web`, `mobile` | true
 
 ## Info By Location Id
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?platform=iphone&weatherTypes=weather&mapTypes=radar-rainfall&forecastGraphTypes=wind&observationalGraphTypes=temperature&graphKeyTypes=wind
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -126,13 +126,13 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 
 ## Get Location
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -203,18 +203,17 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 
 ## Get Map Providers
 
-> Example Request
+> Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km&dataPoints=true
+https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km
 ```
-> Example Request Body
+> Example Body Request
 
 ```json
 {
     "lat"  : 23.455,
     "lng" : 150.67,
-    "dataPoints" : true,
     "mapTypes" :[
         {
             "code" : "forecast-regional-radar"
@@ -276,22 +275,6 @@ https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regiona
         		}
         	]
         },
-        "dataPoints": [
-            {
-                "dateTime": "2014-03-26 22:30:00",
-                "lat": -33.701,
-                "lng": 151.21,
-                "amount": 1.23,
-                "intensity": 0
-            },
-            {
-                "dateTime": "2014-03-26 22:30:00",
-                "lat": -33.701,
-                "lng": 151.21,
-                "amount": 7.89,
-                "intensity": 5
-            }
-        ],
         "status": {
             "code": "active",
             "description": [{
@@ -478,13 +461,13 @@ meta | string | `name`, `text`, `date` | the meta value provides information whi
 
 ## Map Data By Provider
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -606,13 +589,13 @@ Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</
 
 ## Map Data By Location Id
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -731,13 +714,13 @@ Response is an array of Map Providers. See <a href="#get-map-providers">Get Map 
 
 ## Get Region
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/regions/{region id}.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -789,13 +772,13 @@ swell | 1
 
 ## Get Regions
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/regions.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -825,13 +808,13 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 
 ## Get Regions by State
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/states/{state id}/regions.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -863,13 +846,13 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 
 ## Location Search By Query
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/search.json?query=beach&limit=2
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -924,13 +907,13 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 
 ## Location Search By Coordinates
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -984,13 +967,13 @@ A single Location and units. See <a href="#locations">Location</a> for a descrip
 
 ## Closest Locations
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&units=distance:km
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1082,13 +1065,13 @@ An array of location objects, broken up into their weather types. See <a href="#
 
 ## Get State
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -1137,13 +1120,13 @@ swell | 1
 
 ## Get States
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/states.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -1174,13 +1157,13 @@ Response is an array of States. See <a href="#get-state">Get State</a> for descr
 
 ## All Warnings
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1249,13 +1232,13 @@ An array of Warning objects, see <a href="#warning">Warning</a> for a descriptio
 
 ## All Warning Types
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/warning-types.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -1436,13 +1419,13 @@ An array of Warning Type objects, see <a href="#warning-types">Warning Types</a>
 
 ## Warning
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {}
@@ -1525,13 +1508,13 @@ html | string | |
 
 ## Warnings By Area
 
-> Example Request 
+> Example Query String Request 
 
 ```
 https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1692,13 +1675,13 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ## Forecasts - Moon Phases
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1712,7 +1695,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"moonphases": {
 			"days": [
@@ -1819,13 +1812,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Precis
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1839,7 +1832,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"precis": {
 			"days": [
@@ -1884,13 +1887,13 @@ night | boolean | |
 
 ## Forecasts - Rainfall
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfall&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1904,7 +1907,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"rainfall": {
 			"days": [
@@ -1961,13 +1974,13 @@ The daily probabilty for rainfall will not align with the probability included i
 
 ## Forecasts - Rainfall Probability
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -1981,7 +1994,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"rainfallprobability": {
 			"days": [
@@ -2043,11 +2066,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Sunrise/Sunset
 
+> Example Query String Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2056,12 +2081,21 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
     "startDate": "2014-03-27"
 }
 ```
-
 > Example Response
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"sunrisesunset": {
 			"days": [
@@ -2117,11 +2151,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Swell
 
+> Example Query String Request
+
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2135,7 +2171,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"swell": {
 			"days": [
@@ -2212,13 +2258,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2232,7 +2278,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"temperature": {
 			"days": [
@@ -2294,13 +2350,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Tides
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2314,7 +2370,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"tides": {
 			"days": [
@@ -2386,13 +2452,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - UV
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2406,7 +2472,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"uv": {
 			"days": [
@@ -2489,13 +2565,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecasts - Weather
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2509,7 +2585,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"weather": {
 			"days": [
@@ -2562,13 +2648,13 @@ max | int | | maximum daily temperature
 
 ## Forecasts - Wind
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2582,7 +2668,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecasts": {
 		"wind": {
 			"days": [
@@ -2654,13 +2750,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Precis
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2674,7 +2770,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"precis": {
 			"dataConfig": {
@@ -2765,13 +2871,13 @@ night | boolean | | used to show a moon instead of a sun in icons
 
 ## Forecast Graphs - Rainfall Probability
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2785,7 +2891,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"rainfallprobability": {
 			"dataConfig": {
@@ -2913,13 +3029,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Sunrise/Sunset
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -2933,7 +3049,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"sunrisesunset": {
 			"dataConfig": {
@@ -3035,13 +3161,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Swell Height
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3055,7 +3181,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"swell-height": {
 			"dataConfig": {
@@ -3233,13 +3369,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Swell Period
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3253,7 +3389,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"swell-period": {
 			"dataConfig": {
@@ -3395,13 +3541,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3415,7 +3561,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"temperature": {
 			"dataConfig": {
@@ -3548,13 +3704,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Tides
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3568,7 +3724,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"tides": {
 			"dataConfig": {
@@ -3730,13 +3896,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - UV
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3750,7 +3916,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"uv": {
 			"dataConfig": {
@@ -3881,13 +4057,13 @@ start | int | | The index of the start of the current forecast
 
 ## Forecast Graphs - Wind
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -3901,7 +4077,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"forecastGraphs": {
 		"wind": {
 			"dataConfig": {
@@ -4074,13 +4260,13 @@ start | int | | The index of the start of the current forecast
 
 ## Observational Graphs - Apparent Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4094,7 +4280,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"apparent-temperature": {
 			"dataConfig": {
@@ -4238,13 +4434,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Cloud
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4258,7 +4454,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"cloud": {
 			"dataConfig": {
@@ -4400,13 +4606,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Delta T
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4420,7 +4626,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"delta-t": {
 			"dataConfig": {
@@ -4562,13 +4778,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Dew Point
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4582,7 +4798,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"dew-point": {
 			"dataConfig": {
@@ -4726,13 +4952,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Humidity
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4746,7 +4972,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"humidity": {
 			"dataConfig": {
@@ -4890,13 +5126,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Pressure
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -4910,7 +5146,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"pressure": {
 			"dataConfig": {
@@ -5052,13 +5298,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Rainfall
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -5072,7 +5318,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"rainfall": {
 			"dataConfig": {
@@ -5214,13 +5470,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -5234,7 +5490,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"temperature": {
 			"dataConfig": {
@@ -5376,13 +5642,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -5396,7 +5662,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"wind": {
 			"dataConfig": {
@@ -5581,13 +5857,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind Gust
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -5601,7 +5877,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"observationalGraphs": {
 		"wind-gust": {
 			"dataConfig": {
@@ -5776,13 +6062,13 @@ start | int | | The index of the start of the current observational graph
 
 Observational provides real time data from one or more weather stations.
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -5796,7 +6082,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
     "observational": {
         "observations": {
             "temperature": {
@@ -5989,13 +6285,13 @@ distance | string | | the distance from the Station to the Location
 
 ## Region Precis
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6009,7 +6305,17 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 
 ```json
 {
-	"location": {},
+	"location": {
+        "id": 4988,
+        "name": "Bondi Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2026",
+        "timeZone": "Australia/Sydney",
+        "lat": -33.89054,
+        "lng": 151.27486,
+        "typeId": 2
+    },
 	"regionPrecis": {
 		"days": [
 			{
@@ -6049,13 +6355,13 @@ precis | string | | long text weather description
 
 ## Summaries
 
-> Example Request
+> Example Query String Request
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6226,13 +6532,13 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
 
 ## Observational Graphs - Apparent Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6406,13 +6712,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Cloud
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6584,13 +6890,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Delta T
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6762,13 +7068,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Dew Point
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -6942,13 +7248,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Humidity
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -7122,13 +7428,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Pressure
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -7300,13 +7606,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Rainfall
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -7478,13 +7784,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Temperature
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -7656,13 +7962,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -7870,13 +8176,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Observational Graphs - Wind Gust
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -8075,13 +8381,13 @@ start | int | | The index of the start of the current observational graph
 
 ## Weather Stations List
 
-> Example Request
+> Example Query String Request
 
 ```shell
 api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json?units=distance:miles
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
@@ -8348,13 +8654,13 @@ units | object |  | includes unit of measurement for distance
 
 # Units
 
-> Example Request
+> Example Query String Request
 
 ```shell
 ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa
 ```
 
-> Example Request Body
+> Example Body Request
 
 ```json
 {
