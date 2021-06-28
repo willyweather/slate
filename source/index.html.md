@@ -433,7 +433,7 @@ intensity | int | | intensity of rainfall
 * frost : 1400
 * mixing-height : 1500
 * drought-factor : 1600
-* cyclone : 7600
+* cyclone : 00
 
 ### Map Classifications
 * radar
