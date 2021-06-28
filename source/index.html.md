@@ -10380,16 +10380,14 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notification
                 "id": 3
             }
         },
-        "notificationContacts": [
-            {
-                "contact": {
-                    "uid": "2c1b8e02-4872-4452-a989-2343e10135e1"
-                },
-                "notificationTransporterType": {
-                    "id": 4
-                }
+        {
+            "contact": {
+                "uid": "2c1b8e02-4872-4452-a989-2343e10135e1"
+            },
+            "notificationTransporterType": {
+                "id": 4
             }
-        ]
+        }
     ]
 }
 ```
