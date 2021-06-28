@@ -433,7 +433,7 @@ intensity | int | | intensity of rainfall
 * frost : 1400
 * mixing-height : 1500
 * drought-factor : 1600
-* cyclone : 00
+* cyclone : 7600
 
 ### Map Classifications
 * radar
@@ -1634,20 +1634,20 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 			"code": "severe-weather",
 			"name": "Severe Weather",
 			"classification": "storm",
-            "warningSeverityLevels": [
-                {
-                    "id": 1,
-                    "code": "yellow"
-                },
-                {
-                    "id": 2,
-                    "code": "amber"
-                },
-                {
-                    "id": 3,
-                    "code": "red"
-                }
-            ]
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
 		},
 		"content": {
 			"text": "IDN28500 Australian Government Bureau of Meteorology New South Wales Severe Weather Warning for heavy rain for people in the Northern Tablelands and North West Slopes & Plains forecast districts. Issued at 3:45 am EDT on Thursday 27 March 2014. HEAVY RAIN FOR PARTS OF NORTHEAST NEW SOUTH WALES Weather Situation A strong high pressure system is centred over the southern Tasman Sea, while a low pressure trough lies across western New South Wales. An extensive cloud band associated with this trough is delivering widespread rain over eastern New South Wales. Heavy rain is forecast for parts of the Northern Tablelands and North West Slopes & Plains forecast districts this afternoon and evening. Locations nearer the Queensland border are more likely to be affected, and flash flooding is possible. The State Emergency Service advises that people should: - Don't drive, ride or walk through flood water. - Keep clear of creeks and storm drains. - If you are trapped by flash flooding, seek refuge in the highest available place and ring 000 if you need rescue. For emergency help in floods and storms, ring your local SES Unit on 132 500. The next warning will be issued by 5:00 am EDT Thursday. This warning is also available through TV and Radio broadcasts; the Bureau's website at www.bom.gov.au or call 1300 659 218. The Bureau and State Emergency Service would appreciate this warning being broadcast regularly. ",
@@ -1664,20 +1664,20 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 			"code": "severe-weather",
 			"name": "Severe Weather",
 			"classification": "storm",
-            "warningSeverityLevels": [
-                {
-                    "id": 1,
-                    "code": "yellow"
-                },
-                {
-                    "id": 2,
-                    "code": "amber"
-                },
-                {
-                    "id": 3,
-                    "code": "red"
-                }
-            ]
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
 		},
 		"content": {
 			"text": " IDQ20032 Bureau of Meteorology Queensland Regional Office TOP PRIORITY FOR IMMEDIATE BROADCAST SEVERE WEATHER WARNING for HEAVY RAINFALL For people in the Wide Bay and Burnett, Darling Downs and Granite Belt, Southeast Coast and parts of the Central Highlands and Coalfields and Maranoa and Warrego Forecast Districts. Issued at 5:02 am Thursday, 27 March 2014. Synoptic Situation: A developing surface trough extends from the central interior into the central Darling Downs. The trough is forecast to drift slowly south during today, before crossing southeastern districts on Friday. A deep moist east to northeast flow will extend from the Coral Sea, across southeastern districts, and into the trough. Rain areas, currently extending through districts to the east of the trough, are expected to develop further in the next 24 hours. Heavy rain, which may lead to flash flooding, is expected to develop during today through the Wide Bay and Burnett, southeastern Central Highlands and Coalfields, the eastern Maranoa and Warrego and the Darling Downs and Granite Belt districts. Heavy rainfall areas are likely to extend to the Southeast Coast district during the afternoon and evening. 24 hour totals of 50 to 150mm are likely, with some isolated heavier falls expected. Locations which may be affected include Gold Coast, Brisbane, Ipswich, Maroochydore, Warwick, Toowoomba, Dalby, Stanthorpe, Goondiwindi, Gympie, Bundaberg, Hervey Bay, Maryborough, Taroom, Kingaroy and St George. Queensland Fire and Emergency Services advises that people should: * Avoid driving, walking or riding through flood waters. * Keep clear of creeks and storm drains. * For emergency assistance contact the SES on 132 500. The next warning is due to be issued by 11:05 am. Warnings are also available through TV and Radio broadcasts, the Bureau's website at www.bom.gov.au or call 1300 659 219. The Bureau and Queensland Fire and Emergency Services would appreciate warnings being broadcast regularly. ",
@@ -1928,20 +1928,20 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 		"code": "floods",
 		"name": "Flood",
 		"classification": "flood",
-        "warningSeverityLevels": [
-            {
-                "id": 1,
-                "code": "yellow"
-            },
-            {
-                "id": 2,
-                "code": "amber"
-            },
-            {
-                "id": 3,
-                "code": "red"
-            }
-        ]
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	"content": {
 		"text": "IDQ20870 Australian Government Bureau of 
@@ -2048,20 +2048,20 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
 			"code": "flood-summary",
 			"name": "Flood Summary (state wide)",
 			"classification": "flood",
-            "warningSeverityLevels": [
-                {
-                    "id": 1,
-                    "code": "yellow"
-                },
-                {
-                    "id": 2,
-                    "code": "amber"
-                },
-                {
-                    "id": 3,
-                    "code": "red"
-                }
-            ]
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
 		}	
 	},
 	{
@@ -2074,20 +2074,20 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
 			"code": "floods",
 			"name": "Flood",
 			"classification": "flood",
-            "warningSeverityLevels": [
-                {
-                    "id": 1,
-                    "code": "yellow"
-                },
-                {
-                    "id": 2,
-                    "code": "amber"
-                },
-                {
-                    "id": 3,
-                    "code": "red"
-                }
-            ]
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
 		}
 	}
 ]
@@ -9578,6 +9578,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
     "deviceType": {
         "id": 2
     }
+}
 ```
 
 > Example Response
