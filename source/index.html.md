@@ -1732,157 +1732,521 @@ https://api.willyweather.com.au/v2/{api key}/warning-types.json
 		"id": 1,
 		"code": "severe-weather",
 		"name": "Severe Weather",
-		"classification": "storm"
+		"classification": "storm",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 2,
 		"code": "strong-winds",
 		"name": "Strong Wind",
-		"classification": "strong-wind"
+		"classification": "strong-wind",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 3,
 		"code": "thunderstorms",
 		"name": "Thunderstorm",
-		"classification": "storm"
+		"classification": "storm",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 4,
 		"code": "floods",
 		"name": "Flood",
-		"classification": "flood"
+		"classification": "flood",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 5,
 		"code": "roads",
 		"name": "Road",
-		"classification": "road"
+		"classification": "road",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 6,
 		"code": "fire",
 		"name": "Fire",
-		"classification": "fire"
+		"classification": "fire",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 7,
 		"code": "heat",
 		"name": "Heat",
-		"classification": "heat"
+		"classification": "heat",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 8,
 		"code": "frosts",
 		"name": "Frost",
-		"classification": "frost"
+		"classification": "frost",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 9,
 		"code": "cyclones",
 		"name": "Cyclone",
-		"classification": "hurricane"
+		"classification": "hurricane",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 10,
 		"code": "tsunamis",
 		"name": "Tsunami",
-		"classification": "tsunami"
+		"classification": "tsunami",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 11,
 		"code": "storm-tide",
 		"name": "Storm tide",
-		"classification": "tsunami"
+		"classification": "tsunami",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 12,
 		"code": "earthquakes",
 		"name": "Earthquake",
-		"classification": "earthquake"
+		"classification": "earthquake",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 13,
 		"code": "bushwalking",
 		"name": "Bushwalking",
-		"classification": "hiking"
+		"classification": "hiking",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 14,
 		"code": "haze",
 		"name": "Haze",
-		"classification": "dust-smoke-pollution"
+		"classification": "dust-smoke-pollution",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 15,
 		"code": "sheep-grazier",
 		"name": "Sheep Grazier",
-		"classification": "sheep"
+		"classification": "sheep",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	}, 
 	{
 		"id": 16,
 		"code": "brown-rot",
 		"name": "Brown Rot",
-		"classification": "fruit-disease"
+		"classification": "fruit-disease",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 17,
 		"code": "downy-mildew",
 		"name": "Downy Mildew",
-		"classification": "leaf-disease"
+		"classification": "leaf-disease",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 18,
 		"code": "farmers-graziers",
 		"name": "Farmer\/Grazier",
-		"classification": "farming"
+		"classification": "farming",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 19,
 		"code": "announcements",
 		"name": "Important Announcement",
-		"classification": "general"
+		"classification": "general",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 20,
 		"code": "small-boat",
 		"name": "Small Boat",
-		"classification": "marine"
+		"classification": "marine",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 21,
 		"code": "closed-waters",
 		"name": "Closed Water",
-		"classification": "closed-water"
+		"classification": "closed-water",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 22,
 		"code": "flood-summary",
 		"name": "Flood Summary (state wide)",
-		"classification": "flood"
+		"classification": "flood",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 23,
 		"code": "rain",
 		"name": "Rain",
-		"classification": "cold-rain"
+		"classification": "cold-rain",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 24,
 		"code": "snow",
 		"name": "Snow",
-		"classification": "snow"
+		"classification": "snow",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 25,
 		"code": "fog",
 		"name": "Fog",
-		"classification": "fog"
+		"classification": "fog",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	},
 	{
 		"id": 26,
 		"code": "ice",
 		"name": "Ice",
-		"classification": "frost"
+		"classification": "frost",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
 	}
 ]
 ```
@@ -9557,7 +9921,7 @@ name | string | `ios`, `android` | Mobile type name
 
 ## Devices - Create
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
@@ -9570,7 +9934,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -9624,7 +9988,7 @@ Response is Device. See <a href="#devices-list">Device</a> for description of a 
 
 ## Devices - Update
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices/{device uid}.json
@@ -9637,7 +10001,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices/{dev
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -9745,7 +10109,7 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 
 ## Locations - Update
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json
@@ -9756,7 +10120,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.js
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 [
@@ -9840,7 +10204,7 @@ Response is units. See <a href="#units">Units</a> for a description of a Account
 
 ## Measurements - Update
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json
@@ -9851,7 +10215,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -10185,7 +10549,7 @@ code | string | `forecastMinTemp`, `forecastMaxTemp`, `forecastSwell`, `forecast
 
 ## Notifications - Create
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
@@ -10202,7 +10566,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notification
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -10330,7 +10694,7 @@ Response is a Notification object. See <a href="#notifications-list">Notificatio
 
 ## Notifications - Update
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
@@ -10352,7 +10716,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notification
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -10416,7 +10780,7 @@ Response is an empty object.
 
 ## Notifications - Update Enabled State
 
-> Example Query String Request
+> Example Request Body
 
 ```shell
 https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
@@ -10428,7 +10792,7 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notification
 }
 ```
 
-> Example Request Body
+> Example Request Body (JSON Content)
 
 ```json
 {
@@ -10504,12 +10868,7 @@ Response is an empty object.
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
-```
-```json
-{
-    "uids": "117d017a-aa74-4413-9730-1424b0a2b427,a5538ce8-b09f-4079-867a-d2df47cbdcc8,5ea0b752-ead2-4367-9d62-ff9c5ad6d7ef"
-}
+https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json?uids=117d017a-aa74-4413-9730-1424b0a2b427,a5538ce8-b09f-4079-867a-d2df47cbdcc8,5ea0b752-ead2-4367-9d62-ff9c5ad6d7ef
 ```
 
 > Example Request Body
