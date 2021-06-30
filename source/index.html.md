@@ -2783,7 +2783,7 @@ An array of forecast days
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
-entries | array | | **(see)**
+entries | array | | **(see Entries below)**
 
 ### Entries
 
@@ -9616,11 +9616,11 @@ uid | string | |
 firstName | string | |
 lastName | string | |
 email | string | |
-credentials | string | `ROLE_USER`, `ROLE_EMPLOYEE`, `ROLE_DASH`, `ROLE_API_CONSUMER`, `ROLE_ADMIN` | Account's accessibility
-accountFeatures | object | **see (Account Feature)** | An array of account features.
-locations | string | See <a href="#locations">Locations</a>. | An array of account's favorite locations.
+credentials | array | `ROLE_USER`, `ROLE_EMPLOYEE`, `ROLE_DASH`, `ROLE_API_CONSUMER`, `ROLE_ADMIN` | Account's accessibility
+accountFeatures | array | **see (Account Feature)** | An array of account features.
+locations | array | See <a href="#locations">Locations</a>. | An array of account's favorite locations.
 units | object | See <a href="#units">Units</a>. | Account's prefered units.
-warningFilters | string | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | An array of warning filters
+warningFilters | array | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | An array of warning filters
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`)
 
@@ -9633,12 +9633,6 @@ loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`)
 </aside>
 
 ## Account - Register
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/register.json
-```
 
 > Example Request Body
 
@@ -9726,12 +9720,6 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 
 ## Account - Login
 
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/login.json?email=bartsimpson@willyweather.com&password=secret1234
-```
-
 > Example Request Body
 
 ```json
@@ -9804,7 +9792,7 @@ Logins an account.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 email | string | | | true
-password | string | | true
+password | string | | | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -9815,12 +9803,6 @@ password | string | | true
 Response is an Account. See <a href="#accounts">Accounts</a> for a description of a Account response.
 
 ## Account - Update Heartbeat
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/heartbeat.json
-```
 
 > Example Request Body
 
@@ -9848,13 +9830,7 @@ Updates a account's _loggedInDateTime_.
 
 Response is an empty array.
 
-## Devices - List
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
-```
+## Devices - Get
 
 > Example Request Body
 
@@ -9868,8 +9844,8 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
 [
     {
         "uid": "882dbe71-f933-4a8e-9597-83e4f0e1ac4a",
-        "token": "407fd2e3f785d2964b0f6667dddbe52fc8fbbdba95642af5401aec3855c343b5",
-        "endpointArn": "arn:aws:sns:us-east-1:320547687527:endpoint\/APNS\/TestApplicationNames\/5e12af52-d0c0-3f29-bf94-0f3d83aea21e",
+        "token": "<device token>",
+        "endpointArn": "arn:aws:...",
         "lat": -33.869,
         "lng": 151.226,
         "deviceType": {
@@ -9879,8 +9855,8 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
     },
     {
         "uid": "99d81062-ac72-48ad-b69f-66d96e5d1c46",
-        "token": "mNXPFA58X96JIGWg4gUeBXvnwiUuLncgXsvXAhiG8EOYluuulAUZYdHLUuub8U5s",
-        "endpointArn": "arn:aws:sns:us-east-1:320547687527:endpoint\/APNS\/TestApplicationNames\/6d3a040a-89ef-40f0-be59-d7629050ce12",
+        "token": "<device token>",
+        "endpointArn": "arn:aws:...",
         "lat": 14.21,
         "lng": 121.992,
         "deviceType": {
@@ -9923,22 +9899,11 @@ name | string | `ios`, `android` | Mobile type name
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
-```
-
 ```json
 {
-    "token": "mmez7hsnd6ep5fyfntayrfezy7xdc77w2gh4y4hu32us6ug725w9hbf7ss64k2ce",
-    "type": 2
-}
-```
-
-> Example Request Body (JSON Content)
-
-```json
-{
-    "token": "mmez7hsnd6ep5fyfntayrfezy7xdc77w2gh4y4hu32us6ug725w9hbf7ss64k2ce",
+    "token": "<device token>",
+    "lat": -33.333,
+    "lng": 105.666,
     "deviceType": {
         "id": 2
     }
@@ -9950,8 +9915,8 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json
 ```json
 {
     "uid": "be1a2610-2ace-4d9c-a7da-2af1ec8acd35",
-    "token": "mmez7hsnd6ep5fyfntayrfezy7xdc77w2gh4y4hu32us6ug725w9hbf7ss64k2ce",
-    "endpointArn": null,
+    "token": "<device token>",
+    "endpointArn": "arn:aws:...",
     "lat": -33.333,
     "lng": 105.666,
     "deviceType": {
@@ -9967,13 +9932,18 @@ Creates a device.
 
 `POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json`
 
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+deviceType | object | **(see Device Type below)** | | true
+token | string | | a unique key for the app-device combination for push notification gateways | false
+lat | float | | the exact coordinates of a device | false
+lng | float | | the exact coordinates of a device | false
+
+### Device Type
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-token | string | | a unique key for the app-device combination for push notification gateways | false
-type | int | `1` for ios  `2` for android | | true
-lat | float | | the exact coordinates of a device | false
-lng | float | | the exact coordinates of a device | false
+id | int | `1`, `2` | `1` for ios<br/>`2` for android | true
 
 <aside class="notice">
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
@@ -9990,22 +9960,9 @@ Response is Device. See <a href="#devices-list">Device</a> for description of a 
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices/{device uid}.json
-```
 ```json
 {
-    "token": "e5y658m5g32bsxfuf78drdbqz348uyhztgt4xw5u57wm5y8xj28r2vd2qmgaxts5",
-    "lat": -32.86901,
-    "lng": 151.2261
-}
-```
-
-> Example Request Body (JSON Content)
-
-```json
-{
-    "token": "e5y658m5g32bsxfuf78drdbqz348uyhztgt4xw5u57wm5y8xj28r2vd2qmgaxts5",
+    "token": "<device token>",
     "lat": -32.86901,
     "lng": 151.2261
 }
@@ -10016,8 +9973,8 @@ https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices/{dev
 ```json
 {
     "uid": "738f8f27-2818-4786-8525-94d443a1a5c8",
-    "token": "e5y658m5g32bsxfuf78drdbqz348uyhztgt4xw5u57wm5y8xj28r2vd2qmgaxts5",
-    "endpointArn": null,
+    "token": "<device token>",
+    "endpointArn": "arn:aws:...",
     "lat": -32.869,
     "lng": 151.226,
     "deviceType": {
@@ -10050,13 +10007,7 @@ lng | float | | the exact coordinates of a device | false
 
 Response is Device. See <a href="#devices-list">Device</a> for description of a Device response.
 
-## Locations - List
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json
-```
+## Locations - Get
 
 > Example Request Body
 
@@ -10111,17 +10062,6 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json
-```
-```json
-{
-    "ids": "16,54,221"
-}
-```
-
-> Example Request Body (JSON Content)
-
 ```json
 [
     {
@@ -10148,25 +10088,25 @@ Update account's locations.
 
 `POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json`
 
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+ | array | **(See Location below)** | An array of location | true
+
+### Location
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | | true
+
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
 </aside>
-
-Parameter | Type | Options | Required
---------- | ---- | ------- | --------
-ids | csv | | true
 
 ### Response
 
 Response is an empty array.
 
-## Measurements - List
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json
-```
+## Measurements - Get
 
 > Example Request Body
 
@@ -10206,17 +10146,6 @@ Response is units. See <a href="#units">Units</a> for a description of a Account
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json
-```
-```json
-{
-    "units": "amount:in,distance:km,speed:knots,swellHeight:ft,temperature:c,tideHeight:m,pressure:mmhg"
-}
-```
-
-> Example Request Body (JSON Content)
-
 ```json
 {
     "units": {
@@ -10245,7 +10174,19 @@ Updates account's prefered units.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-units | csv | **`amount`**:`mm`, `pts`, `in` <br/> **`distance`**:`km`, `miles` <br/> **`speed`**:`km/h`, `mph`, `m/s, knots` <br/> **`swellHeight`**:`m`, `ft` <br/> **`temperature`**:`c`, `f` <br/> **`tideHeight`**:`m`, `ft` <br/> **`pressure`**:`hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | true
+units | object | **(See Units below)** | | true
+
+### Units
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+amount | string | `mm`, `pts`, `in` | | false
+distance | string | `km`, `miles` | | false
+speed | string | `km/h`, `mph`, `m/s, knots` | | false
+swellHeight | string | `m`, `ft` | | false
+temperature | string | `c`, `f` | | false
+tideHeight | string | `m`, `ft` | | false
+pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -10255,13 +10196,7 @@ units | csv | **`amount`**:`mm`, `pts`, `in` <br/> **`distance`**:`km`, `miles` 
 
 Response is an empty object.
 
-## Notifications - List
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json?notificationTypes=1,2&notificationTransporterTypes=5
-```
+## Notifications - Get
 
 > Example Request Body
 
@@ -10412,8 +10347,20 @@ Returns the list of account's notifications units.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-notificationType | csv | `1` for alert type <br/> `2` for report type <br/> `3` for warning type | | false
-notificationTransporterType | csv | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | | false
+notificationTypes | array | **(See Notification Type)** | | false
+notificationTransporterTypes | array | **(See Transporter Type)** | | false
+
+### Notification Type
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | `1`, `2`, `3` | `1` for alert type <br/> `2` for report type <br/> `3` for warning type | true
+
+### Transporter Type
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | `1`, `2`, `3`, `4`, `5` | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -10440,8 +10387,8 @@ warningType | object | | **(See <a href="#warning-types">Warning Types</a> objec
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | int | `1` for alert <br/> `2` for report <br/> `3` for warning | 
-name | string | `alert`, `report`, `warning` |
+id | int | `1`, `2`, `3` | `1` for alert <br/> `2` for report <br/> `3` for warning
+name | string | `alert`, `report`, `warning` | 
 
 ### Notification Contact
 
@@ -10551,23 +10498,6 @@ code | string | `forecastMinTemp`, `forecastMaxTemp`, `forecastSwell`, `forecast
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
-```
-```json
-{
-    "name": "Notification name",
-    "location": 4988,
-    "enabled": false,
-    "followMe": false,
-    "notificationType": 1,
-    "notificationTransporterTypes": "1,2,3,4",
-    "warningClassification": "storm"
-}
-```
-
-> Example Request Body (JSON Content)
-
 ```json
 {
     "name": "Notification name",
@@ -10668,21 +10598,46 @@ Creates a notification.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 name | string | | | true
-location | int | | The location this notification is for | true
+location | object | **(See Location)**  | The location this notification is for. | true
 enabled | boolean | | | true
 followMe | false | | Updates location of notification | true
-notificationType | csv | `1` for alert type <br/> `2` for report type <br/> `3` for warning type | | true
-notificationTransporterTypes | csv | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | Delivery method | true
+notificationType | object | `1`, `2`, `3` | An object with attribute "id"<br/>`1` for alert type <br/> `2` for report type <br/> `3` for warning type | true
+notificationContacts | array | **(See Notification Contact)** | | true
 lat | foat | | | false (required if for `alert`)
 lng | float | | | false (required if for `alert`)
-intensity | int | `1`, `2`, `3`, `4`, `5` | | false (required if for `alert`)
+intensity | int | `1`, `2`, `3`, `4`, `5` | intensity levels | false (required if for `alert`)
 duration | int | | | false (required if for `alert`)
 notificationMinTime | int | 0 - 1439 | Time when the notification starts (in minutes) | false (required if for `alert`)
 notificationMaxTime | int| 0 - 1439 | Time when the notification ends (in minutes) | false (required if for `alert`)
 notifyMeOffset | int | | | false (required if for `alert`)
 warningType | int | | | false (either `warningType` or `warningClassification` is required if for `warning`)
-warningClassification | string | | | false (either `warningType` or `warningClassification` is required if for `warning`)
-warningSeverityLevels | csv | `1` for yellow, `2` for amber, `3` for red | | false
+warningClassification | string | see <a href="#warning">Warning</a> for options | | false (either `warningType` or `warningClassification` is required if for `warning`)
+warningSeverityLevels | csv | `1`, `2`, `3` |  | false
+
+### Location
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | | true
+
+### Notification Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+contact | object | **(See Contact)** | | true
+notificationTransporterType | object | **(See Transporter Type)** | | true
+
+### Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+uid | string | | | true
+
+### Transporter Type
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | `1`, `2`, `3`, `4`, `5` | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -10695,28 +10650,6 @@ Response is a Notification object. See <a href="#notifications-list">Notificatio
 ## Notifications - Update
 
 > Example Request Body
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
-```
-```json
-{
-    "name": "Notification name",
-    "enabled": false,
-    "followMe": false,
-    "notificationType": 1,
-    "notificationTransporterTypes": "3,4",
-    "duration": 3,
-    "notifyMeOffset": 1,
-    "intensity": 3,
-    "lat": -33.7321,
-    "lng": 151.3012,
-    "notificationMinTime": 75,
-    "notificationMaxTime": 100
-}
-```
-
-> Example Request Body (JSON Content)
 
 ```json
 {
@@ -10782,18 +10715,6 @@ Response is an empty object.
 
 > Example Request Body
 
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json
-```
-```json
-{
-    "uids": "6469b8e4-5bcb-4a40-804a-f1c136338f61,7d0e6509-f9c1-431d-a0b0-2619d27ed68f",
-    "enabled": false
-}
-```
-
-> Example Request Body (JSON Content)
-
 ```json
 {
     "notifications": [
@@ -10822,8 +10743,14 @@ Updates multiple notification's _enabled_ state.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-uids | csv | | | true
+notifications | array | **(See Notifications below)** | | true
 enabled | boolean | | | true
+
+### Notifications
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+uid | string | | | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -10834,12 +10761,6 @@ enabled | boolean | | | true
 Response is an empty object.
 
 ## Notifications - Delete
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{uid}.json
-```
 
 > Example Request Body
 
@@ -10864,12 +10785,6 @@ Deletes a notification.
 Response is an empty object.
 
 ## Notifications - Bulk Delete
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json?uids=117d017a-aa74-4413-9730-1424b0a2b427,a5538ce8-b09f-4079-867a-d2df47cbdcc8,5ea0b752-ead2-4367-9d62-ff9c5ad6d7ef
-```
 
 > Example Request Body
 
@@ -10901,7 +10816,13 @@ Delete multiple notifications.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-uids | csv | | notification uids to delete | true
+ | array | **(See Notifications below)** | An array of notifications | true
+
+### Notifications
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+uid | string | | | true
 
 ### Response
 
