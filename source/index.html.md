@@ -9617,12 +9617,22 @@ firstName | string | |
 lastName | string | |
 email | string | |
 credentials | array | `ROLE_USER`, `ROLE_EMPLOYEE`, `ROLE_DASH`, `ROLE_API_CONSUMER`, `ROLE_ADMIN` | Account's accessibility
-accountFeatures | array | **see (Account Feature)** | An array of account features.
+accountFeatures | array | **see (Account Feature) below** | An array of account features.
 locations | array | See <a href="#locations">Locations</a>. | An array of account's favorite locations.
 units | object | See <a href="#units">Units</a>. | Account's prefered units.
 warningFilters | array | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | An array of warning filters
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`)
+
+### Account Feature
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10` | `1` for "SMS"<br/>`2` for "Ad Removal"<br/>`3` for "1 Notification"<br/>`4` for "5 Notifications"<br/>`5` for "10 Notifications"<br/>`6` for "25 Notifications"<br/>`7` for "1 Contact"<br/>`8` for "20 Contacts"<br/>`9` for "100 Contacts"<br/>`10` for Webhook
+code | string | `sms`, `ads`, `notifications1`, `notifications5`, `notifications10`, `notifications25`, `contacts1`, `contacts20`, `contacts100`, `webhook` |
+name | string | "SMS", "Ad Removal", "1 Notification", "5 Notifications", "10 Notifications", "25 Notifications", "1 Contact", "20 Contacts", "100 Contacts", "Webhook" |
+monthlyCost | int | |
+annualCost | int | |
 
 ### Request
 
