@@ -9726,7 +9726,7 @@ fullName | string | | | false
 
 ### Response
 
-Response is an Account. See <a href="#accounts">Accounts</a> for a description of a Region response.
+Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
 
 ## Account - Login
 
@@ -9810,7 +9810,7 @@ password | string | | | true
 
 ### Response
 
-Response is an Account. See <a href="#accounts">Accounts</a> for a description of a Account response.
+Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
 
 ## Account - Update Heartbeat
 
@@ -10150,7 +10150,7 @@ Returns the list of account's prefered units.
 
 ### Response
 
-Response is units. See <a href="#units">Units</a> for a description of a Account response.
+Response is units. See <a href="#units">Units</a> for a description of a Unit response.
 
 ## Measurements - Update
 
@@ -10898,3 +10898,23 @@ swellHeight | string | `m`, `ft` | meters, feet
 temperature | string | `c`, `f` | celsius, fahrenheit
 tideHeight | string | `m`, `ft` | meters, feet
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
+
+<script>
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+// remove sections if not dev
+$(document).ready(function() {
+	$(window).on('load', function() {
+		if (params.dev === "true") {
+			// remove in left panel
+			$('#tocify-header11').remove();
+
+			// remove in middle panel
+			var indexStart = $('.content [data-unique="accounts"]').index(); // start element to remove
+			var indexEnd = $('.content [data-unique="units"]').index(); // end element remove (but do not remove this element)
+			$(".content").children().slice(1495, 1748).remove();
+		}
+	});
+});
+</script>
