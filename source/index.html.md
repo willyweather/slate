@@ -9616,13 +9616,13 @@ uid | string | |
 firstName | string | |
 lastName | string | |
 email | string | |
-credentials | array | `ROLE_USER`, `ROLE_EMPLOYEE`, `ROLE_DASH`, `ROLE_API_CONSUMER`, `ROLE_ADMIN` | Account's accessibility
+credentials | array | | Account's accessibility
 accountFeatures | array | **see (Account Feature) below** | An array of account features.
 locations | array | See <a href="#locations">Locations</a>. | An array of account's favorite locations.
 units | object | See <a href="#units">Units</a>. | Account's prefered units.
-warningFilters | array | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | An array of warning filters
+warningFilters | array | See `classifications` in <a href="#warning-types">Warning Types</a>  | An array of warning filters
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
-loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`)
+loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`). Can be null.
 
 ### Account Feature
 
@@ -9631,7 +9631,7 @@ Attribute | Type | Values | Description
 id | int | `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10` | `1` for "SMS"<br/>`2` for "Ad Removal"<br/>`3` for "1 Notification"<br/>`4` for "5 Notifications"<br/>`5` for "10 Notifications"<br/>`6` for "25 Notifications"<br/>`7` for "1 Contact"<br/>`8` for "20 Contacts"<br/>`9` for "100 Contacts"<br/>`10` for Webhook
 code | string | `sms`, `ads`, `notifications1`, `notifications5`, `notifications10`, `notifications25`, `contacts1`, `contacts20`, `contacts100`, `webhook` |
 name | string | "SMS", "Ad Removal", "1 Notification", "5 Notifications", "10 Notifications", "25 Notifications", "1 Contact", "20 Contacts", "100 Contacts", "Webhook" |
-monthlyCost | int | |
+monthlyCost | int | | In cents
 annualCost | int | |
 
 ### Request
@@ -9662,7 +9662,7 @@ annualCost | int | |
     "firstName": "Jupiter",
     "lastName": "Jones",
     "email": "jupiterjones60ae164860728@willyweather.com",
-    "credentials": ["ROLE_USER"],
+    "credentials": [],
     "accountFeatures": [
         {
             "id": 3,
@@ -9747,7 +9747,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
     "firstName": "Bart",
     "lastName": "Simpson",
     "email": "bartsimpson@willyweather.com",
-    "credentials": ["ROLE_USER"],
+    "credentials": [],
     "accountFeatures": [
         {
             "id": 3,
@@ -9894,15 +9894,15 @@ Attribute | Type | Values | Description
 uid | string | | 
 token | string | | a unique key for the app-device combination for push notification gateways
 endpointArn | string | | **Amazon Resource Names**
-lat | float | | the exact coordinates of the device
-lng | float | | the exact coordinates of the device
+lat | float | | the exact coordinates of the device. Can be null.
+lng | float | | the exact coordinates of the device. Can be null.
 deviceType | object | | **(see Device Type object)** 
 
 ### Device Type
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | string | | 
+id | int | `1` for ios, `2` for android |
 name | string | `ios`, `android` | Mobile type name
 
 ## Devices - Create
@@ -9944,16 +9944,10 @@ Creates a device.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-deviceType | object | **(see Device Type below)** | | true
+deviceType | object | see <a href="#device-type">Device Type</a> | | true
 token | string | | a unique key for the app-device combination for push notification gateways | false
 lat | float | | the exact coordinates of a device | false
 lng | float | | the exact coordinates of a device | false
-
-### Device Type
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-id | int | `1`, `2` | `1` for ios<br/>`2` for android | true
 
 <aside class="notice">
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
@@ -10100,7 +10094,7 @@ Update account's locations.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
- | array | **(See Location below)** | An array of location | true
+ | array | **(See Location below)** | An array of locations | true
 
 ### Location
 
@@ -10339,7 +10333,7 @@ Response is an empty object.
                 "id": 1,
                 "notificationAlertConditionType": {
                     "id": 2,
-                    "code": "forecastMaxTemp"
+                    "code": "forecast-max-temp"
                 },
                 "tempRangeStart": 290,
                 "tempRangeEnd": 310
@@ -10358,7 +10352,7 @@ Returns the list of account's notifications units.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notificationTypes | array | **(See Notification Type)** | | false
-notificationTransporterTypes | array | **(See Transporter Type)** | | false
+notificationTransporterTypes | array | **(See Notification Transporter Type)** | | false
 
 ### Notification Type
 
@@ -10366,7 +10360,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 id | int | `1`, `2`, `3` | `1` for alert type <br/> `2` for report type <br/> `3` for warning type | true
 
-### Transporter Type
+### Notification Transporter Type
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
@@ -10388,10 +10382,10 @@ notificationContacts | array | | an array of Notification Contact objects **(see
 followMe | boolean | | 
 location | string | |  **(See <a href="#locations">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
-notifyMeOffset | int | | In minutes (only exists if type is `alert`)
-notificationTime | object | | **(see Notification Time object)** In minutes (only exists if type is `alert`)
+notifyMeOffset | int | | In minutes (only exists if type is `alert`). Can be null.
+notificationTime | object | | **(see Notification Time object)** (only exists if type is `alert`)
 notificationAlertConditions | array | | an array of Notification Alert Conditions **(see Notification Alert Condition object)** In minutes (only exists if type is `alert`)
-warningType | object | | **(See <a href="#warning-types">Warning Types</a> object)** In minutes (only exists if type is `warning`)
+warningType | object | | **(See <a href="#warning-types">Warning Types</a> object)** (only exists if type is `warning`)
 
 ### Notification Type
 
@@ -10447,62 +10441,62 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 id | int | |
 notificationAlertConditionType | object | | **(see Notification Alert Condition Type object)**
-tempRangeStart | float | | Only exists if alert condition type is `forecastMinTemp` or `forecastMaxTemp`
-tempRangeEnd | float | | Only exists if alert condition type is `forecastMinTemp` or `forecastMaxTemp`
-heightRangeStart | float | | Only exists if alert condition type is `forecastSwell`
-heightRangeEnd | float | | Only exists if alert condition type is `forecastSwell`
-periodRangeStart | float | | Only exists if alert condition type is `forecastSwell`
-periodRangeEnd | float | | Only exists if alert condition type is `forecastSwell`
-directionRangeStart | float | | Only exists if alert condition type is `forecastSwell`
-directionRangeEnd | float | | Only exists if alert condition type is `forecastSwell`
-speedRangeStart | float | | Only exists if alert condition type is `forecastWind` or `currentWind`
-speedRangeEnd | float | | Only exists if alert condition type is `forecastWind` or `currentWind`
-directionRangeStart | int | | Only exists if alert condition type is `forecastWind` or `currentWind`
-directionRangeEnd | int | | Only exists if alert condition type is `forecastWind` or `currentWind`
-precis | array | | Only exists if alert condition type is `forecastWeather` or `forecastRegionPrecis`
-precis | string | | Only exists if alert condition type is `forecastHourlyPrecis`
-amount | int | | Only exists if alert condition type is `forecastRainfall`
-probability | int | | Only exists if alert condition type is `forecastRainfall`
-status | string | | Only exists if alert condition type is `forecastTides`
-buffer | string | | Only exists if alert condition type is `forecastTides`
-time | string | | Only exists if alert condition type is `forecastSunriseSunset`
-indexRangeStart | float | | Only exists if alert condition type is `forecastUV` or `forecastDailyMaxUV`
-indexRangeEnd | float | | Only exists if alert condition type is `forecastUV` or `forecastDailyMaxUV`
-phase | string | | Only exists if alert condition type is `forecastMoonphase`
-surroundingDays | string | | Only exists if alert condition type is `forecastMoonphase`
-tempRangeStart | float | | Only exists if alert condition type is `currentTemp`
-tempRangeEnd | float | | Only exists if alert condition type is `currentTemp`
-trend | int | | Only exists if alert condition type is `currentTemp`
-apparentTempRangeStart | float | | Only exists if alert condition type is `currentApparentTemp`
-apparentTempRangeEnd | float | | Only exists if alert condition type is `currentApparentTemp`
-deltaTRangeStart | float | | Only exists if alert condition type is `currentDeltaT`
-deltaTRangeEnd | float | | Only exists if alert condition type is `currentDeltaT`
-trend | int | | Only exists if alert condition type is `currentDeltaT`
-amount | int | | Only exists if alert condition type is `currentRainLastHour` or `currentRainSince9am`
-humidityRangeStart | float | | Only exists if alert condition type is `currentHumidity`
-humidityRangeEnd | float | | Only exists if alert condition type is `currentHumidity`
-dewpointRangeStart | float | | Only exists if alert condition type is `currentDewpoint`
-dewpointRangeEnd | float | | Only exists if alert condition type is `currentDewpoint`
-trend | int | | Only exists if alert condition type is `currentDewpoint`
-pressureRangeStart | float | | Only exists if alert condition type is `currentPressure`
-pressureRangeEnd | float | | Only exists if alert condition type is `currentPressure`
-trend | int | | Only exists if alert condition type is `currentPressure`
-forecastCode | string | | Only exists if alert condition type is `forecastRadar`
-intensity | int | | Only exists if alert condition type is `forecastRadar`
-minimumRainDuration | int | | Only exists if alert condition type is `forecastRadar`
-mapLocationId | int | | Only exists if alert condition type is `forecastRadar`
-gustSpeedRangeStart | int | | Only exists if alert condition type is `currentWindGust`
-gustSpeedRangeEnd | int | | Only exists if alert condition type is `currentWindGust`
-cloudRangeStart | int | | Only exists if alert condition type is `currentCloud`
-cloudRangeEnd | int | | Only exists if alert condition type is `currentCloud`
-trend | int | | Only exists if alert condition type is `currentCloud`
+tempRangeStart | float | | Only exists if alert condition type is `forecast-min-temp` or `forecast-max-temp`
+tempRangeEnd | float | | Only exists if alert condition type is `forecast-min-temp` or `forecast-max-temp`
+heightRangeStart | float | | Only exists if alert condition type is `forecast-swell`
+heightRangeEnd | float | | Only exists if alert condition type is `forecast-swell`
+periodRangeStart | float | | Only exists if alert condition type is `forecast-swell`
+periodRangeEnd | float | | Only exists if alert condition type is `forecast-swell`
+directionRangeStart | float | | Only exists if alert condition type is `forecast-swell`
+directionRangeEnd | float | | Only exists if alert condition type is `forecast-swell`
+speedRangeStart | float | | Only exists if alert condition type is `forecast-wind` or `current-wind`
+speedRangeEnd | float | | Only exists if alert condition type is `forecast-wind` or `current-wind`
+directionRangeStart | int | | Only exists if alert condition type is `forecast-wind` or `current-wind`
+directionRangeEnd | int | | Only exists if alert condition type is `forecast-wind` or `current-wind`
+precis | array | | Only exists if alert condition type is `forecast-weather` or `forecast-region-precis`
+precis | string | | Only exists if alert condition type is `forecast-hourly-precis`
+amount | int | | Only exists if alert condition type is `forecast-rainfall`
+probability | int | | Only exists if alert condition type is `forecast-rainfall`
+status | string | | Only exists if alert condition type is `forecast-tides`
+buffer | string | | Only exists if alert condition type is `forecast-tides`
+time | string | | Only exists if alert condition type is `forecast-sunrise-sunset`
+indexRangeStart | float | | Only exists if alert condition type is `forecast-uv` or `forecast-daily-max-uv`
+indexRangeEnd | float | | Only exists if alert condition type is `forecast-uv` or `forecast-daily-max-uv`
+phase | string | | Only exists if alert condition type is `forecast-moonphase`
+surroundingDays | string | | Only exists if alert condition type is `forecast-moonphase`
+tempRangeStart | float | | Only exists if alert condition type is `current-temp`
+tempRangeEnd | float | | Only exists if alert condition type is `current-temp`
+trend | int | | Only exists if alert condition type is `current-temp`
+apparentTempRangeStart | float | | Only exists if alert condition type is `current-apparent-temp`
+apparentTempRangeEnd | float | | Only exists if alert condition type is `current-apparent-temp`
+deltaTRangeStart | float | | Only exists if alert condition type is `current-delta-t`
+deltaTRangeEnd | float | | Only exists if alert condition type is `current-delta-t`
+trend | int | | Only exists if alert condition type is `current-delta-t`
+amount | int | | Only exists if alert condition type is `current-rain-last-hour` or `current-rain-since-9am`
+humidityRangeStart | float | | Only exists if alert condition type is `current-humidity`
+humidityRangeEnd | float | | Only exists if alert condition type is `current-humidity`
+dewpointRangeStart | float | | Only exists if alert condition type is `current-dewpoint`
+dewpointRangeEnd | float | | Only exists if alert condition type is `current-dewpoint`
+trend | int | | Only exists if alert condition type is `current-dewpoint`
+pressureRangeStart | float | | Only exists if alert condition type is `current-pressure`
+pressureRangeEnd | float | | Only exists if alert condition type is `current-pressure`
+trend | int | | Only exists if alert condition type is `current-pressure`
+forecastCode | string | | Only exists if alert condition type is `forecast-radar`
+intensity | int | | Only exists if alert condition type is `forecast-radar`
+minimumRainDuration | int | | Only exists if alert condition type is `forecast-radar`
+mapLocationId | int | | Only exists if alert condition type is `forecast-radar`
+gustSpeedRangeStart | int | | Only exists if alert condition type is `current-wind-gust`
+gustSpeedRangeEnd | int | | Only exists if alert condition type is `current-wind-gust`
+cloudRangeStart | int | | Only exists if alert condition type is `current-cloud`
+cloudRangeEnd | int | | Only exists if alert condition type is `current-cloud`
+trend | int | | Only exists if alert condition type is `current-cloud`
 
 ### Notification Alert Condition Type
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | | `1` for `forecastMinTemp`<br/> `2` for `forecastMaxTemp`<br/> `3` for `forecastSwell`<br/> `4` for `forecastWind`<br/> `5` for `forecastWeather`<br/> `6` for `forecastRainfall`<br/> `7` for `forecastTides`<br/> `8` for `forecastSunriseSunset`<br/> `9` for `forecastUV`<br/> `10` for `forecastMoonphase`<br/> `11` for `forecastRadar`<br/> `12` for `forecastHourlyPrecis`<br/> `13` for `forecastRegionPrecis`<br/> `14` for `forecastDailyMaxUV`<br/> `20` for `currentWind`<br/> `21` for `currentTemp`<br/> `22` for `currentRainLastHour`<br/> `23` for `currentRainSince9am`<br/> `24` for `currentHumidity`<br/> `25` for `currentDewpoint`<br/> `26` for `currentPressure`<br/> `27` for `currentDeltaT`<br/> `28` for `currentApparentTemp`<br/> `29` for `currentWindGust`<br/> `30` for `currentCloud`<br/> |
-code | string | `forecastMinTemp`, `forecastMaxTemp`, `forecastSwell`, `forecastWind`, `forecastWeather`, `forecastRainfall`, `forecastTides`, `forecastSunriseSunset`, `forecastUV`, `forecastMoonphase`, `forecastRadar`, `forecastHourlyPrecis`, `forecastRegionPrecis`, `forecastDailyMaxUV`, `currentWind`, `currentTemp`, `currentRainLastHour`, `currentRainSince9am`, `currentHumidity`, `currentDewpoint`, `currentPressure`, `currentDeltaT`, `currentApparentTemp`, `currentWindGust`, `currentCloud` |
+id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `23` for `current-rain-since-9am`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> |
+code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `forecast-wind`, `forecast-weather`, `forecast-rainfall`, `forecast-tides`, `forecast-sunrise-sunset`, `forecast-uv`, `forecast-moonphase`, `forecast-radar`, `forecast-hourly-precis`, `forecast-region-precis`, `forecast-daily-max-uv`, `current-wind`, `current-temp`, `current-rain-last-hour`, `current-rain-since-9am`, `current-humidity`, `current-dewpoint`, `current-pressure`, `current-delta-t`, `current-apparent-temp`, `current-wind-gust`, `current-cloud` |
 
 ## Notifications - Create
 
@@ -10611,7 +10605,7 @@ name | string | | | true
 location | object | **(See Location)**  | The location this notification is for. | true
 enabled | boolean | | | true
 followMe | false | | Updates location of notification | true
-notificationType | object | `1`, `2`, `3` | An object with attribute "id"<br/>`1` for alert type <br/> `2` for report type <br/> `3` for warning type | true
+notificationType | object | See <a href="#notification-type">Notification Type</a> | | true
 notificationContacts | array | **(See Notification Contact)** | | true
 lat | foat | | | false (required if for `alert`)
 lng | float | | | false (required if for `alert`)
@@ -10635,19 +10629,13 @@ id | int | | | true
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 contact | object | **(See Contact)** | | true
-notificationTransporterType | object | **(See Transporter Type)** | | true
+notificationTransporterType | object | See <a href="#notification-transporter-type">Notification Transporter Type</a> | | true
 
 ### Contact
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 uid | string | | | true
-
-### Transporter Type
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-id | int | `1`, `2`, `3`, `4`, `5` | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
