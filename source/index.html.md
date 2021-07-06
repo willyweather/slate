@@ -10894,14 +10894,14 @@ const params = Object.fromEntries(urlSearchParams.entries());
 // remove sections if not dev
 $(document).ready(function() {
 	$(window).on('load', function() {
-		if (params.dev === "true") {
+		if (params.dev !== "true") {
 			// remove in left panel
 			$('#tocify-header11').remove();
 
 			// remove in middle panel
 			var indexStart = $('.content [data-unique="accounts"]').index(); // start element to remove
 			var indexEnd = $('.content [data-unique="units"]').index(); // end element remove (but do not remove this element)
-			$(".content").children().slice(1495, 1748).remove();
+			$(".content").children().slice(indexStart, indexEnd).remove();
 		}
 	});
 });
