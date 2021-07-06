@@ -10615,7 +10615,7 @@ notificationMinTime | int | 0 - 1439 | Time when the notification starts (in min
 notificationMaxTime | int| 0 - 1439 | Time when the notification ends (in minutes) | false (required if for `alert`)
 notifyMeOffset | int | | | false (required if for `alert`)
 warningType | int | | | false (either `warningType` or `warningClassification` is required if for `warning`)
-warningClassification | string | see <a href="#warning">Warning</a> for options | | false (either `warningType` or `warningClassification` is required if for `warning`)
+warningClassification | string | See `classifications` in <a href="#warning-types">Warning Types</a> | | false (either `warningType` or `warningClassification` is required if for `warning`)
 warningSeverityLevels | csv | `1`, `2`, `3` |  | false
 
 ### Location
