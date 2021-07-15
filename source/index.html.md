@@ -25,11 +25,14 @@ The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 https://api.willyweather.com.au/v2/{api key}/info/legal.json?platform=web
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "platform" : "mobile"
+	"CONTENT_TYPE": "application/json",
+    "HTTP_X_PAYLOAD": {
+    	"platform" : "mobile"
+    }
 }
 ```
 
@@ -52,7 +55,7 @@ Parameter | Type | Options | Required
 platform | string | `web`, `mobile` | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ## Info By Location Id
@@ -63,24 +66,27 @@ platform | string | `web`, `mobile` | true
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?platform=iphone&weatherTypes=weather&mapTypes=radar-rainfall&forecastGraphTypes=wind&observationalGraphTypes=temperature&graphKeyTypes=wind
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "platform": "iphone",
-    "weatherTypes": [
-        {
-            "code": "weather"
-        }
-    ],
-    "mapTypes": [
-        {
-            "code": "radar-rainfall"
-        }
-    ],
-    "graphKeyTypes": ["wind"],
-    "forecastGraphTypes": ["precis"],
-    "observationalGraphTypes": ["dew-point"]
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"platform": "iphone",
+         "weatherTypes": [
+			{
+				"code": "weather"
+			}
+		],
+		"mapTypes": [
+			{
+				"code": "radar-rainfall"
+			}
+		],
+		"graphKeyTypes": ["wind"],
+		"forecastGraphTypes": ["precis"],
+		"observationalGraphTypes": ["dew-point"]
+	}
 }
 ```
 
@@ -127,7 +133,7 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 # Locations
@@ -140,7 +146,7 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 https://api.willyweather.com.au/v2/{api key}/locations/{location id}.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -177,7 +183,7 @@ Note - get a Location <code>id</code> using the <a href="#search">Search</a> end
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -220,24 +226,27 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 ```shell
 https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km
 ```
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "lat"  : 23.455,
-    "lng" : 150.67,
-    "mapTypes" :[
-        {
-            "code" : "forecast-regional-radar"
-        }
-    ],
-    "offset" : -15 ,
-    "limit" : 15,
-    "verbose" : true,
-    "units" : {
-        "distance" : "km",
-        "speed" : "knots"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"lat"  : 23.455,
+		"lng" : 150.67,
+		"mapTypes" :[
+			{
+				"code" : "forecast-regional-radar"
+			}
+		],
+		"offset" : -15 ,
+		"limit" : 15,
+		"verbose" : true,
+		"units" : {
+			"distance" : "km",
+			"speed" : "knots"
+		}
+	}
 }
 ```
 > Example Response
@@ -329,7 +338,7 @@ When <code>lat</code> and <code>lng</code> are provided the returned Map Provide
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response 
@@ -483,24 +492,27 @@ meta | string | `name`, `text`, `date` | the meta value provides information whi
 https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "mapTypes" :[
-        {
-            "code" : "regional-radar"
-        }, {
-            "code" : "synoptic"
-        }
-    ],
-    "offset" : -15 ,
-    "limit" : 15,
-    "verbose" : true,
-    "units" : {
-        "distance" : "km",
-        "speed" : "knots"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"mapTypes" :[
+			{
+				"code" : "regional-radar"
+			}, {
+				"code" : "synoptic"
+			}
+		],
+		"offset" : -15 ,
+		"limit" : 15,
+		"verbose" : true,
+		"units" : {
+			"distance" : "km",
+			"speed" : "knots"
+		}
+	}
 }
 ```
 
@@ -598,7 +610,7 @@ limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -613,24 +625,27 @@ Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</
 https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "mapTypes" :[
-        {
-            "code" : "regional-radar"
-        }, {
-            "code" : "synoptic"
-        }
-    ],
-    "offset" : -15 ,
-    "limit" : 15,
-    "verbose" : true,
-    "units" : {
-        "distance" : "km",
-        "speed" : "knots"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"mapTypes" :[
+			{
+				"code" : "regional-radar"
+			}, {
+				"code" : "synoptic"
+			}
+		],
+		"offset" : -15 ,
+		"limit" : 15,
+		"verbose" : true,
+		"units" : {
+			"distance" : "km",
+			"speed" : "knots"
+		}
+	}
 }
 ```
 
@@ -725,7 +740,7 @@ limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -742,16 +757,19 @@ Response is an array of Map Providers. See <a href="#get-map-providers">Get Map 
 https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-  "forecastGraphs": ["rainfall"],
-  "lat": 32.25914030013808,
-  "lng": 116.53787876954023,
-  "units": {
-     "distance" : "miles"
-   }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["rainfall"],
+		"lat": 32.25914030013808,
+		"lng": 116.53787876954023,
+		"units": {
+			"distance" : "miles"
+		}
+	}
 }
 ```
 
@@ -891,6 +909,10 @@ lng | float | | | true
 forecastGraphs | array | Only `rainfall` can be specified | | true
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
 ### Response
 
 Attribute | Type | Values | Description
@@ -978,16 +1000,19 @@ units | object | | only `distance` measurement
 https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-  "forecastGraphs": ["rainfall"],
-  "lat": 32.25914030013808,
-  "lng": 116.53787876954023,
-  "units": {
-     "distance" : "miles"
-   }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["rainfall"],
+	  	"lat": 32.25914030013808,
+	  	"lng": 116.53787876954023,
+	  	"units": {
+			"distance" : "miles"
+	   	}
+	}
 }
 ```
 
@@ -1122,6 +1147,10 @@ Returns the details of closest Radar Station.
 
 See <a href="#get-radar-station">Get Radar Station</a> for Request Parameters.
 
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
 ### Response
 
 Response a Forecast Graph. See <a href="#get-radar-station">Get Radar Station</a> for response.
@@ -1136,7 +1165,7 @@ Response a Forecast Graph. See <a href="#get-radar-station">Get Radar Station</a
 https://api.willyweather.com.au/v2/{api key}/regions/{region id}.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -1160,7 +1189,7 @@ Returns the details of a single Region.
 `GET api.willyweather.com.au/api/v2/regions/{region id}.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1198,7 +1227,7 @@ swell | 1
 https://api.willyweather.com.au/v2/{api key}/regions.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -1224,7 +1253,7 @@ Returns the details of all Regions.
 `GET api.willyweather.com.au/api/v2/regions.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1238,7 +1267,7 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 https://api.willyweather.com.au/v2/{api key}/states/{state id}/regions.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -1267,7 +1296,7 @@ Returns all Regions within a State.
 Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 # Search
@@ -1280,12 +1309,15 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 https://api.willyweather.com.au/v2/{api key}/search.json?query=beach&limit=2
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "query": "bateman",
-    "limit": 1
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"query": "bateman",
+		"limit": 1
+	}
 }
 ```
 
@@ -1330,7 +1362,7 @@ query | string | | location name or postcode | true
 limit | int | `1` - `50` | limit the number of locations in response (default 25) | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1345,15 +1377,18 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "lat": -33.8996141,
-    "lng": 151.272962,
-    "units": {
-        "distance": "km"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"lat": -33.8996141,
+		"lng": 151.272962,
+		"units": {
+			"distance": "km"
+		}
+	}
 }
 ```
 
@@ -1394,7 +1429,7 @@ lng | double | | longitude | true
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1409,23 +1444,26 @@ A single Location and units. See <a href="#locations">Location</a> for a descrip
 https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&units=distance:km
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "location" : {
-        "id" : 1
-    },
-    "weatherTypes" : [
-        {
-            "code" : "general"
-        }, {
-            "code" : "tides"
-        }
-    ],
-    "units" : {
-        "distance" : "km"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"location" : {
+			"id" : 1
+		},
+		"weatherTypes" : [
+			{
+				"code" : "general"
+			}, {
+				"code" : "tides"
+			}
+		],
+		"units" : {
+			"distance" : "km"
+		}
+	}
 }
 ```
 
@@ -1494,7 +1532,7 @@ units | csv | See <a href="#units">Units</a>. Only distance can be specified | |
 weatherTypes | csv | general, tides, swell | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1511,7 +1549,7 @@ An array of location objects, broken up into their weather types. See <a href="#
 https://api.willyweather.com.au/v2/{api key}/states/{state id}.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -1534,7 +1572,7 @@ Returns the details of a single State.
 `GET api.willyweather.com.au/api/v2/states/{state id}.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1570,7 +1608,7 @@ swell | 1
 https://api.willyweather.com.au/v2/{api key}/states.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -1595,7 +1633,7 @@ Returns the details of all States.
 `GET api.willyweather.com.au/api/v2/states.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1611,12 +1649,15 @@ Response is an array of States. See <a href="#get-state">Get State</a> for descr
 https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "classifications": ["storm", "flood"],
-    "verbose": true
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"classifications": ["storm", "flood"],
+		"verbose": true
+	}
 }
 ```
 
@@ -1703,7 +1744,7 @@ verbose | boolean |  | include the content attribute with the response | false
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -1718,7 +1759,7 @@ An array of Warning objects, see <a href="#warning">Warning</a> for a descriptio
 https://api.willyweather.com.au/v2/{api key}/warning-types.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -2258,7 +2299,7 @@ Returns all warnings types.
 `GET api.willyweather.com.au/v2/{api key}/warning-types.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -2273,7 +2314,7 @@ An array of Warning Type objects, see <a href="#warning-types">Warning Types</a>
 https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -2331,7 +2372,7 @@ Get a Warning object by `code`.
 `GET api.willyweather.com.au/v2/{api key}/warnings/{warning code}.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response - Warning Object
@@ -2388,13 +2429,16 @@ html | string | |
 https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "classifications": ["storm", "flood"],
-    "area": "location",
-    "verbose": true
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"classifications": ["storm", "flood"],
+		"area": "location",
+		"verbose": true
+	}
 }
 ```
 
@@ -2473,7 +2517,7 @@ These will all return an array of Warnings, filtered by classification.
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 Parameter | Type | Options | Description | Required
@@ -2547,7 +2591,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 
@@ -2591,13 +2635,16 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["moonphases"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["moonphases"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -2728,13 +2775,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["precis"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["precis"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -2807,9 +2857,12 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 
 ```json
 {
-    "forecasts": ["rainfall"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["rainfall"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -2890,13 +2943,15 @@ The daily probabilty for rainfall will not align with the probability included i
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
-{
-    "forecasts": ["rainfallprobability"],
-    "days": 1,
-    "startDate": "2014-03-27"
+{	"CONTENT_TYPE": "application/json",
+ 	"HTTP_X_PAYLOAD": {
+		"forecasts": ["rainfallprobability"],
+		"days": 1,
+		"startDate": "2014-03-27"
+ 	}
 }
 ```
 
@@ -2982,13 +3037,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["sunrisesunset"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["sunrisesunset"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 > Example Response
@@ -3067,13 +3125,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["swell"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["swell"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3174,13 +3235,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["temperature"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["temperature"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3266,13 +3330,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["tides"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["tides"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3368,13 +3435,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["uv"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["uv"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3481,13 +3551,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["weather"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["weather"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3564,13 +3637,16 @@ max | int | | maximum daily temperature
 https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecasts": ["wind"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecasts": ["wind"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3666,13 +3742,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["precis"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["precis"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3787,13 +3866,16 @@ night | boolean | | used to show a moon instead of a sun in icons
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["rainfallprobability"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["rainfallprobability"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -3945,13 +4027,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["sunrisesunset"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["sunrisesunset"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4077,13 +4162,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["swell-height"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["swell-height"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4285,13 +4373,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["swell-period"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["swell-period"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4457,13 +4548,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["temperature"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["temperature"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4620,13 +4714,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["tides"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["tides"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4812,13 +4909,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["uv"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["uv"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -4973,13 +5073,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "forecastGraphs": ["wind"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"forecastGraphs": ["wind"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -5176,13 +5279,16 @@ start | int | | The index of the start of the current forecast
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["apparent-temperature"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["apparent-temperature"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -5350,13 +5456,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["cloud"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["cloud"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -5522,13 +5631,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["delta-t"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["delta-t"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -5694,13 +5806,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["dew-point"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["dew-point"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -5868,13 +5983,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["humidity"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["humidity"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6042,13 +6160,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["pressure"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["pressure"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6214,13 +6335,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["rainfall"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["rainfall"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6386,13 +6510,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["temperature"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["temperature"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6558,13 +6685,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["wind"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6773,13 +6903,16 @@ start | int | | The index of the start of the current observational graph
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["wind-gust"],
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind-gust"],
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -6978,13 +7111,16 @@ Observational provides real time data from one or more weather stations.
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observational": true,
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observational": true,
+	    "days": 1,
+	    "startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -7201,13 +7337,16 @@ distance | string | | the distance from the Station to the Location
 https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "regionPrecis": true,
-    "days": 1,
-    "startDate": "2014-03-27"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"regionPrecis": true,
+		"days": 1,
+		"startDate": "2014-03-27"
+	}
 }
 ```
 
@@ -7271,20 +7410,23 @@ precis | string | | long text weather description
 https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "locations" : [
-        {
-            "id" : 1
-        }, {
-            "id" : 2
-        }
-    ],
-    "units" : {
-        "temperature" : "c"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"locations" : [
+			{
+				"id" : 1
+			}, {
+				"id" : 2
+			}
+		],
+		"units" : {
+			"temperature" : "c"
+		}
+	}
 }
 ```
 
@@ -7351,7 +7493,7 @@ ids | csv |  | list of location ids | true
 units | csv | See <a href="/#units">Units</a>. | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -7443,7 +7585,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ## Observational Graphs - Apparent Temperature
@@ -7454,12 +7596,15 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["apparent-temperature"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["apparent-temperature"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -7556,7 +7701,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -7637,12 +7782,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=cloud&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["cloud"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["cloud"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -7737,7 +7885,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -7818,12 +7966,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=delta-t&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["delta-t"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["delta-t"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -7918,7 +8069,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -7999,12 +8150,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=dew-point&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["dew-point"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["dew-point"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -8101,7 +8255,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -8182,12 +8336,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=humidity&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["humidity"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["humidity"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -8284,7 +8441,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -8365,12 +8522,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=pressure&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["pressure"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["pressure"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -8465,7 +8625,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -8546,12 +8706,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=rainfall&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["rainfall"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["rainfall"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -8646,7 +8809,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -8727,12 +8890,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=temperature&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["temperature"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["temperature"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -8827,7 +8993,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -8908,12 +9074,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["wind"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -9030,7 +9199,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -9125,12 +9294,15 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind-gust&startDate=2014-03-27
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "observationalGraphs": ["wind-gust"],
-    "startDate": "2010-10-10"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind-gust"],
+		"startDate": "2010-10-10"
+	}
 }
 ```
 
@@ -9240,7 +9412,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Data Config
@@ -9333,13 +9505,16 @@ start | int | | The index of the start of the current observational graph
 api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json?units=distance:miles
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "units" :  {
-        "distance": "km"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"units" :  {
+			"distance": "km"
+		}
+	}
 }
 ```
 
@@ -9580,7 +9755,7 @@ Parameter | Type | Options | Description | Required
 distance | string | `km`, `miles `| unit of measurement | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -9639,7 +9814,7 @@ annualCost | int | |
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ## Account - Register
@@ -9730,12 +9905,15 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 
 ## Account - Login
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "email": "bartsimpson@willyweather.com",
-    "password": "secret1234"
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"email": "bartsimpson@willyweather.com",
+		"password": "secret1234"
+	}
 }
 ```
 
@@ -9805,7 +9983,7 @@ email | string | | | true
 password | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -9814,7 +9992,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 
 ## Account - Update Heartbeat
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -9842,7 +10020,7 @@ Response is an empty array.
 
 ## Devices - Get
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -9884,7 +10062,7 @@ Returns the list of account's devices
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response - Device Object
@@ -9953,7 +10131,7 @@ lng | float | | the exact coordinates of a device | false
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10004,7 +10182,7 @@ lng | float | | the exact coordinates of a device | false
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10013,7 +10191,7 @@ Response is Device. See <a href="#devices-list">Device</a> for description of a 
 
 ## Locations - Get
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -10055,7 +10233,7 @@ Returns the list of account's locations.
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10103,7 +10281,7 @@ Parameter | Type | Options | Description | Required
 id | int | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10112,7 +10290,7 @@ Response is an empty array.
 
 ## Measurements - Get
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {}
@@ -10139,7 +10317,7 @@ Returns the list of account's prefered units.
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10193,7 +10371,7 @@ tideHeight | string | `m`, `ft` | | false
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10202,26 +10380,29 @@ Response is an empty object.
 
 ## Notifications - Get
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "notificationTypes": [
-        {
-            "id": 1
-        },
-        {
-            "id": 3
-        }
-    ],
-    "notificationTransporterTypes": [
-        {
-            "id": 2
-        },
-        {
-            "id": 3
-        }
-    ]
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"notificationTypes": [
+			{
+				"id": 1
+			},
+			{
+				"id": 3
+			}
+		],
+		"notificationTransporterTypes": [
+			{
+				"id": 2
+			},
+			{
+				"id": 3
+			}
+		]
+	}
 }
 ```
 
@@ -10367,7 +10548,7 @@ Parameter | Type | Options | Description | Required
 id | int | `1`, `2`, `3`, `4`, `5` | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response - Notification object
@@ -10638,7 +10819,7 @@ Parameter | Type | Options | Description | Required
 uid | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10702,7 +10883,7 @@ Updates a notification. Only for alert.
 See <a href="#notifications-create">Notifications Create</a> for Request Parameters.
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10751,7 +10932,7 @@ Parameter | Type | Options | Description | Required
 uid | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
@@ -10834,19 +11015,22 @@ Response is an empty object.
 ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa
 ```
 
-> Example Request Body
+> Example Request Header
 
 ```json
 {
-    "units": {
-        "amount": "mm",
-        "distance": "km",
-        "speed": "knots",
-        "swellHeight": "ft",
-        "temperature": "c",
-        "tideHeight": "ft",
-        "pressure": "hpa"
-    }
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"units": {
+			"amount": "mm",
+			"distance": "km",
+			"speed": "knots",
+			"swellHeight": "ft",
+			"temperature": "c",
+			"tideHeight": "ft",
+			"pressure": "hpa"
+		}
+	}
 }
 ```
 
@@ -10873,7 +11057,7 @@ The Units parameter allows the data to be converted to a specific unit. The form
 `GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
