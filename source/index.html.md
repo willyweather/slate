@@ -10018,6 +10018,274 @@ Updates a account's _loggedInDateTime_.
 
 Response is an empty array.
 
+## Contacts - Get by contact uid
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+	"uid": "882dbe71-f933-4a8e-9597-83e4f0e1ac4a",
+	"firstName": "Homer",
+	"lastName": "Simpson",
+	"email": "homersimpson@willyweather.com",
+	"isEmailVerified": true,
+	"phone": "0411222333",
+	"isPhoneVerified": true,
+	"webhook": "http://www.homerswebpage.com",
+	"isDefault": true
+}
+```
+
+Returns the details of a single contact
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts/{contact uid}.json`
+
+### Response - Contact Object
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+uid | string | | 
+firstName | string | |
+lastName | string | |
+email | string | |
+isEmailVerified | boolean | | Determines if email address is already verified
+phone | string | |
+isPhoneVerified | boolean | | Determines if phone is already verified
+webhook | string | |
+isDefault | boolean | | Determines whether the contact is the default of the account
+
+## Contacts - Get
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+[
+	{
+		"uid": "882dbe71-f933-4a8e-9597-83e4f0e1ac4a",
+		"firstName": "Homer",
+		"lastName": "Simpson",
+		"email": "homersimpson@willyweather.com",
+		"isEmailVerified": true,
+		"phone": "0411222333",
+		"isPhoneVerified": true,
+		"webhook": "http://www.homerswebpage.com",
+		"isDefault": true
+	}
+]
+```
+
+Returns all contacts associated with the account
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts.json`
+
+### Response - Contact Object
+Response is an array of Contacts. See <a href="#contacts-get-by-uid">Get by uid</a> for description of a Contact response.
+
+## Contacts - Create
+
+> Example Request Body
+
+```json
+{
+    "contact": 	{
+		"firstName": "Homer",
+		"lastName": "Simpson",
+		"email": "homersimpson@willyweather.com",
+		"phone": "0411222333",
+		"automatedCall": "0411222333",
+		"webhook": "http://www.homerswebpage.com",
+		"isDefault": true
+	}
+}
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Creates a Contact.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts.json`
+
+### Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+firstName | string | | | true
+lastName | string | | | true
+email | string | | | true
+phone | string | | | true
+automatedCall | string | | | true
+webhook | string | | | true
+isDefault | boolean | | | true
+
+### Response
+
+Response is empty object.
+
+## Contacts - Update
+
+> Example Request Body
+
+```json
+{
+    "contact": 	{
+		"firstName": "Homer",
+		"lastName": "Simpson",
+		"email": "homersimpson@willyweather.com",
+		"phone": "0411222333",
+		"automatedCall": "0411222333",
+		"webhook": "http://www.homerswebpage.com",
+		"isDefault": true
+	}
+}
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Updates a Contact.
+
+### Request
+
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts/{contact uid}.json`
+
+### Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+firstName | string | | | true
+lastName | string | | | true
+email | string | | | true
+phone | string | | | true
+automatedCall | string | | | true
+webhook | string | | | true
+isDefault | boolean | | | true
+
+### Response
+
+Response is empty object.
+
+## Contacts - Delete
+
+> Example Request Body
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+[]
+```
+
+Deletes a Contact.
+
+### Request
+
+`DELETE api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts/{contact uid}.json`
+
+### Response
+
+Response is an empty object.
+
+## Contacts Verification - Send Verification code
+
+> Example Request Body
+
+```json
+{
+	"contactVerification": {
+		"transporterType": 1
+	}
+}
+```
+
+> Example Response
+
+```json
+[]
+```
+
+Sends a verification code to a Contact.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts/{contact uid}/send-verification.json`
+
+### Contacts Verification
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+transporterType | int | 1 is **Email**. 2 is **SMS** | | true
+
+### Response
+
+Response is an empty object.
+
+## Contacts Verification - Verify
+
+> Example Request Body
+
+```json
+{
+	"verificationCode": "123ABCD",
+	"contactVerification": {
+		"transporterType": 1
+	}
+}
+```
+
+> Example Response
+
+```json
+[]
+```
+
+Verify contact's SMS or Email
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts/{contact uid}/verify.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+verificationCode | string | | Verification code sent to Email or SMS | true
+
+### Contacts Verification
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+transporterType | int | 1 is **Email**. 2 is **SMS** | | true
+
+### Response
+
+Response is an empty object.
+
 ## Devices - Get
 
 > Example Request Header
