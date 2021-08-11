@@ -893,6 +893,122 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGr
                 }
             }
         }
+    },
+    "observationalGraphs": {
+        "rainfall": {
+            "dataConfig": {
+                "series": {
+                    "config": {
+                        "id": "rainfall",
+                        "color": "#003355",
+                        "lineWidth": 2,
+                        "lineFill": false,
+                        "lineRenderer": "BarLineRenderer",
+                        "showPoints": false,
+                        "pointFormatter": "RainfallPointFormatter"
+                    },
+                    "yAxisDataMin": 2,
+                    "yAxisDataMax": 6,
+                    "yAxisMin": 1,
+                    "yAxisMax": 7,
+                    "groups": [{
+                        "dateTime": 1604188800,
+                        "points": [{
+                            "x": 1604211480,
+                            "y": 4
+                        }, {
+                            "x": 1604211840,
+                            "y": 3
+                        }, {
+                            "x": 1604212200,
+                            "y": 4
+                        }, {
+                            "x": 1604212560,
+                            "y": 4
+                        }, {
+                            "x": 1604212920,
+                            "y": 4
+                        }, {
+                            "x": 1604213280,
+                            "y": 5
+                        }, {
+                            "x": 1604213640,
+                            "y": 4
+                        }, {
+                            "x": 1604214000,
+                            "y": 4
+                        }, {
+                            "x": 1604214360,
+                            "y": 3
+                        }, {
+                            "x": 1604214720,
+                            "y": 4
+                        }, {
+                            "x": 1604215080,
+                            "y": 4
+                        }, {
+                            "x": 1604215440,
+                            "y": 4
+                        }, {
+                            "x": 1604215800,
+                            "y": 3
+                        }, {
+                            "x": 1604216160,
+                            "y": 2
+                        }, {
+                            "x": 1604216520,
+                            "y": 3
+                        }, {
+                            "x": 1604216880,
+                            "y": 5
+                        }, {
+                            "x": 1604217240,
+                            "y": 5
+                        }, {
+                            "x": 1604217600,
+                            "y": 6
+                        }, {
+                            "x": 1604217960,
+                            "y": 5
+                        }, {
+                            "x": 1604218320,
+                            "y": 4
+                        }, {
+                            "x": 1604218680,
+                            "y": 3
+                        }, {
+                            "x": 1604219040,
+                            "y": 3
+                        }, {
+                            "x": 1604219400,
+                            "y": 2
+                        }]
+                    }],
+                    "controlPoints": {
+                        "pre": null,
+                        "post": null
+                    },
+                    "controlPoint": null
+                },
+                "xAxisMin": 1604211480,
+                "xAxisMax": 1604219400
+            },
+            "carousel": {
+                "size": 1,
+                "start": 1
+            },
+            "issueDateTime": "2020-11-01 00:30:00",
+            "provider": {
+                "id": 58,
+                "name": "South Doodlakine",
+                "lat": -31.777,
+                "lng": 117.953,
+                "distance": 89.4,
+                "units": {
+                    "distance": "miles"
+                }
+            }
+        }
     }
 }
 ```
