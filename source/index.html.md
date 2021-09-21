@@ -754,7 +754,112 @@ Response is an array of Map Providers. See <a href="#get-map-providers">Get Map 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+    "radarStation": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "timeZone": "Australia/Perth"
+    }
+}
+```
+
+Returns the details of a Radar Station.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json`
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+radarStation | object | | **(see Radar Station)**
+
+
+### Radar Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+timeZone | string | |
+
+
+## Get Closest Radar Station
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.25914030013808&lng=116.53787876954023
+```
+
+> Example Request Header
+
+```json
+{
+    "CONTENT_TYPE": "application/json",
+    "HTTP_X_PAYLOAD": {
+        "lat": 32.25914030013808,
+        "lng": 116.53787876954023
+    }
+}
+```
+
+> Example Response
+
+```json
+{
+    "radarStation": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "timeZone": "Australia/Perth"
+    }
+}
+```
+
+Returns the details of closest Radar Station.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/radar-stations.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+lat | float | | | true
+lng | float | | | true
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+Response is a Radar Station. See <a href="#get-radar-station">Get Radar Station</a> for response.
+
+## Forecast Graphs - Rainfall: Specific radar station data source
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
 ```
 
 > Example Request Header
@@ -764,7 +869,6 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGr
 	"CONTENT_TYPE": "application/json",
 	"HTTP_X_PAYLOAD": {
 		"forecastGraphs": ["rainfall"],
-		"observationalGraphs": ["rainfall"],
 		"lat": 32.25914030013808,
 		"lng": 116.53787876954023,
 		"units": {
@@ -778,242 +882,131 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGr
 
 ```json
 {
-    "forecastGraphs": {
-        "rainfall": {
-            "dataConfig": {
-                "series": {
-                    "config": {
-                        "id": "rainfall",
-                        "color": "#003355",
-                        "lineWidth": 2,
-                        "lineFill": false,
-                        "lineRenderer": "BarLineRenderer",
-                        "showPoints": false,
-                        "pointFormatter": "RainfallPointFormatter"
-                    },
-                    "yAxisDataMin": 2,
-                    "yAxisDataMax": 6,
-                    "yAxisMin": 1,
-                    "yAxisMax": 7,
-                    "groups": [{
-                        "dateTime": 1604188800,
-                        "points": [{
-                            "x": 1604211480,
-                            "y": 4
-                        }, {
-                            "x": 1604211840,
-                            "y": 3
-                        }, {
-                            "x": 1604212200,
-                            "y": 4
-                        }, {
-                            "x": 1604212560,
-                            "y": 4
-                        }, {
-                            "x": 1604212920,
-                            "y": 4
-                        }, {
-                            "x": 1604213280,
-                            "y": 5
-                        }, {
-                            "x": 1604213640,
-                            "y": 4
-                        }, {
-                            "x": 1604214000,
-                            "y": 4
-                        }, {
-                            "x": 1604214360,
-                            "y": 3
-                        }, {
-                            "x": 1604214720,
-                            "y": 4
-                        }, {
-                            "x": 1604215080,
-                            "y": 4
-                        }, {
-                            "x": 1604215440,
-                            "y": 4
-                        }, {
-                            "x": 1604215800,
-                            "y": 3
-                        }, {
-                            "x": 1604216160,
-                            "y": 2
-                        }, {
-                            "x": 1604216520,
-                            "y": 3
-                        }, {
-                            "x": 1604216880,
-                            "y": 5
-                        }, {
-                            "x": 1604217240,
-                            "y": 5
-                        }, {
-                            "x": 1604217600,
-                            "y": 6
-                        }, {
-                            "x": 1604217960,
-                            "y": 5
-                        }, {
-                            "x": 1604218320,
-                            "y": 4
-                        }, {
-                            "x": 1604218680,
-                            "y": 3
-                        }, {
-                            "x": 1604219040,
-                            "y": 3
-                        }, {
-                            "x": 1604219400,
-                            "y": 2
-                        }]
-                    }],
-                    "controlPoints": {
-                        "pre": null,
-                        "post": null
-                    },
-                    "controlPoint": null
-                },
-                "xAxisMin": 1604211480,
-                "xAxisMax": 1604219400
-            },
-            "carousel": {
-                "size": 1,
-                "start": 1
-            },
-            "issueDateTime": "2020-11-01 00:30:00",
-            "provider": {
-                "id": 58,
-                "name": "South Doodlakine",
-                "lat": -31.777,
-                "lng": 117.953,
-                "distance": 89.4,
-                "units": {
-                    "distance": "miles"
-                }
-            }
+  "radarStation": {
+    "id": 58,
+    "name": "South Doodlakine",
+    "lat": -31.777,
+    "lng": 117.953,
+    "timeZone": "Australia/Perth"
+  },
+  "forecastGraphs": {
+    "rainfall": {
+      "dataConfig": {
+        "series": {
+          "config": {
+            "id": "rainfall",
+            "color": "#003355",
+            "lineWidth": 2,
+            "lineFill": false,
+            "lineRenderer": "BarLineRenderer",
+            "showPoints": false,
+            "pointFormatter": "RainfallPointFormatter"
+          },
+          "yAxisDataMin": 2,
+          "yAxisDataMax": 6,
+          "yAxisMin": 1,
+          "yAxisMax": 7,
+          "groups": [{
+            "dateTime": 1604188800,
+            "points": [{
+              "x": 1604211480,
+              "y": 4
+            }, {
+              "x": 1604211840,
+              "y": 3
+            }, {
+              "x": 1604212200,
+              "y": 4
+            }, {
+              "x": 1604212560,
+              "y": 4
+            }, {
+              "x": 1604212920,
+              "y": 4
+            }, {
+              "x": 1604213280,
+              "y": 5
+            }, {
+              "x": 1604213640,
+              "y": 4
+            }, {
+              "x": 1604214000,
+              "y": 4
+            }, {
+              "x": 1604214360,
+              "y": 3
+            }, {
+              "x": 1604214720,
+              "y": 4
+            }, {
+              "x": 1604215080,
+              "y": 4
+            }, {
+              "x": 1604215440,
+              "y": 4
+            }, {
+              "x": 1604215800,
+              "y": 3
+            }, {
+              "x": 1604216160,
+              "y": 2
+            }, {
+              "x": 1604216520,
+              "y": 3
+            }, {
+              "x": 1604216880,
+              "y": 5
+            }, {
+              "x": 1604217240,
+              "y": 5
+            }, {
+              "x": 1604217600,
+              "y": 6
+            }, {
+              "x": 1604217960,
+              "y": 5
+            }, {
+              "x": 1604218320,
+              "y": 4
+            }, {
+              "x": 1604218680,
+              "y": 3
+            }, {
+              "x": 1604219040,
+              "y": 3
+            }, {
+              "x": 1604219400,
+              "y": 2
+            }]
+          }],
+          "controlPoints": {
+            "pre": null,
+            "post": null
+          },
+          "controlPoint": null
+        },
+        "xAxisMin": 1604211480,
+        "xAxisMax": 1604219400
+      },
+      "carousel": {
+        "size": 1,
+        "start": 1
+      },
+      "issueDateTime": "2020-11-01 00:30:00",
+      "provider": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "distance": 89.4,
+        "units": {
+          "distance": "miles"
         }
-    },
-    "observationalGraphs": {
-        "rainfall": {
-            "dataConfig": {
-                "series": {
-                    "config": {
-                        "id": "rainfall",
-                        "color": "#003355",
-                        "lineWidth": 2,
-                        "lineFill": false,
-                        "lineRenderer": "BarLineRenderer",
-                        "showPoints": false,
-                        "pointFormatter": "RainfallPointFormatter"
-                    },
-                    "yAxisDataMin": 2,
-                    "yAxisDataMax": 6,
-                    "yAxisMin": 1,
-                    "yAxisMax": 7,
-                    "groups": [{
-                        "dateTime": 1604188800,
-                        "points": [{
-                            "x": 1604211480,
-                            "y": 4
-                        }, {
-                            "x": 1604211840,
-                            "y": 3
-                        }, {
-                            "x": 1604212200,
-                            "y": 4
-                        }, {
-                            "x": 1604212560,
-                            "y": 4
-                        }, {
-                            "x": 1604212920,
-                            "y": 4
-                        }, {
-                            "x": 1604213280,
-                            "y": 5
-                        }, {
-                            "x": 1604213640,
-                            "y": 4
-                        }, {
-                            "x": 1604214000,
-                            "y": 4
-                        }, {
-                            "x": 1604214360,
-                            "y": 3
-                        }, {
-                            "x": 1604214720,
-                            "y": 4
-                        }, {
-                            "x": 1604215080,
-                            "y": 4
-                        }, {
-                            "x": 1604215440,
-                            "y": 4
-                        }, {
-                            "x": 1604215800,
-                            "y": 3
-                        }, {
-                            "x": 1604216160,
-                            "y": 2
-                        }, {
-                            "x": 1604216520,
-                            "y": 3
-                        }, {
-                            "x": 1604216880,
-                            "y": 5
-                        }, {
-                            "x": 1604217240,
-                            "y": 5
-                        }, {
-                            "x": 1604217600,
-                            "y": 6
-                        }, {
-                            "x": 1604217960,
-                            "y": 5
-                        }, {
-                            "x": 1604218320,
-                            "y": 4
-                        }, {
-                            "x": 1604218680,
-                            "y": 3
-                        }, {
-                            "x": 1604219040,
-                            "y": 3
-                        }, {
-                            "x": 1604219400,
-                            "y": 2
-                        }]
-                    }],
-                    "controlPoints": {
-                        "pre": null,
-                        "post": null
-                    },
-                    "controlPoint": null
-                },
-                "xAxisMin": 1604211480,
-                "xAxisMax": 1604219400
-            },
-            "carousel": {
-                "size": 1,
-                "start": 1
-            },
-            "issueDateTime": "2020-11-01 00:30:00",
-            "provider": {
-                "id": 58,
-                "name": "South Doodlakine",
-                "lat": -31.777,
-                "lng": 117.953,
-                "distance": 89.4,
-                "units": {
-                    "distance": "miles"
-                }
-            }
-        }
+      }
     }
+  }
 }
 ```
-
-Returns the details of a single Radar Station.
 
 ### Request
 
@@ -1024,18 +1017,30 @@ Parameter | Type | Options | Description | Required
 lat | float | | | true
 lng | float | | | true
 forecastGraphs | array | Only `rainfall` can be specified | | false
-observationalGraphs | array | Only `rainfall` can be specified | | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
-
-<aside class="notice">
-	Either <code>forecastGraphs</code> or <code>observationalGraphs</code> is required.
-</aside>
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+radarStation | object | | **(see Radar Station below)**
+forecastGraphs | array | | **(see Forecast Graph below)**
+
+### Radar Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+timeZone | string | |
+
+### Forecast Graph
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
@@ -1111,15 +1116,15 @@ id | int | |
 name | string | |
 lat | float | |
 lng | float | |
-distance | double | | distance from `lat`, `lng` provider to the radar station 
+distance | double | | distance from `lat`, `lng` provider to the radar station
 units | object | | only `distance` measurement
 
-## Get Closest Radar Station
+## Forecast Graphs - Rainfall: Closest radar station data source
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
 ```
 
 > Example Request Header
@@ -1129,12 +1134,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=
 	"CONTENT_TYPE": "application/json",
 	"HTTP_X_PAYLOAD": {
 		"forecastGraphs": ["rainfall"],
-		"observationalGraphs": ["rainfall"],
-	  	"lat": 32.25914030013808,
-	  	"lng": 116.53787876954023,
-	  	"units": {
+		"lat": 32.25914030013808,
+		"lng": 116.53787876954023,
+		"units": {
 			"distance" : "miles"
-	   	}
+		}
 	}
 }
 ```
@@ -1143,248 +1147,142 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=
 
 ```json
 {
-    "forecastGraphs": {
-        "rainfall": {
-            "dataConfig": {
-                "series": {
-                    "config": {
-                        "id": "rainfall",
-                        "color": "#003355",
-                        "lineWidth": 2,
-                        "lineFill": false,
-                        "lineRenderer": "BarLineRenderer",
-                        "showPoints": false,
-                        "pointFormatter": "RainfallPointFormatter"
-                    },
-                    "yAxisDataMin": 2,
-                    "yAxisDataMax": 6,
-                    "yAxisMin": 1,
-                    "yAxisMax": 7,
-                    "groups": [{
-                        "dateTime": 1604188800,
-                        "points": [{
-                            "x": 1604211480,
-                            "y": 4
-                        }, {
-                            "x": 1604211840,
-                            "y": 3
-                        }, {
-                            "x": 1604212200,
-                            "y": 4
-                        }, {
-                            "x": 1604212560,
-                            "y": 4
-                        }, {
-                            "x": 1604212920,
-                            "y": 4
-                        }, {
-                            "x": 1604213280,
-                            "y": 5
-                        }, {
-                            "x": 1604213640,
-                            "y": 4
-                        }, {
-                            "x": 1604214000,
-                            "y": 4
-                        }, {
-                            "x": 1604214360,
-                            "y": 3
-                        }, {
-                            "x": 1604214720,
-                            "y": 4
-                        }, {
-                            "x": 1604215080,
-                            "y": 4
-                        }, {
-                            "x": 1604215440,
-                            "y": 4
-                        }, {
-                            "x": 1604215800,
-                            "y": 3
-                        }, {
-                            "x": 1604216160,
-                            "y": 2
-                        }, {
-                            "x": 1604216520,
-                            "y": 3
-                        }, {
-                            "x": 1604216880,
-                            "y": 5
-                        }, {
-                            "x": 1604217240,
-                            "y": 5
-                        }, {
-                            "x": 1604217600,
-                            "y": 6
-                        }, {
-                            "x": 1604217960,
-                            "y": 5
-                        }, {
-                            "x": 1604218320,
-                            "y": 4
-                        }, {
-                            "x": 1604218680,
-                            "y": 3
-                        }, {
-                            "x": 1604219040,
-                            "y": 3
-                        }, {
-                            "x": 1604219400,
-                            "y": 2
-                        }]
-                    }],
-                    "controlPoints": {
-                        "pre": null,
-                        "post": null
-                    },
-                    "controlPoint": null
-                },
-                "xAxisMin": 1604211480,
-                "xAxisMax": 1604219400
-            },
-            "carousel": {
-                "size": 1,
-                "start": 1
-            },
-            "issueDateTime": "2020-11-01 00:30:00",
-            "provider": {
-                "id": 58,
-                "name": "South Doodlakine",
-                "lat": -31.777,
-                "lng": 117.953,
-                "distance": 89.4,
-                "units": {
-                    "distance": "miles"
-                }
-            }
+  "radarStation": {
+    "id": 58,
+    "name": "South Doodlakine",
+    "lat": -31.777,
+    "lng": 117.953,
+    "timeZone": "Australia/Perth"
+  },
+  "forecastGraphs": {
+    "rainfall": {
+      "dataConfig": {
+        "series": {
+          "config": {
+            "id": "rainfall",
+            "color": "#003355",
+            "lineWidth": 2,
+            "lineFill": false,
+            "lineRenderer": "BarLineRenderer",
+            "showPoints": false,
+            "pointFormatter": "RainfallPointFormatter"
+          },
+          "yAxisDataMin": 2,
+          "yAxisDataMax": 6,
+          "yAxisMin": 1,
+          "yAxisMax": 7,
+          "groups": [{
+            "dateTime": 1604188800,
+            "points": [{
+              "x": 1604211480,
+              "y": 4
+            }, {
+              "x": 1604211840,
+              "y": 3
+            }, {
+              "x": 1604212200,
+              "y": 4
+            }, {
+              "x": 1604212560,
+              "y": 4
+            }, {
+              "x": 1604212920,
+              "y": 4
+            }, {
+              "x": 1604213280,
+              "y": 5
+            }, {
+              "x": 1604213640,
+              "y": 4
+            }, {
+              "x": 1604214000,
+              "y": 4
+            }, {
+              "x": 1604214360,
+              "y": 3
+            }, {
+              "x": 1604214720,
+              "y": 4
+            }, {
+              "x": 1604215080,
+              "y": 4
+            }, {
+              "x": 1604215440,
+              "y": 4
+            }, {
+              "x": 1604215800,
+              "y": 3
+            }, {
+              "x": 1604216160,
+              "y": 2
+            }, {
+              "x": 1604216520,
+              "y": 3
+            }, {
+              "x": 1604216880,
+              "y": 5
+            }, {
+              "x": 1604217240,
+              "y": 5
+            }, {
+              "x": 1604217600,
+              "y": 6
+            }, {
+              "x": 1604217960,
+              "y": 5
+            }, {
+              "x": 1604218320,
+              "y": 4
+            }, {
+              "x": 1604218680,
+              "y": 3
+            }, {
+              "x": 1604219040,
+              "y": 3
+            }, {
+              "x": 1604219400,
+              "y": 2
+            }]
+          }],
+          "controlPoints": {
+            "pre": null,
+            "post": null
+          },
+          "controlPoint": null
+        },
+        "xAxisMin": 1604211480,
+        "xAxisMax": 1604219400
+      },
+      "carousel": {
+        "size": 1,
+        "start": 1
+      },
+      "issueDateTime": "2020-11-01 00:30:00",
+      "provider": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "distance": 89.4,
+        "units": {
+          "distance": "miles"
         }
-    },
-    "observationalGraphs": {
-        "rainfall": {
-            "dataConfig": {
-                "series": {
-                    "config": {
-                        "id": "rainfall",
-                        "color": "#003355",
-                        "lineWidth": 2,
-                        "lineFill": false,
-                        "lineRenderer": "BarLineRenderer",
-                        "showPoints": false,
-                        "pointFormatter": "RainfallPointFormatter"
-                    },
-                    "yAxisDataMin": 2,
-                    "yAxisDataMax": 6,
-                    "yAxisMin": 1,
-                    "yAxisMax": 7,
-                    "groups": [{
-                        "dateTime": 1604188800,
-                        "points": [{
-                            "x": 1604211480,
-                            "y": 4
-                        }, {
-                            "x": 1604211840,
-                            "y": 3
-                        }, {
-                            "x": 1604212200,
-                            "y": 4
-                        }, {
-                            "x": 1604212560,
-                            "y": 4
-                        }, {
-                            "x": 1604212920,
-                            "y": 4
-                        }, {
-                            "x": 1604213280,
-                            "y": 5
-                        }, {
-                            "x": 1604213640,
-                            "y": 4
-                        }, {
-                            "x": 1604214000,
-                            "y": 4
-                        }, {
-                            "x": 1604214360,
-                            "y": 3
-                        }, {
-                            "x": 1604214720,
-                            "y": 4
-                        }, {
-                            "x": 1604215080,
-                            "y": 4
-                        }, {
-                            "x": 1604215440,
-                            "y": 4
-                        }, {
-                            "x": 1604215800,
-                            "y": 3
-                        }, {
-                            "x": 1604216160,
-                            "y": 2
-                        }, {
-                            "x": 1604216520,
-                            "y": 3
-                        }, {
-                            "x": 1604216880,
-                            "y": 5
-                        }, {
-                            "x": 1604217240,
-                            "y": 5
-                        }, {
-                            "x": 1604217600,
-                            "y": 6
-                        }, {
-                            "x": 1604217960,
-                            "y": 5
-                        }, {
-                            "x": 1604218320,
-                            "y": 4
-                        }, {
-                            "x": 1604218680,
-                            "y": 3
-                        }, {
-                            "x": 1604219040,
-                            "y": 3
-                        }, {
-                            "x": 1604219400,
-                            "y": 2
-                        }]
-                    }],
-                    "controlPoints": {
-                        "pre": null,
-                        "post": null
-                    },
-                    "controlPoint": null
-                },
-                "xAxisMin": 1604211480,
-                "xAxisMax": 1604219400
-            },
-            "carousel": {
-                "size": 1,
-                "start": 1
-            },
-            "issueDateTime": "2020-11-01 00:30:00",
-            "provider": {
-                "id": 58,
-                "name": "South Doodlakine",
-                "lat": -31.777,
-                "lng": 117.953,
-                "distance": 89.4,
-                "units": {
-                    "distance": "miles"
-                }
-            }
-        }
+      }
     }
+  }
 }
 ```
-
-Returns the details of closest Radar Station.
 
 ### Request
 
 `GET api.willyweather.com.au/v2/{api key}/radar-stations.json`
 
-See <a href="#get-radar-station">Get Radar Station</a> for Request Parameters.
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+lat | float | | | true
+lng | float | | | true
+forecastGraphs | array | Only `rainfall` can be specified | | false
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -1392,7 +1290,445 @@ See <a href="#get-radar-station">Get Radar Station</a> for Request Parameters.
 
 ### Response
 
-Response a Forecast Graph. See <a href="#get-radar-station">Get Radar Station</a> for response.
+Response is a Radar Station and an array of Forecast graphs. See <a href="#forecast-graphs-rainfall-specific-radar-station-data-source">Forecast Graphs - Rainfall: Specific radar station data source</a> for response.
+
+## Observational Graphs - Rainfall: Specific radar station data source
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["rainfall"],
+		"lat": 32.25914030013808,
+		"lng": 116.53787876954023,
+		"units": {
+			"distance" : "miles"
+		}
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+  "radarStation": {
+    "id": 58,
+    "name": "South Doodlakine",
+    "lat": -31.777,
+    "lng": 117.953,
+    "timeZone": "Australia/Perth"
+  },
+  "observationalGraphs": {
+    "rainfall": {
+      "dataConfig": {
+        "series": {
+          "config": {
+            "id": "rainfall",
+            "color": "#003355",
+            "lineWidth": 2,
+            "lineFill": false,
+            "lineRenderer": "BarLineRenderer",
+            "showPoints": false,
+            "pointFormatter": "RainfallPointFormatter"
+          },
+          "yAxisDataMin": 2,
+          "yAxisDataMax": 6,
+          "yAxisMin": 1,
+          "yAxisMax": 7,
+          "groups": [{
+            "dateTime": 1604188800,
+            "points": [{
+              "x": 1604211480,
+              "y": 4
+            }, {
+              "x": 1604211840,
+              "y": 3
+            }, {
+              "x": 1604212200,
+              "y": 4
+            }, {
+              "x": 1604212560,
+              "y": 4
+            }, {
+              "x": 1604212920,
+              "y": 4
+            }, {
+              "x": 1604213280,
+              "y": 5
+            }, {
+              "x": 1604213640,
+              "y": 4
+            }, {
+              "x": 1604214000,
+              "y": 4
+            }, {
+              "x": 1604214360,
+              "y": 3
+            }, {
+              "x": 1604214720,
+              "y": 4
+            }, {
+              "x": 1604215080,
+              "y": 4
+            }, {
+              "x": 1604215440,
+              "y": 4
+            }, {
+              "x": 1604215800,
+              "y": 3
+            }, {
+              "x": 1604216160,
+              "y": 2
+            }, {
+              "x": 1604216520,
+              "y": 3
+            }, {
+              "x": 1604216880,
+              "y": 5
+            }, {
+              "x": 1604217240,
+              "y": 5
+            }, {
+              "x": 1604217600,
+              "y": 6
+            }, {
+              "x": 1604217960,
+              "y": 5
+            }, {
+              "x": 1604218320,
+              "y": 4
+            }, {
+              "x": 1604218680,
+              "y": 3
+            }, {
+              "x": 1604219040,
+              "y": 3
+            }, {
+              "x": 1604219400,
+              "y": 2
+            }]
+          }],
+          "controlPoints": {
+            "pre": null,
+            "post": null
+          },
+          "controlPoint": null
+        },
+        "xAxisMin": 1604211480,
+        "xAxisMax": 1604219400
+      },
+      "carousel": {
+        "size": 1,
+        "start": 1
+      },
+      "issueDateTime": "2020-11-01 00:30:00",
+      "provider": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "distance": 89.4,
+        "units": {
+          "distance": "miles"
+        }
+      }
+    }
+  }
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+lat | float | | | true
+lng | float | | | true
+observationalGraphs | array | Only `rainfall` can be specified | | false
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+radarStation | object | | **(see Radar Station below)**
+observationGraphs | array | | **(see Observational Graph below)**
+
+### Radar Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+timeZone | string | |
+
+### Observational Graph
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dataConfig | object | | **(see Data Config below)**
+carousel | object | | **(see Carousel below)**
+issueDateTime | object | | `YYYY-MM-DD HH:MM:SS`
+provider | object | | **(see Provider)**
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object | |  **(see Series below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int | | end time of the graph period
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see Config below)**
+yAxisDataMin | double | | the smallest y value
+yAxisDataMax | double | | the largest y value
+yAxisMin | double | | the smallest y value with graph padding
+yAxisMax | double | | the largest y value with graph padding
+groups | object | | **(see Groups below)**
+controlPoints | object | | **(see Control Points below)**
+
+### Config
+
+The config is used to assist in styling the series. Each series will have different values, this is specific to `rainfallprobability`.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `rainfallprobability` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `BarLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointFormatter | string | `RainfallProbabilityPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | int | | time value
+points | array | | array of `point` objects **(see Point below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | `0` - `100` | rainfall probability
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current forecast
+
+### Provider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+distance | double | | distance from `lat`, `lng` provider to the radar station
+units | object | | only `distance` measurement
+
+## Observational Graphs - Rainfall: Closest radar station data source
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["rainfall"],
+		"lat": 32.25914030013808,
+		"lng": 116.53787876954023,
+		"units": {
+			"distance" : "miles"
+		}
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+  "radarStation": {
+    "id": 58,
+    "name": "South Doodlakine",
+    "lat": -31.777,
+    "lng": 117.953,
+    "timeZone": "Australia/Perth"
+  },
+  "observationalGraphs": {
+    "rainfall": {
+      "dataConfig": {
+        "series": {
+          "config": {
+            "id": "rainfall",
+            "color": "#003355",
+            "lineWidth": 2,
+            "lineFill": false,
+            "lineRenderer": "BarLineRenderer",
+            "showPoints": false,
+            "pointFormatter": "RainfallPointFormatter"
+          },
+          "yAxisDataMin": 2,
+          "yAxisDataMax": 6,
+          "yAxisMin": 1,
+          "yAxisMax": 7,
+          "groups": [{
+            "dateTime": 1604188800,
+            "points": [{
+              "x": 1604211480,
+              "y": 4
+            }, {
+              "x": 1604211840,
+              "y": 3
+            }, {
+              "x": 1604212200,
+              "y": 4
+            }, {
+              "x": 1604212560,
+              "y": 4
+            }, {
+              "x": 1604212920,
+              "y": 4
+            }, {
+              "x": 1604213280,
+              "y": 5
+            }, {
+              "x": 1604213640,
+              "y": 4
+            }, {
+              "x": 1604214000,
+              "y": 4
+            }, {
+              "x": 1604214360,
+              "y": 3
+            }, {
+              "x": 1604214720,
+              "y": 4
+            }, {
+              "x": 1604215080,
+              "y": 4
+            }, {
+              "x": 1604215440,
+              "y": 4
+            }, {
+              "x": 1604215800,
+              "y": 3
+            }, {
+              "x": 1604216160,
+              "y": 2
+            }, {
+              "x": 1604216520,
+              "y": 3
+            }, {
+              "x": 1604216880,
+              "y": 5
+            }, {
+              "x": 1604217240,
+              "y": 5
+            }, {
+              "x": 1604217600,
+              "y": 6
+            }, {
+              "x": 1604217960,
+              "y": 5
+            }, {
+              "x": 1604218320,
+              "y": 4
+            }, {
+              "x": 1604218680,
+              "y": 3
+            }, {
+              "x": 1604219040,
+              "y": 3
+            }, {
+              "x": 1604219400,
+              "y": 2
+            }]
+          }],
+          "controlPoints": {
+            "pre": null,
+            "post": null
+          },
+          "controlPoint": null
+        },
+        "xAxisMin": 1604211480,
+        "xAxisMax": 1604219400
+      },
+      "carousel": {
+        "size": 1,
+        "start": 1
+      },
+      "issueDateTime": "2020-11-01 00:30:00",
+      "provider": {
+        "id": 58,
+        "name": "South Doodlakine",
+        "lat": -31.777,
+        "lng": 117.953,
+        "distance": 89.4,
+        "units": {
+          "distance": "miles"
+        }
+      }
+    }
+  }
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/radar-stations.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+lat | float | | | true
+lng | float | | | true
+observationalGraphs | array | Only `rainfall` can be specified | | false
+units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+Response is a Radar Station and an array of Observational graphs. See <a href="#observational-graphs-rainfall-specific-radar-station-data-source">Observational Graphs - Rainfall: Specific radar station data source</a> for response.
 
 # Regions
 
