@@ -1949,7 +1949,7 @@ Response is an array of Locations. See <a href="#locations">Locations</a> for de
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&range=5&units=distance:km
 ```
 
 > Example Request Header
@@ -1960,6 +1960,7 @@ https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&u
 	"HTTP_X_PAYLOAD": {
 		"lat": -33.8996141,
 		"lng": 151.272962,
+        "range": 5,
 		"units": {
 			"distance": "km"
 		}
@@ -2001,6 +2002,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 lat | double | | latitude | true
 lng | double | | longitude | true
+range | integer | | restrict the search to a specific radius in km. | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
 
 <aside class="notice">
