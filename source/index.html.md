@@ -11768,7 +11768,12 @@ Updates multiple notification's _enabled_ state.
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notifications | array | **(See Notifications below)** | | true
-enabled | boolean | | | true
+enabled | boolean | | | false
+offset | int | | | false
+
+<aside class="notice">
+    Either <code>enabled</code> or <code>offset</code> must be defined in the request but not both.
+</aside>
 
 ### Notifications
 
