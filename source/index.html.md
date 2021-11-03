@@ -11132,7 +11132,7 @@ Returns the list of account's locations.
 
 Response is an array of Locations. See <a href="#location-get-by-location-id">Locations</a> for description of a Location response.
 
-## Location - PUT - Update
+## Location - POST - Update
 
 > Example Request Body
 
@@ -11848,7 +11848,7 @@ Updates a notification. Only for alert.
 
 ### Request
 
-`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{notification uid}.json`
 
 See <a href="#notification-post-create">Notifications Create</a> for Request Parameters.
 
@@ -12568,7 +12568,7 @@ Updates a forecast radar notification.
 
 ### Request
 
-`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{notification uid}.json`
 
 See <a href="#notification-post-forecast-radar-create">Notifications - Forecast Radar - Create</a> for Request Parameters.
 
@@ -12616,7 +12616,7 @@ Returns the list of account's prefered units.
 
 Response is units. See <a href="#units">Units</a> for a description of a Unit response.
 
-## Units - PUT - Update
+## Units - POST - Update
 
 > Example Request Body
 
