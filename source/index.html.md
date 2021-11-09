@@ -17,7 +17,7 @@ The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 
 # Info
 
-## Legal
+## Info - GET - Legal
 
 > Example Query String Request
 
@@ -58,7 +58,7 @@ platform | string | `web`, `mobile` | true
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
-## Info By Location Id
+## Info - GET - By Location Id
 
 > Example Query String Request
 
@@ -138,7 +138,7 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 
 # Locations
 
-## Get Location
+## Location - GET - by Location id
 
 > Example Query String Request
 
@@ -219,7 +219,7 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 
 # Maps
 
-## Get Map Providers
+## Map Provider - GET - Get Map Providers
 
 > Example Query String Request
 
@@ -316,7 +316,7 @@ Returns all map providers that can be filtered by `mapType`.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see Map Types for conversion of typeId** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **see <a href="/#map-types">Map Types</a> for conversion of typeId** | true
 lat | double | | latitude | false
 lng | double | | longitude | false
 verbose | boolean | | include overlay images with the response | false
@@ -484,7 +484,7 @@ text | string | | the description text
 meta | string | `name`, `text`, `date` | the meta value provides information which describes the data
 
 
-## Map Data By Provider
+## Map Provider - GET - Map Data By Provider
 
 > Example Query String Request
 
@@ -604,7 +604,7 @@ Get a map provider with overlay data.
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#get-map-providers">Get Map Providers</a>** | true
+mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellite`, `synoptic`, `temperature`, `wind`, `rainfall`, `swell`, `uv`, `apparent-temperature`, `dew-point`, `relative-humidity`, `cloud-cover`, `thunderstorms`, `lightning`, `fog`, `frost`, `mixing-height`, `drought-factor`, `cyclone` | **<a href="/#map-provider-get-get-map-providers">Get Map Providers</a>** | true
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
@@ -615,9 +615,9 @@ units | csv | See <a href="#units">Units</a>. Only distance can be specified | |
 
 ### Response
 
-Response is a Map Provider. See <a href="#get-map-providers">Get Map Providers</a> for description of a Map Provider response.
+Response is a Map Provider. See <a href="#map-provider-get-get-map-providers">Get Map Providers</a> for description of a Map Provider response.
 
-## Map Data By Location Id
+## Map Provider - GET - Map Data By Location Id
 
 > Example Query String Request
 
@@ -745,11 +745,11 @@ units | csv | See <a href="#units">Units</a>. Only distance can be specified | |
 
 ### Response
 
-Response is an array of Map Providers. See <a href="#get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
+Response is an array of Map Providers. See <a href="#map-provider-get-get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
 
 # Radar Stations
 
-## Get Radar Station
+## Radar Station - GET - Get Radar Station
 
 > Example Query String Request
 
@@ -801,12 +801,12 @@ lng | float | |
 timeZone | string | |
 
 
-## Get Closest Radar Station
+## Radar Station - GET - Get Closest Radar Station
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
 ```
 
 > Example Request Header
@@ -816,7 +816,10 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.2591403
     "CONTENT_TYPE": "application/json",
     "HTTP_X_PAYLOAD": {
         "lat": 32.25914030013808,
-        "lng": 116.53787876954023
+        "lng": 116.53787876954023,
+        "units": {
+          "distance": "miles"
+        }
     }
 }
 ```
@@ -830,7 +833,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.2591403
         "name": "South Doodlakine",
         "lat": -31.777,
         "lng": 117.953,
-        "timeZone": "Australia/Perth"
+        "timeZone": "Australia/Perth",
+        "distance": 89.4,
+        "units": {
+          "distance": "miles"
+        }
     }
 }
 ```
@@ -845,6 +852,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 lat | float | | | true
 lng | float | | | true
+units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -852,14 +860,30 @@ lng | float | | | true
 
 ### Response
 
-Response is a Radar Station. See <a href="#get-radar-station">Get Radar Station</a> for response.
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+radarStation | object | | **(see Radar Station)**
 
-## Forecast Graphs - Rainfall: Specific radar station data source
+
+### Radar Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+timeZone | string | |
+distance | double | | distance of radar station from the provided lat and lng
+units | object | | includes unit of measurement for distance
+
+
+## Graph - GET - Forecast Graphs - Rainfall: Specific radar station data source
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
 ```
 
 > Example Request Header
@@ -887,7 +911,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGr
     "name": "South Doodlakine",
     "lat": -31.777,
     "lng": 117.953,
-    "timeZone": "Australia/Perth"
+    "timeZone": "Australia/Perth",
+    "distance": 89.4,
+    "units": {
+      "distance": "miles"
+    }
   },
   "forecastGraphs": {
     "rainfall": {
@@ -1039,6 +1067,8 @@ name | string | |
 lat | float | |
 lng | float | |
 timeZone | string | |
+distance | double | | distance of radar station from the provided lat and lng
+units | object | | includes unit of measurement for distance
 
 ### Forecast Graph
 
@@ -1116,15 +1146,15 @@ id | int | |
 name | string | |
 lat | float | |
 lng | float | |
-distance | double | | distance from `lat`, `lng` provider to the radar station
-units | object | | only `distance` measurement
+distance | double | | distance of radar station from the provided lat and lng
+units | object | | includes unit of measurement for distance
 
-## Forecast Graphs - Rainfall: Closest radar station data source
+## Graph - GET - Forecast Graphs - Rainfall: Closest radar station data source
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
 ```
 
 > Example Request Header
@@ -1152,7 +1182,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=
     "name": "South Doodlakine",
     "lat": -31.777,
     "lng": 117.953,
-    "timeZone": "Australia/Perth"
+    "timeZone": "Australia/Perth",
+    "distance": 89.4,
+    "units": {
+      "distance": "miles"
+    }
   },
   "forecastGraphs": {
     "rainfall": {
@@ -1290,14 +1324,14 @@ units | csv | See <a href="/#units">Units</a>. Only distance can be specified | 
 
 ### Response
 
-Response is a Radar Station and an array of Forecast graphs. See <a href="#forecast-graphs-rainfall-specific-radar-station-data-source">Forecast Graphs - Rainfall: Specific radar station data source</a> for response.
+Response is a Radar Station and an array of Forecast graphs. See <a href="#graph-get-forecast-graphs-rainfall-specific-radar-station-data-source">Forecast Graphs - Rainfall: Specific radar station data source</a> for response.
 
-## Observational Graphs - Rainfall: Specific radar station data source
+## Graph - GET - Observational Graphs - Rainfall: Specific radar station data source
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
 ```
 
 > Example Request Header
@@ -1325,7 +1359,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?observatio
     "name": "South Doodlakine",
     "lat": -31.777,
     "lng": 117.953,
-    "timeZone": "Australia/Perth"
+    "timeZone": "Australia/Perth",
+    "distance": 89.4,
+    "units": {
+      "distance": "miles"
+    }
   },
   "observationalGraphs": {
     "rainfall": {
@@ -1477,6 +1515,8 @@ name | string | |
 lat | float | |
 lng | float | |
 timeZone | string | |
+distance | double | | distance of radar station from the provided lat and lng
+units | object | | includes unit of measurement for distance
 
 ### Observational Graph
 
@@ -1554,15 +1594,15 @@ id | int | |
 name | string | |
 lat | float | |
 lng | float | |
-distance | double | | distance from `lat`, `lng` provider to the radar station
-units | object | | only `distance` measurement
+distance | double | | distance of radar station from the provided lat and lng
+units | object | | includes unit of measurement for distance
 
-## Observational Graphs - Rainfall: Closest radar station data source
+## Graph - GET - Observational Graphs - Rainfall: Closest radar station data source
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
 ```
 
 > Example Request Header
@@ -1590,7 +1630,11 @@ https://api.willyweather.com.au/v2/{api key}/radar-stations.json?observationalGr
     "name": "South Doodlakine",
     "lat": -31.777,
     "lng": 117.953,
-    "timeZone": "Australia/Perth"
+    "timeZone": "Australia/Perth",
+    "distance": 89.4,
+    "units": {
+      "distance": "miles"
+    }
   },
   "observationalGraphs": {
     "rainfall": {
@@ -1728,11 +1772,11 @@ units | csv | See <a href="/#units">Units</a>. Only distance can be specified | 
 
 ### Response
 
-Response is a Radar Station and an array of Observational graphs. See <a href="#observational-graphs-rainfall-specific-radar-station-data-source">Observational Graphs - Rainfall: Specific radar station data source</a> for response.
+Response is a Radar Station and an array of Observational graphs. See <a href="#graph-get-observational-graphs-rainfall-specific-radar-station-data-source">Observational Graphs - Rainfall: Specific radar station data source</a> for response.
 
 # Regions
 
-## Get Region
+## Region - GET - by Region id
 
 > Example Query String Request
 
@@ -1794,7 +1838,7 @@ tides | 1, 3
 swell | 1
 
 
-## Get Regions
+## Region - GET - All Regions
 
 > Example Query String Request
 
@@ -1832,9 +1876,9 @@ Returns the details of all Regions.
 </aside>
 
 ### Response
-Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
+Response is an array of Regions. See <a href="#region-get-by-region-id">Get Region</a> for a description of a Region response.
 
-## Get Regions by State
+## Region - GET - by State id
 
 > Example Query String Request
 
@@ -1868,7 +1912,7 @@ Returns all Regions within a State.
 `GET api.willyweather.com.au/api/v2/states/{state id}/regions.json`
 
 ### Response
-Response is an array of Regions. See <a href="#get-region">Get Region</a> for a description of a Region response.
+Response is an array of Regions. See <a href="#region-get-by-region-id">Get Region</a> for a description of a Region response.
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -1876,7 +1920,7 @@ Response is an array of Regions. See <a href="#get-region">Get Region</a> for a 
 
 # Search
 
-## Location Search By Query
+## Location - GET - Search By Query
 
 > Example Query String Request
 
@@ -1942,14 +1986,14 @@ limit | int | `1` - `50` | limit the number of locations in response (default 25
 
 ### Response
 
-Response is an array of Locations. See <a href="#locations">Locations</a> for description of a Location response.
+Response is an array of Locations. See <a href="#location-get-by-location-id">Locations</a> for description of a Location response.
 
-## Location Search By Coordinates
+## Location - GET - Search By Coordinates
 
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&range=5&units=distance:km
 ```
 
 > Example Request Header
@@ -1960,6 +2004,7 @@ https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&u
 	"HTTP_X_PAYLOAD": {
 		"lat": -33.8996141,
 		"lng": 151.272962,
+        "range": 5,
 		"units": {
 			"distance": "km"
 		}
@@ -2001,17 +2046,21 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 lat | double | | latitude | true
 lng | double | | longitude | true
+range | integer | | restrict the search to a specific radius. | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | true
 
+<aside class="notice">
+    Parameter <code>range</code> unit conversion is based on the distance unit specified in the <code>units</code> parameter</strong>.
+</aside>
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
 ### Response
 
-A single Location and units. See <a href="#locations">Location</a> for a description of a Location response. See <a href="#units">Units</a> for a description of a Units response.
+A single Location and units. See <a href="#location-get-by-location-id">Location</a> for a description of a Location response. See <a href="#units">Units</a> for a description of a Units response.
 
-## Closest Locations
+## Location - GET - Get Closest Locations
 
 > Example Query String Request
 
@@ -2112,11 +2161,11 @@ weatherTypes | csv | general, tides, swell | | true
 
 ### Response
 
-An array of location objects, broken up into their weather types. See <a href="#locations">Locations</a> for a description of a Location response.
+An array of location objects, broken up into their weather types. See <a href="#location-get-by-location-id">Locations</a> for a description of a Location response.
 
 # States
 
-## Get State
+##  State - GET - by State id
 
 > Example Query String Request
 
@@ -2175,7 +2224,7 @@ uv | all
 tides | 1, 3
 swell | 1
 
-## Get States
+## State - GET - All States
 
 > Example Query String Request
 
@@ -2212,11 +2261,11 @@ Returns the details of all States.
 </aside>
 
 ### Response
-Response is an array of States. See <a href="#get-state">Get State</a> for description of a State response.
+Response is an array of States. See <a href="#state-get-by-state-id">Get State</a> for description of a State response.
 
 # Warnings
 
-## All Warnings
+## Warning - GET - All Warnings
 
 > Example Query String Request
 
@@ -2324,9 +2373,237 @@ verbose | boolean |  | include the content attribute with the response | false
 
 ### Response
 
-An array of Warning objects, see <a href="#warning">Warning</a> for a description of a Warning response.
+An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
 
-## All Warning Types
+## Warning - GET - by Warning code
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+	"code": "IDQ20870",
+	"name": "Flood Warning - Georgina/Eyre Ck",
+	"issueDateTime": "2016-03-26 00:15:46",
+	"expireDateTime": "2016-03-29 03:15:46",
+	"warningType": {
+		"id": 4,
+		"code": "floods",
+		"name": "Flood",
+		"classification": "flood",
+		"warningSeverityLevels": [
+			{
+				"id": 1,
+				"code": "yellow"
+			},
+			{
+				"id": 2,
+				"code": "amber"
+			},
+			{
+				"id": 3,
+				"code": "red"
+			}
+		]
+	},
+	"content": {
+		"text": "IDQ20870 Australian Government Bureau of 
+				Meteorology Queensland MODERATE FLOOD WARNING FOR
+				EYRE CREEK Issued at 10:15 am by the 
+				Bureau of Meteorology, Brisbane.",
+		"html": "<div>
+					<p>IDQ20870</p>
+					<p>Australian Government Bureau of Meteorology
+					<strong> Queensland</strong></p>
+					<h2>MODERATE FLOOD WARNING FOR EYRE CREEK</h2>
+					<p><strong>Issued at 10:15 am</strong></p>
+					<p>by the Bureau of Meteorology, Brisbane.</p>
+				</div>"
+	}
+}
+```
+
+Get a Warning object by `code`.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/warnings/{warning code}.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response - Warning Object
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | a unique identifier, provided by the local weather authority
+name | string | 
+issueDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+expireDateTime | string | | `YYYY-MM-DD HH:MM:SS`
+warningType | object | **(see Warning Types)** |
+content | object | **(see Content)** |
+
+<aside class="notice">
+	<code>issueDateTime</code> and <code>expireDateTime</code> are in <strong>UTC time</strong>.
+</aside>
+<aside class="notice">
+    When the <code>expireDateTime</code> of a warning is in the past, it will be removed from the system. A <code>404</code> will be issued for expired warnings. 
+</aside>
+
+### Warning Types
+
+Warning Type codes can differ (and change) depending on the provider and some are quite similar to one another, so we created a list of classifications that we group warnings into.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | 
+code | string | | a unique identifier
+name | string | | warning name formatted for display
+classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification
+warningSeverityLevels | array | | **(see Warning Severity Level object)**
+
+### Warning Severity Level
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | `1` for yellow, `2` for amber, `3` for red |
+code | string | `yellow`, `amber`, `red`|
+
+### Content
+
+Warnings will occasionally come pre-formatted in html, as well as in plain text
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+text | string | |
+html | string | |
+
+## Warning - GET - All Warnings By Area
+
+> Example Query String Request 
+
+```
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"classifications": ["storm", "flood"],
+		"area": "location",
+		"verbose": true
+	}
+}
+```
+
+> Example Response
+
+```json
+[
+	{
+		"code": "IDQ20885",
+		"name": "Queensland flood warning summary",
+		"issueDateTime": "2016-03-26 21:53:44",
+		"expireDateTime": "2016-03-30 00:53:44",
+		"warningType": {
+			"id": 22,
+			"code": "flood-summary",
+			"name": "Flood Summary (state wide)",
+			"classification": "flood",
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
+		}	
+	},
+	{
+		"code": "IDQ20780",
+		"name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
+		"issueDateTime": "2016-03-26 21:52:49",
+		"expireDateTime": "2016-03-28 00:52:49",
+		"warningType": {
+			"id": 4,
+			"code": "floods",
+			"name": "Flood",
+			"classification": "flood",
+			"warningSeverityLevels": [
+				{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
+		}
+	}
+]
+```
+There are three ways to request Warnings by area.
+
+* **Location**
+* **Region**
+* **State**
+
+<aside class="notice">
+Get <a href="#locations">Locations</a>, <a href="#states">States</a> and <a href="#regions">Regions</a>
+</aside>
+
+These will all return an array of Warnings, filtered by classification.
+
+### Requests
+
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification | false
+verbose | boolean |  | include the content attribute with the response | false
+area | string | `location`, `region`, `state` | | false
+
+<aside class="notice">
+    <code>area = location</code> by default.
+</aside>
+
+### Response
+
+An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
+
+## Warning Type - GET - All Warning Types
 
 > Example Query String Request
 
@@ -2881,234 +3158,6 @@ Returns all warnings types.
 
 An array of Warning Type objects, see <a href="#warning-types">Warning Types</a> for a description of a Warning Type response.
 
-## Warning
-
-> Example Query String Request
-
-```shell
-https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
-```
-
-> Example Request Header
-
-```json
-{}
-```
-
-> Example Response
-
-```json
-{
-	"code": "IDQ20870",
-	"name": "Flood Warning - Georgina/Eyre Ck",
-	"issueDateTime": "2016-03-26 00:15:46",
-	"expireDateTime": "2016-03-29 03:15:46",
-	"warningType": {
-		"id": 4,
-		"code": "floods",
-		"name": "Flood",
-		"classification": "flood",
-		"warningSeverityLevels": [
-			{
-				"id": 1,
-				"code": "yellow"
-			},
-			{
-				"id": 2,
-				"code": "amber"
-			},
-			{
-				"id": 3,
-				"code": "red"
-			}
-		]
-	},
-	"content": {
-		"text": "IDQ20870 Australian Government Bureau of 
-				Meteorology Queensland MODERATE FLOOD WARNING FOR
-				EYRE CREEK Issued at 10:15 am by the 
-				Bureau of Meteorology, Brisbane.",
-		"html": "<div>
-					<p>IDQ20870</p>
-					<p>Australian Government Bureau of Meteorology
-					<strong> Queensland</strong></p>
-					<h2>MODERATE FLOOD WARNING FOR EYRE CREEK</h2>
-					<p><strong>Issued at 10:15 am</strong></p>
-					<p>by the Bureau of Meteorology, Brisbane.</p>
-				</div>"
-	}
-}
-```
-
-Get a Warning object by `code`.
-
-### Request
-
-`GET api.willyweather.com.au/v2/{api key}/warnings/{warning code}.json`
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
-### Response - Warning Object
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-code | string | | a unique identifier, provided by the local weather authority
-name | string | 
-issueDateTime | string | | `YYYY-MM-DD HH:MM:SS`
-expireDateTime | string | | `YYYY-MM-DD HH:MM:SS`
-warningType | object | **(see Warning Types)** |
-content | object | **(see Content)** |
-
-<aside class="notice">
-	<code>issueDateTime</code> and <code>expireDateTime</code> are in <strong>UTC time</strong>.
-</aside>
-<aside class="notice">
-    When the <code>expireDateTime</code> of a warning is in the past, it will be removed from the system. A <code>404</code> will be issued for expired warnings. 
-</aside>
-
-### Warning Types
-
-Warning Type codes can differ (and change) depending on the provider and some are quite similar to one another, so we created a list of classifications that we group warnings into.
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | | 
-code | string | | a unique identifier
-name | string | | warning name formatted for display
-classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification
-warningSeverityLevels | array | | **(see Warning Severity Level object)**
-
-### Warning Severity Level
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | `1` for yellow, `2` for amber, `3` for red |
-code | string | `yellow`, `amber`, `red`|
-
-### Content
-
-Warnings will occasionally come pre-formatted in html, as well as in plain text
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-text | string | |
-html | string | |
-
-## Warnings By Area
-
-> Example Query String Request 
-
-```
-https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
-```
-
-> Example Request Header
-
-```json
-{
-	"CONTENT_TYPE": "application/json",
-	"HTTP_X_PAYLOAD": {
-		"classifications": ["storm", "flood"],
-		"area": "location",
-		"verbose": true
-	}
-}
-```
-
-> Example Response
-
-```json
-[
-	{
-		"code": "IDQ20885",
-		"name": "Queensland flood warning summary",
-		"issueDateTime": "2016-03-26 21:53:44",
-		"expireDateTime": "2016-03-30 00:53:44",
-		"warningType": {
-			"id": 22,
-			"code": "flood-summary",
-			"name": "Flood Summary (state wide)",
-			"classification": "flood",
-			"warningSeverityLevels": [
-				{
-					"id": 1,
-					"code": "yellow"
-				},
-				{
-					"id": 2,
-					"code": "amber"
-				},
-				{
-					"id": 3,
-					"code": "red"
-				}
-			]
-		}	
-	},
-	{
-		"code": "IDQ20780",
-		"name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
-		"issueDateTime": "2016-03-26 21:52:49",
-		"expireDateTime": "2016-03-28 00:52:49",
-		"warningType": {
-			"id": 4,
-			"code": "floods",
-			"name": "Flood",
-			"classification": "flood",
-			"warningSeverityLevels": [
-				{
-					"id": 1,
-					"code": "yellow"
-				},
-				{
-					"id": 2,
-					"code": "amber"
-				},
-				{
-					"id": 3,
-					"code": "red"
-				}
-			]
-		}
-	}
-]
-```
-There are three ways to request Warnings by area.
-
-* **Location**
-* **Region**
-* **State**
-
-<aside class="notice">
-Get <a href="#locations">Locations</a>, <a href="#states">States</a> and <a href="#regions">Regions</a>
-</aside>
-
-These will all return an array of Warnings, filtered by classification.
-
-### Requests
-
-`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification | false
-verbose | boolean |  | include the content attribute with the response | false
-area | string | `location`, `region`, `state` | | false
-
-<aside class="notice">
-    <code>area = location</code> by default.
-</aside>
-
-### Response
-
-An array of Warning objects, see <a href="#warning">Warning</a> for a description of a Warning response.
-
 # Weather
 
 ## Overview
@@ -3202,7 +3251,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-## Forecasts - Moon Phases
+## Forecast - GET - Moon Phases
 
 > Example Query String Request
 
@@ -3342,7 +3391,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Precis
+## Forecast - GET - Precis
 
 > Example Query String Request
 
@@ -3399,7 +3448,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 	}
 }
 ```
-Unlike <a href="#forecasts-weather">Weather</a>, a Precis forecast can provide multiple values throughout a day (e.g. every 3 hours).
+Unlike <a href="#forecast-get-weather">Weather</a>, a Precis forecast can provide multiple values throughout a day (e.g. every 3 hours).
 
 ### Days
 
@@ -3420,7 +3469,7 @@ precis | string | | formal, formatted name for precisCode (e.g. "Partly Cloudy")
 precisOverlayCode | string | `wind`, `frost`, `fog`, `hail` | this gives a second level of detail to the precis, we use it to show a small icon on top of the existing image. can be `null`
 night | boolean | | 
 
-## Forecasts - Rainfall
+## Forecast - GET - Rainfall
 
 > Example Query String Request
 
@@ -3482,7 +3531,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Rainfall forecast contains a daily summary of rain, in contrast to a <a href="#forecasts-rainfall-probability">Rainfall Probability</a> forecast which will give periodic probability values throughout each day.
+A Rainfall forecast contains a daily summary of rain, in contrast to a <a href="#forecast-get-rainfall-probability">Rainfall Probability</a> forecast which will give periodic probability values throughout each day.
 
 Some areas will provide a forecast 'amount' of rainfall, which we display as a range.
 
@@ -3507,10 +3556,10 @@ rangeCode | string |  `0`, `1-5`, `5-10`, `10-15`, `15-25`, `25-50`, `50-100`, `
 probability | int | `0` - `100` | chance rainfall will occur on that day
 
 <aside class="notice">
-The daily probabilty for rainfall will not align with the probability included in <a href="#forecasts-rainfall-probability">Rainfall Probability</a>
+The daily probabilty for rainfall will not align with the probability included in <a href="#forecast-get-rainfall-probability">Rainfall Probability</a>
 </aside>
 
-## Forecasts - Rainfall Probability
+## Forecast - GET - Rainfall Probability
 
 > Example Query String Request
 
@@ -3579,7 +3628,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Rainfall Probability forecast contains periodic probability forecasts throughout a day, in contrast to a <a href="#forecasts-rainfall">Rainfall</a> forecast which returns a summary for an entire day.
+A Rainfall Probability forecast contains periodic probability forecasts throughout a day, in contrast to a <a href="#forecast-get-rainfall">Rainfall</a> forecast which returns a summary for an entire day.
 
 ### Days
 
@@ -3604,7 +3653,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Sunrise/Sunset
+## Forecast - GET - Sunrise/Sunset
 
 > Example Query String Request
 
@@ -3692,7 +3741,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Swell
+## Forecast - GET - Swell
 
 > Example Query String Request
 
@@ -3802,7 +3851,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Temperature
+## Forecast - GET - Temperature
 
 > Example Query String Request
 
@@ -3872,7 +3921,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 }
 ```
 
-A Temperature forecast contains periodic temperature forecasts throughout a day, in contrast to <a href="#forecasts-weather">Weather</a> which provides a daily summary with min/max values.
+A Temperature forecast contains periodic temperature forecasts throughout a day, in contrast to <a href="#forecast-get-weather">Weather</a> which provides a daily summary with min/max values.
 
 ### Days
 
@@ -3897,7 +3946,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Tides
+## Forecast - GET - Tides
 
 > Example Query String Request
 
@@ -4002,7 +4051,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - UV
+## Forecast - GET - UV
 
 > Example Query String Request
 
@@ -4118,7 +4167,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecasts - Weather
+## Forecast - GET - Weather
 
 > Example Query String Request
 
@@ -4204,7 +4253,7 @@ night | boolean | |
 min | int | | minimum daily temperature
 max | int | | maximum daily temperature  
 
-## Forecasts - Wind
+## Forecast - GET - Wind
 
 > Example Query String Request
 
@@ -4309,7 +4358,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Precis
+## Graph - GET - Forecast Graphs - Precis
 
 > Example Query String Request
 
@@ -4433,7 +4482,7 @@ x | int | | time value
 precisCode | string | `fine`, `mostly-fine`, `high-cloud`, `partly-cloudy`, `mostly-cloudy`, `cloudy`, `overcast`, `shower-or-two`, `chance-shower-fine`, `chance-shower-cloud`, `drizzle`, `few-showers`, `showers-rain`, `heavy-showers-rain`, `chance-thunderstorm-fine`, `chance-thunderstorm-cloud`, `chance-thunderstorm-showers`, `thunderstorm`, `chance-snow-fine`, `chance-snow-cloud`, `snow-and-rain`, `light-snow`, `snow`, `heavy-snow`, `wind`, `frost`, `fog`, `hail`, `dust`
 night | boolean | | used to show a moon instead of a sun in icons
 
-## Forecast Graphs - Rainfall Probability
+## Graph - GET - Forecast Graphs - Rainfall Probability
 
 > Example Query String Request
 
@@ -4594,7 +4643,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Sunrise/Sunset
+## Graph - GET - Forecast Graphs - Sunrise/Sunset
 
 > Example Query String Request
 
@@ -4729,7 +4778,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Swell Height
+## Graph - GET - Forecast Graphs - Swell Height
 
 > Example Query String Request
 
@@ -4865,7 +4914,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 }
 ```
 
-Swell Height forecast graph series, can be plotted on the same graph as a <a href="#forecast-graphs-swell-period">Swell Period</a> graph.
+Swell Height forecast graph series, can be plotted on the same graph as a <a href="#graph-get-forecast-graphs-swell-period">Swell Period</a> graph.
 
 ### Data Config
 
@@ -4940,7 +4989,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Swell Period
+## Graph - GET - Forecast Graphs - Swell Period
 
 > Example Query String Request
 
@@ -5045,7 +5094,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecas
 }
 ```
 
-Swell Period forecast graph series, can be plotted on the same graph as a <a href="#forecast-graphs-swell-height">Swell Height</a> graph.
+Swell Period forecast graph series, can be plotted on the same graph as a <a href="#graph-get-forecast-graphs-swell-height">Swell Height</a> graph.
 
 ### Data Config
 
@@ -5115,7 +5164,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Temperature
+## Graph - GET - Forecast Graphs - Temperature
 
 > Example Query String Request
 
@@ -5281,7 +5330,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Tides
+## Graph - GET - Forecast Graphs - Tides
 
 > Example Query String Request
 
@@ -5476,7 +5525,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - UV
+## Graph - GET - Forecast Graphs - UV
 
 > Example Query String Request
 
@@ -5640,7 +5689,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Forecast Graphs - Wind
+## Graph - GET - Forecast Graphs - Wind
 
 > Example Query String Request
 
@@ -5846,7 +5895,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current forecast
 
-## Observational Graphs - Apparent Temperature
+## Graph - GET - Observational Graphs - Apparent Temperature
 
 > Example Query String Request
 
@@ -6023,7 +6072,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Cloud
+## Graph - GET - Observational Graphs - Cloud
 
 > Example Query String Request
 
@@ -6198,7 +6247,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Delta T
+## Graph - GET - Observational Graphs - Delta T
 
 > Example Query String Request
 
@@ -6373,7 +6422,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Dew Point
+## Graph - GET - Observational Graphs - Dew Point
 
 > Example Query String Request
 
@@ -6550,7 +6599,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Humidity
+## Graph - GET - Observational Graphs - Humidity
 
 > Example Query String Request
 
@@ -6727,7 +6776,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Pressure
+## Graph - GET - Observational Graphs - Pressure
 
 > Example Query String Request
 
@@ -6902,7 +6951,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Rainfall
+## Graph - GET - Observational Graphs - Rainfall
 
 > Example Query String Request
 
@@ -7077,7 +7126,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Temperature
+## Graph - GET - Observational Graphs - Temperature
 
 > Example Query String Request
 
@@ -7252,7 +7301,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Wind
+## Graph - GET - Observational Graphs - Wind
 
 > Example Query String Request
 
@@ -7470,7 +7519,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Wind Gust
+## Graph - GET - Observational Graphs - Wind Gust
 
 > Example Query String Request
 
@@ -7676,7 +7725,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational
+## Observational - GET - by Location id
 
 Observational provides real time data from one or more weather stations.
 
@@ -7904,7 +7953,7 @@ Attribute | Type | Values | Description
 name | int | |
 distance | string | | the distance from the Station to the Location
 
-## Region Precis
+## Region Precis - GET - by Location id
 
 > Example Query String Request
 
@@ -7977,7 +8026,7 @@ Attribute | Type | Values | Description
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precis | string | | long text weather description
 
-## Summaries
+## Summary - GET - by Location ids
 
 > Example Query String Request
 
@@ -8083,7 +8132,7 @@ observational | object | |
 
 ### Location
 
-See <a href="#locations">Locations</a> for description a of Location response.
+See <a href="#location-get-by-location-id">Locations</a> for description a of Location response.
 
 ### Forecasts
 
@@ -8163,7 +8212,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
-## Observational Graphs - Apparent Temperature
+## Graph - GET - Observational Graphs - Apparent Temperature
 
 > Example Query String Request
 
@@ -8349,7 +8398,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Cloud
+## Graph - GET - Observational Graphs - Cloud
 
 > Example Query String Request
 
@@ -8533,7 +8582,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Delta T
+## Graph - GET - Observational Graphs - Delta T
 
 > Example Query String Request
 
@@ -8717,7 +8766,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Dew Point
+## Graph - GET - Observational Graphs - Dew Point
 
 > Example Query String Request
 
@@ -8903,7 +8952,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Humidity
+## Graph - GET -  Observational Graphs - Humidity
 
 > Example Query String Request
 
@@ -9089,7 +9138,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Pressure
+## Graph - GET - Observational Graphs - Pressure
 
 > Example Query String Request
 
@@ -9273,7 +9322,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Rainfall
+## Graph - GET - Observational Graphs - Rainfall
 
 > Example Query String Request
 
@@ -9457,7 +9506,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Temperature
+## Graph - GET - Observational Graphs - Temperature
 
 > Example Query String Request
 
@@ -9641,7 +9690,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Wind
+## Graph - GET - Observational Graphs - Wind
 
 > Example Query String Request
 
@@ -9861,7 +9910,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Observational Graphs - Wind Gust
+## Graph - GET - Observational Graphs - Wind Gust
 
 > Example Query String Request
 
@@ -10072,7 +10121,7 @@ Attribute | Type | Values | Description
 size | int | | The total number of available days of data
 start | int | | The index of the start of the current observational graph
 
-## Weather Stations List
+## Weather Station - GET - by Location id
 
 > Example Query String Request
 
@@ -10368,7 +10417,7 @@ lastName | string | |
 email | string | |
 credentials | array | | Account's accessibility
 accountFeatures | array | **see (Account Feature) below** | An array of account features.
-locations | array | See <a href="#locations">Locations</a>. | An array of account's favorite locations.
+locations | array | See <a href="#location-get-by-location-id">Locations</a>. | An array of account's favorite locations.
 units | object | See <a href="#units">Units</a>. | Account's prefered units.
 warningFilters | array | See `classifications` in <a href="#warning-types">Warning Types</a>  | An array of warning filters
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
@@ -10392,7 +10441,7 @@ annualCost | int | |
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
-## Account - Register
+## Account - POST - Register
 
 > Example Request Body
 
@@ -10478,7 +10527,7 @@ fullName | string | | | false
 
 Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
 
-## Account - Login
+## Account - GET - Login
 
 > Example Request Header
 
@@ -10546,7 +10595,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 }
 ```
 
-Logins an account.
+Login an account.
 
 ### Request
 
@@ -10565,7 +10614,7 @@ password | string | | | true
 
 Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
 
-## Account - Update Heartbeat
+## Account - GET - Update Heartbeat
 
 > Example Request Header
 
@@ -10593,7 +10642,7 @@ Updates a account's _loggedInDateTime_.
 
 Response is an empty array.
 
-## Contacts - Get by contact uid
+## Contact - GET - by Contact uid
 
 > Example Request Header
 
@@ -10637,7 +10686,7 @@ isPhoneVerified | boolean | | Determines if phone is already verified
 webhook | string | |
 isDefault | boolean | | Determines whether the contact is the default of the account
 
-## Contacts - Get
+## Contact - GET - by Account uid
 
 > Example Request Header
 
@@ -10670,9 +10719,9 @@ Returns all contacts associated with the account
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/contacts.json`
 
 ### Response - Contact Object
-Response is an array of Contacts. See <a href="#contacts-get-by-uid">Get by uid</a> for description of a Contact response.
+Response is an array of Contacts. See <a href="#contact-get-by-contact-uid">Get by uid</a> for description of a Contact response.
 
-## Contacts - Create
+## Contact - POST - Create
 
 > Example Request Body
 
@@ -10718,7 +10767,7 @@ isDefault | boolean | | | true
 
 Response is empty object.
 
-## Contacts - Update
+## Contact - PUT - Update
 
 > Example Request Body
 
@@ -10764,7 +10813,7 @@ isDefault | boolean | | | true
 
 Response is empty object.
 
-## Contacts - Delete
+## Contact  - DELETE - Delete
 
 > Example Request Body
 
@@ -10788,7 +10837,7 @@ Deletes a Contact.
 
 Response is an empty object.
 
-## Contacts Verification - Send Verification code
+## Contact - POST - Send Verification code
 
 > Example Request Body
 
@@ -10822,7 +10871,7 @@ transporterType | int | 1 is **Email**. 2 is **SMS** | | true
 
 Response is an empty object.
 
-## Contacts Verification - Verify
+## Contact - POST - Verify
 
 > Example Request Body
 
@@ -10861,7 +10910,7 @@ transporterType | int | 1 is **Email**. 2 is **SMS** | | true
 
 Response is an empty object.
 
-## Devices - Get
+## Device - GET - All Devices by Account uid
 
 > Example Request Header
 
@@ -10926,7 +10975,7 @@ Attribute | Type | Values | Description
 id | int | `1` for ios, `2` for android |
 name | string | `ios`, `android` | Mobile type name
 
-## Devices - Create
+## Device - POST - Create
 
 > Example Request Body
 
@@ -10979,9 +11028,9 @@ lng | float | | the exact coordinates of a device | false
 
 ### Response
 
-Response is Device. See <a href="#devices-list">Device</a> for description of a Device response.
+Response is Device. See <a href="#device-get-all-devices-by-account-uid">Device</a> for description of a Device response.
 
-## Devices - Update
+## Device - PUT - Update
 
 > Example Request Body
 
@@ -11030,9 +11079,9 @@ lng | float | | the exact coordinates of a device | false
 
 ### Response
 
-Response is Device. See <a href="#devices-list">Device</a> for description of a Device response.
+Response is Device. See <a href="#device-get-all-devices-by-account-uid">Device</a> for description of a Device response.
 
-## Locations - Get
+## Location - GET - All Locations by Account uid
 
 > Example Request Header
 
@@ -11081,9 +11130,9 @@ Returns the list of account's locations.
 
 ### Response
 
-Response is an array of Locations. See <a href="#locations">Locations</a> for description of a Location response.
+Response is an array of Locations. See <a href="#location-get-by-location-id">Locations</a> for description of a Location response.
 
-## Locations - Update
+## Location - PUT - Update
 
 > Example Request Body
 
@@ -11131,97 +11180,7 @@ id | int | | | true
 
 Response is an empty array.
 
-## Measurements - Get
-
-> Example Request Header
-
-```json
-{}
-```
-
-> Example Response
-
-```json
-{
-    "temperature": "f",
-    "tideHeight": "ft",
-    "swellHeight": "m",
-    "amount": "mm",
-    "speed": "km\/h",
-    "distance": "miles",
-    "pressure": "hpa"
-}
-```
-
-Returns the list of account's prefered units.
-
-### Request
-
-`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
-### Response
-
-Response is units. See <a href="#units">Units</a> for a description of a Unit response.
-
-## Measurements - Update
-
-> Example Request Body
-
-```json
-{
-    "units": {
-        "distance": "km",
-        "temperature": "c",
-        "speed": "knots",
-        "amount": "in",
-        "tideHeight": "m",
-        "swellHeight": "ft",
-        "pressure": "mmhg"
-    }
-}
-```
-
-> Example Response
-
-```json
-{}
-```
-
-Updates account's prefered units.
-
-### Request
-
-`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-units | object | **(See Units below)** | | true
-
-### Units
-
-Parameter | Type | Options | Description | Required
---------- | ---- | ------- | ----------- | --------
-amount | string | `mm`, `pts`, `in` | | false
-distance | string | `km`, `miles` | | false
-speed | string | `km/h`, `mph`, `m/s, knots` | | false
-swellHeight | string | `m`, `ft` | | false
-temperature | string | `c`, `f` | | false
-tideHeight | string | `m`, `ft` | | false
-pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
-### Response
-
-Response is an empty object.
-
-## Notifications - Get
+## Notification - GET - All Notifications
 
 > Example Request Header
 
@@ -11233,17 +11192,26 @@ Response is an empty object.
 			{
 				"id": 1
 			},
+            {
+                "id": 2
+            },
 			{
 				"id": 3
 			}
 		],
 		"notificationTransporterTypes": [
+            {
+                "id": 1
+            },
 			{
 				"id": 2
 			},
 			{
 				"id": 3
-			}
+			},
+            {
+                "id": 5
+            }
 		]
 	}
 }
@@ -11252,118 +11220,277 @@ Response is an empty object.
 > Example Response
 
 ```json
-[
-    {
-        "uid": "7d0e6509-f9c1-431d-a0b0-2619d27ed68f",
-        "name": "Account 4 Alert 1",
-        "enabled": true,
-        "notificationType": {
-            "id": 1,
-            "name": "alert"
-        },
-        "notificationContacts": [
-            {
-                "id": 1,
-                "contact": {
-                    "id": 7,
-                    "firstName": "Krusty D",
-                    "lastName": "Clown",
-                    "email": "krusty@willyweather.com",
-                    "phone": "4013444",
-                    "webhook": "http://krusty.com",
-                    "isDefault": true
-                },
-                "notificationTransporterType": {
-                    "id": 1,
-                    "name": "email"
-                }
-            },
-            {
-                "id": 6,
-                "contact": {
-                    "id": 7,
-                    "firstName": "Krusty D",
-                    "lastName": "Clown",
-                    "email": "krusty@willyweather.com",
-                    "phone": "4013444",
-                    "webhook": "http://krusty.com",
-                    "isDefault": true
-                },
-                "notificationTransporterType": {
-                    "id": 2,
-                    "name": "sms"
-                }
-            },
-            {
-                "id": 13,
-                "contact": {
-                    "id": 7,
-                    "firstName": "Krusty D",
-                    "lastName": "Clown",
-                    "email": "krusty@willyweather.com",
-                    "phone": "4013444",
-                    "webhook": "http://krusty.com",
-                    "isDefault": true
-                },
-                "notificationTransporterType": {
-                    "id": 3,
-                    "name": "ios"
-                }
-            },
-            {
-                "id": 7,
-                "contact": {
-                    "id": 7,
-                    "firstName": "Krusty D",
-                    "lastName": "Clown",
-                    "email": "krusty@willyweather.com",
-                    "phone": "4013444",
-                    "webhook": "http://krusty.com",
-                    "isDefault": true
-                },
-                "notificationTransporterType": {
-                    "id": 5,
-                    "name": "webhook"
-                }
-            }
-        ],
-        "followMe": false,
-        "location": {
-            "id": 4988,
-            "name": "Bondi Beach",
-            "region": "Sydney",
-            "state": "NSW",
-            "postcode": "2026",
-            "timeZone": "Australia/Sydney",
-            "lat": -33.8905,
-            "lng": 151.2749,
-            "typeId": 2
-        },
-        "createdDateTime": "2016-01-01 00:00:00",
-        "notifyMeOffset": "0",
-        "notificationTime": {
-            "mon": true,
-            "tue": true,
-            "wed": false,
-            "thu": false,
-            "fri": false,
-            "sat": false,
-            "sun": false,
-            "startTime": 0,
-            "endTime": 1140
-        },
-        "notificationAlertConditions": [
-            {
-                "id": 1,
-                "notificationAlertConditionType": {
-                    "id": 2,
-                    "code": "forecast-max-temp"
-                },
-                "tempRangeStart": 290,
-                "tempRangeEnd": 310
-            }
-        ]
+[{
+  "uid": "7d0e6509-f9c1-431d-a0b0-2619d27ed68f",
+  "name": "Account 4 Alert 1",
+  "enabled": true,
+  "notificationType": {
+    "id": 1,
+    "name": "alert"
+  },
+  "notificationContacts": [{
+    "id": 1,
+    "contact": {
+      "id": 7,
+      "firstName": "Krusty D",
+      "lastName": "Clown",
+      "email": "krusty@willyweather.com",
+      "phone": "4013444",
+      "webhook": "http://krusty.com",
+      "isDefault": true
+    },
+    "notificationTransporterType": {
+      "id": 1,
+      "name": "email"
     }
+  },
+    {
+      "id": 6,
+      "contact": {
+        "id": 7,
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "phone": "4013444",
+        "webhook": "http://krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 2,
+        "name": "sms"
+      }
+    },
+    {
+      "id": 13,
+      "contact": {
+        "id": 7,
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "phone": "4013444",
+        "webhook": "http://krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 3,
+        "name": "ios"
+      }
+    },
+    {
+      "id": 7,
+      "contact": {
+        "id": 7,
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "phone": "4013444",
+        "webhook": "http://krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 5,
+        "name": "webhook"
+      }
+    }
+  ],
+  "followMe": false,
+  "location": {
+    "id": 4988,
+    "name": "Bondi Beach",
+    "region": "Sydney",
+    "state": "NSW",
+    "postcode": "2026",
+    "timeZone": "Australia/Sydney",
+    "lat": -33.8905,
+    "lng": 151.2749,
+    "typeId": 2
+  },
+  "createdDateTime": "2016-01-01 00:00:00",
+  "notifyMeOffset": "0",
+  "notificationTime": {
+    "mon": true,
+    "tue": true,
+    "wed": false,
+    "thu": false,
+    "fri": false,
+    "sat": false,
+    "sun": false,
+    "startTime": 0,
+    "endTime": 1140
+  },
+  "notificationAlertConditions": [{
+    "id": 1,
+    "notificationAlertConditionType": {
+      "id": 2,
+      "code": "forecast-max-temp"
+    },
+    "tempRangeStart": 290,
+    "tempRangeEnd": 310
+  }]
+},
+  {
+    "uid": "6469b8e4-5bcb-4a40-804a-f1c136338f61",
+    "name": "Account 4 Report 1",
+    "enabled": true,
+    "notificationType": {
+      "id": 2,
+      "name": "report"
+    },
+    "notificationContacts": [{
+      "id": 2,
+      "contact": {
+        "uid": "2c1b8e02-4872-4452-a989-2343e10135e1",
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "isEmailVerified": true,
+        "phone": "4013444",
+        "isPhoneVerified": true,
+        "webhook": "http:\/\/krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 1,
+        "name": "email"
+      }
+    }, {
+      "id": 8,
+      "contact": {
+        "uid": "2c1b8e02-4872-4452-a989-2343e10135e1",
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "isEmailVerified": true,
+        "phone": "4013444",
+        "isPhoneVerified": true,
+        "webhook": "http:\/\/krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 2,
+        "name": "sms"
+      }
+    }],
+    "followMe": false,
+    "location": {
+      "id": 4988,
+      "name": "Bondi Beach",
+      "region": "Sydney",
+      "state": "NSW",
+      "postcode": "2026",
+      "timeZone": "Australia\/Sydney",
+      "lat": -33.8905,
+      "lng": 151.2749,
+      "typeId": 2
+    },
+    "createdDateTime": "2016-01-01 00:00:00",
+    "notifyMeOffset": "0",
+    "notificationDays": {
+      "mon": true,
+      "tue": true,
+      "wed": false,
+      "thu": false,
+      "fri": false,
+      "sat": false,
+      "sun": false
+    },
+    "notificationTimeRanges": [{
+      "startTime": 60,
+      "endTime": 120
+    }],
+    "weatherTypes": [{
+      "id": 2,
+      "code": "wind",
+      "name": "wind",
+      "displayName": "wind",
+      "marineBased": false
+    }]
+  },
+  {
+    "uid": "7ca1f593-2b89-4b78-9d84-51ed895f7948",
+    "name": "Account 4 Warning 1",
+    "enabled": true,
+    "notificationType": {
+      "id": 3,
+      "name": "warning"
+    },
+    "notificationContacts": [{
+      "id": 3,
+      "contact": {
+        "uid": "2c1b8e02-4872-4452-a989-2343e10135e1",
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "isEmailVerified": true,
+        "phone": "4013444",
+        "isPhoneVerified": true,
+        "webhook": "http:\/\/krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 1,
+        "name": "email"
+      }
+    }, {
+      "id": 10,
+      "contact": {
+        "uid": "2c1b8e02-4872-4452-a989-2343e10135e1",
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "isEmailVerified": true,
+        "phone": "4013444",
+        "isPhoneVerified": true,
+        "webhook": "http:\/\/krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 2,
+        "name": "sms"
+      }
+    }, {
+      "id": 11,
+      "contact": {
+        "uid": "2c1b8e02-4872-4452-a989-2343e10135e1",
+        "firstName": "Krusty D",
+        "lastName": "Clown",
+        "email": "krusty@willyweather.com",
+        "isEmailVerified": true,
+        "phone": "4013444",
+        "isPhoneVerified": true,
+        "webhook": "http:\/\/krusty.com",
+        "isDefault": true
+      },
+      "notificationTransporterType": {
+        "id": 3,
+        "name": "ios"
+      }
+    }],
+    "followMe": true,
+    "location": {
+      "id": 4988,
+      "name": "Bondi Beach",
+      "region": "Sydney",
+      "state": "NSW",
+      "postcode": "2026",
+      "timeZone": "Australia\/Sydney",
+      "lat": -33.8905,
+      "lng": 151.2749,
+      "typeId": 2
+    },
+    "createdDateTime": "2016-01-01 00:00:00",
+    "warningType": {
+      "id": 21,
+      "code": "closed-waters",
+      "name": "Closed Water",
+      "classification": "closed-water",
+      "warningSeverityLevels": null
+    },
+    "warningSeverityLevels": [{
+      "id": 1,
+      "code": "yellow"
+    }]
+  }
 ]
 ```
 
@@ -11404,7 +11531,7 @@ enabled | boolean | |
 notificationType | object | | **(see Notification Type object)**
 notificationContacts | array | | an array of Notification Contact objects **(see Notification Contact)**
 followMe | boolean | | 
-location | string | |  **(See <a href="#locations">Locations</a> object)**
+location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 notifyMeOffset | int | | In minutes (only exists if type is `alert`). Can be null.
 notificationTime | object | | **(see Notification Time object)** (only exists if type is `alert`)
@@ -11522,7 +11649,7 @@ Attribute | Type | Values | Description
 id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `23` for `current-rain-since-9am`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> |
 code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `forecast-wind`, `forecast-weather`, `forecast-rainfall`, `forecast-tides`, `forecast-sunrise-sunset`, `forecast-uv`, `forecast-moonphase`, `forecast-radar`, `forecast-hourly-precis`, `forecast-region-precis`, `forecast-daily-max-uv`, `current-wind`, `current-temp`, `current-rain-last-hour`, `current-rain-since-9am`, `current-humidity`, `current-dewpoint`, `current-pressure`, `current-delta-t`, `current-apparent-temp`, `current-wind-gust`, `current-cloud` |
 
-## Notifications - Create
+## Notification - POST - Create
 
 > Example Request Body
 
@@ -11667,9 +11794,9 @@ uid | string | | | true
 
 ### Response
 
-Response is a Notification object. See <a href="#notifications-list">Notifications</a> for description of a Notification response.
+Response is a Notification object. See <a href="#notification-get-all-notifications">Notifications</a> for description of a Notification response.
 
-## Notifications - Update
+## Notification - PUT - Update
 
 > Example Request Body
 
@@ -11723,7 +11850,7 @@ Updates a notification. Only for alert.
 
 `PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
 
-See <a href="#notifications-create">Notifications Create</a> for Request Parameters.
+See <a href="#notification-post-create">Notifications Create</a> for Request Parameters.
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -11733,7 +11860,7 @@ See <a href="#notifications-create">Notifications Create</a> for Request Paramet
 
 Response is an empty object.
 
-## Notifications - Update Enabled State
+## Notification - PUT - Update Enabled State
 
 > Example Request Body
 
@@ -11767,6 +11894,11 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notifications | array | **(See Notifications below)** | | true
 enabled | boolean | | | true
+offset | int | | | true
+
+<aside class="notice">
+    Either <code>enabled</code> or <code>offset</code> must be defined in the request but not both.
+</aside>
 
 ### Notifications
 
@@ -11782,7 +11914,7 @@ uid | string | | | true
 
 Response is an empty object.
 
-## Notifications - Delete
+## Notification - DELETE - Delete
 
 > Example Request Body
 
@@ -11806,7 +11938,7 @@ Deletes a notification.
 
 Response is an empty object.
 
-## Notifications - Bulk Delete
+## Notification - DELETE - Bulk Delete
 
 > Example Request Body
 
@@ -11845,6 +11977,694 @@ Parameter | Type | Options | Description | Required
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 uid | string | | | true
+
+### Response
+
+Response is an empty object.
+
+
+## Notification - POST - Forecast Radar - Create
+
+> Example Request Body
+
+```json
+{
+  "name": "Forecast Radar Notification",
+  "notificationType": {
+    "id": 1
+  },
+  "location": {
+    "id": 4988
+  },
+  "enabled": false,
+  "followMe": false,
+  "notificationContacts": [{
+    "contact": {
+      "uid": "47d34901-1f7e-40ee-a973-035802054343"
+    },
+    "notificationTransporterType": {
+      "id": 3
+    }
+  }],
+  "notifyMeOffset": 0,
+  "notificationDays": {
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": false,
+    "fri": true,
+    "sat": true,
+    "sun": true
+  },
+  "notificationMonths": {
+    "jan": true,
+    "feb": false,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": false,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true
+  },
+  "notificationTimeRanges": [{
+    "startTime": 60,
+    "endTime": 120
+  }, {
+    "startTime": 300,
+    "endTime": 500
+  }],
+  "notificationDateRanges": [{
+    "startDate": "2021-01-01",
+    "endDate": "2021-03-31"
+  }, {
+    "startDate": "2021-05-01",
+    "endDate": "2021-11-30"
+  }],
+  "notificationAlertConditions": [{
+    "mapDataPoint": {
+      "id": 1
+    },
+    "minimumIntensity": 1,
+    "lat": -33.8905,
+    "lng": 151.2749,
+    "imminentMessageFalsePositiveReductionEnabled": false,
+    "rainAlertBoundaryMessageEnabled": true,
+    "headsUpMessageEnabled": true,
+    "headsUpMessageAdvancedWarningMinutes": 10,
+    "headsUpMessageFalsePositiveReductionEnabled": true,
+    "imminentLowPredictabilityMinutes": 1,
+    "imminentMediumPredictabilityMinutes": 2,
+    "imminentHighPredictabilityMinutes": 3,
+    "imminentMessageResetEnabled": true,
+    "imminentMessageResetMinutes": 5,
+    "briefShowerLengthEnabled": true,
+    "briefShowerLengthMinutes": 3,
+    "clearingAfterBriefShowerMinutes": 1,
+    "rainArrivedMessageEnabled": true,
+    "notificationAlertConditionType": {
+      "id": 11
+    },
+    "group": 0
+  }]
+}
+```
+
+> Example Response
+
+```json
+[{
+  "uid": "ea3ea8a0-527e-4fcc-bcf7-ac8fb479e962",
+  "name": "This is a new name",
+  "enabled": false,
+  "notificationType": {
+    "id": 1,
+    "name": "alert"
+  },
+  "notificationContacts": [{
+    "id": null,
+    "contact": {
+      "uid": "47d34901-1f7e-40ee-a973-035802054343",
+      "firstName": "dashboard",
+      "lastName": "",
+      "email": "dash@willyweather.com",
+      "isEmailVerified": false,
+      "phone": "",
+      "isPhoneVerified": false,
+      "webhook": "",
+      "isDefault": true
+    },
+    "notificationTransporterType": {
+      "id": 3,
+      "name": "ios"
+    }
+  }],
+  "followMe": false,
+  "location": {
+    "id": 4988,
+    "name": "Bondi Beach",
+    "region": "Sydney",
+    "state": "NSW",
+    "postcode": "2026",
+    "timeZone": "Australia\/Sydney",
+    "lat": -33.8905,
+    "lng": 151.2749,
+    "typeId": 2
+  },
+  "createdDateTime": "2021-01-01 00:00:00",
+  "notifyMeOffset": 0,
+  "notificationDays": {
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": false,
+    "fri": true,
+    "sat": true,
+    "sun": true
+  },
+  "notificationMonths": {
+    "jan": true,
+    "feb": false,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": false,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true
+  },
+  "notificationTimeRanges": [{
+    "startTime": 60,
+    "endTime": 120
+  }, {
+    "startTime": 300,
+    "endTime": 500
+  }],
+  "notificationDateRanges": [{
+    "startDate": "2021-01-01",
+    "endDate": "2021-03-31"
+  }, {
+    "startDate": "2021-05-01",
+    "endDate": "2021-11-30"
+  }],
+  "notificationAlertConditions": [{
+    "mapDataPoint": {
+      "id": 1
+    },
+    "minimumIntensity": 1,
+    "lat": -33.8905,
+    "lng": 151.2749,
+    "imminentMessageFalsePositiveReductionEnabled": false,
+    "rainAlertBoundaryMessageEnabled": true,
+    "headsUpMessageEnabled": true,
+    "headsUpMessageAdvancedWarningMinutes": 10,
+    "headsUpMessageFalsePositiveReductionEnabled": true,
+    "imminentLowPredictabilityMinutes": 1,
+    "imminentMediumPredictabilityMinutes": 2,
+    "imminentHighPredictabilityMinutes": 3,
+    "imminentMessageResetEnabled": true,
+    "imminentMessageResetMinutes": 5,
+    "briefShowerLengthEnabled": true,
+    "briefShowerLengthMinutes": 3,
+    "clearingAfterBriefShowerMinutes": 1,
+    "rainArrivedMessageEnabled": true,
+    "location": {
+      "id": 4988,
+      "name": "Bondi Beach",
+      "region": "Sydney",
+      "state": "NSW",
+      "postcode": "2026",
+      "timeZone": "Australia\/Sydney",
+      "lat": -33.8905,
+      "lng": 151.2749,
+      "typeId": 2,
+      "distance": 0
+    },
+    "notificationAlertConditionType": {
+      "id": 11,
+      "code": "forecastRadar"
+    },
+    "group": 0
+  }],
+  "units": {
+    "temperature": "k",
+    "tideHeight": "m",
+    "swellHeight": "m",
+    "speed": "m\/s",
+    "amount": "mm",
+    "distance": "km",
+    "pressure": "millibars",
+    "cloud": "oktas"
+  }
+}]
+```
+
+Creates a forecast radar notification.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+name | string | | | true
+location | object | **(See Location)**  | The location this notification is for. | true
+enabled | boolean | | | true
+followMe | boolean | | Updates location of notification | true
+notificationType | object | **(See Notification Type)** |  | true
+notifyMeOffset | int | | | true
+notificationContacts | array | **(See Notification Contact)** | | true
+notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active | true*
+notificationMonths | object | **(See Notification Months)** | months that the notification is active | true*
+notificationDays | object | **(See Notification Days)** | days that the notification is active | true*
+notificationTimeRanges | object | **(See Notification Time Range)** | time ranges that the notification is active | true
+notificationAlertConditions | array | **(See Notification Alert Conditions)** | | true
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters. This endpoint only supports json requests.
+</aside>
+<aside class="notice">
+    * At least one of the following: <code>notificationDateRanges</code>, <code>notificationDays</code>, or <code>notificationMonths</code> must be defined for the notification to be considered valid.
+</aside>
+<aside class="notice">
+    <code>notificationAlertConditions</code> for forecast radar can only contain 1 entry and that entry must have a group of <code>0</code>.
+</aside>
+
+### Location
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | | true
+
+### Notification Type
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | 1 | 1 for alert | true
+
+### Notification Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+contact | object | **(See Contact)** | | true
+notificationTransporterType | object | See <a href="#notification-transporter-type">Notification Transporter Type</a> | | true
+
+### Contact
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+uid | string | | | true
+
+### Notification Date Range
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+startDate | string | | <code>YYYY-MM-DD</code> | true
+endDate | string | | <code>YYYY-MM-DD</code> | true
+
+### Notification Months
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+jan | boolean | | | true
+feb | boolean | | | true
+mar | boolean | | | true
+apr | boolean | | | true
+may | boolean | | | true
+jun | boolean | | | true
+jul | boolean | | | true
+aug | boolean | | | true
+sep | boolean | | | true
+oct | boolean | | | true
+nov | boolean | | | true
+dec | boolean | | | true
+
+### Notification Days
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+mon | boolean | | | true
+tue | boolean | | | true
+wed | boolean | | | true
+thu | boolean | | | true
+fri | boolean | | | true
+sat | boolean | | | true
+sun | boolean | | | true
+
+### Notification Days
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+startTime | int | 0 - 1439 | Time when the notification starts (in minutes) | true
+endTime | int| 0 - 1439 | Time when the notification ends (in minutes) | true
+
+### Notification Alert Conditions
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+mapDataPoint | object | **(See Map Data Point)** | | true
+minimumIntensity | int | 0 - 5 (no rain, light, moderate, heavy, very heavy) | | true
+lat | float | | | true*
+lng | float | | | true*
+imminentMessageFalsePositiveReductionEnabled | boolean | | | true
+rainAlertBoundaryMessageEnabled | boolean | | | true
+headsUpMessageEnabled | boolean | | | true
+headsUpMessageAdvancedWarningMinutes | int | | | true
+headsUpMessageFalsePositiveReductionEnabled | boolean | | | true
+imminentLowPredictabilityMinutes | int | | | true
+imminentMediumPredictabilityMinutes | int | | | true
+imminentHighPredictabilityMinutes | int | | | true
+imminentMessageResetEnabled | boolean | | | true
+imminentMessageResetMinutes | int | | | true
+briefShowerLengthEnabled | boolean | | | true
+briefShowerLengthMinutes| int | | | true
+clearingAfterBriefShowerMinutes | int | | | true
+rainArrivedMessageEnabled | boolean | | | true
+location | object | **(See Location)** | | true*
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | 0 | | | true
+
+<aside class="notice">
+    *Either <code>lat</code> and <code>lng</code>  or <code>location</code> must be defined but not both.
+</aside>
+
+### Map Data Point
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | | | true 
+
+### Notification Alert Condition Type
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | 11 (forecast radar) | | | true
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+uid | string | |
+name | string | |
+enabled | boolean | |
+notificationType | object | | **(see Notification Type object)**
+notificationContacts | array | | an array of Notification Contact objects **(see Notification Contact)**
+followMe | boolean | |
+location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
+createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
+notifyMeOffset | int | | In minutes. Can be null.
+notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active
+notificationMonths | object | **(See Notification Months)** | months that the notification is active
+notificationDays | object | **(See Notification Days)** | days that the notification is active
+notificationTimeRanges | object | **(See Notification Time Range)** | time ranges that the notification is active
+notificationAlertConditions | array | | for forecast radar settings
+
+### Notification Type
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | `1`| `1` for alert
+name | string | `alert` |
+
+### Notification Contact
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int |  |
+contact | object |  | **(See <a href="#contact-get-by-contact-uid">Contact</a> object)**|
+notificationTransporterType | object |  | **(see Notification Transporter Type object)**
+
+### Notification Transporter Type
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook |
+name | string | `email`, `sms`, `ios`, `android`, `webhook` |
+
+### Notification Date Range
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+startDate | string | | <code>YYYY-MM-DD</code> | true
+endDate | string | | <code>YYYY-MM-DD</code> | true
+
+### Notification Months
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+jan | boolean | |
+feb | boolean | |
+mar | boolean | |
+apr | boolean | |
+may | boolean | |
+jun | boolean | | 
+jul | boolean | |
+aug | boolean | |
+sep | boolean | |
+oct | boolean | |
+nov | boolean | |
+dec | boolean | |
+
+### Notification Days
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+mon | boolean | |
+tue | boolean | |
+wed | boolean | |
+thu | boolean | |
+fri | boolean | |
+sat | boolean | |
+sun | boolean | |
+
+### Notification Times
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+startTime | int | 0 - 1439 | Time when the notification starts (in minutes)
+endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
+
+### Notification Alert Condition
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+mapDataPoint | object | **(See Map Data Point)** |
+minimumIntensity | int | 0 - 5 (no rain, light, moderate, heavy, very heavy) |
+lat | float | |
+lng | float | |
+imminentMessageFalsePositiveReductionEnabled | boolean | |
+rainAlertBoundaryMessageEnabled | boolean | |
+headsUpMessageEnabled | boolean | |
+headsUpMessageAdvancedWarningMinutes | int | |
+headsUpMessageFalsePositiveReductionEnabled | boolean | |
+imminentLowPredictabilityMinutes | int | |
+imminentMediumPredictabilityMinutes | int | |
+imminentHighPredictabilityMinutes | int | |
+imminentMessageResetEnabled | boolean | |
+imminentMessageResetMinutes | int | |
+briefShowerLengthEnabled | boolean | |
+clearingAfterBriefShowerMinutes | int | |
+rainArrivedMessageEnabled | boolean | |
+location | object | **(See <a href="#location-get-by-location-id">Locations</a> object)**|
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** |
+group | int | 0 | |
+
+### Map Data Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+
+### Notification Alert Condition Type
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | `11` for `forecastRadar`|
+code | string | `forecastRadar` |
+
+## Notification - PUT - Forecast Radar - Update
+
+> Example Request Body
+
+```json
+{
+  "name": "Forecast Radar Notification",
+  "notificationType": {
+    "id": 1
+  },
+  "location": {
+    "id": 4988
+  },
+  "enabled": false,
+  "followMe": false,
+  "notificationContacts": [{
+    "contact": {
+      "uid": "47d34901-1f7e-40ee-a973-035802054343"
+    },
+    "notificationTransporterType": {
+      "id": 3
+    }
+  }],
+  "notifyMeOffset": 0,
+  "notificationDays": {
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": false,
+    "fri": true,
+    "sat": true,
+    "sun": true
+  },
+  "notificationMonths": {
+    "jan": true,
+    "feb": false,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": false,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true
+  },
+  "notificationTimeRanges": [{
+    "startTime": 60,
+    "endTime": 120
+  }, {
+    "startTime": 300,
+    "endTime": 500
+  }],
+  "notificationDateRanges": [{
+    "startDate": "2021-01-01",
+    "endDate": "2021-03-31"
+  }, {
+    "startDate": "2021-05-01",
+    "endDate": "2021-11-30"
+  }],
+  "notificationAlertConditions": [{
+    "mapDataPoint": {
+      "id": 1
+    },
+    "minimumIntensity": 1,
+    "lat": -33.8905,
+    "lng": 151.2749,
+    "imminentMessageFalsePositiveReductionEnabled": false,
+    "rainAlertBoundaryMessageEnabled": true,
+    "headsUpMessageEnabled": true,
+    "headsUpMessageAdvancedWarningMinutes": 10,
+    "headsUpMessageFalsePositiveReductionEnabled": true,
+    "imminentLowPredictabilityMinutes": 1,
+    "imminentMediumPredictabilityMinutes": 2,
+    "imminentHighPredictabilityMinutes": 3,
+    "imminentMessageResetEnabled": true,
+    "imminentMessageResetMinutes": 5,
+    "briefShowerLengthEnabled": true,
+    "briefShowerLengthMinutes": 3,
+    "clearingAfterBriefShowerMinutes": 1,
+    "rainArrivedMessageEnabled": true,
+    "notificationAlertConditionType": {
+      "id": 11
+    },
+    "group": 0
+  }]
+}
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Updates a forecast radar notification.
+
+### Request
+
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+
+See <a href="#notification-post-forecast-radar-create">Notifications - Forecast Radar - Create</a> for Request Parameters.
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters. This endpoint only supports json requests.
+</aside>
+
+### Response
+
+Response is an empty object.
+
+## Units - GET - All units by Account uid
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+    "temperature": "f",
+    "tideHeight": "ft",
+    "swellHeight": "m",
+    "amount": "mm",
+    "speed": "km\/h",
+    "distance": "miles",
+    "pressure": "hpa"
+}
+```
+
+Returns the list of account's prefered units.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+Response is units. See <a href="#units">Units</a> for a description of a Unit response.
+
+## Units - PUT - Update
+
+> Example Request Body
+
+```json
+{
+    "units": {
+        "distance": "km",
+        "temperature": "c",
+        "speed": "knots",
+        "amount": "in",
+        "tideHeight": "m",
+        "swellHeight": "ft",
+        "pressure": "mmhg"
+    }
+}
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Updates account's prefered units.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+units | object | **(See Units below)** | | true
+
+### Units
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+amount | string | `mm`, `pts`, `in` | | false
+distance | string | `km`, `miles` | | false
+speed | string | `km/h`, `mph`, `m/s, knots` | | false
+swellHeight | string | `m`, `ft` | | false
+temperature | string | `c`, `f` | | false
+tideHeight | string | `m`, `ft` | | false
+pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
 
 ### Response
 
@@ -11913,6 +12733,7 @@ swellHeight | string | `m`, `ft` | meters, feet
 temperature | string | `c`, `f` | celsius, fahrenheit
 tideHeight | string | `m`, `ft` | meters, feet
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
+
 
 <script>
 const urlSearchParams = new URLSearchParams(window.location.search);
