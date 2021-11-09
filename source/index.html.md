@@ -11894,7 +11894,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notifications | array | **(See Notifications below)** | | true
 enabled | boolean | | | true
-offset | int | | | true
+offset | int | | Number of minutes added to now to determine how long the notification will be disabled | true
 
 <aside class="notice">
     Either <code>enabled</code> or <code>offset</code> must be defined in the request but not both.
