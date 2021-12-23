@@ -12380,7 +12380,7 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-mapDataPoint | object | **(See Map Data Point)** | | true
+mapDataPoint | object | **(See Map Data Point)** | | false
 minimumIntensity | int | 0 - 5 (no rain, light, moderate, heavy, very heavy) | | true
 lat | float | | | true*
 lng | float | | | true*
@@ -12414,6 +12414,10 @@ id | int | | | | true
 
 <aside class="notice">
     *Either <code>lat</code> and <code>lng</code>  or <code>location</code> must be defined but not both.
+</aside>
+
+<aside class="notice">
+    If <code>mapDataPoint</code> is not provided, closest radar station from <code>lat</code> and <code>lng</code> or <code>location</code> will be used.
 </aside>
 
 ### Forecast Rainfall
