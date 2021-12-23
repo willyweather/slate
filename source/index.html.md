@@ -12335,7 +12335,7 @@ group | int | 0 | | | true
 </aside>
 
 <aside class="notice">
-    If <code>mapDataPoint</code> is not provided, closest radar station from <code>lat</code> and <code>lng</code> or <code>location</code> will be fetch.
+    If <code>mapDataPoint</code> is not provided, closest radar station from <code>lat</code> and <code>lng</code> or <code>location</code> will be used.
 </aside>
 
 ### Map Data Point
