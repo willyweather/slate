@@ -11132,7 +11132,7 @@ Returns the list of account's locations.
 
 Response is an array of Locations. See <a href="#location-get-by-location-id">Locations</a> for description of a Location response.
 
-## Location - PUT - Update
+## Location - POST - Update
 
 > Example Request Body
 
@@ -11848,7 +11848,7 @@ Updates a notification. Only for alert.
 
 ### Request
 
-`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{notification uid}.json`
 
 See <a href="#notification-post-create">Notifications Create</a> for Request Parameters.
 
@@ -11894,7 +11894,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notifications | array | **(See Notifications below)** | | true
 enabled | boolean | | | true
-offset | int | | | true
+offset | int | | Number of minutes added to now to determine how long the notification will be disabled | true
 
 <aside class="notice">
     Either <code>enabled</code> or <code>offset</code> must be defined in the request but not both.
@@ -12809,7 +12809,7 @@ Updates an alert notification.
 
 ### Request
 
-`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+`PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{notification uid}.json`
 
 See <a href="#notification-post-alert-create">Notifications - Alert - Create</a> for Request Parameters.
 
@@ -12857,7 +12857,7 @@ Returns the list of account's prefered units.
 
 Response is units. See <a href="#units">Units</a> for a description of a Unit response.
 
-## Units - PUT - Update
+## Units - POST - Update
 
 > Example Request Body
 
