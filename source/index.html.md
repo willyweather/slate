@@ -11983,13 +11983,13 @@ uid | string | | | true
 Response is an empty object.
 
 
-## Notification - POST - Forecast Radar - Create
+## Notification - POST - Alert - Create
 
 > Example Request Body
 
 ```json
 {
-  "name": "Forecast Radar Notification",
+  "name": "This is a new name",
   "notificationType": {
     "id": 1
   },
@@ -12045,31 +12045,37 @@ Response is an empty object.
     "endDate": "2021-11-30"
   }],
   "notificationAlertConditions": [{
-    "mapDataPoint": {
+    "tempRangeStart": 295.0,
+    "tempRangeEnd": 300.2,
+    "location": {
       "id": 1
     },
-    "minimumIntensity": 1,
-    "lat": -33.8905,
-    "lng": 151.2749,
-    "imminentMessageFalsePositiveReductionEnabled": false,
-    "rainAlertBoundaryMessageEnabled": true,
-    "headsUpMessageEnabled": true,
-    "headsUpMessageAdvancedWarningMinutes": 10,
-    "headsUpMessageFalsePositiveReductionEnabled": true,
-    "imminentLowPredictabilityMinutes": 1,
-    "imminentMediumPredictabilityMinutes": 2,
-    "imminentHighPredictabilityMinutes": 3,
-    "imminentMessageResetEnabled": true,
-    "imminentMessageResetMinutes": 5,
-    "briefShowerLengthEnabled": true,
-    "briefShowerLengthMinutes": 3,
-    "clearingAfterBriefShowerMinutes": 1,
-    "rainArrivedMessageEnabled": true,
     "notificationAlertConditionType": {
-      "id": 11
+      "id": 1
     },
     "group": 0
-  }]
+  },
+    {
+      "precis": "fine",
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 12
+      },
+      "group": 1
+    },
+    {
+      "tempRangeStart": 300.0,
+      "tempRangeEnd": 301.2,
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 2
+      },
+      "group": 1
+    }]
 }
 ```
 
@@ -12154,44 +12160,37 @@ Response is an empty object.
     "endDate": "2021-11-30"
   }],
   "notificationAlertConditions": [{
-    "mapDataPoint": {
+    "tempRangeStart": 295.0,
+    "tempRangeEnd": 300.2,
+    "location": {
       "id": 1
     },
-    "minimumIntensity": 1,
-    "lat": -33.8905,
-    "lng": 151.2749,
-    "imminentMessageFalsePositiveReductionEnabled": false,
-    "rainAlertBoundaryMessageEnabled": true,
-    "headsUpMessageEnabled": true,
-    "headsUpMessageAdvancedWarningMinutes": 10,
-    "headsUpMessageFalsePositiveReductionEnabled": true,
-    "imminentLowPredictabilityMinutes": 1,
-    "imminentMediumPredictabilityMinutes": 2,
-    "imminentHighPredictabilityMinutes": 3,
-    "imminentMessageResetEnabled": true,
-    "imminentMessageResetMinutes": 5,
-    "briefShowerLengthEnabled": true,
-    "briefShowerLengthMinutes": 3,
-    "clearingAfterBriefShowerMinutes": 1,
-    "rainArrivedMessageEnabled": true,
-    "location": {
-      "id": 4988,
-      "name": "Bondi Beach",
-      "region": "Sydney",
-      "state": "NSW",
-      "postcode": "2026",
-      "timeZone": "Australia\/Sydney",
-      "lat": -33.8905,
-      "lng": 151.2749,
-      "typeId": 2,
-      "distance": 0
-    },
     "notificationAlertConditionType": {
-      "id": 11,
-      "code": "forecastRadar"
+      "id": 1
     },
     "group": 0
-  }],
+  },
+    {
+      "precis": "fine",
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 12
+      },
+      "group": 1
+    },
+    {
+      "tempRangeStart": 300.0,
+      "tempRangeEnd": 301.2,
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 2
+      },
+      "group": 1
+    }],
   "units": {
     "temperature": "k",
     "tideHeight": "m",
@@ -12205,7 +12204,7 @@ Response is an empty object.
 }]
 ```
 
-Creates a forecast radar notification.
+Creates an alert notification.
 
 ### Request
 
@@ -12231,9 +12230,6 @@ notificationAlertConditions | array | **(See Notification Alert Conditions)** | 
 </aside>
 <aside class="notice">
     * At least one of the following: <code>notificationDateRanges</code>, <code>notificationDays</code>, or <code>notificationMonths</code> must be defined for the notification to be considered valid.
-</aside>
-<aside class="notice">
-    <code>notificationAlertConditions</code> for forecast radar can only contain 1 entry and that entry must have a group of <code>0</code>.
 </aside>
 
 ### Location
@@ -12306,6 +12302,82 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes) | true
 
 ### Notification Alert Conditions
 
+<aside class="notice">
+    * Each entry in the notificationAlertCondition must specify <code>notificationAlertConditionType</code>, <code>group</code> and a data source (<code>weatherStation</code> for current types, <code>location</code> for forecast types, unless specifically stated supporting other types)
+</aside>
+<aside class="notice">
+    <code>group</code> attribute is used to denote groupings of alert conditions. For conditions that belong to the same group, the logical operator will be an AND, that means that the group evaluation will be true if all the conditions in the group returns true. If there are 2 or more groups, each group will be treated as an OR, that means that if one of the groups returns true the total result of the evaluation will be true.
+</aside>
+
+### Notification Alert Condition Type
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> 
+
+### Location
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | Location id which will be used as the datasource for the alert condition | true
+
+### Weather Station
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | Weather Station id which will be used as the datasource for the alert condition | true
+
+### Forecast Daily Max UV
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+indexRangeStart | float | 0 - 20 | | true
+indexRangeEnd | float | 0 - 20 | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Hourly Precis
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Max Temperature
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+tempRangeStart | float | 273.15 - 323.15 | value is in kelvin | true
+tempRangeEnd | float | 273.15 - 323.15 | value is in kelvin | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Min Temperature
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+tempRangeStart | float | 253.15 - 303.15 | value is in kelvin | true
+tempRangeEnd | float | 253.15 - 303.15 | value is in kelvin | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Moonphase
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+phase | int | `1` for `full`<br/> `2` for `last quarter`<br/> `3` for `new`<br/> `4` for `first quarter`<br/>  | | true
+surroundingDays | int | 0 - 4 | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Radar
+
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 mapDataPoint | object | **(See Map Data Point)** | | false
@@ -12330,6 +12402,16 @@ location | object | **(See Location)** | | true*
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | 0 | | | true
 
+### Map Data Point
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+id | int | | | | true 
+
+<aside class="notice">
+    <code>notificationAlertConditions</code> for forecast radar can only contain 1 entry and that entry must have a group of <code>0</code>.
+</aside>
+
 <aside class="notice">
     *Either <code>lat</code> and <code>lng</code>  or <code>location</code> must be defined but not both.
 </aside>
@@ -12338,17 +12420,201 @@ group | int | 0 | | | true
     If <code>mapDataPoint</code> is not provided, closest radar station from <code>lat</code> and <code>lng</code> or <code>location</code> will be used.
 </aside>
 
-### Map Data Point
+### Forecast Rainfall
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-id | int | | | | true 
+probability | int | 1 - 100  | | true
+amount | int | -1 - 100 | -1 (no rain)| true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
 
-### Notification Alert Condition Type
+### Forecast Region Precis
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-id | int | 11 (forecast radar) | | | true
+cloudCover | string | sunny <br/> mostly-sunny <br/> partly-cloudy <br/> mostly-cloudy <br/> cloudy <br/> overcast | | false
+heavyRain | string | heavy-rain | | false
+chanceOfRain | string | slight <br/> medium <br/> high <br/> very-high | | false
+chanceOfThunderstorms | string | chance-of-thunderstorms | | false
+thunderstorms | string | thunderstorms | | false
+snow | string | snow | | false
+chanceOfSnow | string | slight <br/> medium <br/> high <br/> very-high | | false
+fog | string | fog | | false
+frost | string | frost | | false
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+<aside class="notice">
+    * At least one of the following must be defined for region precis: <code>cloudCover</code>, <code>heavyRain</code>, <code>chanceOfThunderstorms</code>, <code>thunderstorms</code>, <code>snow</code>, <code>chanceOfSnow</code>, <code>fog</code>, <code>frost</code>.
+</aside>
+
+### Forecast Sunrise Sunset
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+time | int | `1` for `dawn`<br/> `2` for `daytime`<br/> `3` for `dusk`<br/> `4` for `night time`<br/>  `5` for `first light`<br/> `6` for `sunrise`<br/> `7` for `sunset`<br/> `8` for `last light`<br/> `9` for `dusk or dawn` | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Swell
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+heightRangeStart | float | 0 - 20 | value is in meters | true
+heightRangeEnd | float | 0 - 20 | value is in meters | true
+periodRangeStart | float | 0 - 20 | | true
+periodRangeEnd | float | 0 - 20 | | true
+directionRangeStart | float | 0 - 360 | | true
+directionRangeEnd | float | 0 - 360 | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Tides
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+status | int | `1` for `high tide`<br/> `2` for `low tide`<br/> `3` for `half tide rising`<br/> `4` for `half tide falling`<br/>  `5` for `high or low tide` | | true
+buffer | int | 0 - 180 | value must be divisible by 3 | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast UV
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+indexRangeStart | float | 0 - 20 | | true
+indexRangeEnd | float | 0 - 20 | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Weather
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Forecast Wind
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+speedRangeStart | float | 0 - 41.7 | value is in meters per second | true
+speedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
+directionRangeStart | float | 0 - 360 | | true
+directionRangeEnd | float | 0 - 360 | | true
+location | object | **(See Location)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Apparent Temperature
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+apparentTempRangeStart | float | 253.15 - 323.15 | value is in kelvin | true
+apparentTempRangeEnd | float | 253.15 - 323.15 | value is in kelvin | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Cloud
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+cloudRangeStart | int | 0 - 8| oktas | true
+cloudRangeEnd | int | 0 - 8 | oktas | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Delta T
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+deltaTRangeStart | float | 273.15 - 293.15 | value is in kelvin | true
+deltaTRangeEnd | float | 273.15 - 293.15 | value is in kelvin | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Dewpoint
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+dewpointRangeStart | float | 273.15 - 303.15 | value is in kelvin | true
+dewpointRangeEnd | float | 273.15 - 303.15 | value is in kelvin | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Humidity
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+humidityRangeStart | float | 0 - 100 | | true
+humidityRangeEnd | float | 0 - 100 | | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Pressure
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+pressureRangeStart | float | 850 - 1100 | value is in millibars | true
+pressureRangeStart | float | 850 - 1100 | value is in millibars | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Rainfall Last Hour
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+amount | int | -1 - 50 | -1 (no rain)| true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Temperature
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+tempRangeStart | float | 253.15 - 323.15 | value is in kelvin | true
+tempRangeEnd | float | 253.15 - 323.15 | value is in kelvin | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Wind Gust
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+gustSpeedRangeStart | float | 0 - 41.7 | value is in meters per second | true
+gustSpeedRangeStart | float | 0 - 41.7 | value is in meters per second | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
+### Current Wind
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+speedRangeStart | float | 0 - 41.7 | value is in meters per second | true
+speedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
+directionRangeStart | float | 0 - 360 | | true
+directionRangeEnd | float | 0 - 360 | | true
+weatherStation | object | **(See Weather Station)** | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
 
 ### Response
 
@@ -12367,7 +12633,7 @@ notificationDateRanges | array | **(Notification Date Range)** | date ranges tha
 notificationMonths | object | **(See Notification Months)** | months that the notification is active
 notificationDays | object | **(See Notification Days)** | days that the notification is active
 notificationTimeRanges | object | **(See Notification Time Range)** | time ranges that the notification is active
-notificationAlertConditions | array | | for forecast radar settings
+notificationAlertConditions | array | **(See Notification Alert Conditions)** | conditions that make the notification valid
 
 ### Notification Type
 
@@ -12434,51 +12700,20 @@ Attribute | Type | Values | Description
 startTime | int | 0 - 1439 | Time when the notification starts (in minutes)
 endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
 
-### Notification Alert Condition
+### Notification Alert Conditions
 
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-mapDataPoint | object | **(See Map Data Point)** |
-minimumIntensity | int | 0 - 5 (no rain, light, moderate, heavy, very heavy) |
-lat | float | |
-lng | float | |
-imminentMessageFalsePositiveReductionEnabled | boolean | |
-rainAlertBoundaryMessageEnabled | boolean | |
-headsUpMessageEnabled | boolean | |
-headsUpMessageAdvancedWarningMinutes | int | |
-headsUpMessageFalsePositiveReductionEnabled | boolean | |
-imminentLowPredictabilityMinutes | int | |
-imminentMediumPredictabilityMinutes | int | |
-imminentHighPredictabilityMinutes | int | |
-imminentMessageResetEnabled | boolean | |
-imminentMessageResetMinutes | int | |
-briefShowerLengthEnabled | boolean | |
-clearingAfterBriefShowerMinutes | int | |
-rainArrivedMessageEnabled | boolean | |
-location | object | **(See <a href="#location-get-by-location-id">Locations</a> object)**|
-notificationAlertConditionType | object | **(See Notification Alert Condition Type)** |
-group | int | 0 | |
+<aside class="notice">
+    * An array of Notification Alert Conditions. See <a href="#notification-post-alert-create">Notification Alert Conditions Section</a> for the list of possible values.
+</aside>
 
-### Map Data Point
 
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | |
-
-### Notification Alert Condition Type
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | `11` for `forecastRadar`|
-code | string | `forecastRadar` |
-
-## Notification - PUT - Forecast Radar - Update
+## Notification - PUT - Alert - Update
 
 > Example Request Body
 
 ```json
 {
-  "name": "Forecast Radar Notification",
+  "name": "This a new name",
   "notificationType": {
     "id": 1
   },
@@ -12534,31 +12769,37 @@ code | string | `forecastRadar` |
     "endDate": "2021-11-30"
   }],
   "notificationAlertConditions": [{
-    "mapDataPoint": {
+    "tempRangeStart": 295.0,
+    "tempRangeEnd": 300.2,
+    "location": {
       "id": 1
     },
-    "minimumIntensity": 1,
-    "lat": -33.8905,
-    "lng": 151.2749,
-    "imminentMessageFalsePositiveReductionEnabled": false,
-    "rainAlertBoundaryMessageEnabled": true,
-    "headsUpMessageEnabled": true,
-    "headsUpMessageAdvancedWarningMinutes": 10,
-    "headsUpMessageFalsePositiveReductionEnabled": true,
-    "imminentLowPredictabilityMinutes": 1,
-    "imminentMediumPredictabilityMinutes": 2,
-    "imminentHighPredictabilityMinutes": 3,
-    "imminentMessageResetEnabled": true,
-    "imminentMessageResetMinutes": 5,
-    "briefShowerLengthEnabled": true,
-    "briefShowerLengthMinutes": 3,
-    "clearingAfterBriefShowerMinutes": 1,
-    "rainArrivedMessageEnabled": true,
     "notificationAlertConditionType": {
-      "id": 11
+      "id": 1
     },
     "group": 0
-  }]
+  },
+    {
+      "precis": "fine",
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 12
+      },
+      "group": 1
+    },
+    {
+      "tempRangeStart": 300.0,
+      "tempRangeEnd": 301.2,
+      "location": {
+        "id": 1
+      },
+      "notificationAlertConditionType": {
+        "id": 2
+      },
+      "group": 1
+    }]
 }
 ```
 
@@ -12568,13 +12809,13 @@ code | string | `forecastRadar` |
 {}
 ```
 
-Updates a forecast radar notification.
+Updates an alert notification.
 
 ### Request
 
 `PUT api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications/{notification uid}.json`
 
-See <a href="#notification-post-forecast-radar-create">Notifications - Forecast Radar - Create</a> for Request Parameters.
+See <a href="#notification-post-alert-create">Notifications - Alert - Create</a> for Request Parameters.
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters. This endpoint only supports json requests.
