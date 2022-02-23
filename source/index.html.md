@@ -11707,13 +11707,13 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 25,
+						"value": 150,
 						"unit": "mm"
 					}, {
-						"value": 1,
+						"value": 5.9,
 						"unit": "in"
 					}, {
-						"value": 98,
+						"value": 591,
 						"unit": "pts"
 					}]
 				}
