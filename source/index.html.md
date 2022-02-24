@@ -11649,7 +11649,7 @@ Attribute | Type | Values | Description
 id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `23` for `current-rain-since-9am`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> |
 code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `forecast-wind`, `forecast-weather`, `forecast-rainfall`, `forecast-tides`, `forecast-sunrise-sunset`, `forecast-uv`, `forecast-moonphase`, `forecast-radar`, `forecast-hourly-precis`, `forecast-region-precis`, `forecast-daily-max-uv`, `current-wind`, `current-temp`, `current-rain-last-hour`, `current-rain-since-9am`, `current-humidity`, `current-dewpoint`, `current-pressure`, `current-delta-t`, `current-apparent-temp`, `current-wind-gust`, `current-cloud` |
 
-## Notification - GET - Weather Types
+## Notification - GET - Alert Condition Types
 
 > Example Request Header
 
@@ -11923,26 +11923,26 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 }
 ```
 
-Returns the list of all weather types and their form configurations.
+Returns the list of all notification alert condition types and their form configurations.
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/notifications.json`
+`GET api.willyweather.com.au/v2/{api key}/accounts/notifications/alertconditions/config.json `
 
 ### Response
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-absolute | object | | contains grouped weather types by condition type **(see Response - Condition Type object)**
+absolute | object | | contains grouped notification alert condition types by condition type **(see Response - Condition Type object)**
 
 ### Response - Condition Type object
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-observational | array | | list of obervational weather types **(see Response - Weather Type object)**
-forecast | array | | list of forecast weather types **(see Response - Weather Type object)**
+observational | array | | list of obervational notification alert condition types **(see Response - Notification Alert Condition Type object)**
+forecast | array | | list of forecast notification alert condition types **(see Response - Notification Alert Condition Type object)**
 
-### Response - Weather Type object
+### Response - Notification Alert Condition Type object
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
