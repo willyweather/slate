@@ -11927,7 +11927,7 @@ Returns the list of all notification alert condition types and their form config
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/accounts/notifications/alertconditions/config.json `
+`GET api.willyweather.com.au/v2/{api key}/notifications/alertconditions/config.json `
 
 ### Response
 
