@@ -11649,6 +11649,411 @@ Attribute | Type | Values | Description
 id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `23` for `current-rain-since-9am`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> |
 code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `forecast-wind`, `forecast-weather`, `forecast-rainfall`, `forecast-tides`, `forecast-sunrise-sunset`, `forecast-uv`, `forecast-moonphase`, `forecast-radar`, `forecast-hourly-precis`, `forecast-region-precis`, `forecast-daily-max-uv`, `current-wind`, `current-temp`, `current-rain-last-hour`, `current-rain-since-9am`, `current-humidity`, `current-dewpoint`, `current-pressure`, `current-delta-t`, `current-apparent-temp`, `current-wind-gust`, `current-cloud` |
 
+## Notification - GET - Alert Condition Types
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+	"absolute": {
+		"observational": [{
+			"id": 22,
+			"code": "currentRainLastHour",
+			"title": "Rain Last Hour",
+			"components": [{
+				"type": "enabler",
+				"title": "No rain",
+				"value": -1
+			}, {
+				"type": "slider",
+				"title": "Rain Last Hour at least",
+				"unit": "amount",
+				"min": {
+					"key": "amount",
+					"values": [{
+						"value": 0,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 50,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 10,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 800,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 150,
+						"unit": "mm"
+					}, {
+						"value": 5.9,
+						"unit": "in"
+					}, {
+						"value": 591,
+						"unit": "pts"
+					}]
+				}
+			}]
+		}, {
+			"id": 21,
+			"code": "currentTemp",
+			"title": "Temperature",
+			"components": [{
+				"type": "slider",
+				"title": "Temperature",
+				"unit": "temperature",
+				"min": {
+					"key": "tempRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "tempRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Trend:",
+				"key": "trend",
+				"groups": [{
+					"inputs": [{
+						"label": "Any",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Rising",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Falling",
+						"value": "3",
+						"default": false
+					}]
+				}]
+			}]
+		}],
+		"forecast": [{
+			"id": 4,
+			"code": "forecastWind",
+			"title": "Wind",
+			"components": [{
+				"type": "slider",
+				"title": "Wind Forecast Speed",
+				"unit": "speed",
+				"min": {
+					"key": "speedRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "speedRangeEnd",
+					"values": [{
+						"value": 41.7,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 140,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 80,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 70,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 5.5,
+						"unit": "m\/s"
+					}, {
+						"value": 19.8,
+						"unit": "km\/h"
+					}, {
+						"value": 12.3,
+						"unit": "mph"
+					}, {
+						"value": 10.7,
+						"unit": "knots"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 41.7,
+						"unit": "m\/s"
+					}, {
+						"value": 140,
+						"unit": "km\/h"
+					}, {
+						"value": 80,
+						"unit": "mph"
+					}, {
+						"value": 70,
+						"unit": "knots"
+					}]
+				}
+			}, {
+				"type": "compass",
+				"title": "Direction",
+				"min": {
+					"key": "directionRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "direction"
+					}]
+				},
+				"max": {
+					"key": "directionRangeEnd",
+					"values": [{
+						"value": 360,
+						"unit": "direction"
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 0,
+						"unit": "direction"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 360,
+						"unit": "direction"
+					}]
+				}
+			}, {
+				"type": "button",
+				"title": "Any Direction",
+				"values": {
+					"min": {
+						"value": 0,
+						"unit": "direction"
+					},
+					"max": {
+						"value": 360,
+						"unit": "direction"
+					}
+				}
+			}]
+		}]
+	}
+}
+```
+
+Returns the list of all notification alert condition types and their form configurations.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/notifications/alertconditions/config.json `
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+absolute | object | | contains grouped notification alert condition types by condition type **(see Response - Condition Type object)**
+
+### Response - Condition Type object
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+observational | array | | list of obervational notification alert condition types **(see Response - Notification Alert Condition Type object)**
+forecast | array | | list of forecast notification alert condition types **(see Response - Notification Alert Condition Type object)**
+
+### Response - Notification Alert Condition Type object
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | alert condition type id
+code | string | | alert condition type code
+title | string | | alert condition type name
+components | object | | list of forms **(see Components object)**
+
+### Components - Slider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `slider` | slider type
+title | string | | Form's title
+unit | string | `temperature`, `pressure`, `amount`, `speed`, `height` | if does not exist or not in any of the options, no other unit measurements are available
+min | object | | **(see Components - Slider/Compass - min/max)**
+max | object | | **(see Components - Slider/Compass - min/max)**
+defaultMin | object | | **(see Components - Slider/Compass - defaultMin/defaultMax)**
+defaultMax | object | | **(see Components - Slider/Compass - defaultMin/defaultMax)**
+
+### Components - Radiobutton/Checkbox
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `radiobutton` | radiobutton or checkbox type inputs
+title | string | | Form's title
+key | string | | the parameter key when you pass it in the request
+groups | array | | **(see Components - Radiobutton/Checkbox - groups)**
+
+### Components - Compass
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `compass` | circular slider used in `directions`
+title | string | | Form's title
+value | string | | value of other inputs when `on`
+
+### Components - Button
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `button` | button that sets `direction` values to default
+title | string | | Form's title
+values | array | | value of other inputs when clicked
+
+### Components - Enabler
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `enabler` | checkbox that disables other inputs when `on`
+title | string | | Form's title
+value | string | | value of other inputs when `on`
+
+### Components - Slider/Compass - min/max
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+key | string | | the parameter key when you pass it in the request
+values | array | | **(see Components - Slider/Compass - min/max - values)**
+
+### Components - Slider/Compass - min/max - values
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+value | string | | slider value
+unit | string | | unit value
+default | boolean | | default unit measurement
+
+### Components - Slider/Compass - defaultMin/defaultMax
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+values | array | | **(see Components - Slider/Compass - defaultMin/defaultMax - values)**
+
+### Components - Slider/Compass - defaultMin/defaultMax - values
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+value | string | | slider value
+unit | string | | unit value
+
+### Components - Radiobutton/Checkbox - groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+title | string | | title of this group
+inputs | array | | **(see Components - Radiobutton/Checkbox - groups - inputs)**
+
+### Components - Radiobutton/Checkbox - groups - inputs
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+label | string | | label for this input
+value | string | | value of this input
+default | boolean | | input is default value
+
+### Components - Button - values
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+min | object | | **(see Components - Button - values - min/max)**
+max | object | | **(see Components - Button - values - min/max)**
+
+### Components - Button - values - min/max
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+value | int | | value to set
+unit | string | | unit
+
+
 ## Notification - POST - Create
 
 > Example Request Body
