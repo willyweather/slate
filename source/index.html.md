@@ -13230,6 +13230,1518 @@ See <a href="#notification-post-alert-create">Notifications - Alert - Create</a>
 
 Response is an empty object.
 
+## Notification - Push Notification Payload
+
+### IOS
+
+> Example IOS Payload
+
+```json
+{
+	"APNS": {
+		"aps": {
+			"alert": {
+				"title": "Observational with all conditions",
+				"body": "Your alert conditions were met at 4:00am on Friday the 4th of March.",
+				"category": "AlertNotification",
+				"mutable-content": 1,
+				"utcDeliveryDateTime": "2011-03-04 04:00:00"
+			},
+			"sound": "default"
+		},
+		"willyweather": {
+			"redirect": {
+				"screen": "alertNotification",
+				"parameters": {
+					"groupedNotificationAlertConditions": [{
+						"occurrences": [{
+							"dateTime": "2011-03-04 04:00:00",
+							"criteria": [{
+								"id": "currentWind",
+								"rule": {
+									"speed": {
+										"rangeStart": 90,
+										"rangeEnd": 144
+									},
+									"direction": {
+										"rangeStart": 45,
+										"rangeEnd": 45
+									}
+								},
+								"match": {
+									"speed": 129.6,
+									"direction": 300,
+									"directionText": "WNW"
+								},
+								"units": {
+									"speed": "km/h"
+								}
+							}, {
+								"id": "currentTemp",
+								"rule": {
+									"temperature": {
+										"rangeStart": -3.15,
+										"rangeEnd": 23.85
+									},
+									"trend": "any"
+								},
+								"match": {
+									"temperature": 6.9,
+									"trend": "falling"
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}, {
+								"id": 22,
+								"rule": {
+									"amount": {
+										"rangeStart": 1
+									}
+								},
+								"match": {
+									"amount": 5
+								},
+								"units": {
+									"amount": "mm"
+								}
+							}, {
+								"id": "currentRainSince9am",
+								"rule": {
+									"amount": {
+										"rangeStart": 4
+									}
+								},
+								"match": {
+									"amount": 5.2
+								},
+								"units": {
+									"amount": "mm"
+								}
+							}, {
+								"id": 5,
+								"type": "currentHumidity",
+								"rule": {
+									"humidity": {
+										"rangeStart": 35,
+										"rangeEnd": 90
+									}
+								},
+								"match": {
+									"humidity": 35
+								},
+								"units": {
+									"humidity": "%"
+								}
+							}, {
+								"id": "currentDewpoint",
+								"rule": {
+									"dewpoint": {
+										"rangeStart": -13.15,
+										"rangeEnd": 11.85
+									},
+									"trend": "any"
+								},
+								"match": {
+									"dewpoint": -3.1,
+									"trend": "falling"
+								},
+								"units": {
+									"dewpoint": "c"
+								}
+							}, {
+								"id": "currentPressure",
+								"rule": {
+									"pressure": {
+										"rangeStart": 851,
+										"rangeEnd": 1000
+									},
+									"trend": "any"
+								},
+								"match": {
+									"pressure": 900.4,
+									"trend": "falling"
+								},
+								"units": {
+									"pressure": "hpa"
+								}
+							}, {
+								"id": "currentApparentTemp",
+								"rule": {
+									"apparentTemperature": {
+										"rangeStart": -3.15,
+										"rangeEnd": 23.85
+									}
+								},
+								"match": {
+									"apparentTemperature": 6.9
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}, {
+								"id": "currentCloud",
+								"rule": {
+									"cloud": {
+										"rangeStart": 0,
+										"rangeEnd": 8
+									},
+									"trend": "any"
+								},
+								"match": {
+									"cloud": 5,
+									"trend": "rising"
+								},
+								"units": {
+									"cloud": "oktas"
+								}
+							}, {
+								"id": "currentWindGust",
+								"rule": {
+									"speed": {
+										"rangeStart": 0,
+										"rangeEnd": 144
+									}
+								},
+								"match": {
+									"speed": 72
+								},
+								"units": {
+									"speed": "km/h"
+								}
+							}, {
+								"id": "currentDeltaT",
+								"rule": {
+									"deltaT": {
+										"rangeStart": 0,
+										"rangeEnd": 20
+									},
+									"trend": "any"
+								},
+								"match": {
+									"deltaT": 10,
+									"trend": "steady"
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}]
+						}]
+					}],
+					"location": {
+						"id": 1,
+						"name": "Bondi",
+						"displayName": "Bondi Display Name",
+						"region": "Sydney",
+						"state": "NSW",
+						"postcode": "2026",
+						"timeZone": "Australia/NSW",
+						"lat": -33.8905,
+						"lng": 151.2749,
+						"url": "https%3A%2F%2Fwww.willyweather.com.au%2Fnsw%2Fsydney%2Fbondi.html"
+					},
+					"weatherStations": {
+						"temperature": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"delta-t": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"cloud": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"humidity": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"dewPoint": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"pressure": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"wind": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"rainfall": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						}
+					}
+				}
+			},
+			"countryCode": "AU",
+			"speech": "Observational with all conditions"
+		}
+	}
+}
+```
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+APNS | object | **(See APNS)** |
+
+#### APNS
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+aps | object | **(See aps)** |
+willyweather | object | **(See willyweather)** |
+
+##### APS
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+alert | object | **(See alert)** |
+sound | string | default | The sound that will be played for this notification
+
+#### alert
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+title | string | | title of the notification
+body | string | | body content of the notification
+category | string | AlertNotification |
+mutable-content | int | 1 |
+utcDeliveryDateTime | string | |
+
+#### willyweather
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+redirect | object | **(See redirect)** |
+countryCode | string | AU, US, UK |
+speech | string | |
+
+#### redirect
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+screen  | string | |
+parameters | object | **(See parameters)** | Contains the conditions for the notificatio and the matching rules and criteria
+
+#### parameters
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+groupedNotificationAlertConditions  | array |  | Array of objects where each object has a single attribute named occurrences. **(See occurrences)**
+location | object | **(See location)** | (optional) will be shown if there is a forecast type alert condition in the groupedNotificationAlertConditions
+weatherStations | array | ***(See weatherStations)** | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
+
+#### occurrence
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | dateTime where criteria types was satisfied by matching data
+criteria | array| **(See Grouped Notification Alert Conditions Criteria Types)** | Array of Criteria Types that matched the rule set in notification alert conditions.
+
+#### location
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | Location id
+name | string | | Name of the location
+displayName | string | | Display name of the location
+region | string | | Region of the location
+state | string | | State of the location
+postalcode | string | |
+timeZone| string | |
+lat | float | |
+lng | float | |
+url | string  | | URL link in WillyWeather for the location
+
+#### weatherStations
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+temperature | **(See WeatherStation below)** | | Weather Station for used as source for temperature data
+delta-t | **(See WeatherStation below)** | | Weather Station for used as source for delta-t  data
+cloud | **(See WeatherStation below)** | | Weather Station for used as source for cloud data
+humidity | **(See WeatherStation below)** | | Weather Station for used as source for dewPoint data
+pressure | **(See WeatherStation below)** | | Weather Station for used as source for pressure data
+wind | **(See WeatherStation below)** | | Weather Station for used as source for wind data
+rainfall | **(See WeatherStation below)** | | Weather Station for used as source for rainfall data
+
+#### WeatherStations
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+distance | float | |
+
+### Android
+
+> Example Android Payload
+
+```json
+{
+	"GCM": {
+		"priority": "high",
+		"data": {
+			"category": "AlertNotification",
+			"notification": {
+				"title": "Observational with all conditions",
+				"body": "Your alert conditions were met at 4:00am on Friday the 4th of March.",
+				"sound": "default"
+			},
+			"redirect": {
+				"screen": "AlertNotification",
+				"parameters": {
+					"groupedNotificationAlertConditions": [{
+						"occurrences": [{
+							"dateTime": "2011-03-04 04:00:00",
+							"criteria": [{
+								"id": "currentWind",
+								"rule": {
+									"speed": {
+										"rangeStart": 90,
+										"rangeEnd": 144
+									},
+									"direction": {
+										"rangeStart": 45,
+										"rangeEnd": 45
+									}
+								},
+								"match": {
+									"speed": 129.6,
+									"direction": 300,
+									"directionText": "WNW"
+								},
+								"units": {
+									"speed": "km/h"
+								}
+							}, {
+								"id": "currentTemp",
+								"rule": {
+									"temperature": {
+										"rangeStart": -3.15,
+										"rangeEnd": 23.85
+									},
+									"trend": "any"
+								},
+								"match": {
+									"temperature": 6.9,
+									"trend": "falling"
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}, {
+								"id": 22,
+								"rule": {
+									"amount": {
+										"rangeStart": 1
+									}
+								},
+								"match": {
+									"amount": 5
+								},
+								"units": {
+									"amount": "mm"
+								}
+							}, {
+								"id": "currentRainSince9am",
+								"rule": {
+									"amount": {
+										"rangeStart": 4
+									}
+								},
+								"match": {
+									"amount": 5.2
+								},
+								"units": {
+									"amount": "mm"
+								}
+							}, {
+								"id": 5,
+								"type": "currentHumidity",
+								"rule": {
+									"humidity": {
+										"rangeStart": 35,
+										"rangeEnd": 90
+									}
+								},
+								"match": {
+									"humidity": 35
+								},
+								"units": {
+									"humidity": "%"
+								}
+							}, {
+								"id": "currentDewpoint",
+								"rule": {
+									"dewpoint": {
+										"rangeStart": -13.15,
+										"rangeEnd": 11.85
+									},
+									"trend": "any"
+								},
+								"match": {
+									"dewpoint": -3.1,
+									"trend": "falling"
+								},
+								"units": {
+									"dewpoint": "c"
+								}
+							}, {
+								"id": "currentPressure",
+								"rule": {
+									"pressure": {
+										"rangeStart": 851,
+										"rangeEnd": 1000
+									},
+									"trend": "any"
+								},
+								"match": {
+									"pressure": 900.4,
+									"trend": "falling"
+								},
+								"units": {
+									"pressure": "hpa"
+								}
+							}, {
+								"id": "currentApparentTemp",
+								"rule": {
+									"apparentTemperature": {
+										"rangeStart": -3.15,
+										"rangeEnd": 23.85
+									}
+								},
+								"match": {
+									"apparentTemperature": 6.9
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}, {
+								"id": "currentCloud",
+								"rule": {
+									"cloud": {
+										"rangeStart": 0,
+										"rangeEnd": 8
+									},
+									"trend": "any"
+								},
+								"match": {
+									"cloud": 5,
+									"trend": "rising"
+								},
+								"units": {
+									"cloud": "oktas"
+								}
+							}, {
+								"id": "currentWindGust",
+								"rule": {
+									"speed": {
+										"rangeStart": 0,
+										"rangeEnd": 144
+									}
+								},
+								"match": {
+									"speed": 72
+								},
+								"units": {
+									"speed": "km/h"
+								}
+							}, {
+								"id": "currentDeltaT",
+								"rule": {
+									"deltaT": {
+										"rangeStart": 0,
+										"rangeEnd": 20
+									},
+									"trend": "any"
+								},
+								"match": {
+									"deltaT": 10,
+									"trend": "steady"
+								},
+								"units": {
+									"temperature": "c"
+								}
+							}]
+						}]
+					}],
+					"location": {
+						"id": 1,
+						"name": "Bondi",
+						"displayName": "Bondi Display Name",
+						"region": "Sydney",
+						"state": "NSW",
+						"postcode": "2026",
+						"timeZone": "Australia/NSW",
+						"lat": -33.8905,
+						"lng": 151.2749,
+						"url": "https%3A%2F%2Fwww.willyweather.com.au%2Fnsw%2Fsydney%2Fbondi.html"
+					},
+					"weatherStations": {
+						"temperature": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"delta-t": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"cloud": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"humidity": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"dewPoint": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"pressure": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"wind": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						},
+						"rainfall": {
+							"id": 1,
+							"name": "station 1",
+							"lat": 1,
+							"lng": -1,
+							"distance": 3
+						}
+					}
+				}
+			},
+			"countryCode": "AU",
+			"speech": "Observational with all conditions"
+		}
+	}
+}
+```
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+GCM | object | **(See GCM)** |
+
+#### GCM
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+priority | string | high |
+data | object | **(See data)** | 
+
+#### data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+category | string | AlertNotification | 
+notification | object | **(See notification)** | 
+redirect | object | **(See redirect)** |
+
+#### notification
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+title | string | | title of the notification
+body | string | | body content of the notification
+sound | string | default | The sound that will be played for this notification
+
+#### redirect
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+screen  | string | |
+parameters | object | **(See parameters)** | Contains the conditions for the notificatio and the matching rules and criteria
+
+#### parameters
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+groupedNotificationAlertConditions  | array |  | Array of objects where each object has a single attribute named occurrences. **(See occurrences)**
+location | object | **(See location)** | (optional) will be shown if there is a forecast type alert condition in the groupedNotificationAlertConditions
+weatherStations | array | ***(See weatherStations)** | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
+
+#### occurrence
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | dateTime where criteria types was satisfied by matching data
+criteria | array| **(See Grouped Notification Alert Conditions Criteria Types)** | Array of Criteria Types that matched the rule set in notification alert conditions.
+
+#### location
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | Location id
+name | string | | Name of the location
+displayName | string | | Display name of the location
+region | string | | Region of the location
+state | string | | State of the location
+postalcode | string | |
+timeZone| string | |
+lat | float | |
+lng | float | |
+url | string  | | URL link in WillyWeather for the location
+
+#### weatherStations
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+temperature | **(See WeatherStation below)** | | Weather Station for used as source for temperature data
+delta-t | **(See WeatherStation below)** | | Weather Station for used as source for delta-t  data
+cloud | **(See WeatherStation below)** | | Weather Station for used as source for cloud data
+humidity | **(See WeatherStation below)** | | Weather Station for used as source for dewPoint data
+pressure | **(See WeatherStation below)** | | Weather Station for used as source for pressure data
+wind | **(See WeatherStation below)** | | Weather Station for used as source for wind data
+rainfall | **(See WeatherStation below)** | | Weather Station for used as source for rainfall data
+
+#### WeatherStations
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | float | |
+lng | float | |
+distance | float | |
+
+
+## Grouped Notification Alert Conditions Criteria Types
+
+### Forecast Daily Max UV
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastDailyMaxUV |
+rule | object | | The condition that the user has set
+match | object | | The data that satisfied the rule
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+indexRangeStart | float | 0 - 20 |
+indexRangeEnd | float | 0 - 20 |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+index | int | 0 - 20 |
+scale | float | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme |
+
+
+### Forecast Hourly Precis
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastHourlyPrecis |
+rule | object | |
+match | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow  |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow  |
+
+
+### Forecast Max Temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastMaxTemp |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | object | | **(See temperature)**
+
+#### temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k <br/> |
+
+
+
+### Forecast Min Temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastMinTemp |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | object | | **(See temperature)**
+
+#### temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k <br/> |
+
+### Forecast Moonphase
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastMoonphase |
+rule | object | |
+match | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+phase | string | | full <br/> last-quarter <br/> new <br/> first-quarter |
+surroundingDays | int | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+phase | string | | full <br/> last-quarter <br/> new <br/> first-quarter |
+date | string | |
+
+
+### Forecast Rainfall
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastRainfall |
+rule | object | |
+match | object | |
+units | object | | (optional) - Present if amount is set
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+probability | int | | |
+amount | int | | (optional)
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+probability | int | | |
+amount | int | | (optional)
+
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+amount | string | mm  <br/> pts <br/> in <br/> | (optional) - Present if amount is set
+
+### Forecast Region Precis
+
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastRegionPrecis |
+rule | object | |
+match | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | object | **(See Region Precis Criteria)** | Each criteria can have 1 more or values
+
+<aside class="notice">
+    {"cloud-cover":["sunny","mostly-sunny","partly-cloudy","mostly-cloudy","cloudy","overcast"],"heavy-rain":["heavy-rain"],"chance-of-rain":["very-high","high","medium","slight"],"chance-of-thunderstorms":["chance-of-thunderstorms"],"thunderstorms":["thunderstorms"],"snow":["snow"],"chance-of-snow":["very-high","high","medium","slight"],"fog":["fog"],"frost":["frost"]}
+</aside>
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | object | **(See Region Precis Criteria)** | Each criteria will have a single value which indicates the precis that satisfied the rule
+
+<aside class="notice">
+	{"cloud-cover":"sunny","chance-of-rain":"very-high","chance-of-thunderstorms":"chance-of-thunderstorms"}
+</aside>
+
+
+### Region Precis Criteria
+
+Parameter | Type | Options | Description |
+--------- | ---- | ------- | ----------- |
+cloudCover | string | sunny <br/> mostly-sunny <br/> partly-cloudy <br/> mostly-cloudy <br/> cloudy <br/> overcast |
+heavyRain | string | heavy-rain |
+chanceOfRain | string | slight <br/> medium <br/> high <br/> very-high |
+chanceOfThunderstorms | string | chance-of-thunderstorms |
+thunderstorms | string | thunderstorms |
+snow | string | snow |
+chanceOfSnow | string | slight <br/> medium <br/> high <br/> very-high |
+fog | string | fog |
+frost | string | frost |
+
+<aside class="notice">
+    * At least one of the following must be defined for region precis: <code>cloudCover</code>, <code>heavyRain</code>, <code>chanceOfThunderstorms</code>, <code>thunderstorms</code>, <code>snow</code>, <code>chanceOfSnow</code>, <code>fog</code>, <code>frost</code>.
+</aside>
+
+### Forecast Sunrise Sunset
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastSunriseSunset |
+rule | object | |
+match | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+startDateTime | string | dawn <br/> daytime <br/> dusk <br/> nighttime <br/>  first-light <br/> sunrise <br/> sunset<br/> last light <br/> dusk-or-dawn |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+startDateTime | string | (dateTime) |
+endDateTime | string | (dateTime) | optional
+
+
+### Forecast Swell
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastSwell |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+height | object | **(See height)** |
+period | object | **(See period)** |
+direction | object | **(See direction)** |
+
+#### height
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float |  |
+rangeEnd | float | |
+
+#### period
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | int | 0 - 20 |
+rangeEnd | int | 0 - 20 |
+
+#### direction
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | 0 - 360 |
+rangeEnd | float | 0 - 360 |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+height | float | |
+period | float | |
+direction | float | |
+directionText | string | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+height | string | ft <br/> m <br/> |
+period | string | seconds |
+
+### Forecast Tides
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastTides |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+status | string | high-tide <br/> low-tide <br/> half-tide-rising <br/> half-tide-falling <br/>  high-or-low-tide |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+status | string | high <br/> low <br/> half-tide-rising <br/> half-tide-falling |
+dateTime | string | (dateTime) |
+
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+height | string | ft <br/> m <br/> |
+
+### Forecast UV
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastUV |
+rule | object | |
+match | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+index | object | **(See index)** |
+
+#### index
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | 0 - 20 |
+rangeEnd | float | 0 - 20 |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+index | int | |
+scale | string | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme <br/> |
+
+
+### Forecast Weather
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastWeather |
+rule | object | |
+match | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+precis | string |  fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow |
+
+
+### Forecast Wind
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastWind |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | object | **(See speed)** |
+direction | object | **(See direction)** |
+
+#### speed
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float |  |
+rangeEnd | float | |
+
+#### direction
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | 0 - 360 |
+rangeEnd | float | 0 - 360 |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | float | |
+direction | float | |
+directionText | string | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | string | knots <br/> m/s <br/> km/h <br/> mph |
+
+
+### Current Apparent Temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentApparentTemp |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+apparentTemperature | object | **(See apparentTemperature)** |
+
+#### apparentTemperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+apparentTemperature | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k <br/> |
+
+### Current Cloud
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentCloud |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+cloud | object | **(See apparentTemperature)** |
+trend | string | failing <br/> rising <br/> steady <br/> |
+
+#### cloud
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+cloud | int | |
+trend | string | failing <br/> rising <br/> steady <br/> |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+cloud | string | oktas |
+
+### Current Delta T
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentDeltaT |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+deltaT | object | **(See deltaT)** |
+trend | string | failing <br/> rising <br/> steady <br/> |
+
+#### deltaT
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+deltaT | float | |
+trend | string | failing <br/> rising <br/> steady <br/>  |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k <br/> |
+
+### Current Dewpoint
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentDewpoint |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+dewpoint | object | **(See dewpoint)** |
+trend | string | failing <br/> rising <br/> steady <br/> |
+
+#### dewpoint
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+dewpoint | float | |
+trend | string | failing <br/> rising <br/> steady |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k |
+
+### Current Humidity
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentHumidity |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+humidity | object | **(See humidity)** |
+
+#### humidity
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+humidity | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+humidity | string | % |
+
+### Current Pressure
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentPressure |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+pressure | object | **(See pressure)** |
+trend | string | failing <br/> rising <br/> steady |
+
+#### pressure
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+pressure | float | |
+trend | string | failing <br/> rising <br/> steady
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+pressure | string | mmhg  <br/> millibars <br/> inhg <br/> psi |
+
+### Current Rainfall Last Hour
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentRainLastHour |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | string/float | No Rain/number|
+amount | float | |
+
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+amount | float | |
+
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+amount | string | mm  <br/> pts <br/> in <br/> |
+
+### Current Temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentTemp |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | object | **(See temperature)** |
+trend | string | failing <br/> rising <br/> steady <br/> |
+
+#### temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | float | |
+trend | string | failing <br/> rising <br/> steady <br/>  |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> k <br/> |
+
+### Current Wind Gust
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentWindGust |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | object | **(See speed)** |
+
+#### speed
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float |  |
+rangeEnd | float | |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | string | knots <br/> m/s <br/> km/h <br/> mph |
+
+### Current Wind
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | currentWind |
+rule | object | |
+match | object | |
+units | object | |
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | object | **(See speed)** |
+direction | object | **(See direction)** |
+
+#### speed
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float |  |
+rangeEnd | float | |
+
+#### direction
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | 0 - 360 |
+rangeEnd | float | 0 - 360 |
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | float | |
+direction | float | |
+directionText | string | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+speed | string | knots <br/> m/s <br/> km/h <br/> mph |
+
+
+
 ## Units - GET - All units by Account uid
 
 > Example Request Header
