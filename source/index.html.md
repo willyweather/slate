@@ -13963,6 +13963,24 @@ distance | float | |
 
 ### Forecast Daily Max UV
 
+> Example Forecast Daily Max UV
+
+```json
+{
+	"id": "forecastDailyMaxUV",
+	"rule": {
+		"index": {
+			"rangeStart": 3,
+			"rangeEnd": 12
+		}
+	},
+	"match": {
+		"index": 8.6,
+		"scale": "very-high"
+	}
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastDailyMaxUV |
@@ -13987,6 +14005,20 @@ scale | float | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme |
 
 ### Forecast Hourly Precis
 
+> Example Forecast Hourly Precis
+
+```json
+{
+  "id": "forecastHourlyPrecis",
+  "rule": {
+    "precis": "fine"
+  },
+  "match": {
+    "precis": "fine"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastHourlyPrecis |
@@ -14008,6 +14040,26 @@ precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/
 
 
 ### Forecast Max Temperature
+
+> Example Forecast Max Temperature
+
+```json
+{
+  "id": "forecastMaxTemp",
+  "rule": {
+    "temperature": {
+      "rangeStart": 10,
+      "rangeEnd": 15
+    }
+  },
+  "match": {
+    "temperature": 12
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14042,9 +14094,27 @@ Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 temperature | string | c  <br/> f <br/> k <br/> |
 
-
-
 ### Forecast Min Temperature
+
+> Example Forecast Min Temperature
+
+```json
+{
+  "id": "forecastMinTemp",
+  "rule": {
+    "temperature": {
+      "rangeStart": 10,
+      "rangeEnd": 15
+    }
+  },
+  "match": {
+    "temperature": 12
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14081,6 +14151,22 @@ temperature | string | c  <br/> f <br/> k <br/> |
 
 ### Forecast Moonphase
 
+> Example Forecast Moonphase
+
+```json
+{
+  "id": "forecastMoonphase",
+  "rule": {
+    "phase": "new",
+    "surroundingDays": 4
+  },
+  "match": {
+    "phase": "new",
+    "date": "2011-03-05"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastMoonphase |
@@ -14104,6 +14190,25 @@ date | string | |
 
 ### Forecast Rainfall
 
+> Example Forecast Rainfall
+
+```json
+{
+  "id": "forecastRainfall",
+  "rule": {
+    "probability": 19,
+    "amount": 9
+  },
+  "match": {
+    "probability": 20,
+    "amount": 10
+  },
+  "units": {
+    "amount": "mm"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastRainfall |
@@ -14125,7 +14230,6 @@ Parameter | Type | Options | Description
 probability | int | | |
 amount | int | | (optional)
 
-
 #### Units
 
 Parameter | Type | Options | Description
@@ -14134,6 +14238,33 @@ amount | string | mm  <br/> pts <br/> in <br/> | (optional) - Present if amount 
 
 ### Forecast Region Precis
 
+> Example Forecast Region Precis
+
+```json
+{
+  "id": "forecastRegionPrecis",
+  "rule": {
+    "precis": {
+      "cloud-cover": ["sunny", "mostly-sunny", "partly-cloudy", "mostly-cloudy", "cloudy", "overcast"],
+      "heavy-rain": ["heavy-rain"],
+      "chance-of-rain": ["very-high", "high", "medium", "slight"],
+      "chance-of-thunderstorms": ["chance-of-thunderstorms"],
+      "thunderstorms": ["thunderstorms"],
+      "snow": ["snow"],
+      "chance-of-snow": ["very-high", "high", "medium", "slight"],
+      "fog": ["fog"],
+      "frost": ["frost"]
+    }
+  },
+  "match": {
+    "precis": {
+      "cloud-cover": "sunny",
+      "chance-of-rain": "very-high",
+      "chance-of-thunderstorms": "chance-of-thunderstorms"
+    }
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14147,20 +14278,11 @@ Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 precis | object | **(See Region Precis Criteria)** | Each criteria can have 1 more or values
 
-<aside class="notice">
-    {"cloud-cover":["sunny","mostly-sunny","partly-cloudy","mostly-cloudy","cloudy","overcast"],"heavy-rain":["heavy-rain"],"chance-of-rain":["very-high","high","medium","slight"],"chance-of-thunderstorms":["chance-of-thunderstorms"],"thunderstorms":["thunderstorms"],"snow":["snow"],"chance-of-snow":["very-high","high","medium","slight"],"fog":["fog"],"frost":["frost"]}
-</aside>
-
 #### Match
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 precis | object | **(See Region Precis Criteria)** | Each criteria will have a single value which indicates the precis that satisfied the rule
-
-<aside class="notice">
-	{"cloud-cover":"sunny","chance-of-rain":"very-high","chance-of-thunderstorms":"chance-of-thunderstorms"}
-</aside>
-
 
 ### Region Precis Criteria
 
@@ -14181,6 +14303,21 @@ frost | string | frost |
 </aside>
 
 ### Forecast Sunrise Sunset
+
+> Example Forecast Sunrise Sunset
+
+```json
+{
+  "id": "forecastSunriseSunset",
+  "rule": {
+    "startDateTime": "daytime"
+  },
+  "match": {
+    "startDateTime": "2011-03-05 06:45:58",
+    "endDateTime": "2011-03-05 19:26:54"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14203,6 +14340,38 @@ endDateTime | string | (dateTime) | optional
 
 
 ### Forecast Swell
+
+> Example Forecast Swell
+
+```json
+{
+  "id": "forecastSwell",
+  "rule": {
+    "height": {
+      "rangeStart": 5,
+      "rangeEnd": 8
+    },
+    "period": {
+      "rangeStart": 2,
+      "rangeEnd": 5
+    },
+    "direction": {
+      "rangeStart": 0,
+      "rangeEnd": 360
+    }
+  },
+  "match": {
+    "height": 5,
+    "period": 5,
+    "direction": 5,
+    "directionText": "N"
+  },
+  "units": {
+    "height": "m",
+    "period": "seconds"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14258,6 +14427,24 @@ period | string | seconds |
 
 ### Forecast Tides
 
+> Example Forecast Tides
+
+```json
+{
+  "id": "forecastTides",
+  "rule": {
+    "status": "high-tide"
+  },
+  "match": {
+    "status": "high",
+    "dateTime": "2011-03-04 15:23:00"
+  },
+  "units": {
+    "height": "m"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastTides |
@@ -14278,7 +14465,6 @@ Parameter | Type | Options | Description
 status | string | high <br/> low <br/> half-tide-rising <br/> half-tide-falling |
 dateTime | string | (dateTime) |
 
-
 #### Units
 
 Parameter | Type | Options | Description
@@ -14286,6 +14472,24 @@ Parameter | Type | Options | Description
 height | string | ft <br/> m <br/> |
 
 ### Forecast UV
+
+> Example Forecast UV
+
+```json
+{
+  "id": "forecastUV",
+  "rule": {
+    "index": {
+      "rangeStart": 3,
+      "rangeEnd": 12
+    }
+  },
+  "match": {
+    "index": 8.6,
+    "scale": "very-high"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14316,6 +14520,20 @@ scale | string | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme <br
 
 ### Forecast Weather
 
+> Example Forecast Weather
+
+```json
+{
+  "id": "forecastWeather",
+  "rule": {
+    "precis": "fine"
+  },
+  "match": {
+    "precis": "fine"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastWeather |
@@ -14336,6 +14554,32 @@ precis | string |  fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br
 
 
 ### Forecast Wind
+
+> Example Forecast Wind
+
+```json
+{
+  "id": "forecastWind",
+  "rule": {
+    "speed": {
+      "rangeStart": 19.8,
+      "rangeEnd": 144
+    },
+    "direction": {
+      "rangeStart": 0,
+      "rangeEnd": 180
+    }
+  },
+  "match": {
+    "speed": 136.8,
+    "direction": 110,
+    "directionText": "ESE"
+  },
+  "units": {
+    "speed": "km\/h"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14382,6 +14626,26 @@ speed | string | knots <br/> m/s <br/> km/h <br/> mph |
 
 ### Current Apparent Temperature
 
+> Example Current Apparent Temperature
+
+```json
+{
+  "id": "currentApparentTemp",
+  "rule": {
+    "apparentTemperature": {
+      "rangeStart": -3.15,
+      "rangeEnd": 23.85
+    }
+  },
+  "match": {
+    "apparentTemperature": 6.9
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | currentApparentTemp |
@@ -14416,6 +14680,28 @@ Parameter | Type | Options | Description
 temperature | string | c  <br/> f <br/> k <br/> |
 
 ### Current Cloud
+
+> Example Current Cloud
+
+```json
+{
+  "id": "currentCloud",
+  "rule": {
+    "cloud": {
+      "rangeStart": 0,
+      "rangeEnd": 8
+    },
+    "trend": "any"
+  },
+  "match": {
+    "cloud": 5,
+    "trend": "rising"
+  },
+  "units": {
+    "cloud": "oktas"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14454,13 +14740,34 @@ cloud | string | oktas |
 
 ### Current Delta T
 
+> Example Current Delta T
+
+```json
+{
+  "id": "currentDeltaT",
+  "rule": {
+    "deltaT": {
+      "rangeStart": 0,
+      "rangeEnd": 20
+    },
+    "trend": "any"
+  },
+  "match": {
+    "deltaT": 10,
+    "trend": "steady"
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | currentDeltaT |
 rule | object | |
 match | object | |
 units | object | |
-
 
 #### Rule
 
@@ -14490,6 +14797,28 @@ Parameter | Type | Options | Description
 temperature | string | c  <br/> f <br/> k <br/> |
 
 ### Current Dewpoint
+
+> Example Current Dewpoint
+
+```json
+{
+  "id": "currentDewpoint",
+  "rule": {
+    "dewpoint": {
+      "rangeStart": -13.15,
+      "rangeEnd": 11.85
+    },
+    "trend": "any"
+  },
+  "match": {
+    "dewpoint": -3.1,
+    "trend": "falling"
+  },
+  "units": {
+    "dewpoint": "c"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14527,6 +14856,21 @@ temperature | string | c  <br/> f <br/> k |
 
 ### Current Humidity
 
+> Example Current Humidity
+
+```json
+{
+  "id": 5,
+  "type": "currentHumidity",
+  "rule": {
+    "humidity": {
+      "rangeStart": 35,
+      "rangeEnd": 90
+    }
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | currentHumidity |
@@ -14560,6 +14904,28 @@ Parameter | Type | Options | Description
 humidity | string | % |
 
 ### Current Pressure
+
+> Example Current Pressure
+
+```json
+{
+  "id": "currentPressure",
+  "rule": {
+    "pressure": {
+      "rangeStart": 851,
+      "rangeEnd": 1000
+    },
+    "trend": "any"
+  },
+  "match": {
+    "pressure": 900.4,
+    "trend": "falling"
+  },
+  "units": {
+    "pressure": "hpa"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14597,6 +14963,25 @@ pressure | string | mmhg  <br/> millibars <br/> inhg <br/> psi |
 
 ### Current Rainfall Last Hour
 
+> Example Current Rainfall Last Hour
+
+```json
+{
+  "id": "currentRainLastHour",
+  "rule": {
+    "amount": {
+      "rangeStart": 4
+    }
+  },
+  "match": {
+    "amount": 5.2
+  },
+  "units": {
+    "amount": "mm"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | currentRainLastHour |
@@ -14608,9 +14993,13 @@ units | object | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | string/float | No Rain/number|
-amount | float | |
+amount | object | | **(See amount)**
 
+#### amount
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | string/float | No Rain/number
 
 #### Match
 
@@ -14627,13 +15016,34 @@ amount | string | mm  <br/> pts <br/> in <br/> |
 
 ### Current Temperature
 
+> Example Current Temperature
+
+```json
+{
+  "id": "currentTemp",
+  "rule": {
+    "temperature": {
+      "rangeStart": -3.15,
+      "rangeEnd": 23.85
+    },
+    "trend": "any"
+  },
+  "match": {
+    "temperature": 6.9,
+    "trend": "falling"
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
+
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | currentTemp |
 rule | object | |
 match | object | |
 units | object | |
-
 
 #### Rule
 
@@ -14663,6 +15073,26 @@ Parameter | Type | Options | Description
 temperature | string | c  <br/> f <br/> k <br/> |
 
 ### Current Wind Gust
+
+> Example Current Wind Gust
+
+```json
+{
+  "id": "currentWindGust",
+  "rule": {
+    "speed": {
+      "rangeStart": 0,
+      "rangeEnd": 144
+    }
+  },
+  "match": {
+    "speed": 72
+  },
+  "units": {
+    "speed": "km\/h"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
@@ -14697,6 +15127,32 @@ Parameter | Type | Options | Description
 speed | string | knots <br/> m/s <br/> km/h <br/> mph |
 
 ### Current Wind
+
+> Example Current Wind
+
+```json
+{
+  "id": "currentWind",
+  "rule": {
+    "speed": {
+      "rangeStart": 0,
+      "rangeEnd": 144
+    },
+    "direction": {
+      "rangeStart": 0,
+      "rangeEnd": 0
+    }
+  },
+  "match": {
+    "speed": 129.6,
+    "direction": 300,
+    "directionText": "WNW"
+  },
+  "units": {
+    "speed": "km\/h"
+  }
+}
+```
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
