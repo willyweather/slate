@@ -15196,7 +15196,34 @@ Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 speed | string | knots <br/> m/s <br/> km/h <br/> mph |
 
+## Subscription - POST - Validation - IOS
 
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"receiptData" : "{a really long string}"
+	}
+}
+```
+
+Calls https://buy.itunes.apple.com/verifyReceipt to validate subscription receipt.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/subscription/validate.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+receiptData | string | | | true
+
+### Response
+
+<aside class="notice">
+    Refer to https://developer.apple.com/documentation/appstorereceipts/responsebody
+</aside>
 
 ## Units - GET - All units by Account uid
 
