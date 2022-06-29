@@ -12862,11 +12862,12 @@ imminentLowPredictabilityMinutes | int | | | true
 imminentMediumPredictabilityMinutes | int | | | true
 imminentHighPredictabilityMinutes | int | | | true
 imminentMessageResetEnabled | boolean | | | true
-imminentMessageResetMinutes | int | | | true
+imminentMessageResetMinutesForCloudy | int | | | true
 briefShowerLengthEnabled | boolean | | | true
 briefShowerLengthMinutes| int | | | true
 clearingAfterBriefShowerMinutes | int | | | true
 rainArrivedMessageEnabled | boolean | | | true
+imminentMessageResetMinutesForPartlyCloudy | int | | | true
 location | object | **(See Location)** | | true*
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | 0 | | | true
