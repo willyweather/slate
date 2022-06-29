@@ -12239,6 +12239,19 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
                 "id": 4
             }
         }
+    ],
+    "notificationAlertConditions": [
+    {
+            "tempRangeStart": 290,
+            "tempRangeEnd": 310,
+            "notificationAlertConditionType": {
+                "id": 2
+            },
+            "location": {
+                "id": 4988
+            },
+            "group": 0
+        }
     ]
 }
 ```
@@ -12246,7 +12259,58 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
 > Example Response
 
 ```json
-{}
+{
+    "uid": "baf25b09-6723-4b73-b07c-f8e138a83405",
+    "name": "Notification name",
+    "enabled": true,
+    "notificationType": {
+        "id": 1,
+        "name": "alert"
+    },
+    "notificationContacts": [
+        {
+            "id": null,
+            "contact": {
+                "id": 9,
+                "firstName": "John",
+                "lastName": "Doe",
+                "email": "johndoe@willyweather.com",
+                "phone": "",
+                "webhook": "",
+                "isDefault": true
+            },
+            "notificationTransporterType": {
+                "id": 3,
+                "name": "ios"
+            }
+        }
+    ],
+    "followMe": false,
+    "location": {
+        "id": 2212,
+        "name": "Collaroy Beach",
+        "region": "Sydney",
+        "state": "NSW",
+        "postcode": "2097",
+        "timeZone": "Australia\/Sydney",
+        "lat": -33.7321,
+        "lng": 151.3012,
+        "typeId": 2,
+        "distance": 9.2
+    },
+    "createdDateTime": "2021-06-28 09:26:27",
+    "notificationAlertConditions": [
+        {
+            "id": 1,
+            "notificationAlertConditionType": {
+                "id": 2,
+                "code": "forecast-max-temp"
+            },
+            "tempRangeStart": 290,
+            "tempRangeEnd": 310
+        }
+    ]
+}
 ```
 
 Updates a notification. Only for alert.
@@ -12263,7 +12327,7 @@ See <a href="#notification-post-create">Notifications Create</a> for Request Par
 
 ### Response
 
-Response is an empty object.
+Response is a Notification object. See <a href="#notification-get-all-notifications">Notifications</a> for description of a Notification response.
 
 ## Notification - PUT - Update Enabled State
 
