@@ -12334,26 +12334,26 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				}
 			}, {
@@ -12362,11 +12362,11 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					},
 					"max": {
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}
 				}
 			}]
@@ -12865,26 +12865,26 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				}
 			}, {
@@ -12893,11 +12893,11 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					},
 					"max": {
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}
 				}
 			}]
@@ -13310,26 +13310,26 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}]
 				}
 			}, {
@@ -13338,11 +13338,11 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "\u00b0"
+						"unit": "°"
 					},
 					"max": {
 						"value": 360,
-						"unit": "\u00b0"
+						"unit": "°"
 					}
 				}
 			}]
