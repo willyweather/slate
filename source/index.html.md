@@ -11725,6 +11725,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Delta T",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "deltaTRangeStart",
@@ -11760,7 +11761,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -11772,7 +11773,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
@@ -11809,6 +11810,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Dewpoint",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "dewpointRangeStart",
@@ -11844,7 +11846,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -11856,7 +11858,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
@@ -12106,6 +12108,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Temperature",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
@@ -12141,7 +12144,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -12153,7 +12156,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
@@ -12190,6 +12193,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Apparent Temperature",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "apparentTempRangeStart",
@@ -12225,7 +12229,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -12237,7 +12241,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
@@ -12908,6 +12912,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Max Temperature Forecast",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
@@ -12943,7 +12948,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -12955,7 +12960,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
@@ -12973,6 +12978,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Min Temperature Forecast",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
@@ -13008,7 +13014,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.15,
+						"value": 278.2,
 						"unit": "k"
 					}, {
 						"value": 5,
@@ -13020,7 +13026,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.15,
+						"value": 308.2,
 						"unit": "k"
 					}, {
 						"value": 35,
