@@ -12046,6 +12046,29 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				}]
 			}]
 		}, {
+			"id": 32,
+			"code": "currentRainConsecutiveDays",
+			"title": "Rain (consecutive days)",
+			"components": [{
+				"type": "select",
+				"title": "Number of consecutive",
+				"key": "isRainyDays",
+				"values": [{
+					"value": 0,
+					"title": "No Rain Days",
+					"default": true
+				}, {
+					"value": 1,
+					"title": "Rain Days",
+					"default": false
+				}]
+			}, {
+				"type": "text:number",
+				"title": "from today (including today)",
+				"key": "consecutiveDays",
+				"defaultValue": 3
+			}]
+		}, {
 			"id": 22,
 			"code": "currentRainLastHour",
 			"title": "Rain Last Hour",
@@ -12589,7 +12612,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				}
 			}]
 		}, {
-			"id": 15,
+			"id": 16,
 			"code": "forecastHourlyRainfall",
 			"title": "Rain (hourly)",
 			"components": [{
@@ -13430,6 +13453,24 @@ type | string | `enabler` | checkbox that disables other inputs when `on`
 title | string | | Form's title
 value | string | | value of other inputs when `on`
 
+### Components - Select
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `select` | select type input
+title | string | | Form's title
+key | string | | the parameter key when you pass it in the request
+values | array | | list of options
+
+### Components - Text (Number) 
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+type | string | `text:number` input with number type
+title | string | |  Form's title
+key | string | | the parameter key when you pass it in the request
+defaultValue | int | | default value
+
 ### Components - Slider/Compass - min/max
 
 Attribute | Type | Values | Description
@@ -13486,6 +13527,14 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 value | int | | value to set
 unit | string | | unit
+
+### Components - Select - values
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+value | int | | value to set
+title | string | | title of this option
+default | boolean | | input is default value
 
 
 ## Notification - POST - Create
