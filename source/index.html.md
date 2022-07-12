@@ -12125,6 +12125,62 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				}
 			}]
 		}, {
+			"id": 31,
+			"code": "currentRainToday",
+			"title": "Rain Today",
+			"components": [{
+				"type": "enabler",
+				"title": "No rain",
+				"value": -1
+			}, {
+				"type": "slider",
+				"title": "Rain Last Hour at least",
+				"unit": "amount",
+				"min": {
+					"key": "amount",
+					"values": [{
+						"value": 0,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 300,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 10,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 800,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 150,
+						"unit": "mm"
+					}, {
+						"value": 5.9,
+						"unit": "in"
+					}, {
+						"value": 425,
+						"unit": "pts"
+					}]
+				}
+			}]
+		}, {
 			"id": 21,
 			"code": "currentTemp",
 			"title": "Temperature",
