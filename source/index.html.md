@@ -12815,6 +12815,14 @@ location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
 
+### Forecast Hourly Rainfall
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+probability | int | 0 - 100  | | true
+notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
+group | int | | | | true
+
 ### Forecast Max Temperature
 
 Parameter | Type | Options | Description | Required
@@ -12893,7 +12901,7 @@ id | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-probability | int | 1 - 100  | | true
+probability | int | 0 - 100  | | true
 amount | int | -1 - 100 | -1 (no rain)| true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
@@ -13000,6 +13008,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 cloudRangeStart | int | 0 - 8| oktas | true
 cloudRangeEnd | int | 0 - 8 | oktas | true
+trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -13010,6 +13019,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 deltaTRangeStart | float | 273.15 - 293.15 | value is in kelvin | true
 deltaTRangeEnd | float | 273.15 - 293.15 | value is in kelvin | true
+trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -13020,6 +13030,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 dewpointRangeStart | float | 273.15 - 303.15 | value is in kelvin | true
 dewpointRangeEnd | float | 273.15 - 303.15 | value is in kelvin | true
+trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -13041,6 +13052,7 @@ Parameter | Type | Options | Description | Required
 pressureRangeStart | float | 850 - 1100 | value is in millibars | true
 pressureRangeStart | float | 850 - 1100 | value is in millibars | true
 weatherStation | object | **(See Weather Station)** | | true
+trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
 
@@ -13059,6 +13071,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 tempRangeStart | float | 253.15 - 323.15 | value is in kelvin | true
 tempRangeEnd | float | 253.15 - 323.15 | value is in kelvin | true
+trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -13068,7 +13081,7 @@ group | int | | | | true
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 gustSpeedRangeStart | float | 0 - 41.7 | value is in meters per second | true
-gustSpeedRangeStart | float | 0 - 41.7 | value is in meters per second | true
+gustSpeedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -13302,272 +13315,28 @@ Response is an empty object.
 
 ```json
 {
-	"APNS": {
-		"aps": {
-			"alert": {
-				"title": "Observational with all conditions",
-				"body": "Your alert conditions were met at 4:00am on Friday the 4th of March.",
-				"category": "AlertNotification",
-				"mutable-content": 1,
-				"utcDeliveryDateTime": "2011-03-04 04:00:00"
-			},
-			"sound": "default"
-		},
-		"willyweather": {
-			"redirect": {
-				"screen": "alertNotification",
-				"parameters": {
-					"groupedNotificationAlertConditions": [{
-						"occurrences": [{
-							"dateTime": "2011-03-04 04:00:00",
-							"criteria": [{
-								"id": "currentWind",
-								"rule": {
-									"speed": {
-										"rangeStart": 90,
-										"rangeEnd": 144
-									},
-									"direction": {
-										"rangeStart": 45,
-										"rangeEnd": 45
-									}
-								},
-								"match": {
-									"speed": 129.6,
-									"direction": 300,
-									"directionText": "WNW"
-								},
-								"units": {
-									"speed": "km/h"
-								}
-							}, {
-								"id": "currentTemp",
-								"rule": {
-									"temperature": {
-										"rangeStart": -3.15,
-										"rangeEnd": 23.85
-									},
-									"trend": "any"
-								},
-								"match": {
-									"temperature": 6.9,
-									"trend": "falling"
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}, {
-								"id": 22,
-								"rule": {
-									"amount": {
-										"rangeStart": 1
-									}
-								},
-								"match": {
-									"amount": 5
-								},
-								"units": {
-									"amount": "mm"
-								}
-							}, {
-								"id": "currentRainSince9am",
-								"rule": {
-									"amount": {
-										"rangeStart": 4
-									}
-								},
-								"match": {
-									"amount": 5.2
-								},
-								"units": {
-									"amount": "mm"
-								}
-							}, {
-								"id": 5,
-								"type": "currentHumidity",
-								"rule": {
-									"humidity": {
-										"rangeStart": 35,
-										"rangeEnd": 90
-									}
-								},
-								"match": {
-									"humidity": 35
-								},
-								"units": {
-									"humidity": "%"
-								}
-							}, {
-								"id": "currentDewpoint",
-								"rule": {
-									"dewpoint": {
-										"rangeStart": -13.15,
-										"rangeEnd": 11.85
-									},
-									"trend": "any"
-								},
-								"match": {
-									"dewpoint": -3.1,
-									"trend": "falling"
-								},
-								"units": {
-									"dewpoint": "c"
-								}
-							}, {
-								"id": "currentPressure",
-								"rule": {
-									"pressure": {
-										"rangeStart": 851,
-										"rangeEnd": 1000
-									},
-									"trend": "any"
-								},
-								"match": {
-									"pressure": 900.4,
-									"trend": "falling"
-								},
-								"units": {
-									"pressure": "hpa"
-								}
-							}, {
-								"id": "currentApparentTemp",
-								"rule": {
-									"apparentTemperature": {
-										"rangeStart": -3.15,
-										"rangeEnd": 23.85
-									}
-								},
-								"match": {
-									"apparentTemperature": 6.9
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}, {
-								"id": "currentCloud",
-								"rule": {
-									"cloud": {
-										"rangeStart": 0,
-										"rangeEnd": 8
-									},
-									"trend": "any"
-								},
-								"match": {
-									"cloud": 5,
-									"trend": "rising"
-								},
-								"units": {
-									"cloud": "oktas"
-								}
-							}, {
-								"id": "currentWindGust",
-								"rule": {
-									"speed": {
-										"rangeStart": 0,
-										"rangeEnd": 144
-									}
-								},
-								"match": {
-									"speed": 72
-								},
-								"units": {
-									"speed": "km/h"
-								}
-							}, {
-								"id": "currentDeltaT",
-								"rule": {
-									"deltaT": {
-										"rangeStart": 0,
-										"rangeEnd": 20
-									},
-									"trend": "any"
-								},
-								"match": {
-									"deltaT": 10,
-									"trend": "steady"
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}]
-						}]
-					}],
-					"location": {
-						"id": 1,
-						"name": "Bondi",
-						"displayName": "Bondi Display Name",
-						"region": "Sydney",
-						"state": "NSW",
-						"postcode": "2026",
-						"timeZone": "Australia/NSW",
-						"lat": -33.8905,
-						"lng": 151.2749,
-						"url": "https%3A%2F%2Fwww.willyweather.com.au%2Fnsw%2Fsydney%2Fbondi.html"
-					},
-					"weatherStations": {
-						"temperature": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"delta-t": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"cloud": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"humidity": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"dewPoint": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"pressure": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"wind": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"rainfall": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						}
-					}
-				}
-			},
-			"countryCode": "AU",
-			"speech": "Observational with all conditions"
-		}
-	}
+  "APNS": {
+    "aps": {
+      "alert": {
+        "title": "Observational with all conditions",
+        "body": "Your alert conditions were met at 4:00am on Friday the 4th of March."
+      },
+      "sound": "default",
+      "category": "AlertNotification",
+      "mutable-content": 1,
+      "utcDeliveryDateTime": "2011-03-03 18:00:00"
+    },
+    "willyweather": {
+      "redirect": {
+        "screen": "alertNotification",
+        "parameters": {
+          "eventUrl": "\/notifications\/007c11ca-a45a-4d36-aacd-5d9694b32b2c\/events\/c8fd7118-4892-4195-a29f-4bae1604e57c"
+        }
+      },
+      "countryCode": "AU",
+      "speech": "Observational with all conditions"
+    }
+  }
 }
 ```
 Attribute | Type | Values | Description
@@ -13587,6 +13356,9 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 alert | object | **(See alert)** |
 sound | string | default | The sound that will be played for this notification
+category | string | AlertNotification |
+mutable-content | int | 1 |
+utcDeliveryDateTime | string | |
 
 #### alert
 
@@ -13594,9 +13366,6 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 title | string | | title of the notification
 body | string | | body content of the notification
-category | string | AlertNotification |
-mutable-content | int | 1 |
-utcDeliveryDateTime | string | |
 
 #### willyweather
 
@@ -13617,53 +13386,7 @@ parameters | object | **(See parameters)** | Contains the conditions for the not
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-groupedNotificationAlertConditions  | array |  | Array of objects where each object has a single attribute named occurrences. **(See occurrences)**
-location | object | **(See location)** | (optional) will be shown if there is a forecast type alert condition in the groupedNotificationAlertConditions
-weatherStations | array | ***(See weatherStations)** | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
-
-#### occurrence
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-dateTime | string | | dateTime where criteria types was satisfied by matching data
-criteria | array| **(See Grouped Notification Alert Conditions Criteria Types)** | Array of Criteria Types that matched the rule set in notification alert conditions.
-
-#### location
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | | Location id
-name | string | | Name of the location
-displayName | string | | Display name of the location
-region | string | | Region of the location
-state | string | | State of the location
-postalcode | string | |
-timeZone| string | |
-lat | float | |
-lng | float | |
-url | string  | | URL link in WillyWeather for the location
-
-#### weatherStations
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-temperature | **(See WeatherStation below)** | | Weather Station for used as source for temperature data
-delta-t | **(See WeatherStation below)** | | Weather Station for used as source for delta-t  data
-cloud | **(See WeatherStation below)** | | Weather Station for used as source for cloud data
-humidity | **(See WeatherStation below)** | | Weather Station for used as source for dewPoint data
-pressure | **(See WeatherStation below)** | | Weather Station for used as source for pressure data
-wind | **(See WeatherStation below)** | | Weather Station for used as source for wind data
-rainfall | **(See WeatherStation below)** | | Weather Station for used as source for rainfall data
-
-#### WeatherStations
-
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-id | int | |
-name | string | |
-lat | float | |
-lng | float | |
-distance | float | |
+eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification
 
 ### Android
 
@@ -13671,269 +13394,25 @@ distance | float | |
 
 ```json
 {
-	"GCM": {
-		"priority": "high",
-		"data": {
-			"category": "AlertNotification",
-			"notification": {
-				"title": "Observational with all conditions",
-				"body": "Your alert conditions were met at 4:00am on Friday the 4th of March.",
-				"sound": "default"
-			},
-			"redirect": {
-				"screen": "AlertNotification",
-				"parameters": {
-					"groupedNotificationAlertConditions": [{
-						"occurrences": [{
-							"dateTime": "2011-03-04 04:00:00",
-							"criteria": [{
-								"id": "currentWind",
-								"rule": {
-									"speed": {
-										"rangeStart": 90,
-										"rangeEnd": 144
-									},
-									"direction": {
-										"rangeStart": 45,
-										"rangeEnd": 45
-									}
-								},
-								"match": {
-									"speed": 129.6,
-									"direction": 300,
-									"directionText": "WNW"
-								},
-								"units": {
-									"speed": "km/h"
-								}
-							}, {
-								"id": "currentTemp",
-								"rule": {
-									"temperature": {
-										"rangeStart": -3.15,
-										"rangeEnd": 23.85
-									},
-									"trend": "any"
-								},
-								"match": {
-									"temperature": 6.9,
-									"trend": "falling"
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}, {
-								"id": 22,
-								"rule": {
-									"amount": {
-										"rangeStart": 1
-									}
-								},
-								"match": {
-									"amount": 5
-								},
-								"units": {
-									"amount": "mm"
-								}
-							}, {
-								"id": "currentRainSince9am",
-								"rule": {
-									"amount": {
-										"rangeStart": 4
-									}
-								},
-								"match": {
-									"amount": 5.2
-								},
-								"units": {
-									"amount": "mm"
-								}
-							}, {
-								"id": 5,
-								"type": "currentHumidity",
-								"rule": {
-									"humidity": {
-										"rangeStart": 35,
-										"rangeEnd": 90
-									}
-								},
-								"match": {
-									"humidity": 35
-								},
-								"units": {
-									"humidity": "%"
-								}
-							}, {
-								"id": "currentDewpoint",
-								"rule": {
-									"dewpoint": {
-										"rangeStart": -13.15,
-										"rangeEnd": 11.85
-									},
-									"trend": "any"
-								},
-								"match": {
-									"dewpoint": -3.1,
-									"trend": "falling"
-								},
-								"units": {
-									"dewpoint": "c"
-								}
-							}, {
-								"id": "currentPressure",
-								"rule": {
-									"pressure": {
-										"rangeStart": 851,
-										"rangeEnd": 1000
-									},
-									"trend": "any"
-								},
-								"match": {
-									"pressure": 900.4,
-									"trend": "falling"
-								},
-								"units": {
-									"pressure": "hpa"
-								}
-							}, {
-								"id": "currentApparentTemp",
-								"rule": {
-									"apparentTemperature": {
-										"rangeStart": -3.15,
-										"rangeEnd": 23.85
-									}
-								},
-								"match": {
-									"apparentTemperature": 6.9
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}, {
-								"id": "currentCloud",
-								"rule": {
-									"cloud": {
-										"rangeStart": 0,
-										"rangeEnd": 8
-									},
-									"trend": "any"
-								},
-								"match": {
-									"cloud": 5,
-									"trend": "rising"
-								},
-								"units": {
-									"cloud": "oktas"
-								}
-							}, {
-								"id": "currentWindGust",
-								"rule": {
-									"speed": {
-										"rangeStart": 0,
-										"rangeEnd": 144
-									}
-								},
-								"match": {
-									"speed": 72
-								},
-								"units": {
-									"speed": "km/h"
-								}
-							}, {
-								"id": "currentDeltaT",
-								"rule": {
-									"deltaT": {
-										"rangeStart": 0,
-										"rangeEnd": 20
-									},
-									"trend": "any"
-								},
-								"match": {
-									"deltaT": 10,
-									"trend": "steady"
-								},
-								"units": {
-									"temperature": "c"
-								}
-							}]
-						}]
-					}],
-					"location": {
-						"id": 1,
-						"name": "Bondi",
-						"displayName": "Bondi Display Name",
-						"region": "Sydney",
-						"state": "NSW",
-						"postcode": "2026",
-						"timeZone": "Australia/NSW",
-						"lat": -33.8905,
-						"lng": 151.2749,
-						"url": "https%3A%2F%2Fwww.willyweather.com.au%2Fnsw%2Fsydney%2Fbondi.html"
-					},
-					"weatherStations": {
-						"temperature": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"delta-t": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"cloud": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"humidity": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"dewPoint": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"pressure": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"wind": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						},
-						"rainfall": {
-							"id": 1,
-							"name": "station 1",
-							"lat": 1,
-							"lng": -1,
-							"distance": 3
-						}
-					}
-				}
-			},
-			"countryCode": "AU",
-			"speech": "Observational with all conditions"
-		}
-	}
+  "GCM": {
+    "priority": "high",
+    "data": {
+      "category": "AlertNotification",
+      "notification": {
+        "title": "Observational with all conditions",
+        "body": "Your alert conditions were met at 4:00am on Friday the 4th of March.",
+        "sound": "default"
+      },
+      "redirect": {
+        "screen": "AlertNotification",
+        "parameters": {
+          "eventUrl": "\/notifications\/007c11ca-a45a-4d36-aacd-5d9694b32b2c\/events\/b28beee3-262b-41a9-86ad-bb424c627096"
+        }
+      },
+      "countryCode": "AU",
+      "speech": "Observational with all conditions"
+    }
+  }
 }
 ```
 Attribute | Type | Values | Description
@@ -13974,9 +13453,289 @@ parameters | object | **(See parameters)** | Contains the conditions for the not
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
+eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification
+
+## Notification - GET - Get Alert Conditions
+
+> Example Request Body
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+	"metadata": {
+		"location": {
+			"id": 1,
+			"name": "Bondi",
+			"displayName": "Bondi Display Name",
+			"region": "Sydney",
+			"state": "NSW",
+			"postcode": "2026",
+			"timeZone": "Australia\/NSW",
+			"lat": -33.8905,
+			"lng": 151.2749,
+			"url": "https%3A%2F%2Fwww.willyweather.com.au%2Fnsw%2Fsydney%2Fbondi.html"
+		},
+		"weatherStations": {
+			"temperature": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"delta-t": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"cloud": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"humidity": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"dewPoint": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"pressure": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"wind": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			},
+			"rainfall": {
+				"id": 1,
+				"name": "station 1",
+				"lat": 1,
+				"lng": -1,
+				"distance": 3
+			}
+		}
+	},
+	"groupedNotificationAlertConditions": [{
+		"occurrences": [{
+			"dateTime": "2011-03-04 04:00:00",
+			"criteria": [{
+				"id": "currentWind",
+				"rule": {
+					"speed": {
+						"rangeStart": 90,
+						"rangeEnd": 144
+					},
+					"direction": {
+						"rangeStart": 45,
+						"rangeEnd": 45
+					}
+				},
+				"match": {
+					"speed": 129.6,
+					"direction": 300,
+					"directionText": "WNW"
+				},
+				"units": {
+					"speed": "km\/h"
+				}
+			}, {
+				"id": "currentTemp",
+				"rule": {
+					"temperature": {
+						"rangeStart": -3.15,
+						"rangeEnd": 23.85
+					},
+					"trend": "any"
+				},
+				"match": {
+					"temperature": 6.9,
+					"trend": "falling"
+				},
+				"units": {
+					"temperature": "c"
+				}
+			}, {
+				"id": 22,
+				"rule": {
+					"amount": {
+						"rangeStart": 1
+					}
+				},
+				"match": {
+					"amount": 5
+				},
+				"units": {
+					"amount": "mm"
+				}
+			}, {
+				"id": "currentRainSince9am",
+				"rule": {
+					"amount": {
+						"rangeStart": 4
+					}
+				},
+				"match": {
+					"amount": 5.2
+				},
+				"units": {
+					"amount": "mm"
+				}
+			}, {
+				"id": 5,
+				"type": "currentHumidity",
+				"rule": {
+					"humidity": {
+						"rangeStart": 35,
+						"rangeEnd": 90
+					}
+				},
+				"match": {
+					"humidity": 35
+				},
+				"units": {
+					"humidity": "%"
+				}
+			}, {
+				"id": "currentDewpoint",
+				"rule": {
+					"dewpoint": {
+						"rangeStart": -13.15,
+						"rangeEnd": 11.85
+					},
+					"trend": "any"
+				},
+				"match": {
+					"dewpoint": -3.1,
+					"trend": "falling"
+				},
+				"units": {
+					"dewpoint": "c"
+				}
+			}, {
+				"id": "currentPressure",
+				"rule": {
+					"pressure": {
+						"rangeStart": 851,
+						"rangeEnd": 1000
+					},
+					"trend": "any"
+				},
+				"match": {
+					"pressure": 900.4,
+					"trend": "falling"
+				},
+				"units": {
+					"pressure": "hpa"
+				}
+			}, {
+				"id": "currentApparentTemp",
+				"rule": {
+					"apparentTemperature": {
+						"rangeStart": -3.15,
+						"rangeEnd": 23.85
+					}
+				},
+				"match": {
+					"apparentTemperature": 6.9
+				},
+				"units": {
+					"temperature": "c"
+				}
+			}, {
+				"id": "currentCloud",
+				"rule": {
+					"cloud": {
+						"rangeStart": 0,
+						"rangeEnd": 8
+					},
+					"trend": "any"
+				},
+				"match": {
+					"cloud": 5,
+					"trend": "rising"
+				},
+				"units": {
+					"cloud": "oktas"
+				}
+			}, {
+				"id": "currentWindGust",
+				"rule": {
+					"speed": {
+						"rangeStart": 0,
+						"rangeEnd": 144
+					}
+				},
+				"match": {
+					"speed": 72
+				},
+				"units": {
+					"speed": "km\/h"
+				}
+			}, {
+				"id": "currentDeltaT",
+				"rule": {
+					"deltaT": {
+						"rangeStart": 0,
+						"rangeEnd": 20
+					},
+					"trend": "any"
+				},
+				"match": {
+					"deltaT": 10,
+					"trend": "steady"
+				},
+				"units": {
+					"temperature": "c"
+				}
+			}]
+		}]
+	}]
+}
+```
+
+`GET api.willyweather.com.au/v2/{api key}/notifications/{notification uid}/event/{notification pending uid}.json`
+
+<aside class="notice">
+    The url for this endpoint is inside push notification payload parameters section eventUrl attribute.
+</aside>
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+metadata | object | | **(See metadata)**
 groupedNotificationAlertConditions  | array |  | Array of objects where each object has a single attribute named occurrences. **(See occurrences)**
+
+### metadata
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
 location | object | **(See location)** | (optional) will be shown if there is a forecast type alert condition in the groupedNotificationAlertConditions
-weatherStations | array | ***(See weatherStations)** | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
+weatherStations | array | **(See weatherStations)**  | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
 
 #### occurrence
 
@@ -14021,7 +13780,6 @@ name | string | |
 lat | float | |
 lng | float | |
 distance | float | |
-
 
 ## Grouped Notification Alert Conditions Criteria Types
 
@@ -14100,8 +13858,48 @@ precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow  |
+precis | string | fine (fine, mostly-fine, high-cloud, partly-cloudy, wind, frost)<br/><br/> cloudy (mostly-cloudy, cloudy, overcast, fog, dust)<br/ ><br/> rain-showers (chance-shower-fine, shower-or-two, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, hail)<br/><br/> thunderstorms (chance-thunderstorm-showers, chance-thunderstorm-cloud, chance-thunderstorm-fine, thunderstorm) <br/><br/> snow (chance-snow-fine, snow, snow-and-rain, chance-snow-cloud, heavy-snow, light-snow) |
 
+<aside class="notice">
+    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:fine is true if match:precis:mostly-fine
+</aside>
+
+### Forecast Hourly Rainfall
+
+> Example Forecast Hourly Rainfall
+
+```json
+{
+  "id": "forecastHourlyRainfall",
+  "rule": {
+    "probability": 19
+  },
+  "match": {
+    "probability": 20
+  }
+}
+```
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastRainfall |
+rule | object | |
+match | object | |
+units | object | | (optional) - Present if amount is set
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+probability | int | | |
+amount | int | | (optional)
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+probability | int | | |
+amount | int | | (optional)
 
 ### Forecast Max Temperature
 
@@ -14226,7 +14024,7 @@ temperature | string | c  <br/> f <br/> k <br/> |
   },
   "match": {
     "phase": "new",
-    "date": "2011-03-05"
+    "date": "2011-03-05 00:00:00"
   }
 }
 ```
@@ -14309,22 +14107,18 @@ amount | string | mm  <br/> pts <br/> in <br/> | (optional) - Present if amount 
   "id": "forecastRegionPrecis",
   "rule": {
     "precis": {
-      "cloud-cover": ["sunny", "mostly-sunny", "partly-cloudy", "mostly-cloudy", "cloudy", "overcast"],
-      "heavy-rain": ["heavy-rain"],
-      "chance-of-rain": ["very-high", "high", "medium", "slight"],
-      "chance-of-thunderstorms": ["chance-of-thunderstorms"],
-      "thunderstorms": ["thunderstorms"],
-      "snow": ["snow"],
-      "chance-of-snow": ["very-high", "high", "medium", "slight"],
-      "fog": ["fog"],
-      "frost": ["frost"]
+      "cloudCover": ["sunny", "mostly-sunny", "partly-cloudy", "mostly-cloudy", "cloudy", "overcast"],
+      "heavyRain": ["heavy-rain"],
+      "chanceOfRain": ["very-high", "high", "medium", "slight"],
+      "chanceOfThunderstorms": ["chance-of-thunderstorms"],
+      "chanceOfSnow": ["very-high", "high", "medium", "slight"]
     }
   },
   "match": {
     "precis": {
-      "cloud-cover": "sunny",
-      "chance-of-rain": "very-high",
-      "chance-of-thunderstorms": "chance-of-thunderstorms"
+      "cloudCover": "sunny",
+      "chanceOfRain": "very-high",
+      "chanceOfThunderstorms": "chance-of-thunderstorms"
     }
   }
 }
@@ -14501,7 +14295,8 @@ period | string | seconds |
   },
   "match": {
     "status": "high",
-    "dateTime": "2011-03-04 15:23:00"
+    "dateTime": "2011-03-04 15:23:00",
+    "height": 1.44
   },
   "units": {
     "height": "m"
@@ -14528,6 +14323,7 @@ Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 status | string | high <br/> low <br/> half-tide-rising <br/> half-tide-falling |
 dateTime | string | (dateTime) |
+height | float | |
 
 #### Units
 
@@ -14614,7 +14410,11 @@ precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-precis | string |  fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow |
+precis | string | fine (fine, mostly-fine, high-cloud, partly-cloudy, wind, frost)<br/><br/> cloudy (mostly-cloudy, cloudy, overcast, fog, dust)<br/ ><br/> rain-showers (chance-shower-fine, shower-or-two, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, hail)<br/><br/> thunderstorms (chance-thunderstorm-showers, chance-thunderstorm-cloud, chance-thunderstorm-fine, thunderstorm) <br/><br/> snow (chance-snow-fine, snow, snow-and-rain, chance-snow-cloud, heavy-snow, light-snow) |
+
+<aside class="notice">
+    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:fine is true if match:precis:mostly-fine
+</aside>
 
 
 ### Forecast Wind
