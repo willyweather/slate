@@ -12858,7 +12858,7 @@ group | int | | | | true
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 mapDataPoint | object | **(See Map Data Point)** | | false
-minimumIntensity | int | 0 - 5 (no rain, light, moderate, heavy, very heavy) | | true
+minimumIntensity | int | 0 - 4 (no rain, light, moderate, heavy, very heavy) | | true
 lat | float | | | true*
 lng | float | | | true*
 imminentMessageFalsePositiveReductionEnabled | boolean | | | true
@@ -13311,7 +13311,7 @@ Response is an empty object.
 
 ### IOS
 
-> Example IOS Payload
+> Example IOS Payload (Non Forecast Radar)
 
 ```json
 {
@@ -13339,6 +13339,64 @@ Response is an empty object.
   }
 }
 ```
+
+> Example IOS Payload (Forecast Radar)
+
+```json
+{
+  "APNS":
+  {
+    "aps":
+    {
+      "warningClassificationType": "forecast-radar",
+      "alert":
+      {
+        "title": "Rain Alert",
+        "body": "The rain has cleared, ignore previous message."
+      },
+      "sound": "default",
+      "category": "ForecastRadarNotification",
+      "mutable-content": 1,
+      "utcDeliveryDateTime": "2022-02-28 03:41:15"
+    },
+    "willyweather":
+    {
+      "redirect":
+      {
+        "screen": "forecastRadar",
+        "parameters":
+        {
+          "mapProvider":
+          {
+            "id": 64,
+            "lat": -34.896,
+            "lng": 138.668
+          },
+          "messageType":
+          {
+            "id": 4,
+            "code": "cancellation"
+          },
+          "notification":
+          {
+            "uid": "dbb335d3-0a94-4875-af49-69d984b81fad",
+            "name": "Forecast Radar Notification",
+            "notificationAlertCondition":
+            {
+              "lat": -34.896,
+              "lng": 138.668
+            }
+          }
+        }
+      },
+      "speech": "Alert cancelled",
+      "countryCode": "au"
+    }
+  }
+}
+```
+
+
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 APNS | object | **(See APNS)** |
@@ -13380,17 +13438,72 @@ speech | string | |
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 screen  | string | |
-parameters | object | **(See parameters)** | Contains the conditions for the notificatio and the matching rules and criteria
+parameters | object | **(See parameters)** | Contains the conditions for the notification and the matching rules and criteria
 
 #### parameters
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification
+eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification (Present in Non forecast radar alerts only)
+mapProvider | object | **(See  mapProvider)** | *
+messageType | object | **(See  messageType)** | *
+notification | object | **(See  notification)** | *
+
+<aside class="notice">
+ * For Forecast Radar Only
+</aside>
+
+#### mapProvider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | id of the map provider
+lat | float | | latitude of the map provider
+lng | float | | longitude of the map provider
+
+#### messageType
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+code | string | |
+
+<aside class="notice">
+ Message Types:
+    <ol>
+        <li>heads-up</li>
+        <li>imminent-with-prior-heads-up</li>
+        <li>imminent</li>
+        <li>cancellation</li>
+        <li>recap</li>
+        <li>rain-arrived-with-prior-heads-up</li>
+        <li>rain-arrived</li>
+        <li>device-outside-rada</li>
+        <li>device-inside-radar</li>
+        <li>rain-cleared</li>
+        <li>rain-cleared-in-x-minutes</li>
+    </ol>
+</aside>
+
+#### notification
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+uid | int | |
+name | string | |
+utcDeliveryDateTime | string | |
+notificationAlertCondition | object | **(See  notificationAlertCondition)** |
+
+#### notificationAlertCondition
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+lat | float | |
+lng | float | |
 
 ### Android
 
-> Example Android Payload
+> Example Android Payload (Non Forecast Radar)
 
 ```json
 {
@@ -13415,6 +13528,59 @@ eventUrl | string | |Contains the eventURL that will used in getting the notific
   }
 }
 ```
+
+> Example Android Payload (Forecast Radar)
+
+```json
+{
+    "GCM":
+    {
+        "priority": "high",
+        "data":
+        {
+            "category": "ForecastRadarNotification",
+            "notification":
+            {
+                "sound": "default",
+                "title": "Rain Alert",
+                "body": "The rain has cleared, ignore previous message."
+            },
+            "redirect":
+            {
+                "screen": "forecastRadar",
+                "parameters":
+                {
+                    "mapProvider":
+                    {
+                        "id": 4,
+                        "lat": -32.717,
+                        "lng": 152.113
+                    },
+                    "messageType":
+                    {
+                        "id": 4,
+                        "code": "cancellation"
+                    },
+                    "notification":
+                    {
+                        "uid": "27e6e475-7481-4b3a-b51e-b1a737b27832",
+                        "name": "Forecast radar Notification",
+                        "utcDeliveryDateTime": "2022-02-28 03:40:28",
+                        "notificationAlertCondition":
+                        {
+                            "lat": -32.717,
+                            "lng": 152.113
+                        }
+                    }
+                }
+            },
+            "speech": "Alert cancelled",
+            "countryCode": "au"
+        }
+    }
+}
+```
+
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 GCM | object | **(See GCM)** |
@@ -13447,13 +13613,68 @@ sound | string | default | The sound that will be played for this notification
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 screen  | string | |
-parameters | object | **(See parameters)** | Contains the conditions for the notificatio and the matching rules and criteria
+parameters | object | **(See parameters)** | Contains the conditions for the notification and the matching rules and criteria
 
 #### parameters
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification
+eventUrl | string | |Contains the eventURL that will used in getting the notification alert conditions for the notification (Present in Non forecast radar alerts only)
+mapProvider | object | **(See  mapProvider)** | *
+messageType | object | **(See  messageType)** | *
+notification | object | **(See  notification)** | *
+
+<aside class="notice">
+ * For Forecast Radar Only
+</aside>
+
+#### mapProvider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | id of the map provider
+lat | float | | latitude of the map provider
+lng | float | | longitude of the map provider
+
+#### messageType
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | 
+code | string | |
+
+<aside class="notice">
+ Message Types:
+    <ol>
+        <li>heads-up</li>
+        <li>imminent-with-prior-heads-up</li>
+        <li>imminent</li>
+        <li>cancellation</li>
+        <li>recap</li>
+        <li>rain-arrived-with-prior-heads-up</li>
+        <li>rain-arrived</li>
+        <li>device-outside-rada</li>
+        <li>device-inside-radar</li>
+        <li>rain-cleared</li>
+        <li>rain-cleared-in-x-minutes</li>
+    </ol>
+</aside>
+
+#### notification
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+uid | int | |
+name | string | |
+utcDeliveryDateTime | string | |
+notificationAlertCondition | object | **(See  notificationAlertCondition)** |
+
+#### notificationAlertCondition
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+lat | float | |
+lng | float | |
 
 ## Notification - GET - Get Alert Conditions
 
@@ -14291,7 +14512,10 @@ period | string | seconds |
 {
   "id": "forecastTides",
   "rule": {
-    "status": "high-tide"
+    "status": "high-tide",
+    "startDateTime": "2011-03-04 15:13:00",
+    "endDateTime" : "2011-03-04 15:33:00",
+    "buffer" : 10
   },
   "match": {
     "status": "high",
@@ -14316,6 +14540,9 @@ units | object | |
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 status | string | high-tide <br/> low-tide <br/> half-tide-rising <br/> half-tide-falling <br/>  high-or-low-tide |
+startDateTime | string | (dateTime) |
+endDateTime | string | (dateTime) |
+buffer | int | |
 
 #### Match
 
