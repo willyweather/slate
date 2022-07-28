@@ -11663,6 +11663,389 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 {
 	"absolute": {
 		"observational": [{
+			"id": 30,
+			"code": "currentCloud",
+			"title": "Cloud Cover",
+			"components": [{
+				"type": "slider",
+				"title": "Cloud Cover",
+				"unit": "oktas",
+				"min": {
+					"key": "cloudRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "oktas",
+						"default": true
+					}]
+				},
+				"max": {
+					"key": "cloudRangeEnd",
+					"values": [{
+						"value": 8,
+						"unit": "oktas",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 3,
+						"unit": "oktas"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 5,
+						"unit": "oktas"
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Trend:",
+				"key": "trend",
+				"groups": [{
+					"inputs": [{
+						"label": "Any",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Rising",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Falling",
+						"value": "3",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 27,
+			"code": "currentDeltaT",
+			"title": "Delta T",
+			"components": [{
+				"type": "slider",
+				"title": "Delta T",
+				"step": 0.1,
+				"unit": "temperature",
+				"min": {
+					"key": "deltaTRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "deltaTRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Trend:",
+				"key": "trend",
+				"groups": [{
+					"inputs": [{
+						"label": "Any",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Rising",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Falling",
+						"value": "3",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 25,
+			"code": "currentDewpoint",
+			"title": "Dewpoint",
+			"components": [{
+				"type": "slider",
+				"title": "Dewpoint",
+				"step": 0.1,
+				"unit": "temperature",
+				"min": {
+					"key": "dewpointRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "dewpointRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Trend:",
+				"key": "trend",
+				"groups": [{
+					"inputs": [{
+						"label": "Any",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Rising",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Falling",
+						"value": "3",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 24,
+			"code": "currentHumidity",
+			"title": "Humidity",
+			"components": [{
+				"type": "slider",
+				"title": "Humidity",
+				"unit": "percentage",
+				"min": {
+					"key": "humidityRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"max": {
+					"key": "humidityRangeEnd",
+					"values": [{
+						"value": 100,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 40,
+						"unit": "%"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 60,
+						"unit": "%"
+					}]
+				}
+			}]
+		}, {
+			"id": 26,
+			"code": "currentPressure",
+			"title": "Pressure",
+			"components": [{
+				"type": "slider",
+				"title": "Pressure",
+				"unit": "pressure",
+				"min": {
+					"key": "pressureRangeStart",
+					"values": [{
+						"value": 860,
+						"unit": "hpa",
+						"default": true
+					}, {
+						"value": 26,
+						"unit": "inhg",
+						"default": false
+					}, {
+						"value": 12.5,
+						"unit": "psi",
+						"default": false
+					}, {
+						"value": 860,
+						"unit": "millibars",
+						"default": false
+					}, {
+						"value": 650,
+						"unit": "mmhg",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "pressureRangeEnd",
+					"values": [{
+						"value": 1100,
+						"unit": "hpa",
+						"default": true
+					}, {
+						"value": 32,
+						"unit": "inhg",
+						"default": false
+					}, {
+						"value": 15.9,
+						"unit": "psi",
+						"default": false
+					}, {
+						"value": 1100,
+						"unit": "millibars",
+						"default": false
+					}, {
+						"value": 820,
+						"unit": "mmhg",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 946,
+						"unit": "hpa"
+					}, {
+						"value": 27.9,
+						"unit": "inhg",
+						"default": false
+					}, {
+						"value": 13.7,
+						"unit": "psi",
+						"default": false
+					}, {
+						"value": 946,
+						"unit": "millibars",
+						"default": false
+					}, {
+						"value": 709.6,
+						"unit": "mmhg",
+						"default": false
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 1014,
+						"unit": "hpa"
+					}, {
+						"value": 29.9,
+						"unit": "inhg",
+						"default": false
+					}, {
+						"value": 14.7,
+						"unit": "psi",
+						"default": false
+					}, {
+						"value": 1014,
+						"unit": "millibars",
+						"default": false
+					}, {
+						"value": 760.6,
+						"unit": "mmhg",
+						"default": false
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Trend:",
+				"key": "trend",
+				"groups": [{
+					"inputs": [{
+						"label": "Any",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Rising",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Falling",
+						"value": "3",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
 			"id": 22,
 			"code": "currentRainLastHour",
 			"title": "Rain Last Hour",
@@ -11692,7 +12075,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"max": {
 					"values": [{
-						"value": 50,
+						"value": 300,
 						"unit": "mm",
 						"default": true
 					}, {
@@ -11713,7 +12096,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 						"value": 5.9,
 						"unit": "in"
 					}, {
-						"value": 591,
+						"value": 425,
 						"unit": "pts"
 					}]
 				}
@@ -11725,6 +12108,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 			"components": [{
 				"type": "slider",
 				"title": "Temperature",
+				"step": 0.1,
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
@@ -11760,6 +12144,9 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMin": {
 					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -11769,6 +12156,9 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -11796,14 +12186,80 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					}]
 				}]
 			}]
-		}],
-		"forecast": [{
-			"id": 4,
-			"code": "forecastWind",
+		}, {
+			"id": 28,
+			"code": "currentApparentTemp",
+			"title": "Temperature (feels like)",
+			"components": [{
+				"type": "slider",
+				"title": "Apparent Temperature",
+				"step": 0.1,
+				"unit": "temperature",
+				"min": {
+					"key": "apparentTempRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "apparentTempRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}]
+		}, {
+			"id": 20,
+			"code": "currentWind",
 			"title": "Wind",
 			"components": [{
 				"type": "slider",
-				"title": "Wind Forecast Speed",
+				"title": "Wind Speed",
+				"step": 0.1,
 				"unit": "speed",
 				"min": {
 					"key": "speedRangeStart",
@@ -11828,7 +12284,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				"max": {
 					"key": "speedRangeEnd",
 					"values": [{
-						"value": 41.7,
+						"value": 40,
 						"unit": "m\/s",
 						"default": true
 					}, {
@@ -11862,7 +12318,7 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 41.7,
+						"value": 40,
 						"unit": "m\/s"
 					}, {
 						"value": 140,
@@ -11882,26 +12338,26 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "direction"
+						"unit": "°"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "direction"
+						"unit": "°"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "direction"
+						"unit": "°"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "direction"
+						"unit": "°"
 					}]
 				}
 			}, {
@@ -11910,11 +12366,989 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "direction"
+						"unit": "°"
 					},
 					"max": {
 						"value": 360,
-						"unit": "direction"
+						"unit": "°"
+					}
+				}
+			}]
+		}, {
+			"id": 29,
+			"code": "currentWindGust",
+			"title": "Wind Gust",
+			"components": [{
+				"type": "slider",
+				"title": "Wind Gust",
+				"step": 0.1,
+				"unit": "speed",
+				"min": {
+					"key": "gustSpeedRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "gustSpeedRangeEnd",
+					"values": [{
+						"value": 40,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 140,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 80,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 70,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 5.5,
+						"unit": "m\/s"
+					}, {
+						"value": 19.8,
+						"unit": "km\/h"
+					}, {
+						"value": 12.3,
+						"unit": "mph"
+					}, {
+						"value": 10.7,
+						"unit": "knots"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 40,
+						"unit": "m\/s"
+					}, {
+						"value": 140,
+						"unit": "km\/h"
+					}, {
+						"value": 80,
+						"unit": "mph"
+					}, {
+						"value": 70,
+						"unit": "knots"
+					}]
+				}
+			}]
+		}],
+		"forecast": [{
+			"id": 10,
+			"code": "forecastMoonphase",
+			"title": "Moon",
+			"components": [{
+				"type": "slider",
+				"title": "+ \/ -",
+				"min": {
+					"key": "surroundingDays",
+					"values": [{
+						"value": 0,
+						"unit": "days",
+						"default": true
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 4,
+						"unit": "days",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 1,
+						"unit": "days"
+					}]
+				}
+			}, {
+				"type": "radiobutton",
+				"title": "Moon Phase",
+				"key": "phase",
+				"groups": [{
+					"inputs": [{
+						"label": "Full",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Last Quarter",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "New",
+						"value": "3",
+						"default": false
+					}, {
+						"label": "First Quarter",
+						"value": "4",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 6,
+			"code": "forecastRainfall",
+			"title": "Rain (daily)",
+			"components": [{
+				"type": "enabler",
+				"title": "No rain",
+				"value": -1
+			}, {
+				"type": "slider",
+				"title": "Rain Forecast at Least",
+				"unit": "amount",
+				"min": {
+					"key": "amount",
+					"values": [{
+						"value": 0,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 300,
+						"unit": "mm",
+						"default": true
+					}, {
+						"value": 10,
+						"unit": "in",
+						"default": false
+					}, {
+						"value": 800,
+						"unit": "pts",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 150,
+						"unit": "mm"
+					}, {
+						"value": 5.9,
+						"unit": "in"
+					}, {
+						"value": 425,
+						"unit": "pts"
+					}]
+				}
+			}, {
+				"type": "slider",
+				"title": "Chance of Rain at Least",
+				"unit": "percentage",
+				"min": {
+					"key": "probability",
+					"values": [{
+						"value": 0,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 100,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 50,
+						"unit": "%"
+					}]
+				}
+			}]
+		}, {
+			"id": 15,
+			"code": "forecastHourlyRainfall",
+			"title": "Rain (hourly)",
+			"components": [{
+				"type": "slider",
+				"title": "Chance of Rain at Least",
+				"unit": "percentage",
+				"min": {
+					"key": "probability",
+					"values": [{
+						"value": 0,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 100,
+						"unit": "%",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 50,
+						"unit": "%"
+					}]
+				}
+			}]
+		}, {
+			"id": 13,
+			"code": "forecastRegionPrecis",
+			"title": "Region Precis",
+			"components": [{
+				"type": "checkbox",
+				"key": "precis",
+				"title": "The region precis is a daily description of the weather for a particular region, written by the government authority. If one of the words below appears in the text, then the alert will trigger.",
+				"groups": [{
+					"title": "Cloud Cover",
+					"inputs": [{
+						"label": "Sunny",
+						"value": "cloud-cover:sunny",
+						"default": false
+					}, {
+						"label": "Mostly Sunny",
+						"value": "cloud-cover:mostly-sunny",
+						"default": false
+					}, {
+						"label": "Partly Cloudy",
+						"value": "cloud-cover:partly-cloudy",
+						"default": false
+					}, {
+						"label": "Mostly Cloudy",
+						"value": "cloud-cover:mostly-cloudy",
+						"default": false
+					}, {
+						"label": "Cloudy",
+						"value": "cloud-cover:cloudy",
+						"default": false
+					}, {
+						"label": "Overcast",
+						"value": "cloud-cover:overcast",
+						"default": false
+					}]
+				}, {
+					"title": "Heavy Rain",
+					"inputs": [{
+						"label": "Heavy Rain",
+						"value": "heavy-rain:heavy-rain",
+						"default": false
+					}]
+				}, {
+					"title": "Chance of Rain\/Showers",
+					"inputs": [{
+						"label": "Very High",
+						"value": "chance-of-rain:very-high",
+						"default": false
+					}, {
+						"label": "High",
+						"value": "chance-of-rain:high",
+						"default": false
+					}, {
+						"label": "Medium",
+						"value": "chance-of-rain:medium",
+						"default": false
+					}, {
+						"label": "Slight",
+						"value": "chance-of-rain:slight",
+						"default": false
+					}]
+				}, {
+					"title": "Chance of Thunderstorms",
+					"inputs": [{
+						"label": "Chance of Thunderstorms",
+						"value": "chance-of-thunderstorms:chance-of-thunderstorms",
+						"default": false
+					}, {
+						"label": "Thunderstorms",
+						"value": "thunderstorms:thunderstorms",
+						"default": false
+					}]
+				}, {
+					"title": "Snow",
+					"inputs": [{
+						"label": "Snow",
+						"value": "snow:snow",
+						"default": false
+					}]
+				}, {
+					"title": "Chance of Snow\/Snow Showers",
+					"inputs": [{
+						"label": "Very High",
+						"value": "chance-of-snow:very-high",
+						"default": false
+					}, {
+						"label": "High",
+						"value": "chance-of-snow:high",
+						"default": false
+					}, {
+						"label": "Medium",
+						"value": "chance-of-snow:medium",
+						"default": false
+					}, {
+						"label": "Slight",
+						"value": "chance-of-snow:slight",
+						"default": false
+					}]
+				}, {
+					"title": "Fog",
+					"inputs": [{
+						"label": "Fog",
+						"value": "fog:fog",
+						"default": false
+					}]
+				}, {
+					"title": "Frost",
+					"inputs": [{
+						"label": "Frost",
+						"value": "frost:frost",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 8,
+			"code": "forecastSunriseSunset",
+			"title": "Sun",
+			"components": [{
+				"type": "radiobutton",
+				"title": "Sun",
+				"key": "time",
+				"groups": [{
+					"inputs": [{
+						"label": "Dawn - The time between first light and sunrise",
+						"value": "1",
+						"default": false
+					}, {
+						"label": "Dusk - The time between sunset and last light",
+						"value": "3",
+						"default": false
+					}, {
+						"label": "Dawn or Dusk",
+						"value": "9",
+						"default": false
+					}, {
+						"label": "Daytime - The time between sunrise and sunset",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Nighttime - The time between last light and first light",
+						"value": "4",
+						"default": false
+					}, {
+						"label": "First Light",
+						"value": "5",
+						"default": false
+					}, {
+						"label": "Sunrise",
+						"value": "6",
+						"default": true
+					}, {
+						"label": "Sunset",
+						"value": "7",
+						"default": false
+					}, {
+						"label": "Last Light",
+						"value": "8",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 3,
+			"code": "forecastSwell",
+			"title": "Swell",
+			"components": [{
+				"type": "slider",
+				"title": "Swell Height Range",
+				"step": 0.1,
+				"unit": "height",
+				"min": {
+					"key": "heightRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "m",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "ft",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "heightRangeEnd",
+					"values": [{
+						"value": 15,
+						"unit": "m",
+						"default": true
+					}, {
+						"value": 40,
+						"unit": "ft",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 2,
+						"unit": "m"
+					}, {
+						"value": 6.6,
+						"unit": "ft"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 10,
+						"unit": "m"
+					}, {
+						"value": 32.8,
+						"unit": "ft"
+					}]
+				}
+			}, {
+				"type": "slider",
+				"title": "Swell Period Range",
+				"min": {
+					"key": "periodRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "seconds",
+						"default": true
+					}]
+				},
+				"max": {
+					"key": "periodRangeEnd",
+					"values": [{
+						"value": 30,
+						"unit": "seconds",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 2,
+						"unit": "seconds"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 10,
+						"unit": "seconds"
+					}]
+				}
+			}, {
+				"type": "compass",
+				"title": "Direction",
+				"min": {
+					"key": "directionRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "°"
+					}]
+				},
+				"max": {
+					"key": "directionRangeEnd",
+					"values": [{
+						"value": 360,
+						"unit": "°"
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 0,
+						"unit": "°"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 360,
+						"unit": "°"
+					}]
+				}
+			}, {
+				"type": "button",
+				"title": "Any Direction",
+				"values": {
+					"min": {
+						"value": 0,
+						"unit": "°"
+					},
+					"max": {
+						"value": 360,
+						"unit": "°"
+					}
+				}
+			}]
+		}, {
+			"id": 2,
+			"code": "forecastMaxTemp",
+			"title": "Temp (daily max)",
+			"components": [{
+				"type": "slider",
+				"title": "Max Temperature Forecast",
+				"step": 0.1,
+				"unit": "temperature",
+				"min": {
+					"key": "tempRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "tempRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}]
+		}, {
+			"id": 1,
+			"code": "forecastMinTemp",
+			"title": "Temp (daily min)",
+			"components": [{
+				"type": "slider",
+				"title": "Min Temperature Forecast",
+				"step": 0.1,
+				"unit": "temperature",
+				"min": {
+					"key": "tempRangeStart",
+					"values": [{
+						"value": 210,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": -60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": -80,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "tempRangeEnd",
+					"values": [{
+						"value": 334,
+						"unit": "k",
+						"default": true
+					}, {
+						"value": 60,
+						"unit": "c",
+						"default": false
+					}, {
+						"value": 140,
+						"unit": "f",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 278.2,
+						"unit": "k"
+					}, {
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 308.2,
+						"unit": "k"
+					}, {
+						"value": 35,
+						"unit": "c"
+					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}]
+		}, {
+			"id": 7,
+			"code": "forecastTides",
+			"title": "Tides",
+			"components": [{
+				"type": "radiobutton",
+				"title": "Tide Status:",
+				"key": "status",
+				"groups": [{
+					"inputs": [{
+						"label": "High Tide",
+						"value": "1",
+						"default": true
+					}, {
+						"label": "Low Tide",
+						"value": "2",
+						"default": false
+					}, {
+						"label": "Half-Tide (Rising)",
+						"value": "3",
+						"default": false
+					}, {
+						"label": "Half-Tide (Falling)",
+						"value": "4",
+						"default": false
+					}, {
+						"label": "High Tide or Low Tide",
+						"value": "5",
+						"default": false
+					}]
+				}]
+			}, {
+				"type": "slider",
+				"title": "+ \/ -",
+				"step": 3,
+				"min": {
+					"key": "buffer",
+					"values": [{
+						"value": 0,
+						"unit": "minutes",
+						"default": true
+					}]
+				},
+				"max": {
+					"values": [{
+						"value": 180,
+						"unit": "minutes",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 30,
+						"unit": "minutes"
+					}]
+				}
+			}]
+		}, {
+			"id": 14,
+			"code": "forecastDailyMaxUV",
+			"title": "UV (daily max)",
+			"components": [{
+				"type": "slider",
+				"title": "UV Forecast Index Range",
+				"min": {
+					"key": "indexRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "index",
+						"default": true
+					}]
+				},
+				"max": {
+					"key": "indexRangeEnd",
+					"values": [{
+						"value": 20,
+						"unit": "index",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 3,
+						"unit": "index"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 20,
+						"unit": "index"
+					}]
+				}
+			}]
+		}, {
+			"id": 9,
+			"code": "forecastUV",
+			"title": "UV (hourly)",
+			"components": [{
+				"type": "slider",
+				"title": "UV Forecast Index Range",
+				"min": {
+					"key": "indexRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "index",
+						"default": true
+					}]
+				},
+				"max": {
+					"key": "indexRangeEnd",
+					"values": [{
+						"value": 20,
+						"unit": "index",
+						"default": true
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 3,
+						"unit": "index"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 20,
+						"unit": "index"
+					}]
+				}
+			}]
+		}, {
+			"id": 5,
+			"code": "forecastWeather",
+			"title": "Weather (daily)",
+			"components": [{
+				"type": "radiobutton",
+				"key": "precis",
+				"title": "Daily Weather Conditions:",
+				"groups": [{
+					"inputs": [{
+						"label": "Fine",
+						"value": "fine",
+						"default": true
+					}, {
+						"label": "Cloudy",
+						"value": "cloudy",
+						"default": false
+					}, {
+						"label": "Rain\/Showers",
+						"value": "rain-showers",
+						"default": false
+					}, {
+						"label": "Thunderstorms",
+						"value": "thunderstorms",
+						"default": false
+					}, {
+						"label": "Snow",
+						"value": "snow",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 12,
+			"code": "forecastHourlyPrecis",
+			"title": "Weather (hourly)",
+			"components": [{
+				"type": "radiobutton",
+				"key": "precis",
+				"title": "Hourly Weather Conditions:",
+				"groups": [{
+					"inputs": [{
+						"label": "Fine",
+						"value": "fine",
+						"default": true
+					}, {
+						"label": "Cloudy",
+						"value": "cloudy",
+						"default": false
+					}, {
+						"label": "Rain\/Showers",
+						"value": "rain-showers",
+						"default": false
+					}, {
+						"label": "Thunderstorms",
+						"value": "thunderstorms",
+						"default": false
+					}, {
+						"label": "Snow",
+						"value": "snow",
+						"default": false
+					}]
+				}]
+			}]
+		}, {
+			"id": 4,
+			"code": "forecastWind",
+			"title": "Wind",
+			"components": [{
+				"type": "slider",
+				"title": "Wind Forecast Speed",
+				"step": 0.1,
+				"unit": "speed",
+				"min": {
+					"key": "speedRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 0,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 0,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"max": {
+					"key": "speedRangeEnd",
+					"values": [{
+						"value": 40,
+						"unit": "m\/s",
+						"default": true
+					}, {
+						"value": 140,
+						"unit": "km\/h",
+						"default": false
+					}, {
+						"value": 80,
+						"unit": "mph",
+						"default": false
+					}, {
+						"value": 70,
+						"unit": "knots",
+						"default": false
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 5.5,
+						"unit": "m\/s"
+					}, {
+						"value": 19.8,
+						"unit": "km\/h"
+					}, {
+						"value": 12.3,
+						"unit": "mph"
+					}, {
+						"value": 10.7,
+						"unit": "knots"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 40,
+						"unit": "m\/s"
+					}, {
+						"value": 140,
+						"unit": "km\/h"
+					}, {
+						"value": 80,
+						"unit": "mph"
+					}, {
+						"value": 70,
+						"unit": "knots"
+					}]
+				}
+			}, {
+				"type": "compass",
+				"title": "Direction",
+				"min": {
+					"key": "directionRangeStart",
+					"values": [{
+						"value": 0,
+						"unit": "°"
+					}]
+				},
+				"max": {
+					"key": "directionRangeEnd",
+					"values": [{
+						"value": 360,
+						"unit": "°"
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 0,
+						"unit": "°"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
+						"value": 360,
+						"unit": "°"
+					}]
+				}
+			}, {
+				"type": "button",
+				"title": "Any Direction",
+				"values": {
+					"min": {
+						"value": 0,
+						"unit": "°"
+					},
+					"max": {
+						"value": 360,
+						"unit": "°"
 					}
 				}
 			}]
@@ -12870,11 +14304,12 @@ imminentLowPredictabilityMinutes | int | | | true
 imminentMediumPredictabilityMinutes | int | | | true
 imminentHighPredictabilityMinutes | int | | | true
 imminentMessageResetEnabled | boolean | | | true
-imminentMessageResetMinutes | int | | | true
+imminentMessageResetMinutesForCloudy | int | | | true
 briefShowerLengthEnabled | boolean | | | true
 briefShowerLengthMinutes| int | | | true
 clearingAfterBriefShowerMinutes | int | | | true
 rainArrivedMessageEnabled | boolean | | | true
+imminentMessageResetMinutesForPartlyCloudy | int | | | true
 location | object | **(See Location)** | | true*
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | 0 | | | true
