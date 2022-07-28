@@ -16728,10 +16728,11 @@ speed | string | knots <br/> m/s <br/> km/h <br/> mph |
 
 ```json
 {
-	"CONTENT_TYPE": "application/json",
-	"HTTP_X_PAYLOAD": {
-		"receiptData" : "{a really long string}"
-	}
+  "CONTENT_TYPE": "application/json",
+  "HTTP_X_PAYLOAD": {
+    "receiptData" : "{a really long string}",
+    "sandbox" : true
+  }
 }
 ```
 
@@ -16744,6 +16745,7 @@ Calls https://buy.itunes.apple.com/verifyReceipt to validate subscription receip
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 receiptData | string | | | true
+sandbox | boolean | | If true the endpoint will call the sandbox url instead of the production url of itunes | false
 
 ### Response
 
