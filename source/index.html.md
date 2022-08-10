@@ -324,6 +324,7 @@ offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 dataPoints | boolean | | used in conjunction with the lat and lng parameters and when set to true, will include raw data values in the response for the provided map type. | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
+convertToLocalTimezone | boolean | if true the overlay dateTimes of the map provider will be converted to localDateTime using the <b>MapProvider's Timezone</b>, else it will be in utcDateTime | | false
 
 <aside class="notice">
 <code>offset</code> is required if <code>verbose</code> is <code>true</code>, which is the default if not included in the request.
@@ -608,6 +609,7 @@ mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellit
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
+convertToLocalTimezone | boolean | if true the overlay dateTimes of the map provider will be converted to localDateTime using the <b>MapProvider's Timezone</b>, else it will be in utcDateTime | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -738,6 +740,7 @@ mapTypes | csv | `regional-radar`, `radar`, `forecast-regional-radar`, `satellit
 offset | int | | minutes that overlay images should start from | true
 limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
+convertToLocalTimezone | boolean | if true the overlay dateTimes of the map provider will be converted to localDateTime using the <b>Location's Timezone</b>, else it will be in utcDateTime | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -14310,6 +14313,8 @@ briefShowerLengthMinutes| int | | | true
 clearingAfterBriefShowerMinutes | int | | | true
 rainArrivedMessageEnabled | boolean | | | true
 imminentMessageResetMinutesForPartlyCloudy | int | | | true
+noRainGapTimePartlyCloudy | int | | | true
+noRainGapTimeCloudy | int | | | true
 location | object | **(See Location)** | | true*
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | 0 | | | true
@@ -14958,7 +14963,8 @@ lng | float | |
         }
       },
       "countryCode": "AU",
-      "speech": "Observational with all conditions"
+      "speech": "Observational with all conditions",
+      "utcDeliveryDateTime": "2022-02-28 03:41:15"
     }
   }
 }
@@ -15034,6 +15040,9 @@ Attribute | Type | Values | Description
 category | string | AlertNotification | 
 notification | object | **(See notification)** | 
 redirect | object | **(See redirect)** |
+countryCode | string | AU, US, UK |
+speech | string | |countryCode | string | AU, US, UK |
+utcDeliveryDateTime | string | |
 
 #### notification
 
@@ -16393,8 +16402,13 @@ temperature | string | c  <br/> f <br/> k |
       "rangeStart": 35,
       "rangeEnd": 90
     }
+  },
+  "match": {
+    "humidity": 35
+  },
+  "units": {
+    "humidity": "%"
   }
-}
 ```
 
 Parameter | Type | Options | Description
