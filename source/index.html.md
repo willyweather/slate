@@ -10422,6 +10422,8 @@ units | object | See <a href="#units">Units</a>. | Account's prefered units.
 warningFilters | array | See `classifications` in <a href="#warning-types">Warning Types</a>  | An array of warning filters
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 loggedInDateTime | string | | Last logged in date time (`YYYY-MM-DD HH:MM:SS`). Can be null.
+subscription | object | **see (Subscription) below** | Subscription details for mobile bought premium subscriptions 
+
 
 ### Account Feature
 
@@ -10432,6 +10434,14 @@ code | string | `sms`, `ads`, `notifications1`, `notifications5`, `notifications
 name | string | "SMS", "Ad Removal", "1 Notification", "5 Notifications", "10 Notifications", "25 Notifications", "1 Contact", "20 Contacts", "100 Contacts", "Webhook" |
 monthlyCost | int | | In cents
 annualCost | int | |
+
+### Subscription
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+platform | string | ios,android,stripe | Service where the subscription has been purchased
+
+
 
 ### Request
 
