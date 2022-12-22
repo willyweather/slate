@@ -10440,80 +10440,166 @@ annualCost | int | |
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 platform | string | ios,android,stripe | Service where the subscription has been purchased
+billingId | string | `ngdchmjdioahjhmgcab.AO-J1Ow4DrYiKrsEaIeOye5Gchy9rz9olh7oBubxkcM_e1QU8qXz9zJKFERQNGQ5McCZVd4sWq_xqttOC-Afs1gjazDdJlyHfw` (android sample) <br/>  `2000000128128685` (ios sample) <br/> Subscription identifier in the platform where the subscription has been bought, not visible in stripe
+data | string | | Subscription information (JSON) for premium returned by the subscription API where the subscription was bought, not visible in stripe
+subscriptionExpiryDateTime | dateTime | | Datetime that indicates when the subscription for premium expires
+packageName | string | au.com.willyweather (sample) | Package identifier for android subscriptions
+subscriptionId | string | willyweather_subscription_2 (sample) | Subscription id for android subscriptions
 
-
+## Account - GET - Get Account by UID
 
 ### Request
 
-`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/`
+`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}.json`
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
 </aside>
 
+### Response
+
+Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
+
 ## Account - POST - Register
 
-> Example Request Body
+> Example Request Body (Registration of normal account)
 
 ```json
 {
     "email": "jupiterjones60ae13a7a8592@willyweather.com",
     "password": "secret1234",
     "fullName": "Jupiter Jones"
+  
 }
 ```
+
+> Example Request Body (Registration a normal account with settings imported from a shadow account)
+
+```json
+{
+    "email": "jupiterjones60ae13a7a8592@willyweather.com",
+    "password": "secret1234",
+    "fullName": "Jupiter Jones",
+    "shadowUID": "fff11cfa-b6a9-41c0-840c-1ed5d9e90921"
+  
+}
+```
+
+> Example Request Body (Registration a normal account with settings imported from a shadow account with a premium subscription - IOS)
+
+```json
+{
+    "email": "jupiterjones60ae13a7a8592@willyweather.com",
+    "password": "secret1234",
+    "fullName": "Jupiter Jones",
+    "shadowUID": "fff11cfa-b6a9-41c0-840c-1ed5d9e90921",
+    "billingId": "1200312",
+    "platform" : "ios"
+  
+}
+```
+
+> Example Request Body (Registration a normal account with a premium subscription - IOS)
+
+```json
+{
+    "email": "jupiterjones60ae13a7a8592@willyweather.com",
+    "password": "secret1234",
+    "fullName": "Jupiter Jones",
+    "billingId": "1200312",
+    "platform" : "ios"
+  
+}
+```
+
+> Example Request Body (Registration a normal account with settings imported from a shadow account with a premium subscription - Android)
+
+```json
+{
+    "email": "jupiterjones60ae13a7a8592@willyweather.com",
+    "password": "secret1234",
+    "fullName": "Jupiter Jones",
+    "shadowUID": "fff11cfa-b6a9-41c0-840c-1ed5d9e90921",
+    "billingId": "ngdchmjdioahjhmgcab.AO-J1Ow4DrYiKrsEaIeOye5Gchy9rz9olh7oBubxkcM_e1QU8qXz9zJKFERQNGQ5McCZVd4sWq_xqttOC-Afs1gjazDdJlyH",
+    "platform" : "android",
+    "packageName": "com.willyweather",
+    "subscriptionId": "willyweather_subscription_sample"
+  
+}
+```
+
+> Example Request Body (Registration a normal account with a premium subscription - Android)
+
+```json
+{
+    "email": "jupiterjones60ae13a7a8592@willyweather.com",
+    "password": "secret1234",
+    "fullName": "Jupiter Jones",
+    "billingId": "ngdchmjdioahjhmgcab.AO-J1Ow4DrYiKrsEaIeOye5Gchy9rz9olh7oBubxkcM_e1QU8qXz9zJKFERQNGQ5McCZVd4sWq_xqttOC-Afs1gjazDdJlyH",
+    "platform" : "android",
+    "packageName": "com.willyweather",
+    "subscriptionId": "willyweather_subscription_sample"
+  
+}
+```
+
 
 > Example Response
 
 ```json
 {
-    "uid": "80ca55b0-32f0-4c51-8701-c5c779c8f47d",
-    "firstName": "Jupiter",
-    "lastName": "Jones",
-    "email": "jupiterjones60ae164860728@willyweather.com",
-    "credentials": [],
-    "accountFeatures": [
-        {
-            "id": 3,
-            "code": "notifications1",
-            "name": "1 Notification",
-            "monthlyCost": 0,
-            "annualCost": 0
-        },
-        {
-            "id": 7,
-            "code": "contacts1",
-            "name": "1 Contact",
-            "monthlyCost": 0,
-            "annualCost": 0
-        }
-    ],
-    "locations": [
-        {
-            "id": 2212,
-            "name": "Collaroy Beach",
-            "region": "Sydney",
-            "state": "NSW",
-            "postcode": "2097",
-            "timeZone": "Australia/Sydney",
-            "lat": -33.73212,
-            "lng": 151.30123,
-            "typeId": 2
-        }
-    ],
-    "units": {
-        "temperature": "c",
-        "tideHeight": "m",
-        "swellHeight": "m",
-        "speed": "km\/h",
-        "amount": "mm",
-        "distance": "miles",
-        "hour": "g",
-        "pressure": "hpa"
-    },
-    "warningFilters": ["flood", "strong-wind"],
-    "createdDateTime": "2021-05-26 17:35:06",
-    "loggedInDateTime": null
+	"uid": "fff11cfa-b6a9-41c0-840c-1ed5d9e90961",
+	"firstName": "lean",
+	"lastName": "fucio",
+	"email": "leanviktorfucio+asd@gmail.com",
+	"credentials": ["ROLE_USER"],
+	"accountFeatures": [{
+		"id": 11,
+		"code": "premium",
+		"name": "Premium Accounts",
+		"monthlyCost": 400,
+		"annualCost": 3600
+	}, {
+		"id": 1,
+		"code": "sms",
+		"name": "SMS",
+		"monthlyCost": 400,
+		"annualCost": 3600
+	}, {
+		"id": 10,
+		"code": "webhook",
+		"name": "Webhook",
+		"monthlyCost": 400,
+		"annualCost": 3600
+	}, {
+		"id": 9,
+		"code": "contacts100",
+		"name": "100 Contacts",
+		"monthlyCost": 2000,
+		"annualCost": 18000
+	}],
+	"locations": [],
+	"units": {
+		"temperature": "c",
+		"tideHeight": "m",
+		"swellHeight": "m",
+		"speed": "mph",
+		"amount": "mm",
+		"distance": "miles",
+		"hour": "g",
+		"pressure": "hpa"
+	},
+	"warningFilters": [],
+	"createdDateTime": "0000-00-00 00:00:00",
+	"loggedInDateTime": "2022-11-30 05:25:01",
+	"subscription": {
+		"platform": "stripe",
+		"billingId": null,
+		"data": null,
+		"subscriptionExpiryDateTime": "2023-11-30 05:25:00",
+		"packageName": null,
+		"subscriptionId": null
+	}
 }
 ```
 
@@ -10528,6 +10614,12 @@ Parameter | Type | Options | Description | Required
 email | string | | | true
 password | string | | | true
 fullName | string | | | false
+shadowUID | string | | UID of a shadow account that will be converted to a non shadow account | false
+sandbox | boolean | | If true the subscription API used in validating the billing id is the sandbox service for platform | false
+billingId | string | | Subscription identifier for premium subscription (if provided the registered account will have a premium account feature) | false
+platform | string | `ios` / `android` <br/>| Service where the subscription was bought | false (*required if billingId is provided)
+packageName | string | | Package name for android subscriptions | false (*required if platform is android)
+subscriptionId | string | | Subscription id for android subscriptions | false (*required if platform is android)
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
@@ -10643,6 +10735,58 @@ Updates a account's _loggedInDateTime_.
 ### Request
 
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/heartbeat.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+</aside>
+
+### Response
+
+Response is an empty array.
+
+## Account - PUT - Update subscription
+
+> Example Request Body (Updating an account with a premium subscription - IOS)
+
+
+```json
+{
+    "billingId": "1200312",
+    "platform" : "ios"
+}
+```
+
+> Example Request Body (Updating an account with a premium subscription - Android)
+
+```json
+{
+    "billingId": "ngdchmjdioahjhmgcab.AO-J1Ow4DrYiKrsEaIeOye5Gchy9rz9olh7oBubxkcM_e1QU8qXz9zJKFERQNGQ5McCZVd4sWq_xqttOC-Afs1gjazDdJlyH",
+    "platform" : "android",
+    "packageName": "com.willyweather",
+    "subscriptionId": "willyweather_subscription_sample"
+  
+}
+```
+
+> Example Response
+
+```json
+[]
+```
+
+Updates an account to have a premium subscription.
+
+### Request
+
+`PUT api.willyweather.com.au/v2/{apiKey}/accounts/{account uid}/subscriptions.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+sandbox | boolean | | If true the subscription API used in validating the billing id is the sandbox service for platform | false
+billingId | string | | Subscription identifier for premium subscription (if provided the registered account will have a premium account feature) | false
+platform | string | `ios` / `android` <br/>| Service where the subscription was bought | false (*required if billingId is provided)
+packageName | string | | Package name for android subscriptions | false (*required if platform is android)
+subscriptionId | string | | Subscription id for android subscriptions | false (*required if platform is android)
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
