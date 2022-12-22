@@ -10448,12 +10448,96 @@ subscriptionId | string | willyweather_subscription_2 (sample) | Subscription id
 
 ## Account - GET - Get Account by UID
 
+Returns the account associated to the uid.
+
 ### Request
 
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}.json`
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+Response is an Account. See <a href="#accounts">Accounts</a> for a description of an Account response.
+
+## Account - GET - Get Account by Billing Id
+
+> Example Request Body
+
+```json
+{
+    "billingId": "cus_9UlwjLAwQQm79v"
+}
+```
+
+> Example Response
+
+```json
+{
+    "uid": "80ca55b0-32f0-4c51-8701-c5c779c8f47d",
+    "firstName": "Jupiter",
+    "lastName": "Jones",
+    "email": "jupiterjones60ae164860728@willyweather.com",
+    "credentials": [],
+    "accountFeatures": [
+        {
+            "id": 3,
+            "code": "notifications1",
+            "name": "1 Notification",
+            "monthlyCost": 0,
+            "annualCost": 0
+        },
+        {
+            "id": 7,
+            "code": "contacts1",
+            "name": "1 Contact",
+            "monthlyCost": 0,
+            "annualCost": 0
+        }
+    ],
+    "locations": [
+        {
+            "id": 2212,
+            "name": "Collaroy Beach",
+            "region": "Sydney",
+            "state": "NSW",
+            "postcode": "2097",
+            "timeZone": "Australia/Sydney",
+            "lat": -33.73212,
+            "lng": 151.30123,
+            "typeId": 2
+        }
+    ],
+    "units": {
+        "temperature": "c",
+        "tideHeight": "m",
+        "swellHeight": "m",
+        "speed": "km\/h",
+        "amount": "mm",
+        "distance": "miles",
+        "hour": "g",
+        "pressure": "hpa"
+    },
+    "warningFilters": ["flood", "strong-wind"],
+    "createdDateTime": "2021-05-26 17:35:06",
+    "loggedInDateTime": null
+}
+```
+
+Returns the account associated to the billing id.
+
+### Request
+
+`POST api.willyweather.com.au/v2/{api key}/accounts/linked-account.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+billingId | string | | Subscription identifier for premium subscription | true
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
 </aside>
 
 ### Response
