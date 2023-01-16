@@ -10403,6 +10403,226 @@ lng | double |  |
 distance | double |  | distance of provider from location 
 units | object |  | includes unit of measurement for distance 
 
+## Graph - GET - Observational Graphs - Wind
+
+> Example Query String Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind"],
+		"startDate": "2010-10-10"
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"wind": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": true,
+						"pointRenderer": "ArrowPointRenderer",
+						"pointFormatter": "DirectionPointFormatter"
+					},
+					"yAxisDataMin": 7.4,
+					"yAxisDataMax": 16.7,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 7.4,
+									"direction": 120,
+									"directionText": "ESE",
+									"description": "light",
+									"pointStyle": {
+										"fill": "#d1ef51",
+										"stroke": "#7d8f30"
+									}
+								},
+								{
+									"x": 1395891000,
+									"y": 13,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395892800,
+									"y": 16.7,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "speed": "km/h"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | true
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointRenderer | string |` ArrowPointRenderer` |
+pointFormatter | string |` DirectionPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | speed
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `glassy`, `smooth`, `slight`, `moderate`, `rough`, `very-rough`, `high`, `very-high`, `phenomenal` |
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Graph - GET - River Station Graphs - River Height
 
 > Example Query String Request
