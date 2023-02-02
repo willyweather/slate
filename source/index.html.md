@@ -11118,6 +11118,45 @@ Updates a account's _loggedInDateTime_.
 
 Response is an empty array.
 
+## Account - DELETE - Delete Account
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"email": "bartsimpson@willyweather.com",
+		"password": "secret1234"
+	}
+}
+```
+
+> Example Response
+
+```json
+[]
+```
+
+Deletes an account.
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/delete.json.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+email | string | | | true
+password | string | | | true
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when using an endpoint via <strong>Request Body</strong>.
+</aside>
+
+### Response
+
+Response is an empty array.
+
 ## Account - PUT - Update subscription
 
 > Example Request Body (Updating an account with a premium subscription - IOS)
@@ -13158,60 +13197,60 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"title": "Cloud Cover",
 					"inputs": [{
 						"label": "Sunny",
-						"value": "cloud-cover:sunny",
+						"value": "cloudCover:sunny",
 						"default": false
 					}, {
 						"label": "Mostly Sunny",
-						"value": "cloud-cover:mostly-sunny",
+						"value": "cloudCover:mostly-sunny",
 						"default": false
 					}, {
 						"label": "Partly Cloudy",
-						"value": "cloud-cover:partly-cloudy",
+						"value": "cloudCover:partly-cloudy",
 						"default": false
 					}, {
 						"label": "Mostly Cloudy",
-						"value": "cloud-cover:mostly-cloudy",
+						"value": "cloudCover:mostly-cloudy",
 						"default": false
 					}, {
 						"label": "Cloudy",
-						"value": "cloud-cover:cloudy",
+						"value": "cloudCover:cloudy",
 						"default": false
 					}, {
 						"label": "Overcast",
-						"value": "cloud-cover:overcast",
+						"value": "cloudCover:overcast",
 						"default": false
 					}]
 				}, {
 					"title": "Heavy Rain",
 					"inputs": [{
 						"label": "Heavy Rain",
-						"value": "heavy-rain:heavy-rain",
+						"value": "heavyRain:heavy-rain",
 						"default": false
 					}]
 				}, {
 					"title": "Chance of Rain\/Showers",
 					"inputs": [{
 						"label": "Very High",
-						"value": "chance-of-rain:very-high",
+						"value": "chanceOfRain:very-high",
 						"default": false
 					}, {
 						"label": "High",
-						"value": "chance-of-rain:high",
+						"value": "chanceOfRain:high",
 						"default": false
 					}, {
 						"label": "Medium",
-						"value": "chance-of-rain:medium",
+						"value": "chanceOfRain:medium",
 						"default": false
 					}, {
 						"label": "Slight",
-						"value": "chance-of-rain:slight",
+						"value": "chanceOfRain:slight",
 						"default": false
 					}]
 				}, {
 					"title": "Chance of Thunderstorms",
 					"inputs": [{
 						"label": "Chance of Thunderstorms",
-						"value": "chance-of-thunderstorms:chance-of-thunderstorms",
+						"value": "chanceOfThunderstorms:chance-of-thunderstorms",
 						"default": false
 					}, {
 						"label": "Thunderstorms",
@@ -13229,19 +13268,19 @@ code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `for
 					"title": "Chance of Snow\/Snow Showers",
 					"inputs": [{
 						"label": "Very High",
-						"value": "chance-of-snow:very-high",
+						"value": "chanceOfSnow:very-high",
 						"default": false
 					}, {
 						"label": "High",
-						"value": "chance-of-snow:high",
+						"value": "chanceOfSnow:high",
 						"default": false
 					}, {
 						"label": "Medium",
-						"value": "chance-of-snow:medium",
+						"value": "chanceOfSnow:medium",
 						"default": false
 					}, {
 						"label": "Slight",
-						"value": "chance-of-snow:slight",
+						"value": "chanceOfSnow:slight",
 						"default": false
 					}]
 				}, {
