@@ -10401,6 +10401,293 @@ lng | double |  |
 distance | double |  | distance of provider from location 
 units | object |  | includes unit of measurement for distance 
 
+## Graph - GET - River Station Graphs - River Height
+
+> Example Query String Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/river-stations/257.json?riverStationGraphs=river-height&startDate=2014-03-27
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"riverStationGraphs": ["river-height"],
+		"startDate": "2010-10-10"
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+  "riverStationGraphs": {
+    "river-height": {
+      "dataConfig": {
+        "series": {
+          "config": {
+            "id": "river-height",
+            "color": "#003355",
+            "lineWidth": 2,
+            "lineFill": false,
+            "lineRenderer": "StraightLineRenderer",
+            "showPoints": false,
+            "pointFormatter": "RiverHeightFormatter"
+          },
+          "yAxisDataMin": 1,
+          "yAxisDataMax": 3,
+          "yAxisMin": 0,
+          "yAxisMax": 4,
+          "groups": [
+            {
+              "dateTime": 1395792000,
+              "points": [
+                {
+                  "x": 1395793920,
+                  "y": 1,
+                  "description": 1
+                },
+                {
+                  "x": 1395797400,
+                  "y": 1.3,
+                  "description": 1
+                },
+                {
+                  "x": 1395837000,
+                  "y": 1.2,
+                  "description": 1
+                }
+              ],
+              "overlays": [
+                {
+                  "renderer": "RiverHeightOverlayRenderer",
+                  "data": {
+                    "minor": 1,
+                    "moderate": 2,
+                    "major": 3
+                  }
+                }
+              ]
+            }
+          ],
+          "controlPoints": {
+            "pre": null,
+            "post": {
+              "x": 1395904080,
+              "y": 1.8,
+              "description": 1
+            }
+          },
+          "controlPoint": null
+        },
+        "xAxisMin": 1395792000,
+        "xAxisMax": 1395878399
+      },
+      "carousel": {
+        "size": 2,
+        "start": 1
+      },
+      "units": {
+        "riverHeight": "m"
+      },
+      "issueDateTime": "2014-03-26 20:08:00",
+      "provider": {
+        "id": "12345",
+        "name": "Desmond",
+        "lat": -30.8688,
+        "lng": 130.6917,
+        "minor": 1,
+        "moderate": 2,
+        "major": 3,
+        "floodStatus": "1"
+      }
+    }
+  }
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/river-stations/{river station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+riverStationGraphs | csv |  |  | true
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- |-----| ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+minor | double | | river's height which indicates a minor flood
+moderate | double | | river's height which indicates a moderate flood
+major | double | | river's height which indicates a major flood
+floodStatus | int | | the current flood status
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values               | Description
+--------- | ---- |----------------------| -----------
+id | string | `river-height`       |
+color | string | `#003355`             | hexadecimal colour code
+lineWidth | int | 2                    | recommended line width in points
+lineFill | boolean | `false`              | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false`              | whether to show data points or just display a line
+pointFormatter | string | ` RiverHeightFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type   | Values             | Description
+--------- |--------|--------------------| -----------
+x | int    |                    | time value
+y | double |                    | speed
+description | int    | 1, 2, 3, 4 or null | represents the flood status
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current river station graph
+
+## River Station - GET - by Location id
+
+> Example Query String Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/locations/{location id}/river-stations.json?units=distance:miles
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"units" :  {
+			"distance": "km"
+		}
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+	"river-height": [
+        {
+            "id": 116,
+            "name": "Borroloola",
+            "lat": -16.08,
+            "lng": 136.3,
+            "distance": 1.8,
+            "units": {
+                "distance": "miles"
+            }
+        },
+        {
+            "id": 115,
+            "name": "Mcarthur River Mine",
+            "lat": -16.44,
+            "lng": 136.08,
+            "distance": 29.7,
+            "units": {
+                "distance": "miles"
+            }
+        }
+    ]
+}
+```
+
+Returns the list of River Stations that are linked to the given location and are currently reporting data. For each data parameter, a location is linked up to 4 river stations.
+
+### Request
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/river-stations.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+distance | string | `km`, `miles `| unit of measurement | false
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+
+An array of climate with its provider's data. 
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+entries | array | `river-height` | key for the list of Provider
+
+### Provider
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int |  | 
+name | string |  | 
+lat | double |  | 
+lng | double |  | 
+distance | double |  | distance of provider from location 
+units | object |  | includes unit of measurement for distance 
+
 # Accounts
 
 ## Overview
@@ -10514,6 +10801,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
         "temperature": "c",
         "tideHeight": "m",
         "swellHeight": "m",
+        "riverHeight": "m",
         "speed": "km\/h",
         "amount": "mm",
         "distance": "miles",
@@ -10667,6 +10955,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 		"temperature": "c",
 		"tideHeight": "m",
 		"swellHeight": "m",
+        "riverHeight": "m",
 		"speed": "mph",
 		"amount": "mm",
 		"distance": "miles",
@@ -10769,6 +11058,7 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
         "temperature": "f",
         "tideHeight": "ft",
         "swellHeight": "m",
+        "riverHeight": "m",
         "speed": "km\/h",
         "amount": "mm",
         "distance": "miles",
@@ -14336,6 +14626,7 @@ Response is an empty object.
     "temperature": "k",
     "tideHeight": "m",
     "swellHeight": "m",
+    "riverHeight": "m",
     "speed": "m\/s",
     "amount": "mm",
     "distance": "km",
@@ -17013,6 +17304,7 @@ sandbox | boolean | | If true the endpoint will call the sandbox url instead of 
     "temperature": "f",
     "tideHeight": "ft",
     "swellHeight": "m",
+    "riverHeight": "m",
     "amount": "mm",
     "speed": "km\/h",
     "distance": "miles",
@@ -17047,6 +17339,7 @@ Response is units. See <a href="#units">Units</a> for a description of a Unit re
         "amount": "in",
         "tideHeight": "m",
         "swellHeight": "ft",
+        "riverHeight": "m",
         "pressure": "mmhg"
     }
 }
@@ -17078,6 +17371,7 @@ speed | string | `km/h`, `mph`, `m/s, knots` | | false
 swellHeight | string | `m`, `ft` | | false
 temperature | string | `c`, `f` | | false
 tideHeight | string | `m`, `ft` | | false
+riverHeight | string | `m`, `ft` | | false
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
 
 <aside class="notice">
@@ -17093,7 +17387,7 @@ Response is an empty object.
 > Example Query String Request
 
 ```shell
-?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa
 ```
 
 > Example Request Header
@@ -17108,7 +17402,8 @@ Response is an empty object.
 			"speed": "knots",
 			"swellHeight": "ft",
 			"temperature": "c",
-			"tideHeight": "ft",
+            "tideHeight": "ft",
+            "riverHeight": "ft",
 			"pressure": "hpa"
 		}
 	}
@@ -17126,6 +17421,7 @@ Response is an empty object.
         "swellHeight": "ft",
         "temperature": "c",
         "tideHeight": "ft",
+        "riverHeight": "ft",
         "pressure": "hpa"
     }
 }
@@ -17135,7 +17431,7 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 ### Request
 
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa`
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa`
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -17150,6 +17446,7 @@ speed | string | `km/h`, `mph`, `m/s`, `knots` | kilometers per hour, miles per 
 swellHeight | string | `m`, `ft` | meters, feet
 temperature | string | `c`, `f` | celsius, fahrenheit
 tideHeight | string | `m`, `ft` | meters, feet
+riverHeight | string | `m`, `ft` | meters, feet
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
 
 
