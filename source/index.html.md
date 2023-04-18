@@ -17733,6 +17733,7 @@ temperature | string | `c`, `f` | | false
 tideHeight | string | `m`, `ft` | | false
 riverHeight | string | `m`, `ft` | | false
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
+cloud | string | `oktas` | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -17762,10 +17763,10 @@ Response is an empty object.
 			"speed": "knots",
 			"swellHeight": "ft",
 			"temperature": "c",
-			"tideHeight": "ft",
+            "tideHeight": "ft",
+            "riverHeight": "ft",
 			"pressure": "hpa",
-			"cloud":"oktas",
-			"riverHeight":"m"
+            "cloud": "oktas"
 		}
 	}
 }
@@ -17793,7 +17794,8 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 ### Request
 
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa,cloud:oktas,riverHeight:m`
+
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa,cloud:oktas`
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -17811,8 +17813,6 @@ tideHeight | string | `m`, `ft` | meters, feet
 riverHeight | string | `m`, `ft` | meters, feet
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
 cloud | string | `oktas` | oktas
-riverHeight | string | `m` | meters
-
 
 <script>
 const urlSearchParams = new URLSearchParams(window.location.search);
