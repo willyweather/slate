@@ -11388,7 +11388,7 @@ password | string | | | true
 
 ### Response
 
-Response is an empty array.
+Response is an empty object.
 
 ## Account - PUT - Update subscription
 
@@ -17786,6 +17786,7 @@ Response is an empty object.
         "pressure": "hpa",
         "cloud":"oktas",
         "riverHeight":"m"
+
     }
 }
 ```
@@ -17796,6 +17797,7 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 
 `GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa,cloud:oktas`
+
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
