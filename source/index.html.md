@@ -11355,6 +11355,7 @@ Updates a account's _loggedInDateTime_.
 Response is an empty array.
 
 ## Account - DELETE - Delete Account
+
 > Example Request Body
 
 ```json
