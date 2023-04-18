@@ -12980,60 +12980,60 @@ distance | string | | distance of radar station from the user's device's lat and
 					"title": "Cloud Cover",
 					"inputs": [{
 						"label": "Sunny",
-						"value": "cloud-cover:sunny",
+						"value": "cloudCover:sunny",
 						"default": false
 					}, {
 						"label": "Mostly Sunny",
-						"value": "cloud-cover:mostly-sunny",
+						"value": "cloudCover:mostly-sunny",
 						"default": false
 					}, {
 						"label": "Partly Cloudy",
-						"value": "cloud-cover:partly-cloudy",
+						"value": "cloudCover:partly-cloudy",
 						"default": false
 					}, {
 						"label": "Mostly Cloudy",
-						"value": "cloud-cover:mostly-cloudy",
+						"value": "cloudCover:mostly-cloudy",
 						"default": false
 					}, {
 						"label": "Cloudy",
-						"value": "cloud-cover:cloudy",
+						"value": "cloudCover:cloudy",
 						"default": false
 					}, {
 						"label": "Overcast",
-						"value": "cloud-cover:overcast",
+						"value": "cloudCover:overcast",
 						"default": false
 					}]
 				}, {
 					"title": "Heavy Rain",
 					"inputs": [{
 						"label": "Heavy Rain",
-						"value": "heavy-rain:heavy-rain",
+						"value": "heavyRain:heavy-rain",
 						"default": false
 					}]
 				}, {
 					"title": "Chance of Rain\/Showers",
 					"inputs": [{
 						"label": "Very High",
-						"value": "chance-of-rain:very-high",
+						"value": "chanceOfRain:very-high",
 						"default": false
 					}, {
 						"label": "High",
-						"value": "chance-of-rain:high",
+						"value": "chanceOfRain:high",
 						"default": false
 					}, {
 						"label": "Medium",
-						"value": "chance-of-rain:medium",
+						"value": "chanceOfRain:medium",
 						"default": false
 					}, {
 						"label": "Slight",
-						"value": "chance-of-rain:slight",
+						"value": "chanceOfRain:slight",
 						"default": false
 					}]
 				}, {
 					"title": "Chance of Thunderstorms",
 					"inputs": [{
 						"label": "Chance of Thunderstorms",
-						"value": "chance-of-thunderstorms:chance-of-thunderstorms",
+						"value": "chancOfThunderstorms:chance-of-thunderstorms",
 						"default": false
 					}, {
 						"label": "Thunderstorms",
@@ -13051,19 +13051,19 @@ distance | string | | distance of radar station from the user's device's lat and
 					"title": "Chance of Snow\/Snow Showers",
 					"inputs": [{
 						"label": "Very High",
-						"value": "chance-of-snow:very-high",
+						"value": "chanceOfSnow:very-high",
 						"default": false
 					}, {
 						"label": "High",
-						"value": "chance-of-snow:high",
+						"value": "chanceOfSnow:high",
 						"default": false
 					}, {
 						"label": "Medium",
-						"value": "chance-of-snow:medium",
+						"value": "chanceOfSnow:medium",
 						"default": false
 					}, {
 						"label": "Slight",
-						"value": "chance-of-snow:slight",
+						"value": "chanceOfSnow:slight",
 						"default": false
 					}]
 				}, {
