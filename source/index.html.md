@@ -7867,7 +7867,9 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observa
             "amount": "mm",
             "speed": "km/h",
             "distance": "km",
-            "pressure": "hPa"
+            "pressure": "hPa",
+            "cloud":"oktas",
+            "riverHeight":"m"
         }
     }
 }
@@ -10401,6 +10403,226 @@ lng | double |  |
 distance | double |  | distance of provider from location 
 units | object |  | includes unit of measurement for distance 
 
+## Graph - GET - Observational Graphs - Wind
+
+> Example Query String Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json?observationalGraphs=wind&startDate=2014-03-27
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind"],
+		"startDate": "2010-10-10"
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"wind": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": true,
+						"pointRenderer": "ArrowPointRenderer",
+						"pointFormatter": "DirectionPointFormatter"
+					},
+					"yAxisDataMin": 7.4,
+					"yAxisDataMax": 16.7,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 7.4,
+									"direction": 120,
+									"directionText": "ESE",
+									"description": "light",
+									"pointStyle": {
+										"fill": "#d1ef51",
+										"stroke": "#7d8f30"
+									}
+								},
+								{
+									"x": 1395891000,
+									"y": 13,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395892800,
+									"y": 16.7,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "speed": "km/h"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | true
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointRenderer | string |` ArrowPointRenderer` |
+pointFormatter | string |` DirectionPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | speed
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `glassy`, `smooth`, `slight`, `moderate`, `rough`, `very-rough`, `high`, `very-high`, `phenomenal` |
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Graph - GET - River Station Graphs - River Height
 
 > Example Query String Request
@@ -10806,11 +11028,21 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
         "amount": "mm",
         "distance": "miles",
         "hour": "g",
-        "pressure": "hpa"
+        "pressure": "hpa",
+        "cloud":"oktas",
+        "riverHeight":"m"
     },
     "warningFilters": ["flood", "strong-wind"],
     "createdDateTime": "2021-05-26 17:35:06",
-    "loggedInDateTime": null
+    "loggedInDateTime": null,
+    "subscription": {
+		"platform": "stripe",
+		"billingId": null,
+		"data": null,
+		"subscriptionExpiryDateTime": "2023-11-30 05:25:00",
+		"packageName": null,
+		"subscriptionId": null
+	}
 }
 ```
 
@@ -10960,7 +11192,9 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
 		"amount": "mm",
 		"distance": "miles",
 		"hour": "g",
-		"pressure": "hpa"
+		"pressure": "hpa",
+        "cloud":"oktas",
+        "riverHeight":"m"
 	},
 	"warningFilters": [],
 	"createdDateTime": "0000-00-00 00:00:00",
@@ -11063,7 +11297,9 @@ Response is an Account. See <a href="#accounts">Accounts</a> for a description o
         "amount": "mm",
         "distance": "miles",
         "hour": "g",
-        "pressure": "hpa"
+        "pressure": "hpa",
+        "cloud":"oktas",
+        "riverHeight":"m"
     },
     "warningFilters": ["flood", "strong-wind"],
     "createdDateTime": "2016-01-01 00:00:00",
@@ -11119,22 +11355,20 @@ Updates a account's _loggedInDateTime_.
 Response is an empty array.
 
 ## Account - DELETE - Delete Account
-> Example Request Header
+
+> Example Request Body
 
 ```json
 {
-	"CONTENT_TYPE": "application/json",
-	"HTTP_X_PAYLOAD": {
-		"email": "bartsimpson@willyweather.com",
-		"password": "secret1234"
-	}
+	"email": "bartsimpson@willyweather.com",
+	"password": "secret1234"
 }
 ```
 
 > Example Response
 
 ```json
-[]
+{}
 ```
 
 Deletes an account.
@@ -11154,8 +11388,7 @@ password | string | | | true
 
 ### Response
 
-Response is an empty array.
-
+Response is an empty object.
 
 ## Account - PUT - Update subscription
 
@@ -11779,7 +12012,18 @@ Response is an empty array.
             {
                 "id": 5
             }
-		]
+		],
+		"units": {
+			"temperature": "k",
+			"tideHeight": "m",
+			"swellHeight": "m",
+			"speed": "m\/s",
+			"amount": "mm",
+			"distance": "km",
+			"pressure": "millibars",
+			"cloud": "oktas",
+			"riverHeight": "m"
+		}
 	}
 }
 ```
@@ -11893,7 +12137,38 @@ Response is an empty array.
     },
     "tempRangeStart": 290,
     "tempRangeEnd": 310
-  }]
+  }],
+  "units": {
+    "temperature": "k",
+    "tideHeight": "m",
+    "swellHeight": "m",
+    "speed": "m\/s",
+    "amount": "mm",
+    "distance": "km",
+    "pressure": "millibars",
+    "cloud": "oktas",
+    "riverHeight": "m"
+  },
+  "radarStation": {
+    "id": 71,
+    "name": "Sydney (Terrey Hills)",
+    "lat": -33.701,
+    "lng": 151.21,
+    "timeZone": "Australia\/NSW",
+    "units": {
+      "temperature": "c",
+      "tideHeight": "m",
+      "swellHeight": "m",
+      "speed": "km\/h",
+      "amount": "mm",
+      "distance": "miles",
+      "hour": "g",
+      "pressure": "hpa",
+      "cloud": "oktas",
+      "riverHeight": "m"
+    },
+	"distance": 13.6
+  }
 },
   {
     "uid": "6469b8e4-5bcb-4a40-804a-f1c136338f61",
@@ -12071,6 +12346,7 @@ Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 notificationTypes | array | **(See Notification Type)** | | false
 notificationTransporterTypes | array | **(See Notification Transporter Type)** | | false
+units | array | **(See Notification Transporter Type)** | | false
 
 ### Notification Type
 
@@ -12104,6 +12380,8 @@ notifyMeOffset | int | | In minutes (only exists if type is `alert`). Can be nul
 notificationTime | object | | **(see Notification Time object)** (only exists if type is `alert`)
 notificationAlertConditions | array | | an array of Notification Alert Conditions **(see Notification Alert Condition object)** In minutes (only exists if type is `alert`)
 warningType | object | | **(See <a href="#warning-types">Warning Types</a> object)** (only exists if type is `warning`)
+units | object | | **(See <a href="#units">Units</a> object)** (only exists if type is `alert`)
+radarStation | object | | **(see Radar Station object)** (only exists if type is `alert` and alert condition type is `forecast-radar`)
 
 ### Notification Type
 
@@ -12215,6 +12493,22 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `23` for `current-rain-since-9am`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> |
 code | string | `forecast-min-temp`, `forecast-max-temp`, `forecast-swell`, `forecast-wind`, `forecast-weather`, `forecast-rainfall`, `forecast-tides`, `forecast-sunrise-sunset`, `forecast-uv`, `forecast-moonphase`, `forecast-radar`, `forecast-hourly-precis`, `forecast-region-precis`, `forecast-daily-max-uv`, `current-wind`, `current-temp`, `current-rain-last-hour`, `current-rain-since-9am`, `current-humidity`, `current-dewpoint`, `current-pressure`, `current-delta-t`, `current-apparent-temp`, `current-wind-gust`, `current-cloud` |
+
+### Units
+
+A Units object. See <a href="#units">Units</a> for a description of a Unit response.
+
+### Radar Station
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | | int |
+name | string | | radar station name
+lat | string | | radar station latitude
+lng | string | | radar station longitu
+timeZone | string | | <a href="http://php.net/manual/en/timezones.php">php timezone</a> | (e.g. Sydney/Australia)
+units | string | | See <a href="#units">Units</a>
+distance | string | | distance of radar station from the user's device's lat and lng
 
 ## Notification - GET - Alert Condition Types
 
@@ -14080,7 +14374,18 @@ unit | string | | unit
                 "id": 3
             }
         }
-    ]
+    ],
+    "units": {
+        "temperature": "k",
+        "tideHeight": "m",
+        "swellHeight": "m",
+        "speed": "m\/s",
+        "amount": "mm",
+        "distance": "km",
+        "pressure": "millibars",
+        "cloud": "oktas",
+        "riverHeight": "m"
+    }
 }
 ```
 
@@ -14174,6 +14479,7 @@ notifyMeOffset | int | | | false (required if for `alert`)
 warningType | int | | | false (either `warningType` or `warningClassification` is required if for `warning`)
 warningClassification | string | See `classifications` in <a href="#warning-types">Warning Types</a> | | false (either `warningType` or `warningClassification` is required if for `warning`)
 warningSeverityLevels | csv | `1`, `2`, `3` |  | false
+units | array | **(See <a href="#units">Units</a> object)** | | true
 
 ### Location
 
@@ -14253,7 +14559,18 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
             },
             "group": 0
         }
-    ]
+    ],
+    "units": {
+        "temperature": "k",
+        "tideHeight": "m",
+        "swellHeight": "m",
+        "speed": "m\/s",
+        "amount": "mm",
+        "distance": "km",
+        "pressure": "millibars",
+        "cloud": "oktas",
+        "riverHeight": "m"
+    }
 }
 ```
 
@@ -14670,7 +14987,8 @@ Response is an empty object.
     "amount": "mm",
     "distance": "km",
     "pressure": "millibars",
-    "cloud": "oktas"
+    "cloud": "oktas",
+    "riverHeight":"m"
   }
 }]
 ```
@@ -14942,7 +15260,7 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-time | int | `1` for `dawn`<br/> `2` for `daytime`<br/> `3` for `dusk`<br/> `4` for `night time`<br/>  `5` for `first light`<br/> `6` for `sunrise`<br/> `7` for `sunset`<br/> `8` for `last light`<br/> `9` for `dusk or dawn` | | true
+time | int | `1` for `dawn`<br/> `2` for `daytime`<br/> `3` for `dusk`<br/> `4` for `night time`<br/>  `5` for `first light`<br/> `6` for `sunrise`<br/> `7` for `sunset`<br/> `8` for `last-light`<br/> `9` for `dawn-or-dusk` | | true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15966,7 +16284,7 @@ groupedNotificationAlertConditions  | array |  | Array of objects where each obj
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 location | object | **(See location)** | (optional) will be shown if there is a forecast type alert condition in the groupedNotificationAlertConditions
-weatherStations | array | **(See weatherStations)**  | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions
+weatherStations | object | **(See weatherStations)**  | (optional) will be shown if there is a observational type alert condition in the groupedNotificationAlertConditions. `null` if empty
 
 #### occurrence
 
@@ -16418,7 +16736,7 @@ match | object | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-startDateTime | string | dawn <br/> daytime <br/> dusk <br/> nighttime <br/>  first-light <br/> sunrise <br/> sunset<br/> last light <br/> dusk-or-dawn |
+startDateTime | string | dawn <br/> daytime <br/> dusk <br/> nighttime <br/>  first-light <br/> sunrise <br/> sunset<br/> last-light <br/> dawn-or-dusk |
 
 #### Match
 
@@ -17347,7 +17665,9 @@ sandbox | boolean | | If true the endpoint will call the sandbox url instead of 
     "amount": "mm",
     "speed": "km\/h",
     "distance": "miles",
-    "pressure": "hpa"
+    "pressure": "hpa",
+    "cloud":"oktas",
+    "riverHeight":"m"
 }
 ```
 
@@ -17378,8 +17698,9 @@ Response is units. See <a href="#units">Units</a> for a description of a Unit re
         "amount": "in",
         "tideHeight": "m",
         "swellHeight": "ft",
-        "riverHeight": "m",
-        "pressure": "mmhg"
+        "pressure": "mmhg",
+        "cloud":"oktas",
+        "riverHeight":"m"
     }
 }
 ```
@@ -17412,6 +17733,7 @@ temperature | string | `c`, `f` | | false
 tideHeight | string | `m`, `ft` | | false
 riverHeight | string | `m`, `ft` | | false
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
+cloud | string | `oktas` | | false
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -17426,7 +17748,7 @@ Response is an empty object.
 > Example Query String Request
 
 ```shell
-?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa,cloud:oktas,riverHeight:m
 ```
 
 > Example Request Header
@@ -17443,7 +17765,8 @@ Response is an empty object.
 			"temperature": "c",
             "tideHeight": "ft",
             "riverHeight": "ft",
-			"pressure": "hpa"
+			"pressure": "hpa",
+            "cloud": "oktas"
 		}
 	}
 }
@@ -17460,8 +17783,10 @@ Response is an empty object.
         "swellHeight": "ft",
         "temperature": "c",
         "tideHeight": "ft",
-        "riverHeight": "ft",
-        "pressure": "hpa"
+        "pressure": "hpa",
+        "cloud":"oktas",
+        "riverHeight":"m"
+
     }
 }
 ```
@@ -17470,7 +17795,9 @@ The Units parameter allows the data to be converted to a specific unit. The form
 
 ### Request
 
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa`
+
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa,cloud:oktas`
+
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
@@ -17487,7 +17814,7 @@ temperature | string | `c`, `f` | celsius, fahrenheit
 tideHeight | string | `m`, `ft` | meters, feet
 riverHeight | string | `m`, `ft` | meters, feet
 pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
-
+cloud | string | `oktas` | oktas
 
 <script>
 const urlSearchParams = new URLSearchParams(window.location.search);
