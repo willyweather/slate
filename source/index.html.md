@@ -12118,6 +12118,7 @@ Response is an empty array.
   },
   "createdDateTime": "2016-01-01 00:00:00",
   "notifyMeOffset": "0",
+  "mutePeriod": 360,
   "notificationTime": {
     "mon": true,
     "tue": true,
@@ -12227,6 +12228,7 @@ Response is an empty array.
     },
     "createdDateTime": "2016-01-01 00:00:00",
     "notifyMeOffset": "0",
+  	"mutePeriod": 0,
     "notificationDays": {
       "mon": true,
       "tue": true,
@@ -12321,6 +12323,7 @@ Response is an empty array.
       "typeId": 2
     },
     "createdDateTime": "2016-01-01 00:00:00",
+  	"mutePeriod": 0,
     "warningType": {
       "id": 21,
       "code": "closed-waters",
@@ -12377,6 +12380,7 @@ followMe | boolean | |
 location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 notifyMeOffset | int | | In minutes (only exists if type is `alert`). Can be null.
+mutePeriod | int | | In minutes. Notification frequency
 notificationTime | object | | **(see Notification Time object)** (only exists if type is `alert`)
 notificationAlertConditions | array | | an array of Notification Alert Conditions **(see Notification Alert Condition object)** In minutes (only exists if type is `alert`)
 warningType | object | | **(See <a href="#warning-types">Warning Types</a> object)** (only exists if type is `warning`)
@@ -14433,6 +14437,7 @@ unit | string | | unit
             "distance": 9.2
         },
         "createdDateTime": "2021-06-28 09:26:27",
+        "mutePeriod": 0,
         "warningType": {
             "id": 1,
             "code": "severe-weather",
@@ -14522,6 +14527,7 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
     },
     "duration": 3,
     "notifyMeOffset": 1,
+    "mutePeriod": 360,
     "intensity": 3,
     "lat": -33.7321,
     "lng": 151.3012,
@@ -14617,6 +14623,8 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
         "distance": 9.2
     },
     "createdDateTime": "2021-06-28 09:26:27",
+	"notifyMeOffset": 0,
+    "mutePeriod": 360,
     "notificationAlertConditions": [
         {
             "id": 1,
@@ -14794,6 +14802,7 @@ Response is an empty object.
     }
   }],
   "notifyMeOffset": 0,
+  "mutePeriod": 360,
   "notificationDays": {
     "mon": true,
     "tue": true,
@@ -14909,6 +14918,7 @@ Response is an empty object.
   },
   "createdDateTime": "2021-01-01 00:00:00",
   "notifyMeOffset": 0,
+  "mutePeriod": 360,
   "notificationDays": {
     "mon": true,
     "tue": true,
@@ -15007,6 +15017,7 @@ enabled | boolean | | | true
 followMe | boolean | | Updates location of notification | true
 notificationType | object | **(See Notification Type)** |  | true
 notifyMeOffset | int | | | true
+mutePeriod | int | | Notification frequency | true
 notificationContacts | array | **(See Notification Contact)** | | true
 notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active | true*
 notificationMonths | object | **(See Notification Months)** | months that the notification is active | true*
@@ -15439,6 +15450,7 @@ followMe | boolean | |
 location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 notifyMeOffset | int | | In minutes. Can be null.
+mutePeriod | int | | In minutes. Notification frequency
 notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active
 notificationMonths | object | **(See Notification Months)** | months that the notification is active
 notificationDays | object | **(See Notification Days)** | days that the notification is active
@@ -15541,6 +15553,7 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
     }
   }],
   "notifyMeOffset": 0,
+  "mutePeriod": 360,
   "notificationDays": {
     "mon": true,
     "tue": true,
