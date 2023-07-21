@@ -3247,7 +3247,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 		"pressure": {},
 		"temperature": {}
 	},
-	"regionPrecis": {}
+    "regionPrecis": {},
+    "marineRegionPrecis": {}
 }
 ```
 
@@ -8005,7 +8006,22 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionP
 		],
 		"issueDateTime": "2014-03-27 08:48:11",
 		"name": "Sydney Area"
-	}
+	},
+    "marineRegionPrecis": {
+    "days": [
+      {
+        "dateTime": "2014-03-27 00:00:00",
+        "entries": [
+          {
+            "dateTime": "2014-03-27 00:00:00",
+            "precis": "Wind will be Westerly 15 to 20 knots, reaching up to 25 knots offshore in the late evening. Seas below 1 metre, increasing to 1 to 1.5 metres during the morning. 1st Swell Southeasterly 2 to 2.5 metres, tending southerly 1.5 to 2 metres during the morning. Weather will be Sunny. "
+          }
+        ]
+      }
+    ],
+    "issueDateTime": "2014-03-27 08:48:11",
+    "name": "West Victoria Coastal Waters Forecast: SA-Vic Border to Cape Otway"
+    }
 }
 ```
 
@@ -10648,7 +10664,7 @@ api.willyweather.com.au/v2/{api key}/river-stations/257.json?riverStationGraphs=
 ```json
 {
   "riverStationGraphs": {
-    "river-height": {
+    "river-height": [{
       "dataConfig": {
         "series": {
           "config": {
@@ -10727,7 +10743,7 @@ api.willyweather.com.au/v2/{api key}/river-stations/257.json?riverStationGraphs=
         "major": 3,
         "floodStatus": "1"
       }
-    }
+    }]
   }
 }
 ```
@@ -12505,7 +12521,7 @@ Attribute | Type | Values | Description
 id | | int |
 name | string | | radar station name
 lat | string | | radar station latitude
-lng | string | | radar station longitu
+lng | string | | radar station longitude
 timeZone | string | | <a href="http://php.net/manual/en/timezones.php">php timezone</a> | (e.g. Sydney/Australia)
 units | string | | See <a href="#units">Units</a>
 distance | string | | distance of radar station from the user's device's lat and lng
