@@ -12244,7 +12244,7 @@ Response is an empty array.
     },
     "createdDateTime": "2016-01-01 00:00:00",
     "notifyMeOffset": "0",
-  	"mutePeriod": 0,
+    "mutePeriod": 0,
     "notificationDays": {
       "mon": true,
       "tue": true,
@@ -12339,7 +12339,7 @@ Response is an empty array.
       "typeId": 2
     },
     "createdDateTime": "2016-01-01 00:00:00",
-  	"mutePeriod": 0,
+    "mutePeriod": 0,
     "warningType": {
       "id": 21,
       "code": "closed-waters",
@@ -14639,7 +14639,7 @@ Response is a Notification object. See <a href="#notification-get-all-notificati
         "distance": 9.2
     },
     "createdDateTime": "2021-06-28 09:26:27",
-	"notifyMeOffset": 0,
+    "notifyMeOffset": 0,
     "mutePeriod": 360,
     "notificationAlertConditions": [
         {
