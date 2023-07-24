@@ -12380,7 +12380,7 @@ followMe | boolean | |
 location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 notifyMeOffset | int | | In minutes (only exists if type is `alert`). Can be null.
-mutePeriod | int | | In minutes. Notification frequency
+mutePeriod | int | | Notification frequency (in minutes)
 notificationTime | object | | **(see Notification Time object)** (only exists if type is `alert`)
 notificationAlertConditions | array | | an array of Notification Alert Conditions **(see Notification Alert Condition object)** In minutes (only exists if type is `alert`)
 warningType | object | | **(See <a href="#warning-types">Warning Types</a> object)** (only exists if type is `warning`)
@@ -15017,7 +15017,7 @@ enabled | boolean | | | true
 followMe | boolean | | Updates location of notification | true
 notificationType | object | **(See Notification Type)** |  | true
 notifyMeOffset | int | | | true
-mutePeriod | int | | Notification frequency | true
+mutePeriod | int | | Notification frequency (in minutes) | true
 notificationContacts | array | **(See Notification Contact)** | | true
 notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active | true*
 notificationMonths | object | **(See Notification Months)** | months that the notification is active | true*
@@ -15450,7 +15450,7 @@ followMe | boolean | |
 location | string | |  **(See <a href="#location-get-by-location-id">Locations</a> object)**
 createdDateTime | string | | Created date time (YYYY-MM-DD HH:MM:SS`)
 notifyMeOffset | int | | In minutes. Can be null.
-mutePeriod | int | | In minutes. Notification frequency
+mutePeriod | int | | Notification frequency (in minutes)
 notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active
 notificationMonths | object | **(See Notification Months)** | months that the notification is active
 notificationDays | object | **(See Notification Days)** | days that the notification is active
