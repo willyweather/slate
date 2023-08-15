@@ -15482,6 +15482,7 @@ Amount | mm | 0.0 ~ 300.0 | 1
 Amount | in | 0.0 ~ 10.0 | 1
 Amount | pts | 0.0 ~ 800.0 | 1
 Pressure | hpa | 860.00 ~ 1100.00 | 2
+Pressure | mmhg | 650.00 ~ 820.00 | 2
 Pressure | inhg | 26.00 ~ 32.00 | 2
 Pressure | millibars | 860.00 ~ 1100.00 | 2
 Pressure | psi | 12.50 ~ 15.90 | 2
@@ -17454,7 +17455,7 @@ trend | string | failing <br/> rising <br/> steady
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-pressure | string | mmhg  <br/> millibars <br/> inhg <br/> psi |
+pressure | string | hpa <br/> mmhg  <br/> millibars <br/> inhg <br/> psi |
 
 ### Current Rainfall Last Hour
 
