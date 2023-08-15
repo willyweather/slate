@@ -14887,7 +14887,19 @@ Response is an empty object.
         "id": 2
       },
       "group": 1
-    }]
+    }],
+      "units": {
+        "temperature": "c",
+        "tideHeight": "m",
+        "swellHeight": "m",
+        "riverHeight": "m",
+        "speed": "m\/s",
+        "amount": "mm",
+        "distance": "km",
+        "pressure": "millibars",
+        "cloud": "oktas",
+        "riverHeight":"m"
+      }
 }
 ```
 
@@ -14973,8 +14985,8 @@ Response is an empty object.
     "endDate": "2021-11-30"
   }],
   "notificationAlertConditions": [{
-    "tempRangeStart": 295.0,
-    "tempRangeEnd": 300.2,
+    "tempRangeStart": 29.0,
+    "tempRangeEnd": 30.2,
     "location": {
       "id": 1
     },
@@ -14994,8 +15006,8 @@ Response is an empty object.
       "group": 1
     },
     {
-      "tempRangeStart": 300.0,
-      "tempRangeEnd": 301.2,
+      "tempRangeStart": 30.0,
+      "tempRangeEnd": 30.2,
       "location": {
         "id": 1
       },
@@ -15005,7 +15017,7 @@ Response is an empty object.
       "group": 1
     }],
   "units": {
-    "temperature": "k",
+    "temperature": "c",
     "tideHeight": "m",
     "swellHeight": "m",
     "riverHeight": "m",
@@ -15033,13 +15045,14 @@ enabled | boolean | | | true
 followMe | boolean | | Updates location of notification | true
 notificationType | object | **(See Notification Type)** |  | true
 notifyMeOffset | int | | | true
-mutePeriod | int | | Notification frequency (in minutes) | true
+mutePeriod | int | | Notification frequency (in minutes) | false
 notificationContacts | array | **(See Notification Contact)** | | true
 notificationDateRanges | array | **(Notification Date Range)** | date ranges that the notification is active | true*
 notificationMonths | object | **(See Notification Months)** | months that the notification is active | true*
 notificationDays | object | **(See Notification Days)** | days that the notification is active | true*
 notificationTimeRanges | object | **(See Notification Time Range)** | time ranges that the notification is active | true
 notificationAlertConditions | array | **(See Notification Alert Conditions)** | | true
+units | object | **(See Units)** | | true
 
 <aside class="notice">
     Request header <code>Content-type: application/json</code> is required when passing parameters. This endpoint only supports json requests.
@@ -15129,7 +15142,7 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes) | true
 
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
-id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/> 
+id | | `1` for `forecast-min-temp`<br/> `2` for `forecast-max-temp`<br/> `3` for `forecast-swell`<br/> `4` for `forecast-wind`<br/> `5` for `forecast-weather`<br/> `6` for `forecast-rainfall`<br/> `7` for `forecast-tides`<br/> `8` for `forecast-sunrise-sunset`<br/> `9` for `forecast-uv`<br/> `10` for `forecast-moonphase`<br/> `11` for `forecast-radar`<br/> `12` for `forecast-hourly-precis`<br/> `13` for `forecast-region-precis`<br/> `14` for `forecast-daily-max-uv`<br/> `20` for `current-wind`<br/> `21` for `current-temp`<br/> `22` for `current-rain-last-hour`<br/> `24` for `current-humidity`<br/> `25` for `current-dewpoint`<br/> `26` for `current-pressure`<br/> `27` for `current-delta-t`<br/> `28` for `current-apparent-temp`<br/> `29` for `current-wind-gust`<br/> `30` for `current-cloud`<br/>
 
 ### Location
 
@@ -15147,8 +15160,8 @@ id | int | | Weather Station id which will be used as the datasource for the ale
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-indexRangeStart | float | 0 - 20 | | true
-indexRangeEnd | float | 0 - 20 | | true
+indexRangeStart | float | **(See Range per Unit values)** | | true
+indexRangeEnd | float | **(See Range per Unit values)**  | | true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15174,8 +15187,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-tempRangeStart | float | 273.15 - 323.15 | value is in kelvin | true
-tempRangeEnd | float | 273.15 - 323.15 | value is in kelvin | true
+tempRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+tempRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15184,8 +15197,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-tempRangeStart | float | 253.15 - 303.15 | value is in kelvin | true
-tempRangeEnd | float | 253.15 - 303.15 | value is in kelvin | true
+tempRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+tempRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15257,7 +15270,7 @@ id | int | | | | true
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
 probability | int | 0 - 100  | | true
-amount | int | -1 - 100 | -1 (no rain)| true
+amount | int | **(See Range per Unit values)** / -1 (no rain)| value depends on the unit provided | true
 location | object | **(See Location)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15296,8 +15309,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-heightRangeStart | float | 0 - 20 | value is in meters | true
-heightRangeEnd | float | 0 - 20 | value is in meters | true
+heightRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+heightRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 periodRangeStart | float | 0 - 20 | | true
 periodRangeEnd | float | 0 - 20 | | true
 directionRangeStart | float | 0 - 360 | | true
@@ -15339,8 +15352,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-speedRangeStart | float | 0 - 41.7 | value is in meters per second | true
-speedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
+speedRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+speedRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 directionRangeStart | float | 0 - 360 | | true
 directionRangeEnd | float | 0 - 360 | | true
 location | object | **(See Location)** | | true
@@ -15351,8 +15364,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-apparentTempRangeStart | float | 253.15 - 323.15 | value is in kelvin | true
-apparentTempRangeEnd | float | 253.15 - 323.15 | value is in kelvin | true
+apparentTempRangeStart | float | **(See Range per Unit values)** | value depends on the unit provided | true
+apparentTempRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15372,8 +15385,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-deltaTRangeStart | float | 273.15 - 293.15 | value is in kelvin | true
-deltaTRangeEnd | float | 273.15 - 293.15 | value is in kelvin | true
+deltaTRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+deltaTRangeEnd | float | **(See Range per Unit values)** | value depends on the unit provided | true
 trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
@@ -15383,8 +15396,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-dewpointRangeStart | float | 273.15 - 303.15 | value is in kelvin | true
-dewpointRangeEnd | float | 273.15 - 303.15 | value is in kelvin | true
+dewpointRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+dewpointRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
@@ -15404,8 +15417,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-pressureRangeStart | float | 850 - 1100 | value is in millibars | true
-pressureRangeStart | float | 850 - 1100 | value is in millibars | true
+pressureRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+pressureRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 weatherStation | object | **(See Weather Station)** | | true
 trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
@@ -15415,7 +15428,7 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-amount | int | -1 - 50 | -1 (no rain)| true
+amount | int | **(See Range per Unit values)**  / -1 (no rain)| value depends on the unit provided | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15424,8 +15437,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-tempRangeStart | float | 253.15 - 323.15 | value is in kelvin | true
-tempRangeEnd | float | 253.15 - 323.15 | value is in kelvin | true
+tempRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+tempRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 trend | int | 1 -3 | 1 - any <br/> 2 - rising <br/> 3- falling | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
@@ -15435,8 +15448,8 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-gustSpeedRangeStart | float | 0 - 41.7 | value is in meters per second | true
-gustSpeedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
+gustSpeedRangeStart | float | **(See Range per Unit values)** | value depends on the unit provided | true
+gustSpeedRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
@@ -15445,13 +15458,33 @@ group | int | | | | true
 
 Parameter | Type | Options | Description | Required
 --------- | ---- | ------- | ----------- | --------
-speedRangeStart | float | 0 - 41.7 | value is in meters per second | true
-speedRangeEnd | float | 0 - 41.7 | value is in meters per second | true
+speedRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided | true
+speedRangeEnd | float | **(See Range per Unit values)** | value depends on the unit provided | true
 directionRangeStart | float | 0 - 360 | | true
 directionRangeEnd | float | 0 - 360 | | true
 weatherStation | object | **(See Weather Station)** | | true
 notificationAlertConditionType | object | **(See Notification Alert Condition Type)** | | true
 group | int | | | | true
+
+### Range per Unit values
+
+Type | Unit | Values | Precision
+--------- | ---- | -------| -------
+Temperature | c | -60.0 ~ 60.0 | 1
+Temperature | f | -80.0 ~ 140.0 | 1
+Height | m | 0.0 ~ 15.0 | 1
+Height | ft | 0.0 ~ 40.0 | 1
+Speed | ms |  0.0 ~ 40.0 | 1
+Speed | km/h | 0.0 ~ 140.0 | 1
+Speed | mph | 0.0 ~ 80.0 |  1
+Speed | knots | 0.0 ~ 70.0 | 1
+Amount | mm | 0.0 ~ 300.0 | 1
+Amount | in | 0.0 ~ 10.0 | 1
+Amount | pts | 0.0 ~ 800.0 | 1
+Pressure | hpa | 860.00 ~ 1100.00 | 2
+Pressure | inhg | 26.00 ~ 32.00 | 2
+Pressure | millibars | 860.00 ~ 1100.00 | 2
+Pressure | psi | 12.50 ~ 15.90 | 2
 
 ### Response
 
@@ -15472,6 +15505,7 @@ notificationMonths | object | **(See Notification Months)** | months that the no
 notificationDays | object | **(See Notification Days)** | days that the notification is active
 notificationTimeRanges | object | **(See Notification Time Range)** | time ranges that the notification is active
 notificationAlertConditions | array | **(See Notification Alert Conditions)** | conditions that make the notification valid
+units | object | **(See Units)** |
 
 ### Notification Type
 
@@ -15608,8 +15642,8 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
     "endDate": "2021-11-30"
   }],
   "notificationAlertConditions": [{
-    "tempRangeStart": 295.0,
-    "tempRangeEnd": 300.2,
+    "tempRangeStart": 29.0,
+    "tempRangeEnd": 30.2,
     "location": {
       "id": 1
     },
@@ -15629,8 +15663,8 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
       "group": 1
     },
     {
-      "tempRangeStart": 300.0,
-      "tempRangeEnd": 301.2,
+      "tempRangeStart": 30.0,
+      "tempRangeEnd": 31.2,
       "location": {
         "id": 1
       },
@@ -15638,7 +15672,19 @@ endTime | int| 0 - 1439 | Time when the notification ends (in minutes)
         "id": 2
       },
       "group": 1
-    }]
+    }],
+      "units": {
+        "temperature": "c",
+        "tideHeight": "m",
+        "swellHeight": "m",
+        "riverHeight": "m",
+        "speed": "m\/s",
+        "amount": "mm",
+        "distance": "km",
+        "pressure": "millibars",
+        "cloud": "oktas",
+        "riverHeight":"m"
+      }
 }
 ```
 
@@ -16359,6 +16405,7 @@ lat | float | |
 lng | float | |
 distance | float | |
 
+
 ## Grouped Notification Alert Conditions Criteria Types
 
 ### Forecast Daily Max UV
@@ -16392,14 +16439,14 @@ match | object | | The data that satisfied the rule
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-indexRangeStart | float | 0 - 20 |
-indexRangeEnd | float | 0 - 20 |
+indexRangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+indexRangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-index | int | 0 - 20 |
+index | int | |
 scale | float | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme |
 
 
@@ -16470,14 +16517,14 @@ units | object | | (optional) - Present if amount is set
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 probability | int | | |
-amount | int | | (optional)
+amount | int | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 probability | int | | |
-amount | int | | (optional)
+amount | |
 
 ### Forecast Max Temperature
 
@@ -16519,8 +16566,8 @@ temperature | object | | **(See temperature)**
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -16532,7 +16579,7 @@ temperature | float | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-temperature | string | c  <br/> f <br/> k <br/> |
+temperature | string | c  <br/> f <br/>|
 
 ### Forecast Min Temperature
 
@@ -16574,8 +16621,8 @@ temperature | object | | **(See temperature)**
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -16587,7 +16634,7 @@ temperature | float | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-temperature | string | c  <br/> f <br/> k <br/> |
+temperature | string | c  <br/> f <br/> |
 
 ### Forecast Moonphase
 
@@ -16661,7 +16708,7 @@ units | object | | (optional) - Present if amount is set
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 probability | int | | |
-amount | int | | (optional)
+amount | int | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -16828,8 +16875,8 @@ direction | object | **(See direction)** |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float |  |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### period
 
@@ -17047,8 +17094,8 @@ direction | object | **(See direction)** |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float |  |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### direction
 
@@ -17112,8 +17159,8 @@ apparentTemperature | object | **(See apparentTemperature)** |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17170,8 +17217,8 @@ trend | string | failing <br/> rising <br/> steady <br/> |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17228,8 +17275,8 @@ trend | string | failing <br/> rising <br/> steady <br/> |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17286,8 +17333,8 @@ trend | string | failing <br/> rising <br/> steady <br/> |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17393,8 +17440,8 @@ trend | string | failing <br/> rising <br/> steady |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17447,7 +17494,7 @@ amount | object | | **(See amount)**
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | string/float | No Rain/number
+rangeStart | string/float | No Rain/**(See Range per Unit values)**
 
 #### Match
 
@@ -17504,8 +17551,8 @@ trend | string | failing <br/> rising <br/> steady <br/> |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float | |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17559,8 +17606,8 @@ speed | object | **(See speed)** |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float |  |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### Match
 
@@ -17620,8 +17667,8 @@ direction | object | **(See direction)** |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-rangeStart | float |  |
-rangeEnd | float | |
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
 
 #### direction
 
@@ -17643,6 +17690,7 @@ directionText | string | |
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 speed | string | knots <br/> m/s <br/> km/h <br/> mph |
+
 
 ## Subscription - POST - Validation - IOS
 
