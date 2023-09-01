@@ -12550,13 +12550,12 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Cloud Cover",
-				"unit": "oktas",
 				"min": {
 					"key": "cloudRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "oktas",
-						"default": true
+						"measurement": " oktas"
 					}]
 				},
 				"max": {
@@ -12564,7 +12563,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 8,
 						"unit": "oktas",
-						"default": true
+						"measurement": " oktas"
 					}]
 				},
 				"defaultMin": {
@@ -12586,15 +12585,15 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Any",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Rising",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Falling",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}]
 				}]
@@ -12606,45 +12605,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Delta T",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "deltaTRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "deltaTRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -12654,9 +12645,6 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
-					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -12671,15 +12659,15 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Any",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Rising",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Falling",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}]
 				}]
@@ -12691,45 +12679,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Dewpoint",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "dewpointRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "dewpointRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -12739,9 +12719,6 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
-					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -12756,15 +12733,15 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Any",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Rising",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Falling",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}]
 				}]
@@ -12776,13 +12753,12 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Humidity",
-				"unit": "percentage",
 				"min": {
 					"key": "humidityRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"max": {
@@ -12790,7 +12766,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 100,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"defaultMin": {
@@ -12813,29 +12789,36 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Pressure",
+				"steps": {
+					"hpa": 1,
+					"inhg": 0.1,
+					"psi": 0.01,
+					"millibars": 1,
+					"mmhg": 1
+				},
 				"unit": "pressure",
 				"min": {
 					"key": "pressureRangeStart",
 					"values": [{
 						"value": 860,
 						"unit": "hpa",
-						"default": true
+						"measurement": " hPa"
 					}, {
 						"value": 26,
 						"unit": "inhg",
-						"default": false
+						"measurement": " inHg"
 					}, {
 						"value": 12.5,
 						"unit": "psi",
-						"default": false
+						"measurement": " psi"
 					}, {
 						"value": 860,
 						"unit": "millibars",
-						"default": false
+						"measurement": " millibars"
 					}, {
 						"value": 650,
 						"unit": "mmhg",
-						"default": false
+						"measurement": " mmHg"
 					}]
 				},
 				"max": {
@@ -12843,23 +12826,23 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 1100,
 						"unit": "hpa",
-						"default": true
+						"measurement": " hPa"
 					}, {
 						"value": 32,
 						"unit": "inhg",
-						"default": false
+						"measurement": " inHg"
 					}, {
 						"value": 15.9,
 						"unit": "psi",
-						"default": false
+						"measurement": " psi"
 					}, {
 						"value": 1100,
 						"unit": "millibars",
-						"default": false
+						"measurement": " millibars"
 					}, {
 						"value": 820,
 						"unit": "mmhg",
-						"default": false
+						"measurement": " mmHg"
 					}]
 				},
 				"defaultMin": {
@@ -12868,20 +12851,16 @@ distance | string | | distance of radar station from the user's device's lat and
 						"unit": "hpa"
 					}, {
 						"value": 27.9,
-						"unit": "inhg",
-						"default": false
+						"unit": "inhg"
 					}, {
 						"value": 13.7,
-						"unit": "psi",
-						"default": false
+						"unit": "psi"
 					}, {
 						"value": 946,
-						"unit": "millibars",
-						"default": false
+						"unit": "millibars"
 					}, {
 						"value": 709.6,
-						"unit": "mmhg",
-						"default": false
+						"unit": "mmhg"
 					}]
 				},
 				"defaultMax": {
@@ -12890,20 +12869,16 @@ distance | string | | distance of radar station from the user's device's lat and
 						"unit": "hpa"
 					}, {
 						"value": 29.9,
-						"unit": "inhg",
-						"default": false
+						"unit": "inhg"
 					}, {
 						"value": 14.7,
-						"unit": "psi",
-						"default": false
+						"unit": "psi"
 					}, {
 						"value": 1014,
-						"unit": "millibars",
-						"default": false
+						"unit": "millibars"
 					}, {
 						"value": 760.6,
-						"unit": "mmhg",
-						"default": false
+						"unit": "mmhg"
 					}]
 				}
 			}, {
@@ -12913,15 +12888,15 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Any",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Rising",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Falling",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}]
 				}]
@@ -12933,51 +12908,57 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "enabler",
 				"title": "No rain",
+				"key": "amount",
 				"value": -1
 			}, {
 				"type": "slider",
 				"title": "Rain Last Hour at least",
+				"steps": {
+					"mm": 0.5,
+					"in": 0.1,
+					"pts": 1
+				},
 				"unit": "amount",
 				"min": {
 					"key": "amount",
 					"values": [{
 						"value": 0,
 						"unit": "mm",
-						"default": true
+						"measurement": "mm"
 					}, {
 						"value": 0,
 						"unit": "in",
-						"default": false
+						"measurement": "in"
 					}, {
 						"value": 0,
 						"unit": "pts",
-						"default": false
+						"measurement": "pts"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 300,
 						"unit": "mm",
-						"default": true
+						"measurement": "mm"
 					}, {
 						"value": 10,
 						"unit": "in",
-						"default": false
+						"measurement": "in"
 					}, {
 						"value": 800,
 						"unit": "pts",
-						"default": false
+						"measurement": "pts"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 150,
+						"value": 25,
 						"unit": "mm"
 					}, {
-						"value": 5.9,
+						"value": 1,
 						"unit": "in"
 					}, {
-						"value": 425,
+						"value": 70.9,
 						"unit": "pts"
 					}]
 				}
@@ -12989,45 +12970,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Temperature",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "tempRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -13037,9 +13010,6 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
-					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -13054,15 +13024,15 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Any",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Rising",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Falling",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}]
 				}]
@@ -13074,45 +13044,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Apparent Temperature",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "apparentTempRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "apparentTempRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -13122,9 +13084,6 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
-					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -13140,26 +13099,31 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Wind Speed",
-				"step": 0.1,
+				"steps": {
+					"m\/s": 0.1,
+					"km\/h": 0.5,
+					"mph": 0.1,
+					"knots": 0.1
+				},
 				"unit": "speed",
 				"min": {
 					"key": "speedRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 0,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 0,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 0,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"max": {
@@ -13167,19 +13131,19 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 40,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 140,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 80,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 70,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"defaultMin": {
@@ -13219,26 +13183,28 @@ distance | string | | distance of radar station from the user's device's lat and
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				}
 			}, {
@@ -13247,11 +13213,13 @@ distance | string | | distance of radar station from the user's device's lat and
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "°"
+						"key": "directionRangeStart",
+						"unit": "\u00b0"
 					},
 					"max": {
 						"value": 360,
-						"unit": "°"
+						"key": "directionRangeEnd",
+						"unit": "\u00b0"
 					}
 				}
 			}]
@@ -13262,26 +13230,31 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Wind Gust",
-				"step": 0.1,
+				"steps": {
+					"m\/s": 0.1,
+					"km\/h": 0.5,
+					"mph": 0.1,
+					"knots": 0.1
+				},
 				"unit": "speed",
 				"min": {
 					"key": "gustSpeedRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 0,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 0,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 0,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"max": {
@@ -13289,19 +13262,19 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 40,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 140,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 80,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 70,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"defaultMin": {
@@ -13348,14 +13321,14 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 0,
 						"unit": "days",
-						"default": true
+						"measurement": " days"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 4,
 						"unit": "days",
-						"default": true
+						"measurement": " days"
 					}]
 				},
 				"defaultMin": {
@@ -13371,19 +13344,19 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "Full",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Last Quarter",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "New",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}, {
 						"label": "First Quarter",
-						"value": "4",
+						"value": 4,
 						"default": false
 					}]
 				}]
@@ -13395,71 +13368,76 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "enabler",
 				"title": "No rain",
+				"key": "amount",
 				"value": -1
 			}, {
 				"type": "slider",
 				"title": "Rain Forecast at Least",
+				"steps": {
+					"mm": 0.5,
+					"in": 0.1,
+					"pts": 1
+				},
 				"unit": "amount",
 				"min": {
 					"key": "amount",
 					"values": [{
 						"value": 0,
 						"unit": "mm",
-						"default": true
+						"measurement": "mm"
 					}, {
 						"value": 0,
 						"unit": "in",
-						"default": false
+						"measurement": "in"
 					}, {
 						"value": 0,
 						"unit": "pts",
-						"default": false
+						"measurement": "pts"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 300,
 						"unit": "mm",
-						"default": true
+						"measurement": "mm"
 					}, {
 						"value": 10,
 						"unit": "in",
-						"default": false
+						"measurement": "in"
 					}, {
 						"value": 800,
 						"unit": "pts",
-						"default": false
+						"measurement": "pts"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 150,
+						"value": 25,
 						"unit": "mm"
 					}, {
-						"value": 5.9,
+						"value": 1,
 						"unit": "in"
 					}, {
-						"value": 425,
+						"value": 70.9,
 						"unit": "pts"
 					}]
 				}
 			}, {
 				"type": "slider",
 				"title": "Chance of Rain at Least",
-				"unit": "percentage",
 				"min": {
 					"key": "probability",
 					"values": [{
 						"value": 0,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 100,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"defaultMin": {
@@ -13476,20 +13454,19 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Chance of Rain at Least",
-				"unit": "percentage",
 				"min": {
 					"key": "probability",
 					"values": [{
 						"value": 0,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 100,
 						"unit": "%",
-						"default": true
+						"measurement": "%"
 					}]
 				},
 				"defaultMin": {
@@ -13564,7 +13541,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"title": "Chance of Thunderstorms",
 					"inputs": [{
 						"label": "Chance of Thunderstorms",
-						"value": "chancOfThunderstorms:chance-of-thunderstorms",
+						"value": "chanceOfThunderstorms:chance-of-thunderstorms",
 						"default": false
 					}, {
 						"label": "Thunderstorms",
@@ -13619,44 +13596,44 @@ distance | string | | distance of radar station from the user's device's lat and
 			"title": "Sun",
 			"components": [{
 				"type": "radiobutton",
-				"title": "Sun",
+				"title": "",
 				"key": "time",
 				"groups": [{
 					"inputs": [{
 						"label": "Dawn - The time between first light and sunrise",
-						"value": "1",
+						"value": 1,
 						"default": false
 					}, {
 						"label": "Dusk - The time between sunset and last light",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}, {
 						"label": "Dawn or Dusk",
-						"value": "9",
+						"value": 9,
 						"default": false
 					}, {
 						"label": "Daytime - The time between sunrise and sunset",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Nighttime - The time between last light and first light",
-						"value": "4",
+						"value": 4,
 						"default": false
 					}, {
 						"label": "First Light",
-						"value": "5",
+						"value": 5,
 						"default": false
 					}, {
 						"label": "Sunrise",
-						"value": "6",
+						"value": 6,
 						"default": true
 					}, {
 						"label": "Sunset",
-						"value": "7",
+						"value": 7,
 						"default": false
 					}, {
 						"label": "Last Light",
-						"value": "8",
+						"value": 8,
 						"default": false
 					}]
 				}]
@@ -13668,18 +13645,21 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Swell Height Range",
-				"step": 0.1,
-				"unit": "height",
+				"steps": {
+					"m": 0.1,
+					"ft": 0.1
+				},
+				"unit": "swellHeight",
 				"min": {
 					"key": "heightRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "m",
-						"default": true
+						"measurement": "m"
 					}, {
 						"value": 0,
 						"unit": "ft",
-						"default": false
+						"measurement": "ft"
 					}]
 				},
 				"max": {
@@ -13687,11 +13667,11 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 15,
 						"unit": "m",
-						"default": true
+						"measurement": "m"
 					}, {
 						"value": 40,
 						"unit": "ft",
-						"default": false
+						"measurement": "ft"
 					}]
 				},
 				"defaultMin": {
@@ -13720,7 +13700,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 0,
 						"unit": "seconds",
-						"default": true
+						"measurement": " seconds"
 					}]
 				},
 				"max": {
@@ -13728,7 +13708,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 30,
 						"unit": "seconds",
-						"default": true
+						"measurement": " seconds"
 					}]
 				},
 				"defaultMin": {
@@ -13750,26 +13730,28 @@ distance | string | | distance of radar station from the user's device's lat and
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				}
 			}, {
@@ -13778,11 +13760,13 @@ distance | string | | distance of radar station from the user's device's lat and
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "°"
+						"key": "directionRangeStart",
+						"unit": "\u00b0"
 					},
 					"max": {
 						"value": 360,
-						"unit": "°"
+						"key": "directionRangeEnd",
+						"unit": "\u00b0"
 					}
 				}
 			}]
@@ -13793,45 +13777,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Max Temperature Forecast",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "tempRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -13841,9 +13817,6 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
-					}, {
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -13859,45 +13832,37 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Min Temperature Forecast",
-				"step": 0.1,
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
 				"unit": "temperature",
 				"min": {
 					"key": "tempRangeStart",
 					"values": [{
-						"value": 210,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": -60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": -80,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"max": {
 					"key": "tempRangeEnd",
 					"values": [{
-						"value": 334,
-						"unit": "k",
-						"default": true
-					}, {
 						"value": 60,
 						"unit": "c",
-						"default": false
+						"measurement": " \u00b0C"
 					}, {
 						"value": 140,
 						"unit": "f",
-						"default": false
+						"measurement": " \u00b0F"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
-						"value": 278.2,
-						"unit": "k"
-					}, {
 						"value": 5,
 						"unit": "c"
 					}, {
@@ -13907,9 +13872,61 @@ distance | string | | distance of radar station from the user's device's lat and
 				},
 				"defaultMax": {
 					"values": [{
-						"value": 308.2,
-						"unit": "k"
+						"value": 35,
+						"unit": "c"
 					}, {
+						"value": 95,
+						"unit": "f"
+					}]
+				}
+			}]
+		}, {
+			"id": 16,
+			"code": "forecastHourlyTemp",
+			"title": "Temp (hourly)",
+			"components": [{
+				"type": "slider",
+				"title": "Hourly Temperature Forecast",
+				"steps": {
+					"c": 0.5,
+					"f": 0.5
+				},
+				"unit": "temperature",
+				"min": {
+					"key": "tempRangeStart",
+					"values": [{
+						"value": -60,
+						"unit": "c",
+						"measurement": " \u00b0C"
+					}, {
+						"value": -80,
+						"unit": "f",
+						"measurement": " \u00b0F"
+					}]
+				},
+				"max": {
+					"key": "tempRangeEnd",
+					"values": [{
+						"value": 60,
+						"unit": "c",
+						"measurement": " \u00b0C"
+					}, {
+						"value": 140,
+						"unit": "f",
+						"measurement": " \u00b0F"
+					}]
+				},
+				"defaultMin": {
+					"values": [{
+						"value": 5,
+						"unit": "c"
+					}, {
+						"value": 41,
+						"unit": "f"
+					}]
+				},
+				"defaultMax": {
+					"values": [{
 						"value": 35,
 						"unit": "c"
 					}, {
@@ -13929,43 +13946,45 @@ distance | string | | distance of radar station from the user's device's lat and
 				"groups": [{
 					"inputs": [{
 						"label": "High Tide",
-						"value": "1",
+						"value": 1,
 						"default": true
 					}, {
 						"label": "Low Tide",
-						"value": "2",
+						"value": 2,
 						"default": false
 					}, {
 						"label": "Half-Tide (Rising)",
-						"value": "3",
+						"value": 3,
 						"default": false
 					}, {
 						"label": "Half-Tide (Falling)",
-						"value": "4",
+						"value": 4,
 						"default": false
 					}, {
 						"label": "High Tide or Low Tide",
-						"value": "5",
+						"value": 5,
 						"default": false
 					}]
 				}]
 			}, {
 				"type": "slider",
 				"title": "+ \/ -",
-				"step": 3,
+				"steps": {
+					"minutes": 3
+				},
 				"min": {
 					"key": "buffer",
 					"values": [{
 						"value": 0,
 						"unit": "minutes",
-						"default": true
+						"measurement": " minutes"
 					}]
 				},
 				"max": {
 					"values": [{
 						"value": 180,
 						"unit": "minutes",
-						"default": true
+						"measurement": " minutes"
 					}]
 				},
 				"defaultMin": {
@@ -13987,7 +14006,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 0,
 						"unit": "index",
-						"default": true
+						"measurement": " index"
 					}]
 				},
 				"max": {
@@ -13995,7 +14014,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 20,
 						"unit": "index",
-						"default": true
+						"measurement": " index"
 					}]
 				},
 				"defaultMin": {
@@ -14023,7 +14042,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 0,
 						"unit": "index",
-						"default": true
+						"measurement": " index"
 					}]
 				},
 				"max": {
@@ -14031,7 +14050,7 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 20,
 						"unit": "index",
-						"default": true
+						"measurement": " index"
 					}]
 				},
 				"defaultMin": {
@@ -14052,29 +14071,29 @@ distance | string | | distance of radar station from the user's device's lat and
 			"code": "forecastWeather",
 			"title": "Weather (daily)",
 			"components": [{
-				"type": "radiobutton",
+				"type": "checkbox",
 				"key": "precis",
 				"title": "Daily Weather Conditions:",
 				"groups": [{
 					"inputs": [{
 						"label": "Fine",
-						"value": "fine",
-						"default": true
+						"value": "precis:fine",
+						"default": false
 					}, {
 						"label": "Cloudy",
-						"value": "cloudy",
+						"value": "precis:cloudy",
 						"default": false
 					}, {
 						"label": "Rain\/Showers",
-						"value": "rain-showers",
+						"value": "precis:rain-showers",
 						"default": false
 					}, {
 						"label": "Thunderstorms",
-						"value": "thunderstorms",
+						"value": "precis:thunderstorms",
 						"default": false
 					}, {
 						"label": "Snow",
-						"value": "snow",
+						"value": "precis:snow",
 						"default": false
 					}]
 				}]
@@ -14084,29 +14103,29 @@ distance | string | | distance of radar station from the user's device's lat and
 			"code": "forecastHourlyPrecis",
 			"title": "Weather (hourly)",
 			"components": [{
-				"type": "radiobutton",
+				"type": "checkbox",
 				"key": "precis",
 				"title": "Hourly Weather Conditions:",
 				"groups": [{
 					"inputs": [{
 						"label": "Fine",
-						"value": "fine",
-						"default": true
+						"value": "precis:fine",
+						"default": false
 					}, {
 						"label": "Cloudy",
-						"value": "cloudy",
+						"value": "precis:cloudy",
 						"default": false
 					}, {
 						"label": "Rain\/Showers",
-						"value": "rain-showers",
+						"value": "precis:rain-showers",
 						"default": false
 					}, {
 						"label": "Thunderstorms",
-						"value": "thunderstorms",
+						"value": "precis:thunderstorms",
 						"default": false
 					}, {
 						"label": "Snow",
-						"value": "snow",
+						"value": "precis:snow",
 						"default": false
 					}]
 				}]
@@ -14118,26 +14137,31 @@ distance | string | | distance of radar station from the user's device's lat and
 			"components": [{
 				"type": "slider",
 				"title": "Wind Forecast Speed",
-				"step": 0.1,
+				"steps": {
+					"m\/s": 0.1,
+					"km\/h": 0.5,
+					"mph": 0.1,
+					"knots": 0.1
+				},
 				"unit": "speed",
 				"min": {
 					"key": "speedRangeStart",
 					"values": [{
 						"value": 0,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 0,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 0,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 0,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"max": {
@@ -14145,19 +14169,19 @@ distance | string | | distance of radar station from the user's device's lat and
 					"values": [{
 						"value": 40,
 						"unit": "m\/s",
-						"default": true
+						"measurement": "m\/s"
 					}, {
 						"value": 140,
 						"unit": "km\/h",
-						"default": false
+						"measurement": "km\/h"
 					}, {
 						"value": 80,
 						"unit": "mph",
-						"default": false
+						"measurement": "mph"
 					}, {
 						"value": 70,
 						"unit": "knots",
-						"default": false
+						"measurement": " knots"
 					}]
 				},
 				"defaultMin": {
@@ -14197,26 +14221,28 @@ distance | string | | distance of radar station from the user's device's lat and
 					"key": "directionRangeStart",
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"max": {
 					"key": "directionRangeEnd",
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0",
+						"measurement": "\u00b0"
 					}]
 				},
 				"defaultMin": {
 					"values": [{
 						"value": 0,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				},
 				"defaultMax": {
 					"values": [{
 						"value": 360,
-						"unit": "°"
+						"unit": "\u00b0"
 					}]
 				}
 			}, {
@@ -14225,11 +14251,13 @@ distance | string | | distance of radar station from the user's device's lat and
 				"values": {
 					"min": {
 						"value": 0,
-						"unit": "°"
+						"key": "directionRangeStart",
+						"unit": "\u00b0"
 					},
 					"max": {
 						"value": 360,
-						"unit": "°"
+						"key": "directionRangeEnd",
+						"unit": "\u00b0"
 					}
 				}
 			}]
@@ -14272,6 +14300,7 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 type | string | `slider` | slider type
 title | string | | Form's title
+steps | object | | **(see Components - Slider - steps)**
 unit | string | `temperature`, `pressure`, `amount`, `speed`, `height` | if does not exist or not in any of the options, no other unit measurements are available
 min | object | | **(see Components - Slider/Compass - min/max)**
 max | object | | **(see Components - Slider/Compass - min/max)**
@@ -14311,6 +14340,12 @@ type | string | `enabler` | checkbox that disables other inputs when `on`
 title | string | | Form's title
 value | string | | value of other inputs when `on`
 
+### Components - Slider - steps
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+_key_ | float | _value_ | _key_ is the user's prefered unit value<br/>_value_ is the actual step
+
 ### Components - Slider/Compass - min/max
 
 Attribute | Type | Values | Description
@@ -14324,7 +14359,7 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 value | string | | slider value
 unit | string | | unit value
-default | boolean | | default unit measurement
+measurement | string | | unit label
 
 ### Components - Slider/Compass - defaultMin/defaultMax
 
@@ -16607,6 +16642,61 @@ temperature | string | c  <br/> f <br/>|
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 id | string | forecastMinTemp |
+rule | object | |
+match | object | |
+units | object | |
+
+
+#### Rule
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | object | | **(See temperature)**
+
+#### temperature
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+rangeStart | float | **(See Range per Unit values)**  | value depends on the unit provided
+rangeEnd | float | **(See Range per Unit values)**  | value depends on the unit provided
+
+#### Match
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | float | |
+
+#### Units
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+temperature | string | c  <br/> f <br/> |
+
+### Forecast Hourly Temperature
+
+> Example Forecast Hourly Temperature
+
+```json
+{
+  "id": "forecastHourlyTemp",
+  "rule": {
+    "temperature": {
+      "rangeStart": 10,
+      "rangeEnd": 15
+    }
+  },
+  "match": {
+    "temperature": 12
+  },
+  "units": {
+    "temperature": "c"
+  }
+}
+```
+
+Parameter | Type | Options | Description
+--------- | ---- | ------- | -----------
+id | string | forecastHourlyTemp |
 rule | object | |
 match | object | |
 units | object | |
