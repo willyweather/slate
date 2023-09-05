@@ -16494,7 +16494,9 @@ scale | float | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme |
 {
   "id": "forecastHourlyPrecis",
   "rule": {
-    "precis": "fine"
+    "precis": {
+      "precis": ["fine", "cloudy", "rain-showers", "thunderstorms", "snow"]
+    }
   },
   "match": {
     "precis": "fine"
@@ -16513,7 +16515,7 @@ match | object | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow  |
+precis | array | **(See Weather Precis Criteria)** |
 
 #### Match
 
@@ -16521,8 +16523,14 @@ Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
 precis | string | fine (fine, mostly-fine, high-cloud, partly-cloudy, wind, frost)<br/><br/> cloudy (mostly-cloudy, cloudy, overcast, fog, dust)<br/ ><br/> rain-showers (chance-shower-fine, shower-or-two, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, hail)<br/><br/> thunderstorms (chance-thunderstorm-showers, chance-thunderstorm-cloud, chance-thunderstorm-fine, thunderstorm) <br/><br/> snow (chance-snow-fine, snow, snow-and-rain, chance-snow-cloud, heavy-snow, light-snow) |
 
+### Weather Precis Criteria
+
+Parameter | Type | Options | Description |
+--------- | ---- | ------- | ----------- |
+precis | string | fine <br/> cloudy <br/> partly-cloudy <br/> rain-showers <br/> thunderstorms <br/> snow |
+
 <aside class="notice">
-    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:fine is true if match:precis:mostly-fine
+    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:["fine"] is true if match:precis:mostly-fine
 </aside>
 
 ### Forecast Hourly Rainfall
@@ -17108,7 +17116,9 @@ scale | string | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme <br
 {
   "id": "forecastWeather",
   "rule": {
-    "precis": "fine"
+    "precis": {
+      "precis": ["fine", "cloudy", "rain-showers", "thunderstorms", "snow"]
+    }
   },
   "match": {
     "precis": "fine"
@@ -17126,7 +17136,7 @@ match | object | |
 
 Parameter | Type | Options | Description
 --------- | ---- | ------- | -----------
-precis | string | fine <br/> cloudy <br/ > rain-showers <br/> thunderstorms <br/> snow |
+precis | array | **(See Weather Precis Criteria)** |
 
 #### Match
 
@@ -17135,7 +17145,7 @@ Parameter | Type | Options | Description
 precis | string | fine (fine, mostly-fine, high-cloud, partly-cloudy, wind, frost)<br/><br/> cloudy (mostly-cloudy, cloudy, overcast, fog, dust)<br/ ><br/> rain-showers (chance-shower-fine, shower-or-two, chance-shower-cloud, drizzle, few-showers, showers-rain, heavy-showers-rain, hail)<br/><br/> thunderstorms (chance-thunderstorm-showers, chance-thunderstorm-cloud, chance-thunderstorm-fine, thunderstorm) <br/><br/> snow (chance-snow-fine, snow, snow-and-rain, chance-snow-cloud, heavy-snow, light-snow) |
 
 <aside class="notice">
-    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:fine is true if match:precis:mostly-fine
+    * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:["fine"] is true if match:precis:mostly-fine
 </aside>
 
 
