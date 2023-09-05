@@ -16527,7 +16527,7 @@ precis | string | fine (fine, mostly-fine, high-cloud, partly-cloudy, wind, fros
 
 Parameter | Type | Options | Description |
 --------- | ---- | ------- | ----------- |
-precis | string | fine <br/> cloudy <br/> partly-cloudy <br/> rain-showers <br/> thunderstorms <br/> snow |
+precis | string | fine <br/> cloudy <br/> rain-showers <br/> thunderstorms <br/> snow |
 
 <aside class="notice">
     * The precis in the rule will be satisfied if one of the subcategory precis is under the match precis. rule:precis:["fine"] is true if match:precis:mostly-fine
