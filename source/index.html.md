@@ -16499,7 +16499,9 @@ scale | float | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme |
     }
   },
   "match": {
-    "precis": "fine"
+    "precis": {
+      "precis": "fine"
+    }
   }
 }
 ```
@@ -17121,7 +17123,9 @@ scale | string | Low <br/> Moderate <br/> High <br/> Very High <br/> Extreme <br
     }
   },
   "match": {
-    "precis": "fine"
+    "precis": {
+      "precis": "fine"
+    }
   }
 }
 ```
