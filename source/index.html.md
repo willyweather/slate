@@ -2329,7 +2329,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warnings/1565989284065.png"
+	            "imagePath": "/1565989284065.png"
 	        }
 	    ],
 	    "warningDataPoints": [
@@ -2345,7 +2345,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warning/Q71/flood.png"
+	            "imagePath": "/Q71/flood.png"
 	        },
 	        {
 	            "id": 193,
@@ -2359,10 +2359,10 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warning/Q73/flood.png"
+	            "imagePath": "/Q73/flood.png"
 	        }
 	    ],
-	    "imageUrl": "https://cdn2.willyweather.com.au"
+	    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	},
 	{
 		"code": "IDQ20032",
@@ -2404,7 +2404,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warnings/1565989284065.png"
+	            "imagePath": "/1565989284065.png"
 	        }
 	    ],
 	    "warningDataPoints": [
@@ -2420,7 +2420,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warning/Q71/flood.png"
+	            "imagePath": "/Q71/flood.png"
 	        },
 	        {
 	            "id": 193,
@@ -2434,10 +2434,10 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 	                "maxLat": -31.351,
 	                "maxLng": 153.91
 	            },
-	            "imagePath": "/warning/Q73/flood.png"
+	            "imagePath": "/Q73/flood.png"
 	        }
 	    ],
-	    "imageUrl": "https://cdn2.willyweather.com.au"
+	    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	}
 ]
 ```
@@ -2532,7 +2532,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
                 "maxLat": -31.351,
                 "maxLng": 153.91
             },
-            "imagePath": "/warnings/1565989284065.png"
+            "imagePath": "/1565989284065.png"
         }
     ],
     "warningDataPoints": [
@@ -2548,7 +2548,7 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
                 "maxLat": -31.351,
                 "maxLng": 153.91
             },
-            "imagePath": "/warning/Q71/flood.png"
+            "imagePath": "/Q71/flood.png"
         },
         {
             "id": 193,
@@ -2562,10 +2562,10 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
                 "maxLat": -31.351,
                 "maxLng": 153.91
             },
-            "imagePath": "/warning/Q73/flood.png"
+            "imagePath": "/Q73/flood.png"
         }
     ],
-    "imageUrl": "https://cdn2.willyweather.com.au"
+    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 }
 ```
 
@@ -2726,7 +2726,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
         "warningDataPoints": [
@@ -2742,7 +2742,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q71/flood.png"
+                "imagePath": "/Q71/flood.png"
             },
             {
                 "id": 193,
@@ -2756,10 +2756,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q73/flood.png"
+                "imagePath": "/Q73/flood.png"
             }
         ],
-        "imageUrl": "https://cdn2.willyweather.com.au"
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
     },
     {
         "code": "IDQ20780",
@@ -2797,7 +2797,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
         "warningDataPoints": [
@@ -2813,7 +2813,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q71/flood.png"
+                "imagePath": "/Q71/flood.png"
             },
             {
                 "id": 193,
@@ -2827,10 +2827,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q73/flood.png"
+                "imagePath": "/Q73/flood.png"
             }
         ],
-        "imageUrl": "https://cdn2.willyweather.com.au"
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
     }
 ]
 ```
@@ -2927,7 +2927,7 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
         "warningDataPoints": [
@@ -2943,7 +2943,7 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q71/flood.png"
+                "imagePath": "/Q71/flood.png"
             },
             {
                 "id": 193,
@@ -2957,10 +2957,10 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q73/flood.png"
+                "imagePath": "/Q73/flood.png"
             }
         ],
-        "imageUrl": "https://cdn2.willyweather.com.au"
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
     },
     {
         "code": "IDQ20780",
@@ -2998,7 +2998,7 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
         "warningDataPoints": [
@@ -3014,7 +3014,7 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q71/flood.png"
+                "imagePath": "/Q71/flood.png"
             },
             {
                 "id": 193,
@@ -3028,10 +3028,10 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warning/Q73/flood.png"
+                "imagePath": "/Q73/flood.png"
             }
         ],
-        "imageUrl": "https://cdn2.willyweather.com.au"
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
     }
 ]
 ```
@@ -3113,7 +3113,7 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
 		"warningDataPoints": [{
@@ -3128,7 +3128,7 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
 				"maxLat": -31.351,
 				"maxLng": 153.91
 			},
-			"imagePath": "/warning/Q71/flood.png"
+			"imagePath": "/Q71/flood.png"
 		}, {
 			"id": 193,
 			"code": "Q73",
@@ -3141,9 +3141,9 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
 				"maxLat": -31.351,
 				"maxLng": 153.91
 			},
-			"imagePath": "/warning/Q73/flood.png"
+			"imagePath": "/Q73/flood.png"
 		}],
-		"imageUrl": "https://cdn2.willyweather.com.au"
+		"imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	},
 	{
 		"code": "IDQ20780",
@@ -3180,7 +3180,7 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
                     "maxLat": -31.351,
                     "maxLng": 153.91
                 },
-                "imagePath": "/warnings/1565989284065.png"
+                "imagePath": "/1565989284065.png"
             }
         ],
 		"warningDataPoints": [{
@@ -3195,7 +3195,7 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
 				"maxLat": -31.351,
 				"maxLng": 153.91
 			},
-			"imagePath": "/warning/Q71/flood.png"
+			"imagePath": "/Q71/flood.png"
 		}, {
 			"id": 193,
 			"code": "Q73",
@@ -3208,9 +3208,9 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
 				"maxLat": -31.351,
 				"maxLng": 153.91
 			},
-			"imagePath": "/warning/Q73/flood.png"
+			"imagePath": "/Q73/flood.png"
 		}],
-		"imageUrl": "https://cdn2.willyweather.com.au"
+		"imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	}
 ]
 ```
