@@ -2317,7 +2317,52 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 		"content": {
 			"text": "IDN28500 Australian Government Bureau of Meteorology New South Wales Severe Weather Warning for heavy rain for people in the Northern Tablelands and North West Slopes & Plains forecast districts. Issued at 3:45 am EDT on Thursday 27 March 2014. HEAVY RAIN FOR PARTS OF NORTHEAST NEW SOUTH WALES Weather Situation A strong high pressure system is centred over the southern Tasman Sea, while a low pressure trough lies across western New South Wales. An extensive cloud band associated with this trough is delivering widespread rain over eastern New South Wales. Heavy rain is forecast for parts of the Northern Tablelands and North West Slopes & Plains forecast districts this afternoon and evening. Locations nearer the Queensland border are more likely to be affected, and flash flooding is possible. The State Emergency Service advises that people should: - Don't drive, ride or walk through flood water. - Keep clear of creeks and storm drains. - If you are trapped by flash flooding, seek refuge in the highest available place and ring 000 if you need rescue. For emergency help in floods and storms, ring your local SES Unit on 132 500. The next warning will be issued by 5:00 am EDT Thursday. This warning is also available through TV and Radio broadcasts; the Bureau's website at www.bom.gov.au or call 1300 659 218. The Bureau and State Emergency Service would appreciate this warning being broadcast regularly. ",
 			"html": ""
-		}
+		},
+	    "warningMapImages": [
+	        {
+	            "code": "1565989284065",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/1565989284065.png"
+	        }
+	    ],
+	    "warningDataPoints": [
+	        {
+	            "id": 191,
+	            "code": "Q71",
+	            "name": "Brisbane, Bremer",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/Q71/flood.png"
+	        },
+	        {
+	            "id": 193,
+	            "code": "Q73",
+	            "name": "Burnett, Kolan, Burrum",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/Q73/flood.png"
+	        }
+	    ],
+	    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	},
 	{
 		"code": "IDQ20032",
@@ -2347,7 +2392,52 @@ https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
 		"content": {
 			"text": " IDQ20032 Bureau of Meteorology Queensland Regional Office TOP PRIORITY FOR IMMEDIATE BROADCAST SEVERE WEATHER WARNING for HEAVY RAINFALL For people in the Wide Bay and Burnett, Darling Downs and Granite Belt, Southeast Coast and parts of the Central Highlands and Coalfields and Maranoa and Warrego Forecast Districts. Issued at 5:02 am Thursday, 27 March 2014. Synoptic Situation: A developing surface trough extends from the central interior into the central Darling Downs. The trough is forecast to drift slowly south during today, before crossing southeastern districts on Friday. A deep moist east to northeast flow will extend from the Coral Sea, across southeastern districts, and into the trough. Rain areas, currently extending through districts to the east of the trough, are expected to develop further in the next 24 hours. Heavy rain, which may lead to flash flooding, is expected to develop during today through the Wide Bay and Burnett, southeastern Central Highlands and Coalfields, the eastern Maranoa and Warrego and the Darling Downs and Granite Belt districts. Heavy rainfall areas are likely to extend to the Southeast Coast district during the afternoon and evening. 24 hour totals of 50 to 150mm are likely, with some isolated heavier falls expected. Locations which may be affected include Gold Coast, Brisbane, Ipswich, Maroochydore, Warwick, Toowoomba, Dalby, Stanthorpe, Goondiwindi, Gympie, Bundaberg, Hervey Bay, Maryborough, Taroom, Kingaroy and St George. Queensland Fire and Emergency Services advises that people should: * Avoid driving, walking or riding through flood waters. * Keep clear of creeks and storm drains. * For emergency assistance contact the SES on 132 500. The next warning is due to be issued by 11:05 am. Warnings are also available through TV and Radio broadcasts, the Bureau's website at www.bom.gov.au or call 1300 659 219. The Bureau and Queensland Fire and Emergency Services would appreciate warnings being broadcast regularly. ",
 			"html": "<code>Some warnings have html content</code>"
-		}
+		},
+	    "warningMapImages": [
+	        {
+	            "code": "1565989284065",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/1565989284065.png"
+	        }
+	    ],
+	    "warningDataPoints": [
+	        {
+	            "id": 191,
+	            "code": "Q71",
+	            "name": "Brisbane, Bremer",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/Q71/flood.png"
+	        },
+	        {
+	            "id": 193,
+	            "code": "Q73",
+	            "name": "Burnett, Kolan, Burrum",
+	            "lat": -33.701,
+	            "lng": 151.21,
+	            "bounds": {
+	                "minLat": -36.051,
+	                "minLng": 148.51,
+	                "maxLat": -31.351,
+	                "maxLng": 153.91
+	            },
+	            "imagePath": "/Q73/flood.png"
+	        }
+	    ],
+	    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 	}
 ]
 ```
@@ -2430,7 +2520,52 @@ https://api.willyweather.com.au/v2/{api key}/warnings/IDQ20870.json
 					<p><strong>Issued at 10:15 am</strong></p>
 					<p>by the Bureau of Meteorology, Brisbane.</p>
 				</div>"
-	}
+	},
+    "warningMapImages": [
+        {
+            "code": "1565989284065",
+            "lat": -33.701,
+            "lng": 151.21,
+            "bounds": {
+                "minLat": -36.051,
+                "minLng": 148.51,
+                "maxLat": -31.351,
+                "maxLng": 153.91
+            },
+            "imagePath": "/1565989284065.png"
+        }
+    ],
+    "warningDataPoints": [
+        {
+            "id": 191,
+            "code": "Q71",
+            "name": "Brisbane, Bremer",
+            "lat": -33.701,
+            "lng": 151.21,
+            "bounds": {
+                "minLat": -36.051,
+                "minLng": 148.51,
+                "maxLat": -31.351,
+                "maxLng": 153.91
+            },
+            "imagePath": "/Q71/flood.png"
+        },
+        {
+            "id": 193,
+            "code": "Q73",
+            "name": "Burnett, Kolan, Burrum",
+            "lat": -33.701,
+            "lng": 151.21,
+            "bounds": {
+                "minLat": -36.051,
+                "minLng": 148.51,
+                "maxLat": -31.351,
+                "maxLng": 153.91
+            },
+            "imagePath": "/Q73/flood.png"
+        }
+    ],
+    "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
 }
 ```
 
@@ -2446,14 +2581,17 @@ Get a Warning object by `code`.
 
 ### Response - Warning Object
 
-Attribute | Type | Values | Description
---------- | ---- | ------ | -----------
-code | string | | a unique identifier, provided by the local weather authority
+Attribute | Type | Values                        | Description
+--------- | ---- |-------------------------------| -----------
+code | string |                               | a unique identifier, provided by the local weather authority
 name | string | 
-issueDateTime | string | | `YYYY-MM-DD HH:MM:SS`
-expireDateTime | string | | `YYYY-MM-DD HH:MM:SS`
-warningType | object | **(see Warning Types)** |
-content | object | **(see Content)** |
+issueDateTime | string |                               | `YYYY-MM-DD HH:MM:SS`
+expireDateTime | string |                               | `YYYY-MM-DD HH:MM:SS`
+warningType | object | | **(see Warning Types)**       |
+content | object | | **(see Content)**             |
+warningMapImages | object | | **(see Warning Map Images)**  |
+warningDataPoints | object | | **(see Warning Data Points)** |
+imageUrl | string | | the root directory path for warning images |
 
 <aside class="notice">
 	<code>issueDateTime</code> and <code>expireDateTime</code> are in <strong>UTC time</strong>.
@@ -2490,6 +2628,43 @@ Attribute | Type | Values | Description
 text | string | |
 html | string | |
 
+### Warning Data Points
+
+Warnings will occasionally come with static images that shows the affected area in the map
+
+Attribute | Type   | Values                | Description                                                         
+--------- |--------|-----------------------|---------------------------------------------------------------------
+id | int    |                       | 
+code | string |                       | a unique identifier, provided by the local weather authority |
+name | string |                       |
+lat | double | center latitude       |
+lng | double | center longitude      |
+bounds | object | | **(see Bounds)**      |
+imagePath | string | | relative path of image, to be appended to imageUrl in main response |
+
+### Warning Map Images
+
+Warnings will occasionally come with dynamic images that shows the affected area in the map
+
+Attribute | Type   | Values           | Description                                                         
+--------- |--------|------------------|---------------------------------------------------------------------
+code | string |                  | a unique identifier, provided by the local weather authority |
+lat | double | center latitude  |
+lng | double | center longitude |
+bounds | object | | **(see Bounds)** |
+imagePath | string | | relative path of image, to be appended to imageUrl in main response |
+
+### Bounds
+
+The bounding box coordinates for the warning images, `min` being the bottom left corner, `max` being the top right corner.
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+minLat | double | |
+minLng | double | |
+maxLat | double | |
+maxLng | double | |
+
 ## Warning - GET - All Warnings By Area
 
 > Example Query String Request 
@@ -2515,58 +2690,148 @@ https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classi
 
 ```json
 [
-	{
-		"code": "IDQ20885",
-		"name": "Queensland flood warning summary",
-		"issueDateTime": "2016-03-26 21:53:44",
-		"expireDateTime": "2016-03-30 00:53:44",
-		"warningType": {
-			"id": 22,
-			"code": "flood-summary",
-			"name": "Flood Summary (state wide)",
-			"classification": "flood",
-			"warningSeverityLevels": [
-				{
-					"id": 1,
-					"code": "yellow"
-				},
-				{
-					"id": 2,
-					"code": "amber"
-				},
-				{
-					"id": 3,
-					"code": "red"
-				}
-			]
-		}	
-	},
-	{
-		"code": "IDQ20780",
-		"name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
-		"issueDateTime": "2016-03-26 21:52:49",
-		"expireDateTime": "2016-03-28 00:52:49",
-		"warningType": {
-			"id": 4,
-			"code": "floods",
-			"name": "Flood",
-			"classification": "flood",
-			"warningSeverityLevels": [
-				{
-					"id": 1,
-					"code": "yellow"
-				},
-				{
-					"id": 2,
-					"code": "amber"
-				},
-				{
-					"id": 3,
-					"code": "red"
-				}
-			]
-		}
-	}
+    {
+        "code": "IDQ20885",
+        "name": "Queensland flood warning summary",
+        "issueDateTime": "2016-03-26 21:53:44",
+        "expireDateTime": "2016-03-30 00:53:44",
+        "warningType": {
+            "id": 22,
+            "code": "flood-summary",
+            "name": "Flood Summary (state wide)",
+            "classification": "flood",
+            "warningSeverityLevels": [
+                {
+                    "id": 1,
+                    "code": "yellow"
+                },
+                {
+                    "id": 2,
+                    "code": "amber"
+                },
+                {
+                    "id": 3,
+                    "code": "red"
+                }
+            ]
+        },
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+        "warningDataPoints": [
+            {
+                "id": 191,
+                "code": "Q71",
+                "name": "Brisbane, Bremer",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q71/flood.png"
+            },
+            {
+                "id": 193,
+                "code": "Q73",
+                "name": "Burnett, Kolan, Burrum",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q73/flood.png"
+            }
+        ],
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+    },
+    {
+        "code": "IDQ20780",
+        "name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
+        "issueDateTime": "2016-03-26 21:52:49",
+        "expireDateTime": "2016-03-28 00:52:49",
+        "warningType": {
+            "id": 4,
+            "code": "floods",
+            "name": "Flood",
+            "classification": "flood",
+            "warningSeverityLevels": [
+                {
+                    "id": 1,
+                    "code": "yellow"
+                },
+                {
+                    "id": 2,
+                    "code": "amber"
+                },
+                {
+                    "id": 3,
+                    "code": "red"
+                }
+            ]
+        },
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+        "warningDataPoints": [
+            {
+                "id": 191,
+                "code": "Q71",
+                "name": "Brisbane, Bremer",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q71/flood.png"
+            },
+            {
+                "id": 193,
+                "code": "Q73",
+                "name": "Burnett, Kolan, Burrum",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q73/flood.png"
+            }
+        ],
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+    }
 ]
 ```
 There are three ways to request Warnings by area.
@@ -2602,6 +2867,445 @@ area | string | `location`, `region`, `state` | | false
 ### Response
 
 An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
+
+
+## Warning - GET - All Warnings By Region
+
+> Example Query String Request
+
+```
+https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classifications=storm,flood&verbose=false
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"classifications": ["storm", "flood"],
+		"verbose": true
+	}
+}
+```
+
+> Example Response
+
+
+```json
+[
+    {
+        "code": "IDQ20885",
+        "name": "Queensland flood warning summary",
+        "issueDateTime": "2016-03-26 21:53:44",
+        "expireDateTime": "2016-03-30 00:53:44",
+        "warningType": {
+            "id": 22,
+            "code": "flood-summary",
+            "name": "Flood Summary (state wide)",
+            "classification": "flood",
+            "warningSeverityLevels": [
+                {
+                    "id": 1,
+                    "code": "yellow"
+                },
+                {
+                    "id": 2,
+                    "code": "amber"
+                },
+                {
+                    "id": 3,
+                    "code": "red"
+                }
+            ]
+        },
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+        "warningDataPoints": [
+            {
+                "id": 191,
+                "code": "Q71",
+                "name": "Brisbane, Bremer",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q71/flood.png"
+            },
+            {
+                "id": 193,
+                "code": "Q73",
+                "name": "Burnett, Kolan, Burrum",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q73/flood.png"
+            }
+        ],
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+    },
+    {
+        "code": "IDQ20780",
+        "name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
+        "issueDateTime": "2016-03-26 21:52:49",
+        "expireDateTime": "2016-03-28 00:52:49",
+        "warningType": {
+            "id": 4,
+            "code": "floods",
+            "name": "Flood",
+            "classification": "flood",
+            "warningSeverityLevels": [
+                {
+                    "id": 1,
+                    "code": "yellow"
+                },
+                {
+                    "id": 2,
+                    "code": "amber"
+                },
+                {
+                    "id": 3,
+                    "code": "red"
+                }
+            ]
+        },
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+        "warningDataPoints": [
+            {
+                "id": 191,
+                "code": "Q71",
+                "name": "Brisbane, Bremer",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q71/flood.png"
+            },
+            {
+                "id": 193,
+                "code": "Q73",
+                "name": "Burnett, Kolan, Burrum",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/Q73/flood.png"
+            }
+        ],
+        "imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+    }
+]
+```
+
+These will return an array of Warnings for a Region, filtered by classification.
+
+### Requests
+
+`GET api.willyweather.com.au/v2/{api key}/regions/{region id}/warnings.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification | false
+verbose | boolean |  | include the content attribute with the response | false
+
+
+### Response
+
+An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
+
+## Warning - GET - All Warnings By State
+
+> Example Query String Request
+
+```
+https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classifications=storm,flood&verbose=false
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"classifications": ["storm", "flood"],
+		"verbose": true
+	}
+}
+```
+> Example Response
+
+```json
+[
+  {
+		"code": "IDQ20885",
+		"name": "Queensland flood warning summary",
+		"issueDateTime": "2016-03-26 21:53:44",
+		"expireDateTime": "2016-03-30 00:53:44",
+		"warningType": {
+			"id": 22,
+			"code": "flood-summary",
+			"name": "Flood Summary (state wide)",
+			"classification": "flood",
+			"warningSeverityLevels": [{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
+		},
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+		"warningDataPoints": [{
+			"id": 191,
+			"code": "Q71",
+			"name": "Brisbane, Bremer",
+			"lat": -33.701,
+			"lng": 151.21,
+			"bounds": {
+				"minLat": -36.051,
+				"minLng": 148.51,
+				"maxLat": -31.351,
+				"maxLng": 153.91
+			},
+			"imagePath": "/Q71/flood.png"
+		}, {
+			"id": 193,
+			"code": "Q73",
+			"name": "Burnett, Kolan, Burrum",
+			"lat": -33.701,
+			"lng": 151.21,
+			"bounds": {
+				"minLat": -36.051,
+				"minLng": 148.51,
+				"maxLat": -31.351,
+				"maxLng": 153.91
+			},
+			"imagePath": "/Q73/flood.png"
+		}],
+		"imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+	},
+	{
+		"code": "IDQ20780",
+		"name": "Flood Warning - Coastal rivers - Maryborough to Gold Coast",
+		"issueDateTime": "2016-03-26 21:52:49",
+		"expireDateTime": "2016-03-28 00:52:49",
+		"warningType": {
+			"id": 4,
+			"code": "floods",
+			"name": "Flood",
+			"classification": "flood",
+			"warningSeverityLevels": [{
+					"id": 1,
+					"code": "yellow"
+				},
+				{
+					"id": 2,
+					"code": "amber"
+				},
+				{
+					"id": 3,
+					"code": "red"
+				}
+			]
+		},
+        "warningMapImages": [
+            {
+                "code": "1565989284065",
+                "lat": -33.701,
+                "lng": 151.21,
+                "bounds": {
+                    "minLat": -36.051,
+                    "minLng": 148.51,
+                    "maxLat": -31.351,
+                    "maxLng": 153.91
+                },
+                "imagePath": "/1565989284065.png"
+            }
+        ],
+		"warningDataPoints": [{
+			"id": 191,
+			"code": "Q71",
+			"name": "Brisbane, Bremer",
+			"lat": -33.701,
+			"lng": 151.21,
+			"bounds": {
+				"minLat": -36.051,
+				"minLng": 148.51,
+				"maxLat": -31.351,
+				"maxLng": 153.91
+			},
+			"imagePath": "/Q71/flood.png"
+		}, {
+			"id": 193,
+			"code": "Q73",
+			"name": "Burnett, Kolan, Burrum",
+			"lat": -33.701,
+			"lng": 151.21,
+			"bounds": {
+				"minLat": -36.051,
+				"minLng": 148.51,
+				"maxLat": -31.351,
+				"maxLng": 153.91
+			},
+			"imagePath": "/Q73/flood.png"
+		}],
+		"imageUrl": "https://cdn2.willyweather.com.au/warnings/"
+	}
+]
+```
+
+These will return an array of Warnings for a State, filtered by classification.
+
+### Requests
+
+`GET api.willyweather.com.au/v2/{api key}/states/{state id}/warnings.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+classifications | csv | `avalanche`, `blizzard`, `closed-water`, `cold`, `cold-rain`, `dust-smoke-pollution`, `earthquake`, `farming`, `fire`, `flood`, `fog`, `frost`, `fruit-disease`, `general`, `hazmat`, `heat`, `hiking`, `hurricane`, `leaf-disease`, `marine`, `road`, `sheep`, `snow`, `storm`, `strong-wind`, `surf`, `tornado`, `tsunami`, `typhoon`, `volcano`, `wind-chill` | the classifications are a fixed list and all new warnings fit an existing classification | false
+verbose | boolean |  | include the content attribute with the response | false
+
+
+### Response
+
+An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
+
+## Warning Summary - GET - All Summary
+
+> Example Query String Request 
+
+```
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings/summary.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+
+```json
+[
+	{
+		"id": 5381,
+		"areaType": "location",
+		"name": "Brisbane",
+		"count": 4
+	},
+	{
+		"id": 16,
+		"areaType": "region",
+		"name": "Brisbane",
+		"count": 4
+	},
+	{
+		"id": 2,
+		"areaType": "state",
+		"name": "Queensland",
+		"count": 7
+	},
+	{
+		"id": 1,
+		"areaType": "nation",
+		"name": "Australia",
+		"count": 12
+	}
+]
+
+```
+
+This will return the number of Active Warnings for a location, region, state, and nation. 
+
+### Requests
+
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings/summary.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+
+### Response - Warning Summary
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | |
+areaType | string | `location`, `region`, `state`, `nation`|
+name | string | |
+count | int | |
+
 
 ## Warning Type - GET - All Warning Types
 
