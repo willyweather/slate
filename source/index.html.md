@@ -2889,6 +2889,9 @@ https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classificat
 }
 ```
 
+> Example Response
+
+
 ```json
 [
     {
@@ -3075,6 +3078,7 @@ https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classificati
 	}
 }
 ```
+> Example Response
 
 ```json
 [
@@ -3234,6 +3238,74 @@ verbose | boolean |  | include the content attribute with the response | false
 ### Response
 
 An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning</a> for a description of a Warning response.
+
+## Warning Summary - GET - All Summary
+
+> Example Query String Request 
+
+```
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings/summary.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+
+```json
+[
+	{
+		"id": 5381,
+		"areaType": "location",
+		"name": "Brisbane",
+		"count": 4
+	},
+	{
+		"id": 16,
+		"areaType": "region",
+		"name": "Brisbane",
+		"count": 4
+	},
+	{
+		"id": 2,
+		"areaType": "state",
+		"name": "Queensland",
+		"count": 7
+	},
+	{
+		"id": 1,
+		"areaType": "nation",
+		"name": "Australia",
+		"count": 12
+	}
+]
+
+```
+
+This will return the number of Active Warnings for a location, region, state, and nation. 
+
+### Requests
+
+`GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings/summary.json`
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+
+### Response - Warning Summary
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | | |
+areaType | string | `location`, `region`, `state`, `nation`|
+name | string | |
+count | int | |
+
 
 ## Warning Type - GET - All Warning Types
 
