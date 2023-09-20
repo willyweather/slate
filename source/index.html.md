@@ -747,6 +747,76 @@ units | csv | See <a href="#units">Units</a>. Only distance can be specified | |
 
 Response is an array of Map Providers. See <a href="#map-provider-get-get-map-providers">Get Map Providers</a> for a description of a Map Provider response.
 
+
+
+## Map Data - GET - Supported Map Data
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/maps/list.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+[
+    {
+        "code": "wind",
+        "name": "Wind"
+    },
+    {
+        "code": "rainfall",
+        "name": "Forecast Precipitation"
+    },
+    {
+        "code": "forecast-regional-radar",
+        "name": "Forecast Radar Rainfall"
+    },
+    {
+        "code": "regional-radar",
+        "name": "Regional Radar Rainfall"
+    },
+    {
+        "code": "satellite",
+        "name": "Satellite"
+    },
+    {
+        "code": "radar",
+        "name": "National Radar Rainfall"
+    },
+    {
+        "code": "synoptic",
+        "name": "Synoptic"
+    },
+    {
+        "code": "cyclone",
+        "name": "Cyclone"
+    }
+]
+```
+
+Get List of Supported Map Data
+
+### Request
+
+`https://api.willyweather.com.au/v2/{api key}/maps/list.json`
+
+
+### Response
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | 
+name | string | | 
+
+
 # Radar Stations
 
 ## Radar Station - GET - Get Radar Station
@@ -8902,6 +8972,143 @@ temperature | object | |
 Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 temperature | double | |
+
+
+
+
+
+## Weather Data - GET - Supported Weather Data
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/weather/list.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+    "observationalGraphs": [
+        {
+            "code": "cloud",
+            "name": "Cloud Real-Time"
+        },
+        {
+            "code": "delta-t",
+            "name": "Delta T Real-Time"
+        },
+        {
+            "code": "dew-point",
+            "name": "Dew Point Real-Time"
+        },
+        {
+            "code": "humidity",
+            "name": "Humidity Real-Time"
+        },
+        {
+            "code": "pressure",
+            "name": "Pressure Real-Time"
+        },
+        {
+            "code": "rainfall",
+            "name": "Rain Today Real-Time"
+        },
+        {
+            "code": "temperature",
+            "name": "Temperature Real-Time"
+        },
+        {
+            "code": "apparent-temperature",
+            "name": "Feels Like Temperature Real-Time"
+        },
+        {
+            "code": "wind",
+            "name": "Wind Real-Time"
+        },
+        {
+            "code": "wind-gust",
+            "name": "Wind Gust Real-Time"
+        },
+        {
+            "code": "river-height",
+            "name": "River Level Real-Time"
+        }
+    ],
+    "forecastGraphs": [
+        {
+            "code": "swell-height",
+            "name": "Swell Height and Direction Forecast"
+        },
+        {
+            "code": "swell-period",
+            "name": "Swell Period Forecast"
+        },
+        {
+            "code": "tides",
+            "name": "Tide Height"
+        },
+        {
+            "code": "uv",
+            "name": "UV Forecast"
+        },
+        {
+            "code": "rainfallprobability",
+            "name": "Rainfall Probability Forecast"
+        },
+        {
+            "code": "temperature",
+            "name": "Temperature Forecast"
+        },
+        {
+            "code": "wind",
+            "name": "Wind Forecast"
+        }
+    ]
+}
+```
+
+Get List of Supported Weather Data
+
+### Request
+
+`https://api.willyweather.com.au/v2/{api key}/weather/list.json`
+
+
+### Response
+
+### Supported Data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+observationalGraphs | object | **see (Summary) below**  | 
+forecastGraphs | object | **see (Summary) below** | 
+
+### Summary
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | 
+name | string | |
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Weather Stations
 
