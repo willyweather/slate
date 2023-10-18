@@ -136,6 +136,162 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
     Request header <code>Content-type: application/json</code> is required.
 </aside>
 
+# Data Config
+
+## Data Config - GET - By Location
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/{location id}/data/config.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+  "mapTypes": [
+    {
+      "code": "wind",
+      "name": "Wind"
+    },
+    {
+      "code": "rainfall",
+      "name": "Forecast Precipitation"
+    },
+    {
+      "code": "forecast-regional-radar",
+      "name": "Forecast Radar Rainfall"
+    },
+    {
+      "code": "regional-radar",
+      "name": "Regional Radar Rainfall"
+    },
+    {
+      "code": "satellite",
+      "name": "Satellite"
+    },
+    {
+      "code": "radar",
+      "name": "National Radar Rainfall"
+    },
+    {
+      "code": "synoptic",
+      "name": "Synoptic"
+    },
+    {
+      "code": "cyclone",
+      "name": "Cyclone"
+    }
+  ],
+  "observationalGraphs": [
+    {
+      "code": "cloud",
+      "name": "Cloud Real-Time"
+    },
+    {
+      "code": "delta-t",
+      "name": "Delta T Real-Time"
+    },
+    {
+      "code": "dew-point",
+      "name": "Dew Point Real-Time"
+    },
+    {
+      "code": "humidity",
+      "name": "Humidity Real-Time"
+    },
+    {
+      "code": "pressure",
+      "name": "Pressure Real-Time"
+    },
+    {
+      "code": "rainfall",
+      "name": "Rain Today Real-Time"
+    },
+    {
+      "code": "temperature",
+      "name": "Temperature Real-Time"
+    },
+    {
+      "code": "apparent-temperature",
+      "name": "Feels Like Temperature Real-Time"
+    },
+    {
+      "code": "wind",
+      "name": "Wind Real-Time"
+    },
+    {
+      "code": "wind-gust",
+      "name": "Wind Gust Real-Time"
+    },
+    {
+      "code": "river-height",
+      "name": "River Level Real-Time"
+    }
+  ],
+  "forecastGraphs": [
+    {
+      "code": "swell-height",
+      "name": "Swell Height and Direction Forecast"
+    },
+    {
+      "code": "swell-period",
+      "name": "Swell Period Forecast"
+    },
+    {
+      "code": "tides",
+      "name": "Tide Height"
+    },
+    {
+      "code": "uv",
+      "name": "UV Forecast"
+    },
+    {
+      "code": "rainfallprobability",
+      "name": "Rainfall Probability Forecast"
+    },
+    {
+      "code": "temperature",
+      "name": "Temperature Forecast"
+    },
+    {
+      "code": "wind",
+      "name": "Wind Forecast"
+    }
+  ]
+}
+```
+
+Get List of Supported Maps and Weather Data
+
+### Request
+
+`https://api.willyweather.com.au/v2/{api key}/locations/1/data/config.json`
+
+### Response
+
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+mapTypes | object | **see (Summary) below**  | 
+observationalGraphs | object | **see (Summary) below**  | 
+forecastGraphs | object | **see (Summary) below** | 
+
+### Summary
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | 
+name | string | |
+
+
 # Locations
 
 ## Location - GET - by Location id
