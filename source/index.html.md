@@ -22,7 +22,7 @@ The private key can be viewed at <a href="/account/api.html">API Admin</a>.
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/info/legal.json?platform=web
+https://api.willyweather.com.au/v2/{api key}/info/legal.json
 ```
 
 > Example Request Header
@@ -55,7 +55,7 @@ Parameter | Type | Options | Required
 platform | string | `web`, `mobile` | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ## Info - GET - By Location Id
@@ -63,7 +63,7 @@ platform | string | `web`, `mobile` | true
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json?platform=iphone&weatherTypes=weather&mapTypes=radar-rainfall&forecastGraphTypes=wind&observationalGraphTypes=temperature&graphKeyTypes=wind
+https://api.willyweather.com.au/v2/{api key}/locations/{location id}/info.json
 ```
 
 > Example Request Header
@@ -133,8 +133,164 @@ Either <code>weatherTypes</code>, <code>mapTypes</code>, <code>forecastGraphType
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
+
+# Data Config
+
+## Data Config - GET - By Location
+
+> Example Query String Request
+
+```shell
+https://api.willyweather.com.au/v2/{api key}/locations/{location id}/data/config.json
+```
+
+> Example Request Header
+
+```json
+{}
+```
+
+> Example Response
+
+```json
+{
+  "mapTypes": [
+    {
+      "code": "wind",
+      "name": "Wind"
+    },
+    {
+      "code": "rainfall",
+      "name": "Forecast Precipitation"
+    },
+    {
+      "code": "forecast-regional-radar",
+      "name": "Forecast Radar Rainfall"
+    },
+    {
+      "code": "regional-radar",
+      "name": "Regional Radar Rainfall"
+    },
+    {
+      "code": "satellite",
+      "name": "Satellite"
+    },
+    {
+      "code": "radar",
+      "name": "National Radar Rainfall"
+    },
+    {
+      "code": "synoptic",
+      "name": "Synoptic"
+    },
+    {
+      "code": "cyclone",
+      "name": "Cyclone"
+    }
+  ],
+  "observationalGraphs": [
+    {
+      "code": "cloud",
+      "name": "Cloud Real-Time"
+    },
+    {
+      "code": "delta-t",
+      "name": "Delta T Real-Time"
+    },
+    {
+      "code": "dew-point",
+      "name": "Dew Point Real-Time"
+    },
+    {
+      "code": "humidity",
+      "name": "Humidity Real-Time"
+    },
+    {
+      "code": "pressure",
+      "name": "Pressure Real-Time"
+    },
+    {
+      "code": "rainfall",
+      "name": "Rain Today Real-Time"
+    },
+    {
+      "code": "temperature",
+      "name": "Temperature Real-Time"
+    },
+    {
+      "code": "apparent-temperature",
+      "name": "Feels Like Temperature Real-Time"
+    },
+    {
+      "code": "wind",
+      "name": "Wind Real-Time"
+    },
+    {
+      "code": "wind-gust",
+      "name": "Wind Gust Real-Time"
+    },
+    {
+      "code": "river-height",
+      "name": "River Level Real-Time"
+    }
+  ],
+  "forecastGraphs": [
+    {
+      "code": "swell-height",
+      "name": "Swell Height and Direction Forecast"
+    },
+    {
+      "code": "swell-period",
+      "name": "Swell Period Forecast"
+    },
+    {
+      "code": "tides",
+      "name": "Tide Height"
+    },
+    {
+      "code": "uv",
+      "name": "UV Forecast"
+    },
+    {
+      "code": "rainfallprobability",
+      "name": "Rainfall Probability Forecast"
+    },
+    {
+      "code": "temperature",
+      "name": "Temperature Forecast"
+    },
+    {
+      "code": "wind",
+      "name": "Wind Forecast"
+    }
+  ]
+}
+```
+
+Get List of Supported Maps and Weather Data
+
+### Request
+
+`https://api.willyweather.com.au/v2/{api key}/locations/1/data/config.json`
+
+### Response
+
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+mapTypes | object | **see (Summary) below**  | 
+observationalGraphs | object | **see (Summary) below**  | 
+forecastGraphs | object | **see (Summary) below** | 
+
+### Summary
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+code | string | | 
+name | string | |
+
 
 # Locations
 
@@ -182,10 +338,6 @@ id | int |  | true
 Note - get a Location <code>id</code> using the <a href="#search">Search</a> endpoint.
 </aside>
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
 ### Response
 
 Response is a Location.
@@ -224,7 +376,7 @@ swell | 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 24, 25
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps.json?mapTypes=forecast-regional-radar&lat=-25.97&lng=133.91&verbose=true&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/maps.json
 ```
 > Example Request Header
 
@@ -338,7 +490,7 @@ When <code>lat</code> and <code>lng</code> are provided the returned Map Provide
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response 
@@ -489,7 +641,7 @@ meta | string | `name`, `text`, `date` | the meta value provides information whi
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/maps/4.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/maps/4.json
 ```
 
 > Example Request Header
@@ -610,7 +762,7 @@ limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -622,7 +774,7 @@ Response is a Map Provider. See <a href="#map-provider-get-get-map-providers">Ge
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json?mapTypes=regional-radar&offset=-60&limit=30&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/locations/2919/maps.json
 ```
 
 > Example Request Header
@@ -740,7 +892,7 @@ limit | int | | minutes that overlay images should end at | false
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -806,7 +958,7 @@ timeZone | string | |
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json
 ```
 
 > Example Request Header
@@ -855,7 +1007,7 @@ lng | float | | | true
 units | csv | See <a href="#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -883,7 +1035,7 @@ units | object | | includes unit of measurement for distance
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json
 ```
 
 > Example Request Header
@@ -1048,7 +1200,7 @@ forecastGraphs | array | Only `rainfall` can be specified | | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -1154,7 +1306,7 @@ units | object | | includes unit of measurement for distance
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?forecastGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json
 ```
 
 > Example Request Header
@@ -1319,7 +1471,7 @@ forecastGraphs | array | Only `rainfall` can be specified | | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -1331,7 +1483,7 @@ Response is a Radar Station and an array of Forecast graphs. See <a href="#graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
+https://api.willyweather.com.au/v2/{api key}/radar-stations/{id}.json
 ```
 
 > Example Request Header
@@ -1496,7 +1648,7 @@ observationalGraphs | array | Only `rainfall` can be specified | | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -1602,7 +1754,7 @@ units | object | | includes unit of measurement for distance
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/radar-stations.json?observationalGraphs=rainfall&lat=-32.25914030013808&lng=116.53787876954023&units=distance:miles
+https://api.willyweather.com.au/v2/{api key}/radar-stations.json
 ```
 
 > Example Request Header
@@ -1767,7 +1919,7 @@ observationalGraphs | array | Only `rainfall` can be specified | | false
 units | csv | See <a href="/#units">Units</a>. Only distance can be specified | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -1806,10 +1958,6 @@ Returns the details of a single Region.
 
 ### Request
 `GET api.willyweather.com.au/api/v2/regions/{region id}.json`
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 ### Response
 Response is a Region.
@@ -1871,10 +2019,6 @@ Returns the details of all Regions.
 ### Request
 `GET api.willyweather.com.au/api/v2/regions.json`
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
 ### Response
 Response is an array of Regions. See <a href="#region-get-by-region-id">Get Region</a> for a description of a Region response.
 
@@ -1914,9 +2058,6 @@ Returns all Regions within a State.
 ### Response
 Response is an array of Regions. See <a href="#region-get-by-region-id">Get Region</a> for a description of a Region response.
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 # Search
 
@@ -1925,7 +2066,7 @@ Response is an array of Regions. See <a href="#region-get-by-region-id">Get Regi
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search.json?query=beach&limit=2
+https://api.willyweather.com.au/v2/{api key}/search.json
 ```
 
 > Example Request Header
@@ -1981,7 +2122,7 @@ query | string | | location name or postcode | true
 limit | int | `1` - `50` | limit the number of locations in response (default 25) | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -1993,7 +2134,7 @@ Response is an array of Locations. See <a href="#location-get-by-location-id">Lo
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search.json?lat=-33.89&lng=151.27&range=5&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/search.json
 ```
 
 > Example Request Header
@@ -2053,7 +2194,7 @@ units | csv | See <a href="/#units">Units</a>. Only distance can be specified | 
     Parameter <code>range</code> unit conversion is based on the distance unit specified in the <code>units</code> parameter</strong>.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -2065,7 +2206,7 @@ A single Location and units. See <a href="#location-get-by-location-id">Location
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/search/closest.json?id=4988&weatherTypes=swell,tides,general&units=distance:km
+https://api.willyweather.com.au/v2/{api key}/search/closest.json
 ```
 
 > Example Request Header
@@ -2156,7 +2297,7 @@ units | csv | See <a href="#units">Units</a>. Only distance can be specified | |
 weatherTypes | csv | general, tides, swell | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -2195,9 +2336,6 @@ Returns the details of a single State.
 ### Request
 `GET api.willyweather.com.au/api/v2/states/{state id}.json`
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 ### Response
 Response is a State.
@@ -2256,9 +2394,6 @@ Returns the details of all States.
 ### Request
 `GET api.willyweather.com.au/api/v2/states.json`
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 ### Response
 Response is an array of States. See <a href="#state-get-by-state-id">Get State</a> for description of a State response.
@@ -2270,7 +2405,7 @@ Response is an array of States. See <a href="#state-get-by-state-id">Get State</
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/warnings.json?classifications=storm
+https://api.willyweather.com.au/v2/{api key}/warnings.json
 ```
 
 > Example Request Header
@@ -2458,7 +2593,7 @@ verbose | boolean |  | include the content attribute with the response | false
 </aside>
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -2575,9 +2710,6 @@ Get a Warning object by `code`.
 
 `GET api.willyweather.com.au/v2/{api key}/warnings/{warning code}.json`
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 ### Response - Warning Object
 
@@ -2670,7 +2802,7 @@ maxLng | double | |
 > Example Query String Request 
 
 ```
-https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json?classifications=storm,flood&area=location&verbose=false
+https://api.willyweather.com.au/v2/{api key}/locations/5381/warnings.json
 ```
 
 > Example Request Header
@@ -2851,7 +2983,7 @@ These will all return an array of Warnings, filtered by classification.
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 Parameter | Type | Options | Description | Required
@@ -2874,7 +3006,7 @@ An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning<
 > Example Query String Request
 
 ```
-https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json?classifications=storm,flood&verbose=false
+https://api.willyweather.com.au/v2/{api key}/regions/1/warnings.json
 ```
 
 > Example Request Header
@@ -3046,7 +3178,7 @@ These will return an array of Warnings for a Region, filtered by classification.
 `GET api.willyweather.com.au/v2/{api key}/regions/{region id}/warnings.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 Parameter | Type | Options | Description | Required
@@ -3064,7 +3196,7 @@ An array of Warning objects, see <a href="#warning-get-by-warning-code">Warning<
 > Example Query String Request
 
 ```
-https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json?classifications=storm,flood&verbose=false
+https://api.willyweather.com.au/v2/{api key}/states/1/warnings.json
 ```
 
 > Example Request Header
@@ -3226,7 +3358,7 @@ These will return an array of Warnings for a State, filtered by classification.
 `GET api.willyweather.com.au/v2/{api key}/states/{state id}/warnings.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 Parameter | Type | Options | Description | Required
@@ -3291,10 +3423,6 @@ This will return the number of Active Warnings for a location, region, state, an
 ### Requests
 
 `GET api.willyweather.com.au/v2/{api key}/locations/{location id}/warnings/summary.json`
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 
 ### Response - Warning Summary
@@ -3854,9 +3982,6 @@ Returns all warnings types.
 
 `GET api.willyweather.com.au/v2/{api key}/warning-types.json`
 
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
 
 ### Response
 
@@ -3919,7 +4044,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 
@@ -3930,7 +4055,7 @@ A forecast response consists of an object for each `weatherType` requested. Each
 > Example Large Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather,wind&forecastGraphs=temperature,precis&observationalGraphs=pressure,temperature&observational=true&regionPrecis=true&days=1&startDate=2016-03-26
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Response (without content)
@@ -3961,7 +4086,7 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecas
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=moonphases&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4101,7 +4226,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=precis&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4179,7 +4304,7 @@ night | boolean | |
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfall&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Body
@@ -4269,7 +4394,7 @@ The daily probabilty for rainfall will not align with the probability included i
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=rainfallprobability&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4363,7 +4488,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=sunrisesunset&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4451,7 +4576,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=swell&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -4561,7 +4686,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=temperature&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4656,7 +4781,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecasts=tides&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -4761,7 +4886,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=uv&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4877,7 +5002,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=weather&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -4963,7 +5088,7 @@ max | int | | maximum daily temperature
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json?forecasts=wind&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 ```
 
 > Example Request Header
@@ -5068,7 +5193,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=precis&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -5192,7 +5317,7 @@ night | boolean | | used to show a moon instead of a sun in icons
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=rainfallprobability&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -5353,7 +5478,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=sunrisesunset&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -5488,7 +5613,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-height&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -5699,7 +5824,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=swell-period&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -5874,7 +5999,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=temperature&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6040,7 +6165,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=tides&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6235,7 +6360,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=uv&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6399,7 +6524,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?forecastGraphs=wind&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6605,7 +6730,7 @@ start | int | | The index of the start of the current forecast
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=apparent-temperature&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6782,7 +6907,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=cloud&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -6957,7 +7082,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=delta-t&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -7132,7 +7257,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=dew-point&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -7309,7 +7434,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=humidity&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -7486,7 +7611,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=pressure&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -7661,7 +7786,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=rainfall&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -7836,7 +7961,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=temperature&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -8011,7 +8136,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -8229,7 +8354,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observationalGraphs=wind-gust&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -8437,7 +8562,7 @@ Observational provides real time data from one or more weather stations.
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?observational=true&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -8665,7 +8790,7 @@ distance | string | | the distance from the Station to the Location
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json?regionPrecis=true&days=1&startDate=2014-03-27
+https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 ```
 
 > Example Request Header
@@ -8753,7 +8878,7 @@ precis | string | | long text weather description
 > Example Query String Request
 
 ```shell
-https://api.willyweather.com.au/v2/{api key}/weather/summaries.json?ids=16
+https://api.willyweather.com.au/v2/{api key}/weather/summaries.json
 ```
 
 > Example Request Header
@@ -8839,7 +8964,7 @@ ids | csv |  | list of location ids | true
 units | csv | See <a href="/#units">Units</a>. | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -10956,7 +11081,7 @@ start | int | | The index of the start of the current observational graph
 > Example Query String Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json?units=distance:miles
+api.willyweather.com.au/v2/{api key}/locations/{location id}/weather-stations.json
 ```
 
 > Example Request Header
@@ -11209,7 +11334,7 @@ Parameter | Type | Options | Description | Required
 distance | string | `km`, `miles `| unit of measurement | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -11231,12 +11356,232 @@ lng | double |  |
 distance | double |  | distance of provider from location 
 units | object |  | includes unit of measurement for distance 
 
+## Graph - GET - Observational Graphs - Wind
+
+> Example Query String Request
+
+```shell
+api.willyweather.com.au/v2/{api key}/weather-stations/257.json
+```
+
+> Example Request Header
+
+```json
+{
+	"CONTENT_TYPE": "application/json",
+	"HTTP_X_PAYLOAD": {
+		"observationalGraphs": ["wind"],
+		"startDate": "2010-10-10"
+	}
+}
+```
+
+> Example Response
+
+```json
+{
+	"observationalGraphs": {
+		"wind": {
+			"dataConfig": {
+				"series": {
+					"config": {
+						"id": "wind",
+						"color": "#0094F8",
+						"lineWidth": 2,
+						"lineFill": false,
+						"lineRenderer": "StraightLineRenderer",
+						"showPoints": true,
+						"pointRenderer": "ArrowPointRenderer",
+						"pointFormatter": "DirectionPointFormatter"
+					},
+					"yAxisDataMin": 7.4,
+					"yAxisDataMax": 16.7,
+					"yAxisMin": 0,
+					"yAxisMax": 80,
+					"groups": [
+						{
+							"dateTime": 1395878400,
+							"points": [
+								{
+									"x": 1395880200,
+									"y": 7.4,
+									"direction": 120,
+									"directionText": "ESE",
+									"description": "light",
+									"pointStyle": {
+										"fill": "#d1ef51",
+										"stroke": "#7d8f30"
+									}
+								},
+								{
+									"x": 1395891000,
+									"y": 13,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								},
+								{
+									"x": 1395892800,
+									"y": 16.7,
+									"direction": 110,
+									"directionText": "ESE",
+									"description": "gentle",
+									"pointStyle": {
+										"fill": "#a5de37",
+										"stroke": "#638521"
+									}
+								}
+							]
+						}
+					],
+					"controlPoints": {
+                        "pre": {
+                            "x": 1395878100,
+                            "y": 45
+                        },
+                        "post": null
+                    }
+				},
+				"xAxisMin": 1395878400,
+				"xAxisMax": 1396051199
+			},
+			"units": {
+                "speed": "km/h"
+            },
+			"provider": {
+				"id": 349,
+				"name": "Sydney (Observatory Hill)",
+				"lat": -33.86,
+				"lng": 151.21,
+				"distance": 4.3,
+				"unit": {
+					"distance": "miles"
+				}
+			},
+			"carousel": {
+				"size": 1,
+				"start": 1
+			}
+		}
+	}
+}
+```
+
+### Request
+
+`GET api.willyweather.com.au/v2/{api key}/weather-stations/{weather station id}.json`
+
+Parameter | Type | Options | Description | Required
+--------- | ---- | ------- | ----------- | --------
+days | int |  | max days returned | false
+observationalGraphs | csv |  |  | true
+units | string | See <a href="#units">Units</a>. |  | false
+startDate | string |  | This is used with conjunction with the `days` parameter, when both are added the result will be the _end date_, the startdate and the _end date_ will be the range to filter out the entries. | false
+
+<aside class="notice">
+    <code>days = 1</code> by default.
+</aside>
+<aside class="notice">
+    <code>startDate</code> is current date by default.
+</aside>
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required.
+</aside>
+
+### Data Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+series | object ||  **(see below)**
+xAxisMin | int | | start time of the graph period
+xAxisMax | int| | end time of the graph period
+
+### Provider
+
+The station used to gather this data
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | int | |
+name | string | |
+lat | double | |
+lng | double | |
+distance | double | | distance of provider from location
+units | object | | includes unit of measurement for distance
+
+### Series
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+config | object | | **(see below)**
+yAxisDataMin | int | | the smallest y value
+yAxisDataMax | int | | the largest y value
+yAxisMin | int | | the smallest y value with graph padding
+yAxisMax | int | | the largest y value with graph padding
+groups | object | | **(see below)**
+controlPoints | object | | **(see below)**
+
+### Config
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+id | string | `wind` |
+color | string | | hexadecimal colour code
+lineWidth | int | | recommended line width in points
+lineFill | boolean | `false` | whether the area under the graph should have a fill or not
+lineRenderer | string | `StraightLineRenderer` |
+showPoints | boolean | `false` | whether to show data points or just display a line
+pointRenderer | string |` ArrowPointRenderer` |
+pointFormatter | string |` DirectionPointFormatter` |
+
+### Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+dateTime | string | | `YYYY-MM-DD HH:MM:SS`
+points | array | | array of `point` objects **(see below)**
+
+### Point
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+x | int | | time value
+y | double | | speed
+direction | double | `0` - `360` | degrees, clockwise from North (0). describes the direction the swell originates from
+directionText | string | `N`, `NNE`, `NE`, `ENE`, `E`, `ESE`, `SE`, `SSE`, `S`, `SSW`, `SW`, `WSW`, `W`, `WNW`, `NW`, `NNW` | cardinal direction text
+description | string | `glassy`, `smooth`, `slight`, `moderate`, `rough`, `very-rough`, `high`, `very-high`, `phenomenal` |
+pointStyle | object | | **(see Point Style below)**
+
+### Point Style
+
+Colour descriptions
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+fill | string | | hexadecimal colour code
+stroke | string | | hexadecimal colour code
+
+### Control Points
+
+Control points sit before and after the graph to allow you to plot the lines right to the edge of the graph (using the control points as references outside the view area). They are identical to a Point.
+
+### Carousel
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+size | int | | The total number of available days of data
+start | int | | The index of the start of the current observational graph
+
 ## Graph - GET - River Station Graphs - River Height
 
 > Example Query String Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/river-stations/257.json?riverStationGraphs=river-height&startDate=2014-03-27
+api.willyweather.com.au/v2/{api key}/river-stations/257.json
 ```
 
 > Example Request Header
@@ -11358,7 +11703,7 @@ startDate | string |  | This is used with conjunction with the `days` parameter,
     <code>startDate</code> is current date by default.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Data Config
@@ -11441,7 +11786,7 @@ start | int | | The index of the start of the current river station graph
 > Example Query String Request
 
 ```shell
-api.willyweather.com.au/v2/{api key}/locations/{location id}/river-stations.json?units=distance:miles
+api.willyweather.com.au/v2/{api key}/locations/{location id}/river-stations.json
 ```
 
 > Example Request Header
@@ -11496,7 +11841,7 @@ Parameter | Type | Options | Description | Required
 distance | string | `km`, `miles `| unit of measurement | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -11572,7 +11917,7 @@ Returns the account associated to the uid.
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -11927,7 +12272,7 @@ email | string | | | true
 password | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -12362,7 +12707,7 @@ Returns the list of account's devices
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/devices.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response - Device Object
@@ -12431,7 +12776,7 @@ lng | float | | the exact coordinates of a device | false
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -12482,7 +12827,7 @@ lng | float | | the exact coordinates of a device | false
     Providing <code>lat</code> requires <code>lng</code> parameter and vice versa.
 </aside>
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -12533,7 +12878,7 @@ Returns the list of account's locations.
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/locations.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -12581,7 +12926,7 @@ Parameter | Type | Options | Description | Required
 id | int | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -12972,7 +13317,7 @@ Parameter | Type | Options | Description | Required
 id | int | `1`, `2`, `3`, `4`, `5` | `1` for email <br/> `2` for sms <br/> `3` for ios <br/> `4` for android <br/> `5` for webhook | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response - Notification object
@@ -15149,7 +15494,7 @@ Parameter | Type | Options | Description | Required
 uid | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -15291,7 +15636,7 @@ Updates a notification. Only for alert.
 See <a href="#notification-post-create">Notifications Create</a> for Request Parameters.
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -15345,7 +15690,7 @@ Parameter | Type | Options | Description | Required
 uid | string | | | true
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -18452,7 +18797,7 @@ Returns the list of account's prefered units.
 `GET api.willyweather.com.au/v2/{api key}/accounts/{account uid}/units.json`
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
@@ -18510,7 +18855,7 @@ pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | | false
 cloud | string | `oktas` | | false
 
 <aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+    Request header <code>Content-type: application/json</code> is required.
 </aside>
 
 ### Response
