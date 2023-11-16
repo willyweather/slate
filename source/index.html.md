@@ -19199,7 +19199,7 @@ $(document).ready(function() {
 	$(window).on('load', function() {
 		if (params.dev !== "true") {
 			// remove in accounts in the left panel
-			$('#tocify-header12').remove();
+			$('.tocify-item[data-unique="accounts"]').parent('.tocify-header').remove();
 
 			// remove in accounts in middle panel
 			var indexStart = $('.content [data-unique="accounts"]').index(); // start element to remove
