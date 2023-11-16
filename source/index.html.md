@@ -19020,6 +19020,79 @@ sandbox | boolean | | If true the endpoint will call the sandbox url instead of 
     Refer to https://developer.apple.com/documentation/appstorereceipts/responsebody
 </aside>
 
+# Units
+
+> Example Query String Request
+
+```shell
+?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa,cloud:oktas,riverHeight:m
+```
+
+> Example Request Header
+
+```json
+{
+  "CONTENT_TYPE": "application/json",
+  "HTTP_X_PAYLOAD": {
+    "units": {
+      "amount": "mm",
+      "distance": "km",
+      "speed": "knots",
+      "swellHeight": "ft",
+      "temperature": "c",
+            "tideHeight": "ft",
+            "riverHeight": "ft",
+      "pressure": "hpa",
+            "cloud": "oktas"
+    }
+  }
+}
+```
+
+> Example Response
+
+```json
+{
+    "units": {
+        "amount": "mm",
+        "distance": "km",
+        "speed": "knots",
+        "swellHeight": "ft",
+        "temperature": "c",
+        "tideHeight": "ft",
+        "pressure": "hpa",
+        "cloud":"oktas",
+        "riverHeight":"m"
+
+    }
+}
+```
+
+The Units parameter allows the data to be converted to a specific unit. The format of the preferred units will form part of the query string.
+
+### Request
+
+
+`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa,cloud:oktas`
+
+
+<aside class="notice">
+    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
+</aside>
+
+### Response
+Attribute | Type | Values | Description
+--------- | ---- | ------- | -----------
+amount | string | `mm`, `pts`, `in` | millimetres, points, inches
+distance | string | `km`, `miles` | kilometers, miles
+speed | string | `km/h`, `mph`, `m/s`, `knots` | kilometers per hour, miles per hour, meters per second, knots
+swellHeight | string | `m`, `ft` | meters, feet
+temperature | string | `c`, `f` | celsius, fahrenheit
+tideHeight | string | `m`, `ft` | meters, feet
+riverHeight | string | `m`, `ft` | meters, feet
+pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
+cloud | string | `oktas` | oktas
+
 ## Units - GET - All units by Account uid
 
 > Example Request Header
@@ -19117,79 +19190,6 @@ cloud | string | `oktas` | | false
 
 Response is an empty object.
 
-# Units
-
-> Example Query String Request
-
-```shell
-?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,pressure:hpa,cloud:oktas,riverHeight:m
-```
-
-> Example Request Header
-
-```json
-{
-	"CONTENT_TYPE": "application/json",
-	"HTTP_X_PAYLOAD": {
-		"units": {
-			"amount": "mm",
-			"distance": "km",
-			"speed": "knots",
-			"swellHeight": "ft",
-			"temperature": "c",
-            "tideHeight": "ft",
-            "riverHeight": "ft",
-			"pressure": "hpa",
-            "cloud": "oktas"
-		}
-	}
-}
-```
-
-> Example Response
-
-```json
-{
-    "units": {
-        "amount": "mm",
-        "distance": "km",
-        "speed": "knots",
-        "swellHeight": "ft",
-        "temperature": "c",
-        "tideHeight": "ft",
-        "pressure": "hpa",
-        "cloud":"oktas",
-        "riverHeight":"m"
-
-    }
-}
-```
-
-The Units parameter allows the data to be converted to a specific unit. The format of the preferred units will form part of the query string.
-
-### Request
-
-
-`GET ?units=amount:mm,distance:km,speed:knots,swellHeight:ft,temperature:f,tideHeight:m,riverHeight:m,pressure:hpa,cloud:oktas`
-
-
-<aside class="notice">
-    Request header <code>Content-type: application/json</code> is required when passing parameters via <strong>Request Header</strong>.
-</aside>
-
-### Response
-Attribute | Type | Values | Description
---------- | ---- | ------- | -----------
-amount | string | `mm`, `pts`, `in` | millimetres, points, inches
-distance | string | `km`, `miles` | kilometers, miles
-speed | string | `km/h`, `mph`, `m/s`, `knots` | kilometers per hour, miles per hour, meters per second, knots
-swellHeight | string | `m`, `ft` | meters, feet
-temperature | string | `c`, `f` | celsius, fahrenheit
-tideHeight | string | `m`, `ft` | meters, feet
-riverHeight | string | `m`, `ft` | meters, feet
-pressure | string | `hpa`, `mmhg`, `inhg`, `psi`, `millibars` | hectopascal, millimeters of mercury, inch of mercury, pounds per square inch, millibars
-cloud | string | `oktas` | oktas
-
 <script>
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
@@ -19198,10 +19198,10 @@ const params = Object.fromEntries(urlSearchParams.entries());
 $(document).ready(function() {
 	$(window).on('load', function() {
 		if (params.dev !== "true") {
-			// remove in left panel
-			$('#tocify-header11').remove();
+			// remove in accounts in the left panel
+			$('.tocify-item[data-unique="accounts"]').parent('.tocify-header').remove();
 
-			// remove in middle panel
+			// remove in accounts in middle panel
 			var indexStart = $('.content [data-unique="accounts"]').index(); // start element to remove
 			var indexEnd = $('.content [data-unique="units"]').index(); // end element remove (but do not remove this element)
 			$(".content").children().slice(indexStart, indexEnd).remove();
