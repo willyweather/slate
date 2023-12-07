@@ -16688,6 +16688,7 @@ Id | Message Type Text
       "localForecastDateTime": "2023-08-23 15:04:00",
       "metadata": "Frame 1, Timestamp: 2023-08-23 15:04:00, Intensity: no-rain(0), Blob: small-blob(0), Blob Rain Mass: none, Type: actual<br>Current Time : 2023-08-23 16:04:19",
       "messageTypeToRuleLogsMap": null,
+      "ruleLogGroups": [],
       "isMatchingDataPoint": false,
       "timestamp": "1692767040000"
     }, {
@@ -16783,6 +16784,92 @@ Id | Message Type Text
           }]
         }]
       },
+      "ruleLogGroups": [
+        {
+          "messageType": "Imminent",
+          "ruleLogList": [
+            {
+              "rule": "Notification Status Rule",
+              "result": true,
+              "description": "Notification status is enabled",
+              "conditions": [{
+                "left": {
+                  "name": "Actual Notification Status",
+                  "value": "enabled"
+                },
+                "operator": "EQUAL",
+                "right": {
+                  "name": "Expected",
+                  "value": "enabled"
+                },
+                "result": true
+              }]
+            }
+          ]
+        }, {
+          "messageType": "Imminent With Prior Heads Up",
+          "ruleLogList": [
+            {
+              "rule": "Notification Status Rule",
+              "result": true,
+              "description": "Notification status is enabled",
+              "conditions": [{
+                "left": {
+                  "name": "Actual Notification Status",
+                  "value": "enabled"
+                },
+                "operator": "EQUAL",
+                "right": {
+                  "name": "Expected",
+                  "value": "enabled"
+                },
+                "result": true
+              }]
+            }
+          ]
+        }, {
+          "messageType": "Rain Cleared In X Minutes",
+          "ruleLogList": [
+            {
+              "rule": "Current Rain Status Rule",
+              "result": false,
+              "conditions": [{
+                "left": {
+                  "name": "Frame 8 intensity",
+                  "value": "no-rain"
+                },
+                "operator": "NOT_EQUAL",
+                "right": {
+                  "name": "Intensity",
+                  "value": "no-rain"
+                },
+                "result": false
+              }]
+            }
+          ]
+        }, {
+          "messageType": "Heads Up",
+          "ruleLogList": [
+            {
+              "rule": "Notification Status Rule",
+              "result": true,
+              "description": "Notification status is enabled",
+              "conditions": [{
+                "left": {
+                  "name": "Actual Notification Status",
+                  "value": "enabled"
+                },
+                "operator": "EQUAL",
+                "right": {
+                  "name": "Expected",
+                  "value": "enabled"
+                },
+                "result": true
+              }]
+            }
+          ]
+        }
+      ],
       "isMatchingDataPoint": false,
       "timestamp": "1692770490000"
     }],
@@ -16848,10 +16935,13 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 radarDataPoint | object | | **(See Data Point Logs - Radar Data Point)**
 localForecastDateTime | string | | `YYYY-MM-DD HH:MM:SS`
-metadata | string | | description
+metadata | string | | description1
 messageTypeToRuleLogsMap | object | | can be `null`. **(See Data Point Logs - Message Type To Rule Logs Map)**
+ruleLogGroups | array | | array of Rule Log Groups. **(See Data Point Logs - Rule Log Groups )**
 isMatchingDataPoint | boolean | | 
 timestamp | float | | This value is the same as **Map Provider - Overlay - datetime** but in timestamp
+
+<aside class="notice">Note: <strong>messageTypeToRuleLogsMap</strong> is <i>deprecated</i>. Refer to <strong>ruleLogGroups</strong> instead.</aside>
 
 ### Response - Data Point Logs - Radar Data Point
 
@@ -16927,6 +17017,13 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 name | string | | description
 value | string | |
+
+### Response - Data Point Logs - Rule Log Groups
+
+Attribute | Type | Values | Description
+--------- | ---- | ------ | -----------
+messageType | string | `Heads Up`, `Imminent With Prior Heads Up`, `Imminent`, `Cancellation`, `Recap Message`, `Rain Arrived With Prior Heads Up`, `Rain Arrived`, `Device Outside Radar`, `Device Inside Radar`, `Rain Cleared`, `Rain Cleared In X Minutes` | **(See <a href="#message-type">Message Type Texts</a>)**
+ruleLogList | array | | **(See Response - Data Point Logs - Message Type To Rule Log)**
 
 ### Response - Log Info
 
