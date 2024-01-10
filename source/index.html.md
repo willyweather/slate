@@ -8842,8 +8842,20 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
         "dateTime": "2014-03-27 00:00:00",
         "entries": [
           {
-            "dateTime": "2014-03-27 00:00:00",
-            "precis": "Wind will be Westerly 15 to 20 knots, reaching up to 25 knots offshore in the late evening. Seas below 1 metre, increasing to 1 to 1.5 metres during the morning. 1st Swell Southeasterly 2 to 2.5 metres, tending southerly 1.5 to 2 metres during the morning. Weather will be Sunny. "
+            "description": "Easterly 10 to 15 knots decreasing to about 10 knots in the evening.",
+            "title": "Wind"
+          },
+          {
+            "description": "Around 1 metre.",
+            "title": "Seas"
+          },
+          {
+            "description": "Easterly below 1 metre.",
+            "title": "1st Swell"
+          },
+          {
+            "description": "Partly cloudy. 50% chance of showers. The chance of a thunderstorm offshore south of Cape Wessel.",
+            "title": "Weather"
           }
         ]
       }
