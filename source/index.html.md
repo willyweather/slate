@@ -4077,7 +4077,8 @@ https://api.willyweather.com.au/v2/{api key}/locations/1215/weather.json
 		"temperature": {}
 	},
     "regionPrecis": {},
-    "marineRegionPrecis": {}
+    "marineRegionPrecis": {},
+    "fireRegionPrecis": {}
 }
 ```
 
@@ -8810,33 +8811,33 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
 
 ```json
 {
-	"location": {
-        "id": 4988,
-        "name": "Bondi Beach",
-        "region": "Sydney",
-        "state": "NSW",
-        "postcode": "2026",
-        "timeZone": "Australia/Sydney",
-        "lat": -33.89054,
-        "lng": 151.27486,
-        "typeId": 2
-    },
-	"regionPrecis": {
-		"days": [
-			{
-				"dateTime": "2014-03-27 00:00:00",
-				"entries": [
-					{
-						"dateTime": "2014-03-27 00:00:00",
-						"precis": "Cloudy. Areas of rain. Winds northeasterly 15 to 25 km/h."
-					}
-				]
-			}
-		],
-		"issueDateTime": "2014-03-27 08:48:11",
-		"name": "Sydney Area"
-	},
-    "marineRegionPrecis": {
+  "location": {
+    "id": 4988,
+    "name": "Bondi Beach",
+    "region": "Sydney",
+    "state": "NSW",
+    "postcode": "2026",
+    "timeZone": "Australia/Sydney",
+    "lat": -33.89054,
+    "lng": 151.27486,
+    "typeId": 2
+  },
+  "regionPrecis": {
+    "days": [
+      {
+        "dateTime": "2014-03-27 00:00:00",
+        "entries": [
+          {
+            "dateTime": "2014-03-27 00:00:00",
+            "precis": "Cloudy. Areas of rain. Winds northeasterly 15 to 25 km/h."
+          }
+        ]
+      }
+    ],
+    "issueDateTime": "2014-03-27 08:48:11",
+    "name": "Sydney Area"
+  },
+  "marineRegionPrecis": {
     "days": [
       {
         "dateTime": "2014-03-27 00:00:00",
@@ -8862,7 +8863,25 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
     ],
     "issueDateTime": "2014-03-27 08:48:11",
     "name": "West Victoria Coastal Waters Forecast: SA-Vic Border to Cape Otway"
-    }
+  },
+  "fireRegionPrecis": {
+    "days": [
+      {
+        "dateTime": "2024-02-26 00:00:00",
+        "entries": [
+          {
+            "dateTime": "2024-02-26 00:00:00",
+            "precis": {
+              "code": "moderate",
+              "index": 14
+            }
+          }
+        ]
+      }
+    ],
+    "issueDateTime": "2024-02-26 02:12:59",
+    "name": "Greater Sydney Region"
+  }
 }
 ```
 
