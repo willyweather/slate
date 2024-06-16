@@ -8857,6 +8857,10 @@ https://api.willyweather.com.au/v2/{api key}/locations/4988/weather.json
           {
             "description": "Partly cloudy. 50% chance of showers. The chance of a thunderstorm offshore south of Cape Wessel.",
             "title": "Weather"
+          },
+          {
+            "description": "A strong high south of the Bight extends a ridge over southeast Australia. It is expected to move east and become established over the Tasman Sea on the weekend, with a ridge extending to the north coast of New South Wales. The next cold front is expected to move through the south of the state during Monday and the remainder on Tuesday with another strong high developing over the Southern Ocean.",
+            "title": "Weather Situation"
           }
         ]
       }
@@ -8903,6 +8907,10 @@ Attribute | Type | Values | Description
 --------- | ---- | ------ | -----------
 dateTime | string | | `YYYY-MM-DD HH:MM:SS`
 precis | string | | long text weather description
+
+<aside class="notice">
+    For marineRegionPrecis the <code>Weather Situation</code> attribute is <strong>present only on the first forecast day</strong>.
+</aside>
 
 ## Summary - GET - by Location ids
 
